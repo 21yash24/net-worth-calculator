@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import '../styles/global.css';
 
 interface Props {
@@ -123,6 +124,9 @@ const {
 				</nav>
 			</div>
 		</footer>
+
+		<!-- Vercel Speed-Optimized Analytics Integration -->
+		<Analytics />
 
 		<script is:inline>
 			document.addEventListener('DOMContentLoaded', () => {
