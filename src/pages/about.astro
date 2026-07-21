@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Federal Reserve Data | Net Worth Calculator" description="Learn about the Federal Reserve Survey of Consumer Finances (SCF) data methodology used by NetWorthCalc.">
+	<main class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+		<header class="text-center mb-12">
+			<h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-emerald-400 mb-4">
+				About Our Federal Reserve Data
+			</h1>
+			<p class="text-slate-400 text-lg max-w-xl mx-auto">
+				Transparency & science-backed methodology behind our net worth percentile calculations.
+			</p>
+		</header>
+
+		<div class="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 bg-slate-900/60 backdrop-blur-xl prose prose-invert max-w-none text-slate-300 space-y-6">
+			<h2 class="text-2xl font-bold text-white mb-4">The Federal Reserve Survey of Consumer Finances (SCF)</h2>
+			<p class="leading-relaxed">
+				Our net worth percentile calculations are benchmarked against official triennial survey datasets published by the **Board of Governors of the Federal Reserve System** (Survey of Consumer Finances). The SCF is widely considered the gold standard for analyzing household income, asset allocation, debt, and wealth distribution in the United States.
+			</p>
+
+			<h2 class="text-2xl font-bold text-white mb-4">Median vs. Average Net Worth</h2>
+			<p class="leading-relaxed">
+				Many financial news outlets report "Average Net Worth", which is heavily skewed upward by ultra-high-net-worth billionaires (top 0.1%). We emphasize **Median Net Worth (50th Percentile)** and granular percentile bands (10th, 25th, 50th, 75th, 90th, 95th, 99th) to give you an accurate, real-world comparison for your specific age group.
+			</p>
+
+			<h2 class="text-2xl font-bold text-white mb-4">The Primary Residence (Home Equity) Debate</h2>
+			<p class="leading-relaxed">
+				Financial experts and communities like <code class="text-sky-400 bg-sky-950 px-2 py-1 rounded">r/personalfinance</code> frequently debate whether home equity should be included in net worth. To solve this, our calculator includes a real-time **Include Primary Residence** toggle so you can measure both total net worth and liquid net worth.
+			</p>
+
+			<h2 class="text-2xl font-bold text-white mb-4">100% Client-Side Privacy</h2>
+			<p class="leading-relaxed">
+				We do not store your financial data, collect email addresses, or transmit your net worth numbers to external servers. All math occurs 100% inside your Web browser.
+			</p>
+		</div>
+	</main>
+</Layout>
