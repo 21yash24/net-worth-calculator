@@ -71,7 +71,7 @@ const faqSchema = {
 			</div>
 			
 			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-				Net Worth Calculator <span class="text-slate-650 dark:text-slate-400 font-normal">by Age</span>
+				Net Worth Calculator <span class="text-slate-600 dark:text-slate-400 font-normal">by Age</span>
 			</h1>
 			<p class="text-slate-850 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal leading-relaxed">
 				Benchmark your personal wealth percentile against official US population data.
@@ -100,7 +100,7 @@ const faqSchema = {
 					<div class="flex items-center gap-3">
 						<label for="home-equity-toggle" class="text-xs font-bold text-slate-750 dark:text-slate-300 cursor-pointer">Include Home Equity</label>
 						<label for="home-equity-toggle" class="relative inline-flex items-center cursor-pointer">
-							<input type="checkbox" id="home-equity-toggle" checked class="sr-only peer" aria-label="Toggle Include Home Equity in Net Worth">
+							<input type="checkbox" id="home-equity-toggle" checked class="sr-only peer" aria-label="Include Home Equity">
 							<div class="w-9 h-5 bg-slate-300 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
 						</label>
 					</div>
@@ -116,7 +116,7 @@ const faqSchema = {
 							32 years
 						</span>
 					</div>
-					<input type="range" id="age-input" min="18" max="80" value="32" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-700 dark:accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-labelledby="age-label-id" title="Age range slider">
+					<input type="range" id="age-input" min="18" max="80" value="32" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-700 dark:accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Your Age" title="Your Age">
 					<div class="flex justify-between text-xs text-slate-750 dark:text-slate-400 font-bold px-1">
 						<span>18</span>
 						<span>30</span>
@@ -135,12 +135,12 @@ const faqSchema = {
 							Total Net Worth (<span class="curr-symbol">$</span>)
 						</label>
 						<div class="relative">
-							<span class="curr-symbol absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-750 dark:text-slate-400 font-bold">$</span>
-							<input type="number" id="nw-number-input" value="120000" step="5000" class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-emerald-700 dark:text-emerald-400 text-lg font-bold rounded-xl pl-8 pr-4 py-2.5 w-48 focus:ring-1 focus:ring-emerald-500 outline-none" aria-labelledby="nw-label-id">
+							<span class="curr-symbol absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-750 dark:text-slate-405 font-bold">$</span>
+							<input type="number" id="nw-number-input" value="120000" step="5000" class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-emerald-700 dark:text-emerald-400 text-lg font-bold rounded-xl pl-8 pr-4 py-2.5 w-48 focus:ring-1 focus:ring-emerald-500 outline-none" aria-label="Total Net Worth">
 						</div>
 					</div>
-					<label for="nw-slider-input" class="sr-only">Adjust Net Worth Slider</label>
-					<input type="range" id="nw-slider-input" min="-20000" max="2000000" step="5000" value="120000" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-700 dark:accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Slider adjust net worth amount" title="Net worth range slider">
+					<label for="nw-slider-input" class="sr-only">Total Net Worth</label>
+					<input type="range" id="nw-slider-input" min="-20000" max="2000000" step="5000" value="120000" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-700 dark:accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Total Net Worth" title="Total Net Worth">
 					<div class="flex justify-between text-xs text-slate-750 dark:text-slate-400 font-bold px-1">
 						<span>-<span class="curr-symbol">$</span>20k</span>
 						<span><span class="curr-symbol">$</span>100k</span>
@@ -232,7 +232,7 @@ const faqSchema = {
 		</div>
 
 		<!-- 600-Word On-Page SEO Content Section -->
-		<article class="mt-20 max-w-3xl mx-auto space-y-8 text-slate-750 dark:text-slate-400 leading-relaxed font-normal">
+		<article class="mt-20 max-w-3xl mx-auto space-y-8 text-slate-755 dark:text-slate-400 leading-relaxed font-normal">
 			<section>
 				<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Understanding US Net Worth Benchmarks</h2>
 				<p class="mb-4">
@@ -289,7 +289,7 @@ const faqSchema = {
 		</section>
 
 		<!-- High-CPM Ad Placeholder -->
-		<div class="mt-16 text-center text-xs text-slate-700 dark:text-slate-500 border border-dashed border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 rounded-xl p-8 max-w-xl mx-auto">
+		<div class="mt-16 text-center text-xs text-slate-700 dark:text-slate-400 border border-dashed border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 rounded-xl p-8 max-w-xl mx-auto">
 			<span>Ad Space / High-Yield Savings Partner Placeholder</span>
 		</div>
 	</main>
@@ -431,7 +431,7 @@ const faqSchema = {
 				milestoneText.innerHTML = `To reach the <strong class="text-slate-900 dark:text-slate-200 font-bold">Top 25%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
 			} else if (nw < b.p90) {
 				const diff = b.p90 - nw;
-				milestoneText.innerHTML = `To reach the <strong class="text-emerald-650 dark:text-emerald-450 font-bold">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
+				milestoneText.innerHTML = `To reach the <strong class="text-emerald-650 dark:text-emerald-455 font-bold">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
 			} else if (nw < b.p99) {
 				const diff = b.p99 - nw;
 				milestoneText.innerHTML = `To reach the elite <strong class="text-amber-600 dark:text-amber-500 font-bold">Top 1%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
