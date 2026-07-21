@@ -85,7 +85,7 @@ const faqSchema = {
 				<!-- Top Controls Bar: Currency Selector & Options -->
 				<div class="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-200 dark:border-slate-800/80">
 					<div class="flex items-center gap-2">
-						<label for="currency-select" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Currency:</label>
+						<label for="currency-select" class="text-xs font-bold uppercase tracking-wider text-slate-750 dark:text-slate-300">Currency:</label>
 						<select id="currency-select" class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white text-xs font-bold rounded-lg px-3 py-1.5 outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer">
 							<option value="USD" data-symbol="$">USD ($)</option>
 							<option value="GBP" data-symbol="£">GBP (£)</option>
@@ -117,7 +117,7 @@ const faqSchema = {
 						</span>
 					</div>
 					<input type="range" id="age-input" min="18" max="80" value="32" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Enter your age range" title="Age range slider">
-					<div class="flex justify-between text-xs text-slate-700 dark:text-slate-400 font-semibold px-1">
+					<div class="flex justify-between text-xs text-slate-750 dark:text-slate-400 font-bold px-1">
 						<span>18</span>
 						<span>30</span>
 						<span>40</span>
@@ -140,7 +140,7 @@ const faqSchema = {
 						</div>
 					</div>
 					<input type="range" id="nw-slider-input" min="-20000" max="2000000" step="5000" value="120000" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Slider adjust net worth amount" title="Net worth range slider">
-					<div class="flex justify-between text-xs text-slate-700 dark:text-slate-400 font-semibold px-1">
+					<div class="flex justify-between text-xs text-slate-750 dark:text-slate-400 font-bold px-1">
 						<span>-<span class="curr-symbol">$</span>20k</span>
 						<span><span class="curr-symbol">$</span>100k</span>
 						<span><span class="curr-symbol">$</span>500k</span>
@@ -153,7 +153,7 @@ const faqSchema = {
 			<!-- Dynamic Percentile Results Display -->
 			<div class="mt-10 pt-8 border-t border-slate-200 dark:border-slate-800/80 space-y-6">
 				<div class="text-center space-y-2">
-					<span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-400">Wealth Percentile Benchmark</span>
+					<span class="text-xs font-bold uppercase tracking-wider text-slate-750 dark:text-slate-400">Wealth Percentile Benchmark</span>
 					<div id="percentile-badge" class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
 						Top 28% Percentile
 					</div>
@@ -164,7 +164,7 @@ const faqSchema = {
 
 				<!-- Interactive Visual Wealth Bell Curve SVG -->
 				<div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 space-y-2">
-					<div class="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-400">
+					<div class="flex justify-between text-xs font-bold text-slate-750 dark:text-slate-400">
 						<span>US Population Wealth Distribution Curve</span>
 						<span id="curve-marker-text" class="text-emerald-600 dark:text-emerald-400 font-bold">You are at 72%</span>
 					</div>
@@ -183,19 +183,19 @@ const faqSchema = {
 				<!-- Benchmarks Matrix Grid -->
 				<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
 					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-700 dark:text-slate-400 block mb-1 font-bold">Median (50th)</span>
+						<span class="text-xs text-slate-750 dark:text-slate-400 block mb-1 font-bold">Median (50th)</span>
 						<span id="bm-p50" class="text-base font-bold text-slate-900 dark:text-white">$39,000</span>
 					</div>
 					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-700 dark:text-slate-400 block mb-1 font-bold">Top 25% (75th)</span>
+						<span class="text-xs text-slate-750 dark:text-slate-400 block mb-1 font-bold">Top 25% (75th)</span>
 						<span id="bm-p75" class="text-base font-bold text-slate-750 dark:text-slate-200">$145,000</span>
 					</div>
 					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-700 dark:text-slate-400 block mb-1 font-bold">Top 10% (90th)</span>
+						<span class="text-xs text-slate-750 dark:text-slate-400 block mb-1 font-bold">Top 10% (90th)</span>
 						<span id="bm-p90" class="text-base font-bold text-emerald-650 dark:text-emerald-400">$340,000</span>
 					</div>
 					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-700 dark:text-slate-400 block mb-1 font-bold">Top 1% (99th)</span>
+						<span class="text-xs text-slate-750 dark:text-slate-400 block mb-1 font-bold">Top 1% (99th)</span>
 						<span id="bm-p99" class="text-base font-bold text-amber-650 dark:text-amber-400">$1,400,000</span>
 					</div>
 				</div>
@@ -204,7 +204,7 @@ const faqSchema = {
 				<div class="p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 space-y-3">
 					<div class="flex items-center justify-between">
 						<span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Recommended Asset Allocation for Age <span id="asset-age-label">32</span></span>
-						<span class="text-xs text-slate-700 dark:text-slate-400 font-bold">Benchmark Model</span>
+						<span class="text-xs text-slate-750 dark:text-slate-400 font-bold">Benchmark Model</span>
 					</div>
 					<div id="asset-breakdown-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
 						<!-- Populated via JS -->
@@ -215,7 +215,7 @@ const faqSchema = {
 				<div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-950 border border-emerald-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
 					<div>
 						<span class="text-xs font-bold text-emerald-850 dark:text-emerald-450 uppercase tracking-wider block mb-1">Wealth Goal Milestone</span>
-						<p id="milestone-text" class="text-sm text-slate-800 dark:text-slate-300">
+						<p id="milestone-text" class="text-sm text-slate-850 dark:text-slate-300">
 							To reach the <strong class="text-emerald-650 dark:text-emerald-450">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">$220,000</strong>.
 						</p>
 					</div>
@@ -258,9 +258,9 @@ const faqSchema = {
 				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
 					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
 						<span>What is the average net worth by age in the US?</span>
-						<span class="text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+						<span class="text-slate-600 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
 					</summary>
-					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+					<p class="text-slate-750 dark:text-slate-400 mt-3 text-sm leading-relaxed">
 						According to the Federal Reserve, median net worth by age is: Under 35 (~$39,000); 35-44 (~$135,600); 45-54 (~$247,200); 55-64 (~$364,500); 65-74 (~$409,900).
 					</p>
 				</details>
@@ -268,9 +268,9 @@ const faqSchema = {
 				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
 					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
 						<span>Should I include primary residence home equity in my net worth?</span>
-						<span class="text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+						<span class="text-slate-650 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
 					</summary>
-					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+					<p class="text-slate-705 dark:text-slate-400 mt-3 text-sm leading-relaxed">
 						Total net worth includes home equity (home value minus mortgage). Liquid net worth excludes primary residence home equity to focus strictly on cash and liquid investments. Our tool allows you to toggle both.
 					</p>
 				</details>
@@ -278,9 +278,9 @@ const faqSchema = {
 				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
 					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
 						<span>What net worth puts you in the top 10% under age 35?</span>
-						<span class="text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+						<span class="text-slate-650 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
 					</summary>
-					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+					<p class="text-slate-705 dark:text-slate-400 mt-3 text-sm leading-relaxed">
 						For Americans under age 35, a net worth of approximately $340,000 puts you in the 90th percentile (top 10%).
 					</p>
 				</details>
@@ -288,7 +288,7 @@ const faqSchema = {
 		</section>
 
 		<!-- High-CPM Ad Placeholder -->
-		<div class="mt-16 text-center text-xs text-slate-600 dark:text-slate-450 border border-dashed border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 rounded-xl p-8 max-w-xl mx-auto">
+		<div class="mt-16 text-center text-xs text-slate-650 dark:text-slate-500 border border-dashed border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 rounded-xl p-8 max-w-xl mx-auto">
 			<span>Ad Space / High-Yield Savings Partner Placeholder</span>
 		</div>
 	</main>
@@ -366,19 +366,19 @@ const faqSchema = {
 
 			assetBreakdownGrid.innerHTML = `
 				<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">
-					<span class="text-slate-600 dark:text-slate-400 block text-[10px] font-bold">Equities / Stocks</span>
+					<span class="text-slate-650 dark:text-slate-400 block text-[10px] font-bold">Equities / Stocks</span>
 					<strong class="text-slate-900 dark:text-white text-sm">${equities}</strong>
 				</div>
 				<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">
-					<span class="text-slate-600 dark:text-slate-400 block text-[10px] font-bold">Real Estate / Home</span>
+					<span class="text-slate-650 dark:text-slate-400 block text-[10px] font-bold">Real Estate / Home</span>
 					<strong class="text-slate-900 dark:text-white text-sm">${realEstate}</strong>
 				</div>
 				<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">
-					<span class="text-slate-600 dark:text-slate-400 block text-[10px] font-bold">Cash / HYSA</span>
+					<span class="text-slate-650 dark:text-slate-400 block text-[10px] font-bold">Cash / HYSA</span>
 					<strong class="text-slate-900 dark:text-white text-sm">${cash}</strong>
 				</div>
 				<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">
-					<span class="text-slate-600 dark:text-slate-400 block text-[10px] font-bold">Alternatives</span>
+					<span class="text-slate-650 dark:text-slate-400 block text-[10px] font-bold">Alternatives</span>
 					<strong class="text-slate-900 dark:text-white text-sm">${alt}</strong>
 				</div>
 			`;
