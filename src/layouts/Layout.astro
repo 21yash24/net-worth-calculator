@@ -25,13 +25,20 @@ const {
 		<!-- Google Search Console Verification Meta Tag -->
 		<meta name="google-site-verification" content="AIK1SSTCIZNoGQQJT9_VXx635qK1qQtNGa3d06gvPeI" />
 
-		<!-- Google Analytics 4 (GA4) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD357K3PTD"></script>
+		<!-- Google Analytics 4 (GA4 - Deferred for 100/100 PageSpeed Performance) -->
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-MD357K3PTD');
+			window.addEventListener('DOMContentLoaded', () => {
+				setTimeout(() => {
+					const script = document.createElement('script');
+					script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MD357K3PTD';
+					script.async = true;
+					document.head.appendChild(script);
+					gtag('js', new Date());
+					gtag('config', 'G-MD357K3PTD');
+				}, 1000);
+			});
 		</script>
 
 		<!-- Open Graph / Social SEO -->
