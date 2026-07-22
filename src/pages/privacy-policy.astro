@@ -2,27 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Privacy Policy | Net Worth Calculator by Age" description="Privacy policy for NetWorthCalc. 100% client-side calculation guarantee with zero data collection.">
-	<main class="max-w-4xl mx-auto px-4 py-12 md:py-20">
-		<header class="text-center mb-12">
-			<h1 class="text-4xl font-bold text-white mb-4">Privacy Policy</h1>
-			<p class="text-slate-400">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+<Layout title="Privacy Policy | Net Worth Calculator by Age" description="Privacy policy for NetWorth. 100% client-side calculation guarantee with zero data collection.">
+	<main class="max-w-4xl mx-auto px-6 py-12 md:py-20">
+		<header class="text-center mb-12 space-y-2">
+			<h1 class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Privacy Policy</h1>
+			<p class="text-slate-700 dark:text-slate-400">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
 		</header>
 
-		<div class="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 bg-slate-900/60 backdrop-blur-xl text-slate-300 space-y-6">
+		<div class="p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/60 shadow-xl backdrop-blur-xl text-slate-800 dark:text-slate-300 space-y-6 font-normal leading-relaxed">
 			<section>
-				<h2 class="text-xl font-bold text-white mb-2">1. 100% Client-Side Calculations</h2>
-				<p>Your privacy is paramount. NetWorthCalc executes all age, income, and net worth percentile calculations locally in your Web browser. We do not store, record, or transmit your financial inputs to any server.</p>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">1. 100% Client-Side Calculations</h2>
+				<p>Your privacy is paramount. NetWorth executes all age, income, and net worth percentile calculations locally in your Web browser. We do not store, record, or transmit your financial inputs to any server.</p>
 			</section>
 
 			<section>
-				<h2 class="text-xl font-bold text-white mb-2">2. Cookies and Local Storage</h2>
-				<p>We do not use tracking cookies to build personal user profiles. Local storage may be utilized solely to remember your preferred age or currency preferences across browser visits.</p>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">2. Cookies and Local Storage</h2>
+				<p>We do not use tracking cookies to build personal user profiles. Local storage may be utilized solely to remember your preferred theme or currency preferences across browser visits.</p>
 			</section>
 
 			<section>
-				<h2 class="text-xl font-bold text-white mb-2">3. Advertising Networks</h2>
-				<p>We may display non-intrusive advertisements served by networks like Google AdSense or Mediavine. These partners may use anonymized cookies to deliver relevant ad content according to their privacy policies.</p>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">3. Analytics & Ad Networks</h2>
+				<p>We use privacy-preserving analytics to understand aggregate traffic patterns. Non-intrusive advertisements served by trusted partners like Google AdSense may be displayed in accordance with standard web privacy rules.</p>
 			</section>
 		</div>
 	</main>
