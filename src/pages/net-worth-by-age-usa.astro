@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth by Age USA | US Federal Reserve Wealth Percentile Calculator";
+const description = "Calculate your net worth percentile in the USA by age group. Benchmarked against official Federal Reserve Survey of Consumer Finances (SCF) 2022 dataset.";
+
+const usaSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Percentile Calculator USA (Federal Reserve Data)",
+  "url": "https://getnetworthcalculator.com/net-worth-by-age-usa",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth by age in the USA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the US Federal Reserve 2022 SCF: Under 35 median net worth is $39,000; 35-44 is $135,600; 45-54 is $247,200; 55-64 is $364,500; 65-74 is $409,900. These are median figures — representing the exact middle American household."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth is top 10% in the USA by age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To be in the top 10% in the USA: Under 35 requires ~$340,000; 35-44 requires ~$980,000; 45-54 requires ~$1,950,000; 55-64 requires ~$2,800,000; 65-74 requires ~$3,400,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What assets are included in US net worth calculations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Federal Reserve includes home equity, 401(k) / IRA retirement accounts, taxable investments, savings/checking accounts, business equity, and vehicle equity — minus all debts (mortgages, student loans, credit cards, auto loans)."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(usaSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-3xl mx-auto space-y-10">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">
+        <span>🇺🇸</span>
+        <span>Official US Federal Reserve SCF Dataset</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Net Worth by Age in the USA
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">US Wealth Percentile Calculator (USD)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Enter your age and net worth to see your exact percentile rank compared to all American households — benchmarked against official US Federal Reserve data.
+      </p>
+    </header>
+
+    <!-- Interactive Link / CTA to Main Tool -->
+    <div class="p-6 md:p-8 rounded-3xl border border-emerald-500/30 bg-emerald-950/20 dark:bg-emerald-900/10 text-center space-y-4 shadow-xl">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-white">Calculate Your USA Net Worth Rank</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-400 max-w-md mx-auto">Use our interactive calculator powered by 2022 US Federal Reserve Survey of Consumer Finances (SCF) data.</p>
+      <a href="/" class="inline-block px-8 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-sm transition-all shadow-lg">
+        Open USA Calculator →
+      </a>
+    </div>
+
+    <!-- US Data Table -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">US Net Worth Distribution by Age (Federal Reserve SCF Data)</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Below are the official US Federal Reserve wealth benchmarks by age group. Median net worth represents the middle American household (50th percentile), while top 10% and top 1% show upper-tier wealth thresholds.
+      </p>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-emerald-700 text-white">
+              <th class="text-left px-4 py-3 font-bold">Age Group</th>
+              <th class="text-right px-4 py-3 font-bold">Median (50%)</th>
+              <th class="text-right px-4 py-3 font-bold">Top 25%</th>
+              <th class="text-right px-4 py-3 font-bold">Top 10%</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 1%</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Under 35</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$39,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$145,000</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$340,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">$1,400,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">35–44</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$135,600</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$410,000</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$980,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">$4,500,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">45–54</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$247,200</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$780,000</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$1,950,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">$9,200,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">55–64</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$364,500</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$1,150,000</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$2,800,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">$14,500,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">65–74</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$409,900</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$1,380,000</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$3,400,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">$17,800,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-500 text-center">Source: US Federal Reserve Survey of Consumer Finances (SCF), 2022</p>
+    </section>
+
+    <!-- International Links -->
+    <section class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3">
+      <h3 class="text-sm font-bold text-slate-900 dark:text-white">Compare With Other Countries</h3>
+      <div class="flex flex-wrap gap-4 text-xs font-semibold">
+        <a href="/net-worth-by-age-uk" class="text-emerald-600 dark:text-emerald-400 hover:underline">🇬🇧 UK Net Worth Calculator (ONS Data)</a>
+        <a href="/net-worth-by-age-canada" class="text-emerald-600 dark:text-emerald-400 hover:underline">🇨🇦 Canada Net Worth Calculator (StatsCan Data)</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="space-y-3">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+      {faqSchema.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+  </main>
+</Layout>
