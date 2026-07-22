@@ -6,7 +6,7 @@ const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Net Worth Calculator by Age",
-  "url": "https://networthbyage.com",
+  "url": "https://getnetworthcalculator.com",
   "description": "Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) data.",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
@@ -223,7 +223,7 @@ const faqSchema = {
 
 					<button id="copy-summary-btn" class="shrink-0 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-sm">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 002-2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
 						</svg>
 						<span>Copy Summary</span>
 					</button>
@@ -231,8 +231,38 @@ const faqSchema = {
 			</div>
 		</div>
 
+		<!-- Federal Reserve Data Methodology & Privacy Trust Card -->
+		<section class="mt-16 p-6 md:p-8 rounded-3xl bg-slate-100/80 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80 space-y-4">
+			<div class="flex items-center gap-3">
+				<div class="w-8 h-8 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+					</svg>
+				</div>
+				<div>
+					<h3 class="text-base font-bold text-slate-900 dark:text-white">Federal Reserve SCF Data Governance & Privacy Guarantee</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400">Official United States Population Benchmark Methodology</p>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs text-slate-750 dark:text-slate-300">
+				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
+					<strong class="text-slate-900 dark:text-white block font-bold">1. Primary Source Dataset</strong>
+					<p class="leading-relaxed">Derived directly from the Board of Governors of the Federal Reserve System's triennial Survey of Consumer Finances (SCF), covering comprehensive US household asset distributions.</p>
+				</div>
+				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
+					<strong class="text-slate-900 dark:text-white block font-bold">2. Median Percentile Math</strong>
+					<p class="leading-relaxed">Calculated using median distributions per age cohort (Under 35, 35–44, 45–54, 55–64, 65–74, 75+) rather than mean averages to eliminate billionaire distortion.</p>
+				</div>
+				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
+					<strong class="text-slate-900 dark:text-white block font-bold">3. 100% Client-Side Privacy</strong>
+					<p class="leading-relaxed">All calculations execute directly inside your browser. No financial data, age inputs, or net worth values are stored, logged, or sent to any server.</p>
+				</div>
+			</div>
+		</section>
+
 		<!-- 600-Word On-Page SEO Content Section -->
-		<article class="mt-20 max-w-3xl mx-auto space-y-8 text-slate-755 dark:text-slate-400 leading-relaxed font-normal">
+		<article class="mt-16 max-w-3xl mx-auto space-y-8 text-slate-755 dark:text-slate-400 leading-relaxed font-normal">
 			<section>
 				<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Understanding US Net Worth Benchmarks</h2>
 				<p class="mb-4">
@@ -287,11 +317,6 @@ const faqSchema = {
 				</details>
 			</div>
 		</section>
-
-		<!-- High-CPM Ad Placeholder -->
-		<div class="mt-16 text-center text-xs text-slate-700 dark:text-slate-400 border border-dashed border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 rounded-xl p-8 max-w-xl mx-auto">
-			<span>Ad Space / High-Yield Savings Partner Placeholder</span>
-		</div>
 	</main>
 </Layout>
 
