@@ -1,5 +1,154 @@
 ---
-import IndexPage from './index.astro';
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth at 40: Am I On Track? (2024 Federal Reserve Benchmarks)";
+const description = "What is a good net worth at 40? Federal Reserve data shows median net worth for ages 35-44 is $135,600. Are you ahead or behind the curve? Compare yourself now.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is $500,000 a good net worth at 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, a $500,000 net worth at 40 is exceptional. It places you comfortably in the top 25% of all Americans in the 35-44 age bracket (the 75th percentile cutoff is $410,000). You are well ahead of the $135,600 median."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth is needed to retire at 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Retiring at 40 (FIRE) usually requires a net worth of 25 to 33 times your annual expenses. If you plan to spend $60,000 per year, you would need $1.5M to $2M invested. That puts you in the top 5% of 40-year-olds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I have saved at 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A common rule of thumb (like Fidelity's) suggests having 3x your annual salary saved for retirement by age 40. If you make $80,000 a year, you should aim for $240,000 in savings and investments. The actual median net worth is $135,600."
+      }
+    }
+  ]
+};
 ---
 
-<IndexPage />
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+    <!-- Hero Header -->
+    <header class="text-center space-y-4">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+        Net Worth at 40: Are You On Track <span class="text-emerald-600 dark:text-emerald-400">for Financial Security?</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        By age 40, the wealth gap begins to widen significantly. See how your net worth compares to the 2022 Federal Reserve SCF data for the 35–44 age bracket.
+      </p>
+    </header>
+
+    <!-- Key Stat Box -->
+    <div class="bg-emerald-700 rounded-2xl p-6 md:p-8 text-white text-center shadow-xl space-y-4">
+      <h2 class="text-xl font-bold text-emerald-100">The Official Benchmark (Ages 35–44)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 divide-y md:divide-y-0 md:divide-x divide-emerald-500/50">
+        <div class="pt-4 md:pt-0">
+          <p class="text-sm font-semibold uppercase tracking-widest text-emerald-200 mb-1">Median Net Worth</p>
+          <p class="text-4xl font-black">$135,600</p>
+          <p class="text-xs text-emerald-100 mt-2">The exact middle point for a 40-year-old.</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <p class="text-sm font-semibold uppercase tracking-widest text-emerald-200 mb-1">Top 10% Net Worth</p>
+          <p class="text-4xl font-black">$980,000</p>
+          <p class="text-xs text-emerald-100 mt-2">The threshold to be in the wealthiest 10%.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestones Grid -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Milestones at Age 40</h2>
+      <p class="text-slate-700 dark:text-slate-400">Where exactly do you fall? Here is the full distribution for the 35–44 age group:</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 rounded-2xl border-l-4 border-l-red-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Bottom 25%</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">Under $24k</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Often dealing with high consumer debt or zero home equity.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-l-4 border-l-blue-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Median</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">$135,600</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">The 50th percentile mark. Typically consists of home equity and early 401k savings.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-l-4 border-l-emerald-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Top 25%</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">$410,000+</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">75th percentile. Strong career earnings, investments compounding.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-l-4 border-l-violet-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">Top 10% & Top 1%</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">$980k / $4.5M+</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">90th and 99th percentiles. Significant equity, business ownership, or high income.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The 40s Wealth Gap: Why Some People Pull Ahead Dramatically</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        In your 20s and 30s, almost everyone is somewhat broke. But in your 40s, the decisions made over the last decade start compounding. The difference between the 25th percentile ($24,000) and the 75th percentile ($410,000) is massive. This is usually driven by homeownership (equity growth) and consistent retirement investing finally hitting the "hockey stick" curve of compound interest.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The Real Reason Your 40s Define Your Retirement</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Money invested at age 40 still has 25 years to double multiple times before traditional retirement at 65. If you invest $1,000 a month starting at 40 at a 7% real return, you can add over $800,000 to your net worth by age 65. However, if you wait until 50 to get serious, that window closes rapidly. Your 40s are the final decade where compound interest does most of the heavy lifting.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">How to Close the Net Worth Gap in Your 40s</h2>
+      <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-400">
+        <li><strong class="text-slate-900 dark:text-white">Avoid Lifestyle Creep:</strong> Your peak earning years shouldn't mean peak spending. Route raises directly into investments.</li>
+        <li><strong class="text-slate-900 dark:text-white">Max Out Tax-Advantaged Space:</strong> At this income level, tax savings from maxing a 401(k) ($23,000) and HSA are substantial.</li>
+        <li><strong class="text-slate-900 dark:text-white">Refinance or Pay Down Debt:</strong> Ensure you aren't carrying 15%+ interest credit card debt into your middle age.</li>
+      </ul>
+    </section>
+
+    <!-- CTA Box -->
+    <div class="bg-emerald-700 rounded-2xl p-8 text-center shadow-xl space-y-4">
+      <h2 class="text-2xl font-bold text-white">Stop Guessing. Find Your Percentile.</h2>
+      <p class="text-emerald-100 max-w-lg mx-auto">See exactly where your net worth ranks among all Americans your age.</p>
+      <a href="/" class="inline-block mt-4 px-6 py-3 bg-white text-emerald-700 font-bold rounded-xl hover:bg-emerald-50 transition-colors shadow-lg">
+        Calculate Your Exact Percentile
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {faqSchema.mainEntity.map(faq => (
+          <details class="group bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-5 cursor-pointer">
+            <summary class="flex justify-between items-center font-bold text-slate-900 dark:text-white list-none">
+              {faq.name}
+              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="text-slate-700 dark:text-slate-400 mt-3 leading-relaxed">
+              {faq.acceptedAnswer.text}
+            </p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="text-center text-xs text-slate-500 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-800">
+      Data Source: Federal Reserve Survey of Consumer Finances (SCF), 2022.
+    </div>
+  </main>
+</Layout>

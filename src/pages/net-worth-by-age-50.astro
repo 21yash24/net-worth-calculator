@@ -1,5 +1,154 @@
 ---
-import IndexPage from './index.astro';
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth at 50: Are You Financially Ready? (2024 Data)";
+const description = "What is a good net worth at 50? See Federal Reserve benchmarks for ages 45-54. Median net worth is $247,200 — find out if you are ahead for retirement.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is $1 million enough to retire at 50?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Retiring at 50 with $1 million can be challenging depending on your lifestyle. Using the 4% rule, $1 million provides roughly $40,000 a year in income. If your expenses are lower than that, it's possible. However, many financial advisors recommend 3-3.5% withdrawal rates for early retirees, meaning $1M would generate $30,000-$35,000 annually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average net worth at 55?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the 55-64 age bracket, the Federal Reserve reports a median net worth of $364,500 and an average (mean) net worth of $1,566,900. The top 10% in this age group have a net worth of $2.8 million or more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I have in my 401k at 50?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fidelity Investments suggests having 6x your annual salary saved for retirement by age 50. For example, if you earn $100,000, you should aim for $600,000 in your 401(k) and other retirement accounts."
+      }
+    }
+  ]
+};
 ---
 
-<IndexPage />
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+    <!-- Hero Header -->
+    <header class="text-center space-y-4">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+        Net Worth at 50: The Last Big Window <span class="text-emerald-600 dark:text-emerald-400">Before Retirement</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        Your 50s are your peak earning years and the critical decade before traditional retirement. Compare yourself against the 2022 Federal Reserve benchmarks for ages 45-54.
+      </p>
+    </header>
+
+    <!-- Key Stat Box -->
+    <div class="bg-emerald-700 rounded-2xl p-6 md:p-8 text-white text-center shadow-xl space-y-4">
+      <h2 class="text-xl font-bold text-emerald-100">The Official Benchmark (Ages 45–54)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 divide-y md:divide-y-0 md:divide-x divide-emerald-500/50">
+        <div class="pt-4 md:pt-0">
+          <p class="text-sm font-semibold uppercase tracking-widest text-emerald-200 mb-1">Median Net Worth</p>
+          <p class="text-4xl font-black">$247,200</p>
+          <p class="text-xs text-emerald-100 mt-2">The exact middle point for a 50-year-old.</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <p class="text-sm font-semibold uppercase tracking-widest text-emerald-200 mb-1">Top 10% Net Worth</p>
+          <p class="text-4xl font-black">$1,950,000</p>
+          <p class="text-xs text-emerald-100 mt-2">The threshold to be in the wealthiest 10%.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestones Grid -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Milestones at Age 50</h2>
+      <p class="text-slate-700 dark:text-slate-400">Here is the full distribution for the 45–54 age group:</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 rounded-2xl border-l-4 border-l-red-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Bottom 25%</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">Under $48k</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Financially vulnerable. Requires aggressive catch-up strategies.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-l-4 border-l-blue-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Median</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">$247,200</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">The 50th percentile. Typically includes home equity and steady 401(k) growth.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-l-4 border-l-emerald-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Top 25%</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">$780,000+</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">75th percentile. On track for a comfortable traditional retirement.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-l-4 border-l-violet-500 bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">Top 10% & Top 1%</p>
+          <p class="text-2xl font-black text-slate-900 dark:text-white mt-1">$1.95M / $9.2M+</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">90th and 99th percentiles. Financial independence territory.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Why 50 Is the Make-or-Break Decade for Retirement</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Your 50s are unique. Your children are likely becoming independent, potentially freeing up cash flow (the "empty nest" dividend). Your salary is statistically at its lifetime peak. Most importantly, you still have 10-15 years before retirement — enough time for investments to double one more time, but not enough time to recover from major financial mistakes.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The Catch-Up Contribution Advantage</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        The IRS recognizes that 50 is a critical age, which is why "catch-up contributions" unlock the year you turn 50. For 2024, this means you can contribute an extra $7,500 to your 401(k) (bringing the total limit to $30,500) and an extra $1,000 to an IRA. If you are behind on your goals, leveraging these limits while in your peak earning years is the most powerful tool available.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">How to Go From Median to Top 25% in the Next 10 Years</h2>
+      <ul class="space-y-3 list-disc pl-5 text-slate-700 dark:text-slate-400">
+        <li><strong class="text-slate-900 dark:text-white">Eliminate the Mortgage (or Don't Upsize):</strong> Going into retirement without a mortgage payment drastically reduces the income you need to generate.</li>
+        <li><strong class="text-slate-900 dark:text-white">Max the Catch-Up Space:</strong> Shoving an extra $7,500/year into investments for 15 years adds over $200,000 to your net worth (assuming 7% returns).</li>
+        <li><strong class="text-slate-900 dark:text-white">Asset Reallocation:</strong> You should still hold significant equities for growth, but it's time to begin protecting your accumulated wealth from major market corrections.</li>
+      </ul>
+    </section>
+
+    <!-- CTA Box -->
+    <div class="bg-emerald-700 rounded-2xl p-8 text-center shadow-xl space-y-4">
+      <h2 class="text-2xl font-bold text-white">Find Your Exact Percentile</h2>
+      <p class="text-emerald-100 max-w-lg mx-auto">See exactly where your net worth ranks among all Americans your age.</p>
+      <a href="/" class="inline-block mt-4 px-6 py-3 bg-white text-emerald-700 font-bold rounded-xl hover:bg-emerald-50 transition-colors shadow-lg">
+        Calculate Your Exact Percentile
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {faqSchema.mainEntity.map(faq => (
+          <details class="group bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-5 cursor-pointer">
+            <summary class="flex justify-between items-center font-bold text-slate-900 dark:text-white list-none">
+              {faq.name}
+              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="text-slate-700 dark:text-slate-400 mt-3 leading-relaxed">
+              {faq.acceptedAnswer.text}
+            </p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="text-center text-xs text-slate-500 dark:text-slate-500 pt-8 border-t border-slate-200 dark:border-slate-800">
+      Data Source: Federal Reserve Survey of Consumer Finances (SCF), 2022.
+    </div>
+  </main>
+</Layout>

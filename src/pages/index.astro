@@ -317,8 +317,61 @@ const faqSchema = {
 				</details>
 			</div>
 		</section>
+
+		<!-- Embed This Calculator Section -->
+		<section class="mt-16 max-w-3xl mx-auto">
+			<div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/70 space-y-4">
+				<div class="flex items-center gap-3">
+					<div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+						</svg>
+					</div>
+					<div>
+						<h3 class="text-base font-bold text-slate-900 dark:text-white">Embed This Calculator On Your Website</h3>
+						<p class="text-xs text-slate-700 dark:text-slate-400">Free to embed. No attribution required. Copy the code below.</p>
+					</div>
+				</div>
+				<div class="relative">
+					<code id="embed-code-block" class="block w-full p-4 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-slate-300 font-mono break-all select-all leading-relaxed">
+						{`<iframe src="https://getnetworthcalculator.com" width="100%" height="700" frameborder="0" style="border-radius:16px;border:1px solid #e2e8f0;" title="Net Worth Percentile Calculator by Age | Federal Reserve Data" loading="lazy"></iframe>`}
+					</code>
+					<button id="copy-embed-btn" onclick="navigator.clipboard.writeText(document.getElementById('embed-code-block').textContent.trim()); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy Embed Code',2000);" class="mt-3 px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs transition-all">
+						Copy Embed Code
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Internal Content Links Grid -->
+		<section class="mt-16 max-w-3xl mx-auto">
+			<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5">More Net Worth Resources</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<a href="/average-net-worth-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Data Guide</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Average Net Worth by Age in the US (2024)</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Complete Federal Reserve data table with median, mean, and top 10% thresholds for every age group.</p>
+				</a>
+				<a href="/net-worth-percentile" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Percentile Guide</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Percentile: Where Do You Stand?</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Find out exactly what net worth puts you in the top 10%, 5%, and 1% for every age group.</p>
+				</a>
+				<a href="/net-worth-by-age-uk" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇬🇧 United Kingdom</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">UK Net Worth Calculator (ONS Data)</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Compare your net worth to UK households using real ONS Wealth and Assets Survey data in GBP.</p>
+				</a>
+				<a href="/median-vs-average-net-worth" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Education</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Median vs Average Net Worth Explained</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Why the "average American net worth" statistic is deeply misleading and which number you should use.</p>
+				</a>
+			</div>
+		</section>
 	</main>
 </Layout>
+
 
 <script is:inline>
 	const scfBrackets = {

@@ -1,0 +1,461 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Median vs Average Net Worth: Why the Difference Matters (2024)';
+const description =
+  'Why average net worth statistics are misleading. Learn the key difference between median and average wealth, and which number you should actually use for financial comparison.';
+
+const medianByAge = [
+  { group: 'Under 35',  median: '$39,000',   value: 39000 },
+  { group: '35 – 44',   median: '$135,600',  value: 135600 },
+  { group: '45 – 54',   median: '$247,200',  value: 247200 },
+  { group: '55 – 64',   median: '$364,500',  value: 364500 },
+  { group: '65 – 74',   median: '$409,900',  value: 409900 },
+  { group: '75+',       median: '$335,600',  value: 335600 },
+];
+const maxVal = 409900;
+
+const faq = [
+  {
+    q: 'Is average or median net worth more accurate?',
+    a: 'Median net worth is far more accurate for personal comparison. The average (mean) is mathematically distorted upward by the ultra-wealthy — a handful of billionaires can shift the national average by tens of thousands of dollars. The median represents the exact midpoint of the population and is immune to extreme outliers.',
+  },
+  {
+    q: 'What is the median net worth in America?',
+    a: "According to the Federal Reserve's 2022 Survey of Consumer Finances, the median household net worth in the United States is $192,700. This is the figure that most accurately represents a 'typical' American household, since half of all households have more and half have less.",
+  },
+  {
+    q: 'Why do billionaires skew wealth statistics?',
+    a: "Wealth is extremely concentrated at the top. The 724 U.S. billionaires collectively hold trillions in assets. Because the mean is calculated by summing all wealth and dividing by the number of people, even one person with $100 billion raises the average for everyone. The median is unaffected because it only cares about the value at the exact midpoint, not the extremes.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Median vs. Average Net Worth: Why One Number Lies to You',
+  description,
+  datePublished: '2024-01-15',
+  dateModified: '2024-11-01',
+  author: { '@type': 'Organization', name: 'Net Worth Calculator' },
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-violet-400/10 dark:bg-violet-500/10 blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-indigo-400/10 dark:bg-indigo-500/10 blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-4xl mx-auto px-6 py-16 md:py-24">
+        <nav class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Home</a>
+          <span class="text-slate-300 dark:text-slate-600">&rsaquo;</span>
+          <span class="text-slate-700 dark:text-slate-300">Median vs Average Net Worth</span>
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight mb-6">
+          Median vs. Average Net Worth:<br class="hidden sm:block" />
+          <span class="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">
+            Why One Number Lies to You
+          </span>
+        </h1>
+
+        <div class="relative pl-5 border-l-4 border-violet-500 dark:border-violet-400 mb-8">
+          <p class="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
+            The average American has a net worth of <strong class="text-slate-900 dark:text-white">$1,063,700</strong>.
+            Sounds good, right? Here's why that number is almost meaningless &mdash; and what you should look at instead.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 text-sm font-medium">
+          <span class="px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+            Median: $192,700
+          </span>
+          <span class="px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+            Mean: $1,063,700
+          </span>
+          <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            Difference: 452%
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <div class="max-w-4xl mx-auto px-6 py-12 md:py-16 space-y-16">
+
+      <!-- Section 1: Math Problem -->
+      <section id="math-problem">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          The Math Problem With Averages
+        </h2>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-6">
+          The word "average" hides a flaw. When you calculate a mean, you add up every value and divide by the
+          count. That sounds fair &mdash; but it gives disproportionate weight to extreme outliers. In wealth
+          statistics, those outliers are billionaires.
+        </p>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-8">
+          The median, on the other hand, is simply the middle value when all numbers are sorted in order.
+          Half the population is above it, half is below it. It cannot be distorted by extremes.
+        </p>
+
+        <!-- Visual comparison box -->
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 overflow-hidden shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-800/40">
+            <h3 class="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide">
+              A Simple Example: 10 People, 1 Billionaire
+            </h3>
+          </div>
+          <div class="p-6">
+            <div class="grid sm:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Individual Net Worths</p>
+                <div class="space-y-2">
+                  {[1,2,3,4,5,6,7,8,9].map((n) => (
+                    <div class="flex items-center gap-3">
+                      <span class="text-slate-400 dark:text-slate-500 text-xs w-5">{n}.</span>
+                      <div class="flex-1 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                        <div class="h-full rounded-full bg-emerald-500" style="width:1%"></div>
+                      </div>
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-300 tabular-nums">$10,000</span>
+                    </div>
+                  ))}
+                  <div class="flex items-center gap-3 pt-1">
+                    <span class="text-slate-400 dark:text-slate-500 text-xs w-5">10.</span>
+                    <div class="flex-1 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                      <div class="h-full w-full rounded-full bg-amber-500"></div>
+                    </div>
+                    <span class="text-sm font-bold text-amber-600 dark:text-amber-400 tabular-nums">$10,000,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-4">
+                <div class="flex-1 rounded-xl p-5 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/60">
+                  <div class="flex items-center gap-2 mb-2">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Median</span>
+                  </div>
+                  <p class="text-3xl font-extrabold text-emerald-700 dark:text-emerald-300 tabular-nums">$10,000</p>
+                  <p class="text-sm text-emerald-600 dark:text-emerald-400/80 mt-1">The middle value &mdash; what most people actually have</p>
+                </div>
+                <div class="flex-1 rounded-xl p-5 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/60">
+                  <div class="flex items-center gap-2 mb-2">
+                    <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+                    <span class="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Mean (Average)</span>
+                  </div>
+                  <p class="text-3xl font-extrabold text-amber-700 dark:text-amber-300 tabular-nums">$1,009,000</p>
+                  <p class="text-sm text-amber-600 dark:text-amber-400/80 mt-1">Inflated by one outlier &mdash; reflects nobody's reality</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400 italic border-t border-slate-100 dark:border-slate-800 pt-4">
+              The average is 100&times; higher than what 9 out of 10 people actually have. This is exactly what happens at the national level with billionaires.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Billionaire Distortion -->
+      <section id="billionaire-distortion">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          The Billionaire Distortion Effect
+        </h2>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-6">
+          The United States has approximately <strong class="text-slate-900 dark:text-white">724 billionaires</strong>,
+          collectively holding over $5 trillion in wealth. That's 724 people out of 330 million &mdash; just
+          0.0002% of the population &mdash; mathematically dragging the mean upward for everyone else.
+        </p>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-8">
+          When Elon Musk's net worth increases by $10 billion, the average American's "average" net worth
+          statistically rises &mdash; even though nothing in their life changed. The mean rewards extreme
+          concentration; the median ignores it entirely.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4 mb-8">
+          <div class="rounded-xl p-5 border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 text-center">
+            <p class="text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">$192,700</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Median household net worth</p>
+            <span class="mt-2 inline-block text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">Most realistic</span>
+          </div>
+          <div class="rounded-xl p-5 border border-amber-200 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-900/10 text-center">
+            <p class="text-3xl font-extrabold text-amber-700 dark:text-amber-300 tabular-nums">$1,063,700</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Mean household net worth</p>
+            <span class="mt-2 inline-block text-xs font-semibold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">Billionaire-inflated</span>
+          </div>
+          <div class="rounded-xl p-5 border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 text-center">
+            <p class="text-3xl font-extrabold text-violet-600 dark:text-violet-400 tabular-nums">452%</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Gap between mean and median</p>
+            <span class="mt-2 inline-block text-xs font-semibold text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/20 px-2 py-0.5 rounded-full border border-violet-200 dark:border-violet-800">The distortion</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl p-5 bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80">
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            <strong class="text-slate-900 dark:text-white">Source:</strong> Federal Reserve 2022 Survey of Consumer Finances (SCF).
+            Data reflects family net worth figures in 2022 dollars. Billionaire count from Forbes Real-Time Billionaires list.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: Which Number to Use -->
+      <section id="which-number">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          Which Number Should You Use?
+        </h2>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-6">
+          The right metric depends entirely on what you're trying to answer. Neither is "wrong" &mdash; they just
+          answer different questions.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="rounded-2xl border border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/60 dark:bg-emerald-900/10 overflow-hidden">
+            <div class="px-5 py-4 border-b border-emerald-200 dark:border-emerald-800/60 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold">
+                &#10003;
+              </div>
+              <h3 class="font-bold text-emerald-800 dark:text-emerald-300">Use Median When&hellip;</h3>
+            </div>
+            <ul class="px-5 py-4 space-y-2.5 text-sm text-emerald-700 dark:text-emerald-400/90">
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-emerald-500">&rsaquo;</span>Comparing your own net worth to peers</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-emerald-500">&rsaquo;</span>Setting realistic financial benchmarks</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-emerald-500">&rsaquo;</span>Understanding what a "typical" household has</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-emerald-500">&rsaquo;</span>Analyzing income inequality trends</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-emerald-500">&rsaquo;</span>Making personal planning decisions</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-amber-200 dark:border-amber-800/60 bg-amber-50/60 dark:bg-amber-900/10 overflow-hidden">
+            <div class="px-5 py-4 border-b border-amber-200 dark:border-amber-800/60 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center text-amber-600 dark:text-amber-400 font-bold">
+                ~
+              </div>
+              <h3 class="font-bold text-amber-800 dark:text-amber-300">Use Mean When&hellip;</h3>
+            </div>
+            <ul class="px-5 py-4 space-y-2.5 text-sm text-amber-700 dark:text-amber-400/90">
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-amber-500">&rsaquo;</span>Calculating total national or market wealth</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-amber-500">&rsaquo;</span>Sizing an addressable market for luxury goods</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-amber-500">&rsaquo;</span>Forecasting aggregate consumer spending</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-amber-500">&rsaquo;</span>Academic economics research on wealth flows</li>
+              <li class="flex items-start gap-2"><span class="mt-0.5 text-amber-500">&rsaquo;</span>Modeling tax revenue from the entire wealth base</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-xl p-5 border border-violet-200 dark:border-violet-800/60 bg-violet-50/50 dark:bg-violet-900/10">
+          <p class="text-sm text-violet-700 dark:text-violet-400">
+            <strong class="text-violet-800 dark:text-violet-300">Rule of thumb:</strong> If you're asking
+            "how am I doing compared to others?" &mdash; always use the median. If you're asking "how much total
+            wealth exists in America?" &mdash; the mean is appropriate.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: Age Table -->
+      <section id="median-by-age">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          Median Net Worth By Age (2024)
+        </h2>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-6">
+          Here's the data you should actually benchmark against. These are <em>median</em> figures from the
+          Federal Reserve's Survey of Consumer Finances &mdash; the middle value for each age group, unaffected by billionaires.
+        </p>
+
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 overflow-hidden shadow-sm">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800/80">
+                <th class="px-6 py-4 text-left font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs">Age Group</th>
+                <th class="px-6 py-4 text-right font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs">Median Net Worth</th>
+                <th class="px-6 py-4 text-right font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs hidden sm:table-cell">Relative</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800/60">
+              {medianByAge.map(({ group, median, value }) => {
+                const pct = Math.round((value / maxVal) * 100);
+                return (
+                  <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">{group}</td>
+                    <td class="px-6 py-4 text-right font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">{median}</td>
+                    <td class="px-6 py-4 hidden sm:table-cell">
+                      <div class="flex items-center justify-end gap-2">
+                        <div class="w-24 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                          <div class="h-full rounded-full bg-emerald-500" style={`width:${pct}%`}></div>
+                        </div>
+                        <span class="text-xs text-slate-400 dark:text-slate-500 tabular-nums w-8 text-right">{pct}%</span>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div class="px-6 py-3 border-t border-slate-100 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-800/20">
+            <p class="text-xs text-slate-400 dark:text-slate-500">
+              Source: Federal Reserve Survey of Consumer Finances, 2022. Figures in 2022 dollars. Bar shows % of peak median (age 65&ndash;74).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Financial Planning -->
+      <section id="financial-planning">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          How This Affects Your Financial Planning
+        </h2>
+        <p class="text-slate-700 dark:text-slate-400 leading-relaxed mb-6">
+          Benchmarking yourself against the wrong number doesn't just give you inaccurate information &mdash; it
+          can actively harm your financial decisions.
+        </p>
+
+        <div class="space-y-4">
+          <div class="rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50/50 dark:bg-red-900/10 p-5">
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/40 flex items-center justify-center text-red-500 dark:text-red-400 font-bold text-lg">
+                &#x2717;
+              </div>
+              <div>
+                <h3 class="font-semibold text-red-800 dark:text-red-300 mb-1">
+                  Trap 1: Feeling falsely behind (and over-correcting)
+                </h3>
+                <p class="text-sm text-red-700 dark:text-red-400/90 leading-relaxed">
+                  If you compare your $250,000 net worth at age 45 to the mean of $1,063,700, you may feel
+                  dangerously behind and make extreme sacrifices to "catch up." But against the median
+                  ($247,200), you're right on track. Comparing to the mean causes unnecessary financial anxiety
+                  and can lead to poor decisions like raiding an emergency fund or taking undue investment risk.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-orange-200 dark:border-orange-900/60 bg-orange-50/50 dark:bg-orange-900/10 p-5">
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center text-orange-500 dark:text-orange-400 font-bold text-lg">
+                &#9888;
+              </div>
+              <div>
+                <h3 class="font-semibold text-orange-800 dark:text-orange-300 mb-1">
+                  Trap 2: Feeling falsely ahead (and under-saving)
+                </h3>
+                <p class="text-sm text-orange-700 dark:text-orange-400/90 leading-relaxed">
+                  If someone reads a headline saying "the average retiree has $1M saved," they might feel
+                  confident with $400,000 &mdash; not realizing that figure is pulled sky-high by the ultra-wealthy.
+                  The median retirement savings are far lower, and many households are genuinely unprepared.
+                  False confidence can lead to under-saving during critical wealth-building decades.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/50 dark:bg-emerald-900/10 p-5">
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-500 dark:text-emerald-400 font-bold text-lg">
+                &#10003;
+              </div>
+              <div>
+                <h3 class="font-semibold text-emerald-800 dark:text-emerald-300 mb-1">
+                  Best practice: Use your wealth percentile
+                </h3>
+                <p class="text-sm text-emerald-700 dark:text-emerald-400/90 leading-relaxed">
+                  Neither the mean nor the median is perfect for individuals. The most powerful metric is your
+                  <strong>wealth percentile</strong> &mdash; exactly where you rank among everyone in your age group.
+                  This accounts for the full distribution, tells you precisely how you compare, and gives you
+                  an honest, actionable benchmark for your financial plan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta">
+        <div class="relative overflow-hidden rounded-2xl border border-violet-200 dark:border-violet-800/60 bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 p-8 text-center shadow-sm">
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-violet-400/10 dark:bg-violet-500/10 blur-2xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-indigo-400/10 dark:bg-indigo-500/10 blur-2xl"></div>
+          </div>
+          <div class="relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900/40 border border-violet-200 dark:border-violet-800 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase tracking-wider mb-4">
+              Free &middot; Instant &middot; No sign-up
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">
+              Get Your True Wealth Percentile
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-lg mx-auto">
+              Stop comparing yourself to billionaire-inflated averages. Find out exactly where you rank
+              among Americans your age &mdash; based on real Federal Reserve data.
+            </p>
+            <a
+              href="/"
+              class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-sm shadow-lg shadow-violet-500/25 transition-all duration-200 hover:shadow-violet-500/40 hover:-translate-y-0.5"
+            >
+              Calculate My Net Worth Rank
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-4">
+          {faq.map(({ q, a }, i) => (
+            <details
+              class="group rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 overflow-hidden"
+              open={i === 0}
+            >
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none select-none">
+                <h3 class="font-semibold text-slate-900 dark:text-white text-base pr-4">{q}</h3>
+                <div class="shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 group-open:rotate-45 transition-transform duration-200">
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </div>
+              </summary>
+              <div class="px-6 pb-5 -mt-1">
+                <div class="border-t border-slate-100 dark:border-slate-800 pt-4">
+                  <p class="text-slate-700 dark:text-slate-400 leading-relaxed text-sm">{a}</p>
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Footer note -->
+      <footer class="border-t border-slate-200 dark:border-slate-800/80 pt-8">
+        <p class="text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
+          <strong class="text-slate-600 dark:text-slate-400">Data Sources:</strong> Federal Reserve Board,
+          Survey of Consumer Finances (SCF) 2022; Forbes Billionaires List 2024. All figures are in 2022
+          dollars unless otherwise noted. Net worth data reflects family units, not individuals.
+          This content is for informational purposes only and does not constitute financial advice.
+        </p>
+      </footer>
+
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,346 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth by Age Canada | Statistics Canada Wealth Percentile Calculator";
+const description = "Calculate your net worth percentile against other Canadians by age group. Uses real Statistics Canada Survey of Financial Security (SFS) 2019 data in CAD.";
+
+const caSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Percentile Calculator Canada (Statistics Canada Data)",
+  "url": "https://getnetworthcalculator.com/net-worth-by-age-canada",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth by age in Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Statistics Canada SFS 2019: Under 35: median $48,800; 35-44: $234,400; 45-54: $521,100; 55-64: $690,000; 65-74: $543,200. These are median figures — the typical Canadian household, not distorted by the ultra-wealthy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good net worth at 40 in Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Canada, a net worth of $234,400 at age 35-44 puts you at the median (50th percentile). To be in the top 25%, you would need approximately $620,000. The top 10% threshold for this age group is around $1.2 million CAD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Canadian net worth include home equity and pension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Statistics Canada Survey of Financial Security includes all household assets: home equity, financial assets (stocks, bonds, savings), registered retirement accounts (RRSP, TFSA, RRIF), CPP pension entitlements, and other real estate — minus all liabilities."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(caSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-3xl mx-auto space-y-10">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 text-xs font-bold text-red-700 dark:text-red-400 uppercase tracking-widest">
+        <span>🍁</span>
+        <span>Official Statistics Canada SFS Dataset</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Net Worth by Age in Canada
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Wealth Percentile Calculator (CAD)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Enter your age and net worth in Canadian dollars to see exactly where you stand compared to other Canadian households — using real Statistics Canada data.
+      </p>
+    </header>
+
+    <!-- Calculator Card -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl shadow-slate-200/50 dark:shadow-none space-y-6">
+
+      <!-- Age Input -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <label for="ca-age-slider" class="text-sm font-bold text-slate-900 dark:text-white">Your Age</label>
+          <span id="ca-age-display" class="text-sm font-bold text-emerald-700 dark:text-emerald-400">35 years old</span>
+        </div>
+        <input type="range" id="ca-age-slider" min="18" max="85" value="35" step="1"
+          class="w-full h-2 rounded-full appearance-none accent-emerald-700 dark:accent-emerald-500 bg-slate-200 dark:bg-slate-800 cursor-pointer" />
+        <div class="flex justify-between text-xs text-slate-500 dark:text-slate-500 mt-1">
+          <span>18</span><span>85+</span>
+        </div>
+      </div>
+
+      <!-- Net Worth Input -->
+      <div>
+        <label for="ca-networth-input" class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Your Net Worth (CAD)</label>
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-sm">CA$</span>
+          <input type="number" id="ca-networth-input" placeholder="234400" value="234400"
+            class="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+        <p class="text-xs text-slate-500 dark:text-slate-500 mt-1.5">Total assets minus total liabilities. Include home equity, RRSP, TFSA, investments, savings.</p>
+      </div>
+
+      <button id="ca-calculate-btn" class="w-full py-4 rounded-xl bg-emerald-700 hover:bg-emerald-600 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-emerald-900/30">
+        Calculate My Canadian Percentile
+      </button>
+
+      <!-- Result -->
+      <div id="ca-result-panel" class="hidden space-y-5">
+        <div class="h-px bg-slate-200 dark:bg-slate-800"></div>
+        <div class="text-center space-y-2">
+          <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">Your Canadian Net Worth Percentile</p>
+          <div class="text-6xl font-black tracking-tighter" id="ca-percentile-display">—</div>
+          <p id="ca-result-summary" class="text-sm text-slate-700 dark:text-slate-400 leading-relaxed max-w-sm mx-auto"></p>
+        </div>
+
+        <!-- Benchmark Grid -->
+        <div>
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-3">🍁 Canadian Benchmarks for Your Age Group</p>
+          <div id="ca-benchmark-grid" class="grid grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Distribution in Canada by Age</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Understanding where you stand financially in Canada requires real data — not generalized guesses. The Statistics Canada Survey of Financial Security (SFS) is the authoritative source for household wealth in Canada, surveying thousands of Canadian families across all provinces and territories.
+      </p>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        The median Canadian household net worth in 2019 was approximately <strong class="text-slate-900 dark:text-white">$329,900 CAD</strong> across all age groups. However, this figure varies enormously by age. Younger Canadians are typically still building their wealth through homeownership and retirement savings, while those aged 55–64 hold peak accumulated wealth before drawing down retirement assets.
+      </p>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-emerald-700 text-white">
+              <th class="text-left px-4 py-3 font-bold">Age Group</th>
+              <th class="text-right px-4 py-3 font-bold">Median Net Worth</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 25%</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 10%</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Under 35</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">CA$48,800</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$158,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$380,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">35–44</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">CA$234,400</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$620,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$1,200,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">45–54</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">CA$521,100</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$1,100,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$2,200,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">55–64</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">CA$690,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$1,500,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$3,000,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">65–74</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">CA$543,200</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$1,300,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$2,700,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">75+</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">CA$430,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$1,050,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">CA$2,200,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-500 text-center">Source: Statistics Canada, Survey of Financial Security (SFS), 2019</p>
+    </section>
+
+    <!-- What's Counted -->
+    <section class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4">
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What Counts as Net Worth in Canada?</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div>
+          <p class="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-2">✅ Assets (Add These)</p>
+          <ul class="space-y-1 text-sm text-slate-700 dark:text-slate-400">
+            <li>• Primary residence equity</li>
+            <li>• RRSP / RRIF balances</li>
+            <li>• TFSA balances</li>
+            <li>• Employer pension (DB/DC)</li>
+            <li>• Non-registered investments</li>
+            <li>• Cash and savings accounts</li>
+            <li>• Other real estate</li>
+            <li>• Business ownership value</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wide mb-2">❌ Liabilities (Subtract These)</p>
+          <ul class="space-y-1 text-sm text-slate-700 dark:text-slate-400">
+            <li>• Mortgage balance</li>
+            <li>• Home equity line of credit</li>
+            <li>• Car loans</li>
+            <li>• Student loans</li>
+            <li>• Credit card debt</li>
+            <li>• Personal loans</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="space-y-3">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+      <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+        <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+          <span>What is the average net worth by age in Canada?</span>
+          <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+        </summary>
+        <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+          Based on Statistics Canada SFS 2019 data, median net worth by age is approximately: Under 35 (~CA$48,800); 35–44 (~CA$234,400); 45–54 (~CA$521,100); 55–64 (~CA$690,000); 65–74 (~CA$543,200). Note that median figures are much more representative than averages, which are inflated by ultra-high-net-worth Canadians.
+        </p>
+      </details>
+      <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+        <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+          <span>What is a good net worth at 40 in Canada?</span>
+          <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+        </summary>
+        <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+          In the 35–44 age bracket, a net worth of CA$234,400 puts you at the 50th percentile (median). Having CA$620,000+ puts you in the top 25%, and CA$1.2M+ puts you in the top 10% of Canadians in that age group. Toronto and Vancouver homeowners often have higher net worths due to elevated real estate values.
+        </p>
+      </details>
+      <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+        <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+          <span>Does Canadian net worth include CPP and home equity?</span>
+          <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+        </summary>
+        <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+          The Statistics Canada SFS includes home equity (market value minus mortgage balance), RRSP/RRIF/TFSA balances, and employer pension values. CPP entitlements (government pension) are typically <em>not</em> included in the SFS net worth calculation as they are not a tradeable asset. When comparing your net worth, you should generally use the same definition: include home equity and registered accounts, but exclude expected CPP/OAS benefits.
+        </p>
+      </details>
+    </section>
+
+    <!-- Source Attribution -->
+    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-500 space-y-1">
+      <p class="font-bold text-slate-700 dark:text-slate-400">🍁 Data Source & Methodology</p>
+      <p>Statistics Canada, Survey of Financial Security (SFS), 2019. Reproduced and distributed on an "as is" basis with the permission of Statistics Canada. The percentile estimates in this calculator are derived from the published SFS microdata percentile tables. All figures are in Canadian dollars (CAD). Data reflects pre-pandemic household wealth distribution.</p>
+      <p>For US data, see our <a href="/" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 underline">Federal Reserve Net Worth Calculator</a>. For UK data, see our <a href="/net-worth-by-age-uk" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 underline">UK ONS Net Worth Calculator</a>.</p>
+    </div>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  const caBrackets = {
+    under_35: { p10: -8000, p25: 2500, p50: 48800, p75: 158000, p90: 380000, p95: 620000, p99: 1500000 },
+    b35_44:   { p10: -15000, p25: 28000, p50: 234400, p75: 620000, p90: 1200000, p95: 2100000, p99: 5500000 },
+    b45_54:   { p10: -5000, p25: 68000, p50: 521100, p75: 1100000, p90: 2200000, p95: 3900000, p99: 9800000 },
+    b55_64:   { p10: 2000, p25: 120000, p50: 690000, p75: 1500000, p90: 3000000, p95: 5400000, p99: 14000000 },
+    b65_74:   { p10: 5000, p25: 140000, p50: 543200, p75: 1300000, p90: 2700000, p95: 4900000, p99: 13000000 },
+    b75_plus: { p10: 4000, p25: 95000, p50: 430000, p75: 1050000, p90: 2200000, p95: 3900000, p99: 10500000 }
+  };
+
+  function getBracketCA(age) {
+    if (age < 35) return { key: 'under_35', label: 'Under 35' };
+    if (age < 45) return { key: 'b35_44', label: '35–44' };
+    if (age < 55) return { key: 'b45_54', label: '45–54' };
+    if (age < 65) return { key: 'b55_64', label: '55–64' };
+    if (age < 75) return { key: 'b65_74', label: '65–74' };
+    return { key: 'b75_plus', label: '75+' };
+  }
+
+  function estimatePercentileCA(nw, brackets) {
+    const pts = [
+      [0, brackets.p10], [10, brackets.p10], [25, brackets.p25],
+      [50, brackets.p50], [75, brackets.p75], [90, brackets.p90],
+      [95, brackets.p95], [99, brackets.p99], [100, brackets.p99 * 3]
+    ];
+    for (let i = 1; i < pts.length; i++) {
+      if (nw <= pts[i][1]) {
+        const [p1, v1] = pts[i-1], [p2, v2] = pts[i];
+        if (v2 === v1) return p1;
+        return Math.round(p1 + (p2 - p1) * (nw - v1) / (v2 - v1));
+      }
+    }
+    return 99;
+  }
+
+  function fmtCA(n) {
+    if (Math.abs(n) >= 1e6) return 'CA$' + (n/1e6).toFixed(1) + 'M';
+    if (Math.abs(n) >= 1e3) return 'CA$' + Math.round(n/1000) + 'k';
+    return 'CA$' + n.toLocaleString();
+  }
+
+  const ageSlider = document.getElementById('ca-age-slider');
+  const ageDisplay = document.getElementById('ca-age-display');
+  const nwInput = document.getElementById('ca-networth-input');
+  const calcBtn = document.getElementById('ca-calculate-btn');
+  const resultPanel = document.getElementById('ca-result-panel');
+  const percentileDisplay = document.getElementById('ca-percentile-display');
+  const resultSummary = document.getElementById('ca-result-summary');
+  const benchmarkGrid = document.getElementById('ca-benchmark-grid');
+
+  ageSlider.addEventListener('input', () => {
+    ageDisplay.textContent = ageSlider.value + ' years old';
+  });
+
+  calcBtn.addEventListener('click', () => {
+    const age = parseInt(ageSlider.value);
+    const nw = parseFloat(nwInput.value) || 0;
+    const bracket = getBracketCA(age);
+    const b = caBrackets[bracket.key];
+    const pct = estimatePercentileCA(nw, b);
+
+    let color = pct >= 90 ? '#059669' : pct >= 75 ? '#10b981' : pct >= 50 ? '#3b82f6' : pct >= 25 ? '#f59e0b' : '#ef4444';
+    percentileDisplay.textContent = pct + 'th';
+    percentileDisplay.style.color = color;
+
+    let msg = pct >= 99 ? 'You are in the top 1% of Canadian wealth for your age. Exceptional.' :
+              pct >= 90 ? 'Top 10% in Canada for your age group. Financially very strong.' :
+              pct >= 75 ? 'Top 25% of Canadians your age. Above average wealth.' :
+              pct >= 50 ? 'Above the median Canadian for your age.' :
+              pct >= 25 ? 'Below median, but ahead of the bottom quarter.' :
+              'Below the 25th percentile — earlier stages of wealth building.';
+    resultSummary.textContent = msg;
+
+    const bmarks = [
+      { label: 'Bottom 25%', val: b.p25, pct: 25 },
+      { label: 'Median (50%)', val: b.p50, pct: 50 },
+      { label: 'Top 25%', val: b.p75, pct: 75 },
+      { label: 'Top 10%', val: b.p90, pct: 90 }
+    ];
+    benchmarkGrid.innerHTML = bmarks.map(bm => {
+      const isHighlighted = pct >= bm.pct;
+      return `<div class="p-3 rounded-xl border ${isHighlighted ? 'border-emerald-500/50 bg-emerald-50 dark:bg-emerald-900/10' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40'}">
+        <div class="text-xs font-bold ${isHighlighted ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-500 dark:text-slate-500'} uppercase tracking-wide">${bm.label}</div>
+        <div class="text-base font-black mt-0.5 text-slate-900 dark:text-white">${fmtCA(bm.val)}</div>
+      </div>`;
+    }).join('');
+
+    resultPanel.classList.remove('hidden');
+    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

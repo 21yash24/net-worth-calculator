@@ -1,0 +1,555 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth by Age UK | ONS Wealth Percentile Calculator",
+  "url": "https://getnetworthcalculator.com/net-worth-by-age-uk",
+  "description": "Calculate your exact net worth percentile by age benchmarked against official UK ONS Wealth and Assets Survey data. Free, private, and accurate.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth by age in the UK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the ONS Wealth and Assets Survey (Wave 7, 2018-2020), median net worth by age in the UK is approximately: Under 35 (~22,500 GBP); 35-44 (~107,000 GBP); 45-54 (~219,000 GBP); 55-64 (~302,000 GBP); 65-74 (~348,000 GBP); 75+ (~280,000 GBP). These figures include property, pension, financial, and physical wealth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good net worth at 40 in the UK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the 35-44 age bracket in the UK, the median net worth is approximately 107,000 GBP. A net worth of 310,000 GBP places you in the top 25% (75th percentile), while 670,000 GBP places you in the top 10% (90th percentile)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does UK net worth include pension wealth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The ONS Wealth and Assets Survey measures total household wealth, which includes private pension wealth (both defined benefit and defined contribution schemes), property wealth (net of mortgage debt), financial wealth (savings and investments), and physical wealth (vehicles, contents etc.). Pension wealth is typically the largest single component of UK household wealth, particularly for those aged 45 and above."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Net Worth by Age UK | ONS Wealth Percentile Calculator" description="Calculate your exact net worth percentile by age in the UK using official ONS Wealth and Assets Survey data. Free, private, and benchmarked against real British household wealth statistics.">
+
+	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+	<main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+		<header class="text-center mb-12 space-y-4">
+			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-300 text-xs font-semibold">
+				<span class="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
+				Official UK ONS Wealth &amp; Assets Survey Dataset
+			</div>
+
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+				Net Worth by Age UK <span class="text-slate-600 dark:text-slate-400 font-normal">| ONS Percentile</span>
+			</h1>
+			<p class="text-slate-700 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal leading-relaxed">
+				Benchmark your personal wealth percentile against official UK Office for National Statistics population data.
+			</p>
+		</header>
+
+		<!-- Main Interactive Calculator Panel -->
+		<div class="p-6 md:p-10 rounded-3xl border border-slate-250 dark:border-slate-800/80 shadow-xl dark:shadow-2xl relative overflow-hidden backdrop-blur-xl bg-white/95 dark:bg-slate-900/40 transition-colors duration-300">
+
+			<div class="space-y-8">
+				<!-- Top Controls Bar -->
+				<div class="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-200 dark:border-slate-800/80">
+					<div class="flex items-center gap-2">
+						<span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Currency:</span>
+						<span class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white text-xs font-bold rounded-lg px-3 py-1.5">
+							GBP (&pound;)
+						</span>
+					</div>
+
+					<div class="flex items-center gap-3">
+						<label for="pension-toggle" class="text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer">Include Pension Wealth</label>
+						<label for="pension-toggle" class="relative inline-flex items-center cursor-pointer">
+							<input type="checkbox" id="pension-toggle" checked class="sr-only peer" aria-label="Include Pension Wealth">
+							<div class="w-9 h-5 bg-slate-300 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
+						</label>
+					</div>
+				</div>
+
+				<!-- Age Slider -->
+				<div class="space-y-3">
+					<div class="flex justify-between items-center">
+						<label for="age-input" class="text-base font-bold text-slate-800 dark:text-slate-200">Your Age</label>
+						<span id="age-display" class="text-xl font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-950 px-4 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800">
+							32 years
+						</span>
+					</div>
+					<input type="range" id="age-input" min="18" max="80" value="32" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-700 dark:accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Your Age" title="Your Age">
+					<div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 font-bold px-1">
+						<span>18</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span>
+					</div>
+				</div>
+
+				<!-- Net Worth Input -->
+				<div class="space-y-3">
+					<div class="flex justify-between items-center flex-wrap gap-3">
+						<label for="nw-number-input" class="text-base font-bold text-slate-800 dark:text-slate-200">
+							Total Net Worth (&pound;)
+						</label>
+						<div class="relative">
+							<span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold">&pound;</span>
+							<input type="number" id="nw-number-input" value="50000" step="1000" class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-emerald-700 dark:text-emerald-400 text-lg font-bold rounded-xl pl-8 pr-4 py-2.5 w-48 focus:ring-1 focus:ring-emerald-500 outline-none" aria-label="Total Net Worth in GBP">
+						</div>
+					</div>
+					<label for="nw-slider-input" class="sr-only">Total Net Worth</label>
+					<input type="range" id="nw-slider-input" min="-10000" max="2000000" step="1000" value="50000" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-700 dark:accent-emerald-500 border border-slate-300 dark:border-slate-800" aria-label="Total Net Worth" title="Total Net Worth">
+					<div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 font-bold px-1">
+						<span>-&pound;10k</span><span>&pound;50k</span><span>&pound;250k</span><span>&pound;750k</span><span>&pound;2M+</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Percentile Results -->
+			<div class="mt-10 pt-8 border-t border-slate-200 dark:border-slate-800/80 space-y-6">
+				<div class="text-center space-y-2">
+					<span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">UK Wealth Percentile Benchmark</span>
+					<div id="percentile-badge" class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+						Top 50% in the UK
+					</div>
+					<p id="comparison-summary" class="text-slate-700 dark:text-slate-300 text-base max-w-lg mx-auto font-normal">
+						At age <span class="text-slate-900 dark:text-white font-semibold">32</span> with <span class="text-emerald-700 dark:text-emerald-400 font-semibold">&pound;50,000</span> net worth, you have more wealth than <span class="text-emerald-700 dark:text-emerald-400 font-semibold">50%</span> of UK residents in your age group.
+					</p>
+				</div>
+
+				<!-- Bell Curve -->
+				<div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 space-y-2">
+					<div class="flex justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+						<span>UK Population Wealth Distribution Curve</span>
+						<span id="curve-marker-text" class="text-emerald-700 dark:text-emerald-400 font-bold">You are at 50%</span>
+					</div>
+					<div class="relative w-full h-24">
+						<svg class="w-full h-full overflow-visible" viewBox="0 0 400 80" preserveAspectRatio="none" role="img" aria-label="Interactive UK Wealth Distribution Curve Chart">
+							<path d="M 0,75 Q 100,75 160,55 T 200,10 T 240,55 Q 300,75 400,75" fill="none" stroke="currentColor" class="text-slate-400 dark:text-slate-800" stroke-width="3"/>
+							<path d="M 0,75 Q 100,75 160,55 T 200,10 T 240,55 Q 300,75 400,75 L 400,80 L 0,80 Z" class="fill-emerald-500/20"/>
+							<circle id="curve-dot" cx="200" cy="45" r="7" class="fill-emerald-600 stroke-white dark:stroke-slate-950" stroke-width="2.5"/>
+						</svg>
+					</div>
+				</div>
+
+				<!-- Benchmarks Grid -->
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Median (50th)</span>
+						<span id="bm-p50" class="text-base font-bold text-slate-900 dark:text-white">&pound;22,500</span>
+					</div>
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Top 25% (75th)</span>
+						<span id="bm-p75" class="text-base font-bold text-slate-700 dark:text-slate-200">&pound;86,000</span>
+					</div>
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Top 10% (90th)</span>
+						<span id="bm-p90" class="text-base font-bold text-emerald-700 dark:text-emerald-400">&pound;198,000</span>
+					</div>
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Top 1% (99th)</span>
+						<span id="bm-p99" class="text-base font-bold text-amber-700 dark:text-amber-400">&pound;780,000</span>
+					</div>
+				</div>
+
+				<!-- UK Asset Allocation Card -->
+				<div class="p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 space-y-3">
+					<div class="flex items-center justify-between">
+						<span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Recommended Asset Allocation for Age <span id="asset-age-label">32</span></span>
+						<span class="text-xs text-slate-500 dark:text-slate-400 font-bold">UK Benchmark Model</span>
+					</div>
+					<div id="asset-breakdown-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+						<!-- Populated via JS -->
+					</div>
+				</div>
+
+				<!-- Milestone Box -->
+				<div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-950 border border-emerald-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+					<div>
+						<span class="text-xs font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider block mb-1">UK Wealth Goal Milestone</span>
+						<p id="milestone-text" class="text-sm text-slate-700 dark:text-slate-300">
+							To reach the <strong class="text-emerald-700 dark:text-emerald-400">Top 10% in the UK</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">&pound;148,000</strong>.
+						</p>
+					</div>
+					<button id="copy-summary-btn" class="shrink-0 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-sm">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 002-2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+						</svg>
+						<span>Copy Summary</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ONS Data Governance Card -->
+		<section class="mt-16 p-6 md:p-8 rounded-3xl bg-slate-100/80 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80 space-y-4">
+			<div class="flex items-center gap-3">
+				<div class="w-8 h-8 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+					</svg>
+				</div>
+				<div>
+					<h3 class="text-base font-bold text-slate-900 dark:text-white">ONS Wealth &amp; Assets Survey Data Governance &amp; Privacy Guarantee</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400">Official United Kingdom Population Wealth Benchmark Methodology</p>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs text-slate-700 dark:text-slate-300">
+				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
+					<strong class="text-slate-900 dark:text-white block font-bold">1. Primary Source Dataset</strong>
+					<p class="leading-relaxed">Derived directly from the Office for National Statistics (ONS) Wealth and Assets Survey (WAS) Wave 7, covering 2018-2020 UK household wealth distributions across England, Scotland, and Wales.</p>
+				</div>
+				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
+					<strong class="text-slate-900 dark:text-white block font-bold">2. Total Wealth Methodology</strong>
+					<p class="leading-relaxed">WAS captures all four components of UK wealth: private pension wealth, property wealth (net of mortgage), financial wealth (ISAs, savings, investments), and physical wealth. Figures reflect total individual wealth per ONS methodology.</p>
+				</div>
+				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
+					<strong class="text-slate-900 dark:text-white block font-bold">3. 100% Client-Side Privacy</strong>
+					<p class="leading-relaxed">All calculations run entirely inside your browser. No financial data, age inputs, or net worth values are ever stored, logged, or transmitted to any server.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- SEO Content -->
+		<article class="mt-16 max-w-3xl mx-auto space-y-8 text-slate-700 dark:text-slate-400 leading-relaxed font-normal">
+			<section>
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">How Does Your Net Worth Compare in the UK?</h2>
+				<p class="mb-4">
+					Understanding where you stand financially relative to other UK residents is one of the most powerful tools for setting realistic wealth goals. Yet most people have very little idea what a typical British household is actually worth, because the data is rarely presented in a clear, relatable way. This calculator takes your age and net worth and maps them against real UK wealth data to show your precise percentile ranking.
+				</p>
+				<p>
+					According to the <strong class="text-slate-900 dark:text-white">Office for National Statistics (ONS) Wealth and Assets Survey (WAS), Wave 7 (2018-2020)</strong> — the most comprehensive and authoritative dataset on British household wealth — the median net worth of a UK adult aged 35-44 is approximately <strong class="text-slate-900 dark:text-white">&pound;107,000</strong>. For those aged 55-64, that figure rises to around <strong class="text-slate-900 dark:text-white">&pound;302,000</strong>, reflecting decades of property equity accumulation and pension contributions.
+				</p>
+			</section>
+
+			<section>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">UK Net Worth by Age: What the ONS Data Shows</h2>
+				<p class="mb-4">
+					The ONS WAS data reveals a familiar life-cycle pattern: net worth tends to be low or even negative for younger adults burdened by student debt, renting costs, and limited savings time. It then rises sharply through the 40s and 50s as mortgages are paid down, careers peak, and pension pots grow. It typically plateaus or slightly declines after age 75, partly due to drawdown of retirement assets and estate planning.
+				</p>
+				<p class="mb-4">
+					For UK adults <strong class="text-slate-900 dark:text-white">under 35</strong>, the median net worth is just &pound;22,500 — with the bottom tenth percentile recording a negative net worth of -&pound;2,200, reflecting student loan debt and credit card balances. Reaching the top 10% under 35 in the UK requires approximately &pound;198,000, which typically means a combination of inherited wealth, early property purchase, or significant investment activity.
+				</p>
+				<p>
+					By the <strong class="text-slate-900 dark:text-white">65-74 age bracket</strong>, the ONS data shows a median net worth of &pound;348,000 — driven overwhelmingly by defined benefit pension entitlements, property equity, and ISA savings accumulated over four decades. The top 1% of this age group hold in excess of &pound;8.9 million in total wealth.
+				</p>
+			</section>
+
+			<section>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Why Pension Wealth Is Critical to UK Net Worth</h2>
+				<p class="mb-4">
+					One of the most distinctive features of UK wealth compared to US wealth is the sheer scale of <strong class="text-slate-900 dark:text-white">private pension wealth</strong>. The ONS estimates that pension wealth accounts for more than 40% of total aggregate UK household wealth. For many British workers aged 45-64, their occupational or personal pension pot is by far their largest single asset, often exceeding the value of their home.
+				</p>
+				<p class="mb-4">
+					This calculator includes pension wealth in the default calculation, matching the ONS total wealth methodology. You can toggle it off using the "Include Pension Wealth" switch to see your non-pension net worth, which gives a picture closer to your liquid financial position.
+				</p>
+				<p>
+					The ONS WAS measures <strong class="text-slate-900 dark:text-white">individual-level wealth within households</strong>, not household wealth split equally between partners. Enter your personal share of household assets and liabilities for the most accurate result.
+				</p>
+			</section>
+
+			<section>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Average vs. Median UK Net Worth: Why the Difference Matters</h2>
+				<p class="mb-4">
+					The mean (average) net worth in the UK is significantly higher than the median, due to the extreme concentration of wealth among the highest earners and wealthy retirees. The top 10% of UK households hold roughly 43% of all aggregate wealth, according to ONS data. Comparing yourself to the "average" British person means comparing against a figure distorted upward by the ultra-wealthy.
+				</p>
+				<p>
+					<strong class="text-slate-900 dark:text-white">Median net worth (the 50th percentile)</strong> is the far more useful benchmark — it represents the exact midpoint of the British wealth distribution. Half of UK adults have more, and half have less. That is the number this calculator uses as your central reference point.
+				</p>
+			</section>
+
+			<section>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Regional Wealth Inequality Across the UK</h2>
+				<p class="mb-4">
+					UK wealth is highly concentrated geographically, a factor the national ONS percentiles do not capture. Median household wealth in London and the South East is significantly higher than in the North East, Yorkshire, or Wales, primarily driven by property prices. A net worth that places you in the 70th percentile nationally might only put you in the 50th percentile in Greater London, or the 85th percentile in parts of Northern England.
+				</p>
+				<p>
+					For the most accurate regional comparison, use this tool alongside regional ONS data where available. The national percentiles here are based on the combined England, Scotland, and Wales WAS dataset, which provides the most statistically robust sample size.
+				</p>
+			</section>
+
+			<section>
+				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Building Wealth in the UK: Key Strategies by Age</h2>
+				<p class="mb-4">
+					For those <strong class="text-slate-900 dark:text-white">under 35</strong>, the two most impactful moves are maximising employer pension contributions (especially auto-enrolment matching) and building a deposit for property ownership, which has historically been the primary vehicle for UK wealth accumulation. The Lifetime ISA (LISA) provides a 25% government bonus on up to &pound;4,000 per year — one of the most generous risk-free returns available to young savers.
+				</p>
+				<p class="mb-4">
+					In the <strong class="text-slate-900 dark:text-white">35-54 bracket</strong>, overpaying on your mortgage while simultaneously maximising Stocks and Shares ISA contributions creates a powerful two-track wealth engine. At this life stage, the compound growth on pension contributions made in your 30s and 40s is doing significant heavy lifting behind the scenes.
+				</p>
+				<p>
+					For those <strong class="text-slate-900 dark:text-white">over 55</strong>, the priority shifts toward preserving and drawing down wealth tax-efficiently. The combination of the 25% tax-free pension lump sum, ISA shielding, and careful Capital Gains Tax planning can dramatically improve after-tax net worth preservation through retirement.
+				</p>
+			</section>
+		</article>
+
+		<!-- FAQ Section -->
+		<section class="mt-16 max-w-3xl mx-auto">
+			<h2 class="text-2xl font-bold text-center text-slate-900 dark:text-white mb-6">UK Net Worth FAQs</h2>
+
+			<div class="space-y-3">
+				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+						<span>What is the average net worth by age in the UK?</span>
+						<span class="text-slate-700 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">&#9660;</span>
+					</summary>
+					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+						According to the ONS Wealth and Assets Survey (Wave 7, 2018-2020), median net worth by age in the UK is approximately: Under 35 (~&pound;22,500); 35-44 (~&pound;107,000); 45-54 (~&pound;219,000); 55-64 (~&pound;302,000); 65-74 (~&pound;348,000); 75+ (~&pound;280,000). These figures include property equity, pension wealth, financial savings, and physical assets, expressed per individual rather than per household.
+					</p>
+				</details>
+
+				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+						<span>What is a good net worth at 40 in the UK?</span>
+						<span class="text-slate-700 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">&#9660;</span>
+					</summary>
+					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+						For the 35-44 age bracket in the UK, the ONS median net worth is approximately &pound;107,000. A net worth of &pound;310,000 places you in the top 25% (75th percentile) for this age group, while &pound;670,000 places you in the top 10% (90th percentile). A good net worth at 40 depends on your retirement goals, lifestyle costs, and regional property values, but exceeding the median of &pound;107,000 is a strong baseline achievement.
+					</p>
+				</details>
+
+				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+						<span>Does UK net worth include pension wealth?</span>
+						<span class="text-slate-700 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">&#9660;</span>
+					</summary>
+					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+						Yes — and this is critically important for UK comparisons. The ONS Wealth and Assets Survey measures total household wealth including private pension wealth (both defined benefit and defined contribution schemes), property wealth (net of outstanding mortgage), financial wealth (savings accounts, ISAs, bonds, equities), and physical wealth (vehicles, household contents, etc.). Private pension wealth is typically the <strong class="text-slate-900 dark:text-white">largest single component</strong> of UK wealth for those aged 45-64, often exceeding property equity. This calculator defaults to including pension wealth to match ONS methodology, but you can toggle it off.
+					</p>
+				</details>
+
+				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+						<span>What does the top 10% of UK wealth look like?</span>
+						<span class="text-slate-700 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">&#9660;</span>
+					</summary>
+					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+						The entry threshold for the top 10% (90th percentile) in the UK varies significantly by age. For those under 35, reaching the 90th percentile requires approximately &pound;198,000. For 45-54 year olds, the threshold rises to around &pound;1,250,000, largely due to property and pension accumulation. For 55-64 year olds, the top 10% threshold is approximately &pound;1,750,000. The top 1% thresholds are substantially higher: &pound;780,000 under 35, &pound;2.8 million for 35-44, and &pound;7.8 million for 55-64.
+					</p>
+				</details>
+
+				<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+					<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+						<span>How is UK net worth different from US net worth benchmarks?</span>
+						<span class="text-slate-700 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">&#9660;</span>
+					</summary>
+					<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">
+						UK and US net worth benchmarks differ in several key ways. UK wealth skews more heavily toward property and defined benefit pension entitlements, while US wealth has a stronger equity investment component. UK wealth inequality is somewhat lower than in the US, partly due to universal healthcare (NHS) reducing healthcare-related debt. The ONS WAS methodology also values defined benefit pensions at their capitalised value, which can add hundreds of thousands of pounds to the net worth of public sector workers.
+					</p>
+				</details>
+			</div>
+		</section>
+
+		<!-- Data Source Attribution Box -->
+		<aside class="mt-12 max-w-3xl mx-auto p-5 rounded-2xl bg-slate-100/80 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80 flex items-start gap-4">
+			<div class="shrink-0 w-8 h-8 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+				</svg>
+			</div>
+			<div class="text-xs text-slate-700 dark:text-slate-400 leading-relaxed">
+				<strong class="text-slate-900 dark:text-white block mb-1 font-bold text-sm">Data Source</strong>
+				Office for National Statistics (ONS), <em>Wealth and Assets Survey, Wave 7 (2018-2020)</em>. Crown Copyright. Published under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" class="text-emerald-700 dark:text-emerald-400 underline hover:no-underline" target="_blank" rel="noopener noreferrer">Open Government Licence v3.0</a>. Data covers England, Scotland, and Wales. Figures represent total individual wealth including pension, property, financial, and physical wealth components.
+			</div>
+		</aside>
+	</main>
+</Layout>
+
+<script is:inline>
+	const onsBrackets = {
+		under_35: { p10: -2200,  p25: 1800,   p50: 22500,  p75: 86000,   p90: 198000,  p95: 320000,  p99: 780000  },
+		b35_44:   { p10: -5000,  p25: 14000,  p50: 107000, p75: 310000,  p90: 670000,  p95: 1100000, p99: 2800000 },
+		b45_54:   { p10: -3000,  p25: 38000,  p50: 219000, p75: 590000,  p90: 1250000, p95: 2100000, p99: 5200000 },
+		b55_64:   { p10: 1000,   p25: 72000,  p50: 302000, p75: 830000,  p90: 1750000, p95: 3000000, p99: 7800000 },
+		b65_74:   { p10: 5000,   p25: 95000,  p50: 348000, p75: 920000,  p90: 1950000, p95: 3400000, p99: 8900000 },
+		b75_plus: { p10: 4000,   p25: 70000,  p50: 280000, p75: 740000,  p90: 1600000, p95: 2800000, p99: 7200000 }
+	};
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var ageInput           = document.getElementById('age-input');
+		var ageDisplay         = document.getElementById('age-display');
+		var nwNumberInput      = document.getElementById('nw-number-input');
+		var nwSliderInput      = document.getElementById('nw-slider-input');
+		var pensionToggle      = document.getElementById('pension-toggle');
+		var copySummaryBtn     = document.getElementById('copy-summary-btn');
+		var percentileBadge    = document.getElementById('percentile-badge');
+		var comparisonSummary  = document.getElementById('comparison-summary');
+		var curveDot           = document.getElementById('curve-dot');
+		var curveMarkerText    = document.getElementById('curve-marker-text');
+		var milestoneText      = document.getElementById('milestone-text');
+		var assetAgeLabel      = document.getElementById('asset-age-label');
+		var assetBreakdownGrid = document.getElementById('asset-breakdown-grid');
+		var bmP50 = document.getElementById('bm-p50');
+		var bmP75 = document.getElementById('bm-p75');
+		var bmP90 = document.getElementById('bm-p90');
+		var bmP99 = document.getElementById('bm-p99');
+
+		function getBracket(age) {
+			if (age < 35)  return onsBrackets.under_35;
+			if (age <= 44) return onsBrackets.b35_44;
+			if (age <= 54) return onsBrackets.b45_54;
+			if (age <= 64) return onsBrackets.b55_64;
+			if (age <= 74) return onsBrackets.b65_74;
+			return onsBrackets.b75_plus;
+		}
+
+		function formatGBP(val) {
+			var absVal = Math.abs(Math.round(val)).toLocaleString('en-GB');
+			return (val < 0 ? '-' : '') + '\u00A3' + absVal;
+		}
+
+		function calculatePercentile(nw, b) {
+			if (nw < b.p10) return 5;
+			if (nw < b.p25) return Math.round(10 + (nw - b.p10) / (b.p25 - b.p10) * 15);
+			if (nw < b.p50) return Math.round(25 + (nw - b.p25) / (b.p50 - b.p25) * 25);
+			if (nw < b.p75) return Math.round(50 + (nw - b.p50) / (b.p75 - b.p50) * 25);
+			if (nw < b.p90) return Math.round(75 + (nw - b.p75) / (b.p90 - b.p75) * 15);
+			if (nw < b.p95) return Math.round(90 + (nw - b.p90) / (b.p95 - b.p90) * 5);
+			if (nw < b.p99) return Math.round(95 + (nw - b.p95) / (b.p99 - b.p95) * 4);
+			return 99;
+		}
+
+		function updateAssetBreakdown(age) {
+			if (!assetAgeLabel || !assetBreakdownGrid) return;
+			assetAgeLabel.textContent = age;
+
+			var pension = '35%', property = '35%', isa = '20%', cash = '10%';
+			if (age >= 60) {
+				pension = '50%'; property = '30%'; isa = '15%'; cash = '5%';
+			} else if (age >= 45) {
+				pension = '40%'; property = '35%'; isa = '18%'; cash = '7%';
+			} else if (age < 35) {
+				pension = '20%'; property = '20%'; isa = '35%'; cash = '25%';
+			}
+
+			assetBreakdownGrid.innerHTML =
+				'<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">' +
+					'<span class="text-slate-500 dark:text-slate-400 block text-[10px] font-bold">Pension / SIPP</span>' +
+					'<strong class="text-slate-900 dark:text-white text-sm">' + pension + '</strong>' +
+				'</div>' +
+				'<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">' +
+					'<span class="text-slate-500 dark:text-slate-400 block text-[10px] font-bold">Property Equity</span>' +
+					'<strong class="text-slate-900 dark:text-white text-sm">' + property + '</strong>' +
+				'</div>' +
+				'<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">' +
+					'<span class="text-slate-500 dark:text-slate-400 block text-[10px] font-bold">ISA / Equities</span>' +
+					'<strong class="text-slate-900 dark:text-white text-sm">' + isa + '</strong>' +
+				'</div>' +
+				'<div class="p-2.5 rounded-lg bg-slate-200/60 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-center">' +
+					'<span class="text-slate-500 dark:text-slate-400 block text-[10px] font-bold">Cash / Premium Bonds</span>' +
+					'<strong class="text-slate-900 dark:text-white text-sm">' + cash + '</strong>' +
+				'</div>';
+		}
+
+		function updateCalculator() {
+			var age = parseInt(ageInput.value);
+			var rawNw = parseFloat(nwNumberInput.value) || 0;
+			var nw = rawNw;
+			var includePension = pensionToggle.checked;
+
+			if (!includePension) {
+				var pensionFraction = 0.20;
+				if (age >= 60) pensionFraction = 0.50;
+				else if (age >= 45) pensionFraction = 0.40;
+				else if (age >= 35) pensionFraction = 0.30;
+				nw = nw * (1 - pensionFraction);
+			}
+
+			ageDisplay.textContent = age + ' years';
+
+			var b = getBracket(age);
+
+			bmP50.textContent = formatGBP(b.p50);
+			bmP75.textContent = formatGBP(b.p75);
+			bmP90.textContent = formatGBP(b.p90);
+			bmP99.textContent = formatGBP(b.p99);
+
+			var p = calculatePercentile(nw, b);
+			var topPercent = 100 - p;
+
+			var dotX = Math.min(390, Math.max(10, (p / 100) * 400));
+			var t = p / 100;
+			var dotY = 75 - 65 * Math.exp(-Math.pow((t - 0.5) * 4, 2));
+			if (curveDot) {
+				curveDot.setAttribute('cx', dotX.toFixed(1));
+				curveDot.setAttribute('cy', dotY.toFixed(1));
+			}
+			if (curveMarkerText) curveMarkerText.textContent = 'You are at ' + p + '%';
+
+			if (p >= 90) {
+				percentileBadge.textContent = 'Top ' + (topPercent <= 1 ? '1%' : topPercent + '%') + ' in the UK';
+				percentileBadge.className = 'text-4xl md:text-5xl font-extrabold text-amber-500 dark:text-amber-400 tracking-tight';
+			} else if (p >= 50) {
+				percentileBadge.textContent = 'Top ' + topPercent + '% in the UK';
+				percentileBadge.className = 'text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight';
+			} else {
+				percentileBadge.textContent = p + 'th Percentile in UK';
+				percentileBadge.className = 'text-4xl md:text-5xl font-extrabold text-slate-700 dark:text-slate-300 tracking-tight';
+			}
+
+			comparisonSummary.innerHTML = 'At age <span class="text-slate-900 dark:text-white font-semibold">' + age + '</span> with <span class="text-emerald-700 dark:text-emerald-400 font-semibold">' + formatGBP(rawNw) + '</span> net worth, you have more wealth than <span class="text-emerald-700 dark:text-emerald-400 font-semibold">' + p + '%</span> of UK residents in your age group.';
+
+			if (nw < b.p50) {
+				var diff = b.p50 - nw;
+				milestoneText.innerHTML = 'To reach the <strong class="text-slate-900 dark:text-slate-200 font-bold">UK Median (50th Percentile)</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">' + formatGBP(diff) + '</strong>.';
+			} else if (nw < b.p75) {
+				var diff2 = b.p75 - nw;
+				milestoneText.innerHTML = 'To reach the <strong class="text-slate-900 dark:text-slate-200 font-bold">Top 25% in the UK</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">' + formatGBP(diff2) + '</strong>.';
+			} else if (nw < b.p90) {
+				var diff3 = b.p90 - nw;
+				milestoneText.innerHTML = 'To reach the <strong class="text-emerald-700 dark:text-emerald-400 font-bold">Top 10% in the UK</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">' + formatGBP(diff3) + '</strong>.';
+			} else if (nw < b.p99) {
+				var diff4 = b.p99 - nw;
+				milestoneText.innerHTML = 'To reach the elite <strong class="text-amber-600 dark:text-amber-500 font-bold">Top 1% in the UK</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">' + formatGBP(diff4) + '</strong>.';
+			} else {
+				milestoneText.innerHTML = '\uD83C\uDFC6 <strong class="text-amber-600 dark:text-amber-500 font-bold">Congratulations!</strong> You are in the top 1% of wealth for your age group in the United Kingdom.';
+			}
+
+			updateAssetBreakdown(age);
+		}
+
+		if (copySummaryBtn) {
+			copySummaryBtn.addEventListener('click', function() {
+				var age = ageInput.value;
+				var nw = formatGBP(parseFloat(nwNumberInput.value) || 0);
+				var textToCopy = '\uD83C\uDFC6 UK Net Worth Percentile: At age ' + age + ' with ' + nw + ' net worth, I am in the ' + percentileBadge.textContent + ' (ONS Wealth & Assets Survey Benchmark). Checked at https://getnetworthcalculator.com/net-worth-by-age-uk';
+				navigator.clipboard.writeText(textToCopy);
+				alert('Summary copied to clipboard!');
+			});
+		}
+
+		ageInput.addEventListener('input', updateCalculator);
+
+		nwNumberInput.addEventListener('input', function(e) {
+			nwSliderInput.value = e.target.value;
+			updateCalculator();
+		});
+
+		nwSliderInput.addEventListener('input', function(e) {
+			nwNumberInput.value = e.target.value;
+			updateCalculator();
+		});
+
+		pensionToggle.addEventListener('change', updateCalculator);
+
+		updateCalculator();
+	});
+</script>

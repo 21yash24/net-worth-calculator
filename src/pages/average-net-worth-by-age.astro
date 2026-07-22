@@ -1,0 +1,423 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Average Net Worth by Age in the US (2024) | Federal Reserve Data"
+  description="Complete breakdown of average and median net worth by age group in the United States using official Federal Reserve SCF 2022 data. See how you compare."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 border-b border-slate-200 dark:border-slate-800/80 py-14 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-emerald-200 dark:border-emerald-800">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        Federal Reserve SCF 2022 Data
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-5">
+        Average Net Worth by Age in the US <span class="text-emerald-600 dark:text-emerald-400">(2024 Federal Reserve Data)</span>
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
+        Wondering how your wealth stacks up? Using the most recent Federal Reserve Survey of Consumer Finances (SCF) 2022 data — the gold standard for American household wealth — this guide breaks down exactly where you stand by age group, what the numbers really mean, and what you can do to improve your position.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-16">
+
+    <!-- Intro: Mean vs Median -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Mean vs. Median Net Worth: Why the Difference Matters</h2>
+      <div class="space-y-4 text-slate-700 dark:text-slate-400 leading-relaxed">
+        <p>
+          Before diving into the numbers, understanding the difference between <strong class="text-slate-900 dark:text-white">average (mean)</strong> and <strong class="text-slate-900 dark:text-white">median net worth</strong> is critical — and it will change how you interpret every statistic you read about American wealth.
+        </p>
+        <p>
+          The <strong class="text-slate-900 dark:text-white">mean</strong> is calculated by adding up all net worths and dividing by the number of households. The <strong class="text-slate-900 dark:text-white">median</strong> is the midpoint — half of households have more, half have less. In a country with extreme wealth concentration, these two figures can be wildly different.
+        </p>
+        <p>
+          For example, if Elon Musk moves into a room of 99 people with $50,000 in net worth, the average net worth of that room skyrockets to hundreds of millions — but 99 out of 100 people still only have $50,000. The median stays at $50,000 and tells the real story. <strong class="text-slate-900 dark:text-white">When assessing your personal financial health, always compare yourself to the median, not the mean.</strong>
+        </p>
+        <p>
+          That said, both figures are presented below because they each tell a useful story: median shows what is typical, while mean reveals total wealth distribution and the impact of ultra-high-net-worth individuals.
+        </p>
+      </div>
+    </section>
+
+    <!-- Data Table -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Net Worth by Age Group: 2022 Federal Reserve Data</h2>
+      <p class="text-slate-700 dark:text-slate-400 mb-6 text-sm">Source: <em>Federal Reserve Survey of Consumer Finances (SCF), 2022</em></p>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-emerald-700 dark:bg-emerald-800 text-white">
+              <th class="text-left px-5 py-4 font-semibold">Age Group</th>
+              <th class="text-right px-5 py-4 font-semibold">Median Net Worth</th>
+              <th class="text-right px-5 py-4 font-semibold">Average Net Worth</th>
+              <th class="text-right px-5 py-4 font-semibold">Top 10% Threshold</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+              <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">Under 35</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$39,000</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$183,500</td>
+              <td class="px-5 py-4 text-right font-semibold text-emerald-700 dark:text-emerald-400">$340,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+              <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">35–44</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$135,600</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$549,600</td>
+              <td class="px-5 py-4 text-right font-semibold text-emerald-700 dark:text-emerald-400">$980,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+              <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">45–54</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$247,200</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$975,800</td>
+              <td class="px-5 py-4 text-right font-semibold text-emerald-700 dark:text-emerald-400">$1,950,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+              <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">55–64</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$364,500</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$1,566,900</td>
+              <td class="px-5 py-4 text-right font-semibold text-emerald-700 dark:text-emerald-400">$2,800,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+              <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">65–74</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$409,900</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$1,794,600</td>
+              <td class="px-5 py-4 text-right font-semibold text-emerald-700 dark:text-emerald-400">$3,400,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+              <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">75+</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$335,600</td>
+              <td class="px-5 py-4 text-right text-slate-700 dark:text-slate-300">$1,624,100</td>
+              <td class="px-5 py-4 text-right font-semibold text-emerald-700 dark:text-emerald-400">$2,900,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-600 mt-3">All figures in 2022 dollars. "Top 10% Threshold" represents the minimum net worth to enter the top decile for that age group.</p>
+    </section>
+
+    <!-- Why Average Is Misleading -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Why Average Net Worth Is Misleading</h2>
+      <div class="space-y-4 text-slate-700 dark:text-slate-400 leading-relaxed">
+        <p>
+          The average (mean) net worth figures in the table above are dramatically inflated by a small group of ultra-wealthy households. This is not a rounding error — it is a mathematical consequence of extreme wealth inequality.
+        </p>
+        <p>
+          Consider the 65–74 age bracket: the median net worth is <strong class="text-slate-900 dark:text-white">$409,900</strong>, but the average is <strong class="text-slate-900 dark:text-white">$1,794,600</strong> — more than four times higher. That gap exists almost entirely because the wealthiest 1% of households in that bracket — families worth tens or hundreds of millions — mathematically pull the mean up far from where most people actually sit.
+        </p>
+        <p>
+          To illustrate: in 2022, Elon Musk's net worth alone exceeded $200 billion. If you distributed just his wealth across the entire US population of ~335 million people, it would add roughly $600 to every person's average — without any of them actually gaining a dollar. Scale this to the entire Forbes 400 list and you begin to see how dramatically billionaires distort the mean.
+        </p>
+        <p>
+          The Federal Reserve itself recommends using the <strong class="text-slate-900 dark:text-white">median as the primary benchmark</strong> for household wealth comparisons. When you read a headline saying "the average American has $X in net worth," it almost certainly describes no one you know.
+        </p>
+        <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/60 rounded-xl p-5 mt-4">
+          <p class="text-amber-800 dark:text-amber-300 text-sm font-medium">
+            Key Takeaway: Do not benchmark yourself against the mean net worth. The median is a far more honest reflection of where typical Americans stand at each age.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Net Worth Milestones by Decade -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Net Worth Milestones by Decade of Life</h2>
+      <div class="space-y-6">
+
+        <!-- 20s -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-sm font-bold flex-shrink-0">20s</span>
+            Your 20s: Building the Foundation
+          </h3>
+          <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+            In your 20s, the most important milestone is not a dollar amount — it is getting to <strong class="text-slate-900 dark:text-white">positive net worth</strong>. Student loans, car loans, and limited income make this challenging. A reasonable target: by age 25, aim to have your net worth above zero. By 29, aim for $15,000–$25,000 in net assets. Contributing even a small amount to an employer-matched 401(k) in your 20s is one of the highest-leverage financial decisions you will ever make, thanks to compound growth over four decades.
+          </p>
+        </div>
+
+        <!-- 30s -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-sm font-bold flex-shrink-0">30s</span>
+            Your 30s: The Acceleration Phase
+          </h3>
+          <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+            Income typically rises significantly in your 30s, often alongside major expenses: a first home, children, and career pivots. The median net worth for 35–44 year-olds is <strong class="text-slate-900 dark:text-white">$135,600</strong>. A strong milestone is reaching <strong class="text-slate-900 dark:text-white">1x your annual income</strong> in net worth by age 35. Home equity plays an increasingly large role — but be careful not to count an illiquid home as a substitute for liquid retirement savings. The wealth gap widens most dramatically in this decade between savers and non-savers.
+          </p>
+        </div>
+
+        <!-- 40s -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-sm font-bold flex-shrink-0">40s</span>
+            Your 40s: Peak Earning, Peak Spending
+          </h3>
+          <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+            Your 40s are often peak earning years — but also peak spending (college tuition, aging parents, lifestyle inflation). The median for 45–54 is <strong class="text-slate-900 dark:text-white">$247,200</strong>. Fidelity's guideline suggests having <strong class="text-slate-900 dark:text-white">3x your salary saved by 40</strong> and <strong class="text-slate-900 dark:text-white">6x by 50</strong>. This is the last decade where compounding has truly transformative power — every $1 invested at 45 becomes roughly $4 by retirement at 65, assuming 7% average growth. Prioritize eliminating high-interest debt and maximizing tax-advantaged accounts.
+          </p>
+        </div>
+
+        <!-- 50s -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-sm font-bold flex-shrink-0">50s</span>
+            Your 50s: The Pre-Retirement Sprint
+          </h3>
+          <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+            Your 50s are the last major window to course-correct before retirement. The IRS allows <strong class="text-slate-900 dark:text-white">catch-up contributions</strong> to 401(k)s and IRAs starting at age 50 — use them. The median for 55–64 is <strong class="text-slate-900 dark:text-white">$364,500</strong>, but Fidelity recommends having 8x your salary by 60. Social Security planning becomes real — every year you delay claiming after 62 increases your benefit by roughly 6–8%. This decade is about locking in gains, reducing equity risk gradually, and projecting retirement income needs accurately.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- What Assets Count -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">What Assets Count Toward Net Worth?</h2>
+      <p class="text-slate-700 dark:text-slate-400 mb-6 leading-relaxed">
+        Net worth is simply <strong class="text-slate-900 dark:text-white">Total Assets minus Total Liabilities</strong>. But knowing exactly what goes into each category is essential for calculating your true financial position.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <!-- Assets -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-emerald-700 dark:text-emerald-400 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+            Assets (What You Own)
+          </h3>
+          <ul class="space-y-3 text-sm text-slate-700 dark:text-slate-400">
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Home equity</strong> — Current market value minus your remaining mortgage balance</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Retirement accounts</strong> — 401(k), IRA, Roth IRA, pension cash value (pre-tax balances count at face value)</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Taxable investments</strong> — Brokerage accounts, stocks, bonds, ETFs, REITs</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Cash and equivalents</strong> — Checking, savings, money market, CDs</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Vehicles</strong> — Current resale value (not purchase price)</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Business equity</strong> — Ownership stake in a business at fair market value</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Other assets</strong> — Real estate, collectibles, life insurance cash value</span></li>
+          </ul>
+        </div>
+        <!-- Liabilities -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-rose-600 dark:text-rose-400 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"/></svg>
+            Liabilities (What You Owe)
+          </h3>
+          <ul class="space-y-3 text-sm text-slate-700 dark:text-slate-400">
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Mortgage balance</strong> — Remaining principal on your home loan(s)</span></li>
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Student loans</strong> — Federal and private loan balances</span></li>
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Auto loans</strong> — Remaining balance on vehicle financing</span></li>
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Credit card debt</strong> — Total outstanding balances</span></li>
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Medical debt</strong> — Outstanding medical bills</span></li>
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Personal loans</strong> — Any unsecured personal loan balances</span></li>
+            <li class="flex items-start gap-2"><span class="text-rose-500 mt-0.5">&#8226;</span><span><strong class="text-slate-900 dark:text-white">Business debts</strong> — Loans tied to business ownership</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-5 bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800/80 rounded-xl p-4">
+        <p class="text-sm text-slate-700 dark:text-slate-400">
+          <strong class="text-slate-900 dark:text-white">Note on personal property:</strong> Everyday personal items (furniture, clothing, electronics) technically have value but are typically excluded from net worth calculations as they are illiquid and depreciate rapidly. The Federal Reserve SCF focuses on financial assets and real property.
+        </p>
+      </div>
+    </section>
+
+    <!-- How to Increase Net Worth -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">How to Increase Your Net Worth by Age Group</h2>
+      <div class="space-y-6">
+
+        <!-- Under 35 -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-4">Under 35: Build the Habits That Will Compound</h3>
+          <ol class="space-y-3 text-sm text-slate-700 dark:text-slate-400">
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">1</span>
+              <span><strong class="text-slate-900 dark:text-white">Capture every employer 401(k) match.</strong> This is an instant 50–100% return on your contribution — no investment comes close. Never leave it on the table.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">2</span>
+              <span><strong class="text-slate-900 dark:text-white">Aggressively pay down high-interest debt.</strong> Any debt above 7% interest is effectively a guaranteed negative investment. Paying it off beats most market returns on a risk-adjusted basis.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">3</span>
+              <span><strong class="text-slate-900 dark:text-white">Invest in your income.</strong> In your 20s, your human capital is your most valuable asset. Certifications, skills, and career moves that increase your income by $10,000/year are worth far more than saving an extra $50/month.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">4</span>
+              <span><strong class="text-slate-900 dark:text-white">Open a Roth IRA.</strong> Contributions grow tax-free and can be withdrawn penalty-free. At low income, Roth accounts are especially advantageous — you are locking in today's low tax rate.</span>
+            </li>
+          </ol>
+        </div>
+
+        <!-- 35-54 -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-4">Ages 35–54: Optimize, Accelerate, Protect</h3>
+          <ol class="space-y-3 text-sm text-slate-700 dark:text-slate-400">
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">1</span>
+              <span><strong class="text-slate-900 dark:text-white">Max out tax-advantaged accounts.</strong> Aim to hit the annual 401(k) limit ($23,000 in 2024) and IRA limit ($7,000). These contributions reduce taxable income now and grow tax-deferred.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">2</span>
+              <span><strong class="text-slate-900 dark:text-white">Avoid lifestyle inflation.</strong> As income rises, the temptation to upgrade everything simultaneously is the #1 wealth killer in this age bracket. Keep savings rate above 20% even as income grows.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">3</span>
+              <span><strong class="text-slate-900 dark:text-white">Build a taxable brokerage account.</strong> Once tax-advantaged accounts are maxed, a low-cost index fund portfolio in a taxable account provides liquidity and continued compounding.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">4</span>
+              <span><strong class="text-slate-900 dark:text-white">Review insurance coverage.</strong> Adequate term life and disability insurance protects your net worth from catastrophic events. Many people in this bracket are significantly underinsured.</span>
+            </li>
+          </ol>
+        </div>
+
+        <!-- 55+ -->
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-4">Ages 55+: Preserve, Optimize, and Plan the Transition</h3>
+          <ol class="space-y-3 text-sm text-slate-700 dark:text-slate-400">
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">1</span>
+              <span><strong class="text-slate-900 dark:text-white">Use catch-up contributions.</strong> At 50+, you can contribute an extra $7,500 to your 401(k) and $1,000 to your IRA annually. These years are your last major compounding window.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">2</span>
+              <span><strong class="text-slate-900 dark:text-white">Consider Roth conversions.</strong> If you expect higher taxes in retirement, converting traditional IRA funds to Roth during lower-income years (before RMDs begin at 73) can reduce lifetime tax burden significantly.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">3</span>
+              <span><strong class="text-slate-900 dark:text-white">Delay Social Security if possible.</strong> Every year you delay claiming beyond 62 increases your benefit by 6–8% per year. Waiting from 62 to 70 can nearly double your monthly benefit.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-xs flex items-center justify-center">4</span>
+              <span><strong class="text-slate-900 dark:text-white">Gradually de-risk your portfolio.</strong> Shift toward a more conservative allocation as you near retirement — but do not go all bonds. With a 20–30 year retirement horizon, you still need growth assets to outpace inflation.</span>
+            </li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Box -->
+    <section>
+      <div class="bg-emerald-700 rounded-2xl p-8 text-white text-center shadow-lg shadow-emerald-900/20">
+        <div class="text-4xl mb-3">&#128202;</div>
+        <h2 class="text-2xl font-bold mb-3">Calculate Your Exact Percentile</h2>
+        <p class="text-emerald-100 mb-6 max-w-lg mx-auto leading-relaxed">
+          The table above shows group benchmarks — but where do <em>you</em> specifically rank? Enter your net worth and age into our free calculator to find your exact percentile among American households.
+        </p>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 bg-white text-emerald-700 font-bold px-8 py-3.5 rounded-xl hover:bg-emerald-50 transition-colors shadow-sm text-sm"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Calculate My Net Worth Percentile
+        </a>
+        <p class="text-emerald-200 text-xs mt-4">Free · Instant · No account required</p>
+      </div>
+    </section>
+
+    <!-- FAQ Section with Schema -->
+    <section itemscope itemtype="https://schema.org/FAQPage">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
+              What is the average net worth for a 30 year old?
+            </h3>
+          </div>
+          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+              <p>According to the Federal Reserve SCF 2022 data, the <strong class="text-slate-900 dark:text-white">median net worth for Americans under 35 is $39,000</strong>, while the mean (average) is $183,500. The large gap between these two figures reflects extreme wealth concentration among a small number of young high-earners and entrepreneurs.</p>
+              <p>A 30-year-old with a net worth of $39,000 is right at the median — meaning half of their peers have less. A reasonable wealth-building goal by 30 is to have at least 1x your annual salary saved in net assets, which for the average American income of ~$60,000 would be $60,000 in net worth.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
+              What is considered wealthy by age?
+            </h3>
+          </div>
+          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+              <p>"Wealthy" is relative, but using the Federal Reserve's data, reaching the <strong class="text-slate-900 dark:text-white">top 10% threshold for your age group</strong> is a widely accepted benchmark for financial wealth:</p>
+              <ul class="list-disc pl-5 space-y-1 mt-2">
+                <li>Under 35: $340,000+ net worth</li>
+                <li>35–44: $980,000+ net worth</li>
+                <li>45–54: $1,950,000+ net worth</li>
+                <li>55–64: $2,800,000+ net worth</li>
+                <li>65–74: $3,400,000+ net worth</li>
+              </ul>
+              <p class="mt-2">Many financial advisors define "high net worth" as $1 million or more in investable assets (excluding primary residence), and "ultra-high net worth" as $30 million or more.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
+              How much net worth is enough to retire?
+            </h3>
+          </div>
+          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+              <p>The most widely used framework is the <strong class="text-slate-900 dark:text-white">"25x Rule"</strong>: multiply your expected annual retirement spending by 25 to find your target nest egg. This is derived from the "4% Rule," which suggests withdrawing 4% of your portfolio per year provides a very high probability of not outliving your money over a 30-year retirement.</p>
+              <p>For example: If you plan to spend $60,000/year in retirement, you need roughly <strong class="text-slate-900 dark:text-white">$1.5 million in investable assets</strong> ($60,000 x 25). Social Security income reduces the amount you need to self-fund — subtract your expected annual SS benefit before applying the 25x multiplier.</p>
+              <p>Note that this is investable net worth, not total net worth — a $300,000 home does not generate retirement income unless you sell or reverse-mortgage it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
+              What percentage of Americans have a net worth over $1 million?
+            </h3>
+          </div>
+          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+              <p>According to Credit Suisse's 2023 Global Wealth Report and Federal Reserve data, approximately <strong class="text-slate-900 dark:text-white">8–9% of American adults</strong> have a net worth exceeding $1 million — roughly 22–24 million people. This makes the US home to the largest millionaire population of any country in the world.</p>
+              <p>However, "millionaire" status is increasingly ordinary given home price appreciation. Many Americans who appear to be millionaires on paper have most of their wealth locked in their primary residence and relatively little in liquid, investable assets. In terms of liquid investable assets exceeding $1 million, the percentage is considerably lower — closer to 5–6% of adults.</p>
+              <p>To reach the top 1% of all American households by net worth, you would need approximately <strong class="text-slate-900 dark:text-white">$11 million or more</strong> in total net worth, per Federal Reserve estimates.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Source Attribution -->
+    <section class="border-t border-slate-200 dark:border-slate-800/80 pt-8">
+      <div class="bg-slate-50 dark:bg-slate-800/30 rounded-xl p-5">
+        <h3 class="text-sm font-semibold text-slate-900 dark:text-white mb-2">Data Sources &amp; Methodology</h3>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-500">
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 mt-0.5">&#8250;</span>
+            <span><strong>Primary:</strong> Federal Reserve Survey of Consumer Finances (SCF), 2022. Published September 2023. The SCF is conducted every three years and is the most comprehensive survey of American household finances.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 mt-0.5">&#8250;</span>
+            <span><strong>Millionaire statistics:</strong> Credit Suisse Global Wealth Report 2023; Federal Reserve Distributional Financial Accounts.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 mt-0.5">&#8250;</span>
+            <span><strong>Retirement savings benchmarks:</strong> Fidelity Investments Retirement Savings Milestones (2024). Catch-up contribution limits from IRS Publication 560.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 mt-0.5">&#8250;</span>
+            <span><strong>Note:</strong> All dollar figures are in 2022 dollars as reported by the Federal Reserve. The next SCF is expected in 2025 with 2025 data. This page is updated as new official data becomes available.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</Layout>

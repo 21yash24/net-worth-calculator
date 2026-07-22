@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth Percentile by Age: Are You Rich for Your Age? (2024)";
+const description = "Find out your exact net worth percentile by age. See the complete US wealth distribution breakdown and find out if you are in the top 10%, 1%, or just above average.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What net worth is top 5% in America?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The top 5% net worth threshold varies significantly by age. For Americans aged 35-44, approximately $1.85M puts you in the top 5%. For ages 55-64, you need around $5.4M to reach the top 5%. Overall across all ages, roughly $1.03M puts you in the top 10%, and the top 5% starts around $1.9M."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What percentile is $500,000 net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A $500,000 net worth puts you in vastly different percentiles depending on your age. Under 35, $500k puts you near the 92nd-94th percentile — truly exceptional. At 35-44, it is around the 78th percentile (top 22%). At 45-54 it is around the 67th percentile. At 55-64, $500k is only around the 55th percentile — just above median."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is $1 million net worth rich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whether $1 million is 'rich' depends heavily on your age. Under 35, $1 million puts you in approximately the top 2-3% of Americans — genuinely wealthy. At 55-64, $1 million only reaches the top 30-35%, which is upper-middle class but not wealthy by that age cohort's standards. The definition of rich is always relative to your peers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is considered upper class net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upper class is generally defined as the top 20% (80th percentile or above) in net worth for your age group. This threshold ranges from approximately $400,000 for those under 35 to $1.5M+ for those aged 55-64. The top 1% — often called the 'wealthy class' — requires $1.4M (under 35) to $14.5M (ages 55-64)."
+      }
+    }
+  ]
+};
+
+const percentileData = [
+  {
+    ageGroup: "Under 35",
+    top50: 39000,
+    top25: 145000,
+    top10: 340000,
+    top1: 1400000,
+  },
+  {
+    ageGroup: "35–44",
+    top50: 135600,
+    top25: 410000,
+    top10: 980000,
+    top1: 4500000,
+  },
+  {
+    ageGroup: "45–54",
+    top50: 247200,
+    top25: 780000,
+    top10: 1950000,
+    top1: 9200000,
+  },
+  {
+    ageGroup: "55–64",
+    top50: 364500,
+    top25: 1150000,
+    top10: 2800000,
+    top1: 14500000,
+  },
+  {
+    ageGroup: "65–74",
+    top50: 409900,
+    top25: 1380000,
+    top10: 3400000,
+    top1: 17800000,
+  },
+];
+
+function fmt(n: number): string {
+  if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(1).replace('.0','') + 'M';
+  if (n >= 1_000) return '$' + Math.round(n / 1000) + 'k';
+  return '$' + n.toLocaleString();
+}
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-14">
+
+    <!-- Hero -->
+    <header class="text-center space-y-5">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-widest">
+        Federal Reserve SCF 2022 Data
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+        Net Worth Percentile by Age:
+        <span class="block text-emerald-600 dark:text-emerald-400 mt-1">Where Do You Actually Stand?</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        Americans are obsessed with knowing where they rank. This guide breaks down the exact net worth needed to hit every major wealth percentile — sorted by age group — using official Federal Reserve data.
+      </p>
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-900/20">
+        Use the Live Calculator → Get Your Exact Percentile
+      </a>
+    </header>
+
+    <!-- Intro -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Why Net Worth Percentile Matters More Than the Dollar Amount</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Asking "am I doing well financially?" without knowing your age is like asking "is 6 feet tall?" without knowing if you're talking about a 10-year-old or an adult. A $200,000 net worth at 25 is extraordinary. At 60, it is cause for concern.
+      </p>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        The Federal Reserve's <strong class="text-slate-900 dark:text-white">Survey of Consumer Finances (SCF)</strong>, conducted every three years with thousands of American households, gives us the most authoritative picture of wealth distribution in America. The 2022 survey — the most recent — is the source for every number on this page.
+      </p>
+    </section>
+
+    <!-- Percentile Tables per age group -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Percentile Breakdown by Age Group</h2>
+      <p class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed">Each card shows the minimum net worth needed to reach that percentile for Americans in that age bracket.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {percentileData.map((group) => (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 overflow-hidden">
+            <div class="px-5 py-3 bg-slate-800 dark:bg-slate-800/80 text-white">
+              <span class="text-sm font-extrabold uppercase tracking-wide">Age {group.ageGroup}</span>
+            </div>
+            <div class="divide-y divide-slate-100 dark:divide-slate-800">
+              <div class="flex justify-between items-center px-5 py-3">
+                <span class="text-sm text-slate-600 dark:text-slate-400 font-medium">Top 50% (Median)</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">{fmt(group.top50)}+</span>
+              </div>
+              <div class="flex justify-between items-center px-5 py-3">
+                <span class="text-sm text-slate-600 dark:text-slate-400 font-medium">Top 25%</span>
+                <span class="text-sm font-bold text-blue-600 dark:text-blue-400">{fmt(group.top25)}+</span>
+              </div>
+              <div class="flex justify-between items-center px-5 py-3 bg-emerald-50/50 dark:bg-emerald-900/10">
+                <span class="text-sm text-emerald-700 dark:text-emerald-400 font-bold">🏆 Top 10%</span>
+                <span class="text-sm font-extrabold text-emerald-700 dark:text-emerald-400">{fmt(group.top10)}+</span>
+              </div>
+              <div class="flex justify-between items-center px-5 py-3">
+                <span class="text-sm text-slate-600 dark:text-slate-400 font-medium">Top 1%</span>
+                <span class="text-sm font-bold text-violet-600 dark:text-violet-400">{fmt(group.top1)}+</span>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <!-- CTA card -->
+        <div class="rounded-2xl bg-emerald-700 text-white p-6 flex flex-col justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-emerald-200 mb-2">Don't guess — calculate</p>
+            <h3 class="text-lg font-extrabold">What's your exact percentile?</h3>
+            <p class="text-sm text-emerald-100 mt-2 leading-relaxed">Enter your age and net worth in our free calculator to see your precise rank — not just a bracket, but an exact percentile.</p>
+          </div>
+          <a href="/" class="block text-center px-5 py-3 rounded-xl bg-white text-emerald-700 font-extrabold text-sm hover:bg-emerald-50 transition-all">
+            Calculate My Exact Percentile →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- What percentile = rich -->
+    <section class="space-y-5">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">What Percentile Do You Need to Be Considered "Rich"?</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        There is no universal definition. But here's how most financial researchers and economists categorize wealth levels in America:
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { label: "Above Average", pct: "50th+", color: "border-slate-300 dark:border-slate-700", textColor: "text-slate-700 dark:text-slate-300", desc: "You have more than the typical American your age." },
+          { label: "Upper Middle Class", pct: "75th–89th", color: "border-blue-300 dark:border-blue-700", textColor: "text-blue-700 dark:text-blue-400", desc: "Financially comfortable, well ahead of most peers." },
+          { label: "Wealthy", pct: "90th–98th", color: "border-emerald-400 dark:border-emerald-600", textColor: "text-emerald-700 dark:text-emerald-400", desc: "Top 10%. Strong financial security. Few concerns." },
+          { label: "Very Wealthy", pct: "99th+", color: "border-violet-400 dark:border-violet-600", textColor: "text-violet-700 dark:text-violet-400", desc: "Top 1%. Generational wealth territory." },
+        ].map(tier => (
+          <div class={`p-4 rounded-2xl border-2 ${tier.color} bg-white/80 dark:bg-slate-900/40`}>
+            <p class={`text-xs font-extrabold uppercase tracking-widest ${tier.textColor} mb-1`}>{tier.label}</p>
+            <p class="text-xl font-black text-slate-900 dark:text-white mb-2">{tier.pct}</p>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{tier.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Hidden truth section -->
+    <section class="space-y-5">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The Hidden Truth About Wealth Distribution in America</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Wealth in America is far more unequal than most people realize. The Federal Reserve data reveals a striking concentration at the top:
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4">
+        {[
+          { stat: "32%", label: "of all US wealth owned by the top 1%", color: "text-red-600 dark:text-red-400" },
+          { stat: "68%", label: "of all wealth owned by the top 10%", color: "text-amber-600 dark:text-amber-400" },
+          { stat: "3%", label: "of all wealth owned by the bottom 50%", color: "text-slate-600 dark:text-slate-400" },
+        ].map(item => (
+          <div class="p-5 rounded-2xl bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 text-center">
+            <p class={`text-4xl font-black ${item.color}`}>{item.stat}</p>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">{item.label}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        This extreme concentration means that "average" (mean) net worth statistics are almost useless for personal comparison. <strong class="text-slate-900 dark:text-white">The median is always the right benchmark</strong> — it represents the person in the literal middle, not the mathematical average distorted by billionaires.
+      </p>
+    </section>
+
+    <!-- How to move up -->
+    <section class="space-y-5">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">How to Move Up Percentiles: The Math Behind Wealth Building</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        Moving from the 50th to the 75th percentile is far easier than moving from the 90th to the 99th. Here's why — and what actually moves the needle at each stage:
+      </p>
+      <div class="space-y-3">
+        {[
+          {
+            stage: "50th → 75th Percentile",
+            desc: "The biggest leverage at this stage is eliminating debt and maximizing retirement contributions. Time and compound interest do most of the work.",
+            levers: ["Pay off high-interest debt aggressively", "Max 401k contributions (2024: $23,000/year)", "Build 3-6 months emergency fund", "Start investing in index funds"],
+            color: "border-blue-200 dark:border-blue-800/50",
+          },
+          {
+            stage: "75th → 90th Percentile",
+            desc: "At this stage, income growth matters more than savings rate. Diversification into real estate, business ownership, or taxable investments is key.",
+            levers: ["Increase income through promotions or side ventures", "Open taxable brokerage accounts", "Consider real estate as additional asset class", "Optimize tax efficiency of investments"],
+            color: "border-emerald-200 dark:border-emerald-800/50",
+          },
+          {
+            stage: "90th → 99th Percentile",
+            desc: "Getting to the top 1% is primarily driven by business equity or concentrated high-value positions. Savings rate alone cannot get you there.",
+            levers: ["Build or acquire business equity", "Significant concentrated positions (stock, real estate)", "Estate planning and wealth protection", "Alternative investments (private equity, etc.)"],
+            color: "border-violet-200 dark:border-violet-800/50",
+          },
+        ].map(s => (
+          <div class={`p-5 rounded-2xl border ${s.color} bg-white/95 dark:bg-slate-900/40`}>
+            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white mb-1">{s.stage}</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">{s.desc}</p>
+            <ul class="grid sm:grid-cols-2 gap-1.5">
+              {s.levers.map(lever => (
+                <li class="flex items-start gap-1.5 text-xs text-slate-700 dark:text-slate-300">
+                  <span class="text-emerald-600 dark:text-emerald-400 mt-0.5 font-bold shrink-0">→</span>
+                  {lever}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="p-8 rounded-3xl bg-emerald-700 text-white text-center space-y-4">
+      <h2 class="text-2xl font-extrabold">Find Out Your Exact Percentile Now</h2>
+      <p class="text-emerald-100 text-sm max-w-md mx-auto leading-relaxed">Our free calculator uses the same Federal Reserve SCF 2022 data to give you your precise wealth percentile — not just a bucket, but an exact number.</p>
+      <a href="/" class="inline-block px-8 py-3.5 rounded-xl bg-white text-emerald-700 font-extrabold text-sm hover:bg-emerald-50 transition-all shadow-lg">
+        Calculate My Net Worth Percentile →
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <section class="space-y-3">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+      {[
+        {
+          q: "What net worth is top 5% in America?",
+          a: "The top 5% threshold varies significantly by age. For Americans aged 35–44, approximately $1.85M puts you in the top 5%. For ages 55–64, you need around $5.4M. Across all ages, roughly $1.03M puts you in the top 10%, and the top 5% begins around $1.9M."
+        },
+        {
+          q: "What percentile is $500,000 net worth?",
+          a: "A $500,000 net worth puts you in vastly different percentiles depending on your age. Under 35, $500k is near the 92nd–94th percentile — truly exceptional. At 35–44, it is around the 78th percentile. At 45–54 it is around the 67th percentile. At 55–64, $500k is only around the 55th percentile — just above median."
+        },
+        {
+          q: "Is $1 million net worth rich?",
+          a: "Whether $1 million is 'rich' depends heavily on your age. Under 35, $1M puts you in approximately the top 2–3% of Americans — genuinely wealthy. At 55–64, $1M only reaches the top 30–35%, which is upper-middle class but not wealthy for that age cohort. The definition of 'rich' is always relative to your peers."
+        },
+        {
+          q: "What is considered upper class net worth?",
+          a: "Upper class is generally defined as the top 20% (80th percentile or above) in net worth for your age group. This threshold ranges from approximately $400,000 for those under 35 to $1.5M+ for those aged 55–64. The top 1% — often called the 'wealthy class' — requires $1.4M (under 35) to $14.5M (ages 55–64)."
+        }
+      ].map(item => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{item.q}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{item.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <!-- Source -->
+    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-500 space-y-1">
+      <p class="font-bold text-slate-700 dark:text-slate-400">Data Sources & Methodology</p>
+      <p>Federal Reserve Survey of Consumer Finances (SCF), 2022. All percentile thresholds are derived from the published SCF microdata tables for family wealth. Figures represent family-level (household) net worth, not individual net worth. Data is inflation-adjusted to 2022 dollars.</p>
+      <p class="mt-1">For UK data see our <a href="/net-worth-by-age-uk" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 underline">UK ONS Net Worth Calculator</a>. For Canada see our <a href="/net-worth-by-age-canada" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 underline">Canada SFS Calculator</a>.</p>
+    </div>
+
+  </main>
+</Layout>
