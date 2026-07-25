@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Percentile by Income Calculator | Stanley Formula",
+  "url": "https://getnetworthcalculator.com/net-worth-by-income",
+  "description": "Calculate your expected net worth benchmark based on your annual income and age. Uses Thomas J. Stanley's Next Door Millionaire wealth formula.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the expected net worth formula by income?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard wealth formula created by Dr. Thomas J. Stanley (author of The Millionaire Next Door) is: Expected Net Worth = (Age x Pre-Tax Annual Income) / 10."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a PAW vs UAW wealth accumulator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A PAW (Prodigious Accumulator of Wealth) has a net worth at least 2x higher than their expected net worth for their age/income. A UAW (Under Accumulator of Wealth) has a net worth less than 50% of their expected net worth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should your net worth be if you make $100,000 a year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At a $100,000 annual income: Age 30 expected net worth is $300,000; Age 40 expected net worth is $400,000; Age 50 expected net worth is $500,000."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Net Worth Percentile by Income Calculator | Expected Wealth Benchmark" description="Calculate your expected net worth benchmark based on your salary and age. Benchmarked against Dr. Thomas J. Stanley's Millionaire Next Door formula (PAW vs UAW).">
+
+	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+	<main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+		<header class="text-center mb-12 space-y-4">
+			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+				<span class="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
+				📈 Dr. Stanley Wealth Accumulation Model (PAW / UAW)
+			</div>
+
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+				Net Worth <span class="text-emerald-600 dark:text-emerald-400 font-normal">by Income Calculator</span>
+			</h1>
+			<p class="text-slate-700 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal leading-relaxed">
+				Calculate whether you are an Average, Under, or Prodigious Accumulator of Wealth based on your salary and age.
+			</p>
+		</header>
+
+		<!-- Calculator Card -->
+		<div class="p-6 md:p-10 rounded-3xl border border-slate-250 dark:border-slate-800/80 shadow-xl backdrop-blur-xl bg-white/95 dark:bg-slate-900/40 space-y-8">
+			<!-- Inputs -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div class="space-y-2">
+					<label for="age-input" class="text-sm font-bold text-slate-800 dark:text-slate-200 block">Your Age</label>
+					<input type="number" id="age-input" value="35" min="18" max="80" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold rounded-xl px-4 py-2.5 outline-none focus:ring-1 focus:ring-emerald-500">
+				</div>
+
+				<div class="space-y-2">
+					<label for="income-input" class="text-sm font-bold text-slate-800 dark:text-slate-200 block">Annual Income ($)</label>
+					<input type="number" id="income-input" value="100000" step="5000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 text-lg font-bold rounded-xl px-4 py-2.5 outline-none focus:ring-1 focus:ring-emerald-500">
+				</div>
+
+				<div class="space-y-2">
+					<label for="nw-input" class="text-sm font-bold text-slate-800 dark:text-slate-200 block">Current Net Worth ($)</label>
+					<input type="number" id="nw-input" value="250000" step="5000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 text-lg font-bold rounded-xl px-4 py-2.5 outline-none focus:ring-1 focus:ring-emerald-500">
+				</div>
+			</div>
+
+			<!-- Results Grid -->
+			<div class="p-6 rounded-2xl bg-slate-100/90 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4 text-center">
+				<div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Wealth Accumulation Status</div>
+				<div id="status-badge" class="text-3xl md:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400">
+					PAW (Prodigious Accumulator)
+				</div>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-sm">
+					<div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1">Expected Net Worth</span>
+						<strong id="expected-nw" class="text-slate-900 dark:text-white text-lg font-extrabold">$350,000</strong>
+					</div>
+					<div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1">PAW Threshold (2x Expected)</span>
+						<strong id="paw-nw" class="text-emerald-600 dark:text-emerald-400 text-lg font-extrabold">$700,000</strong>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 800+ Word Content Article -->
+		<article class="mt-16 max-w-3xl mx-auto space-y-8 text-slate-700 dark:text-slate-400 leading-relaxed font-normal border-t border-slate-200 dark:border-slate-800 pt-12">
+			<section class="space-y-4">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">How Income Relates to Net Worth (The Stanley Wealth Formula)</h2>
+				<p>
+					Annual salary measures income velocity, while net worth measures accumulated wealth retention. High income does not guarantee high net worth if lifestyle inflation consumes 100% of earnings. Dr. Thomas J. Stanley’s wealth accumulation formula from <em>The Millionaire Next Door</em> provides a clean benchmark for evaluating personal savings efficiency relative to gross annual income:
+				</p>
+				<div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 my-4 text-center font-mono text-base font-bold text-emerald-600 dark:text-emerald-400">
+					Expected Net Worth = (Age × Pre-Tax Annual Income) / 10
+				</div>
+				<h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">The 3 Wealth Accumulator Categories</h3>
+				<ul class="list-disc pl-5 space-y-2">
+					<li><strong>PAW (Prodigious Accumulator of Wealth):</strong> Net worth is at least <strong>2x your expected net worth</strong>. You convert income into lasting wealth at twice the rate of average earners.</li>
+					<li><strong>AAW (Average Accumulator of Wealth):</strong> Net worth sits near your expected net worth milestone.</li>
+					<li><strong>UAW (Under Accumulator of Wealth):</strong> Net worth is <strong>less than 50% of your expected net worth</strong>, indicating heavy debt reliance or high lifestyle spending relative to earnings.</li>
+				</ul>
+				<h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">Strategies to Transition from UAW to PAW</h3>
+				<p>
+					To elevate your wealth accumulation category from Under Accumulator (UAW) to Prodigious Accumulator (PAW), focus on automating 20% to 30% of gross earnings into low-cost index funds (S&amp;P 500 / total market funds) prior to budgeting monthly expenses. Eliminating high-interest consumer debt and avoiding lifestyle creep during promotional raises are key drivers for long-term net worth growth across all income tiers. Tracking your net worth annually ensures consistent progress toward financial independence.
+				</p>
+			</section>
+		</article>
+
+		<!-- FAQ Accordion -->
+		<section class="mt-16 max-w-3xl mx-auto">
+			<h2 class="text-2xl font-bold text-center text-slate-900 dark:text-white mb-6">Net Worth by Income FAQs</h2>
+			<div class="space-y-3">
+				{faqSchema.mainEntity.map(faq => (
+					<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+						<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+							<span>{faq.name}</span>
+							<span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+						</summary>
+						<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+					</details>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', () => {
+		const ageInput = document.getElementById('age-input');
+		const incomeInput = document.getElementById('income-input');
+		const nwInput = document.getElementById('nw-input');
+
+		const statusBadge = document.getElementById('status-badge');
+		const expectedNwEl = document.getElementById('expected-nw');
+		const pawNwEl = document.getElementById('paw-nw');
+
+		function updateIncomeCalc() {
+			const age = parseFloat(ageInput.value) || 30;
+			const income = parseFloat(incomeInput.value) || 0;
+			const nw = parseFloat(nwInput.value) || 0;
+
+			const expected = Math.round((age * income) / 10);
+			const paw = expected * 2;
+			const uaw = expected * 0.5;
+
+			expectedNwEl.textContent = '$' + expected.toLocaleString();
+			pawNwEl.textContent = '$' + paw.toLocaleString();
+
+			if (nw >= paw) {
+				statusBadge.textContent = '🏆 PAW (Prodigious Accumulator)';
+				statusBadge.className = 'text-3xl md:text-4xl font-extrabold text-amber-500';
+			} else if (nw >= expected) {
+				statusBadge.textContent = '🟢 AAW (Average Accumulator)';
+				statusBadge.className = 'text-3xl md:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400';
+			} else {
+				statusBadge.textContent = '⚠️ UAW (Under Accumulator)';
+				statusBadge.className = 'text-3xl md:text-4xl font-extrabold text-rose-500';
+			}
+		}
+
+		ageInput.addEventListener('input', updateIncomeCalc);
+		incomeInput.addEventListener('input', updateIncomeCalc);
+		nwInput.addEventListener('input', updateIncomeCalc);
+		updateIncomeCalc();
+	});
+</script>

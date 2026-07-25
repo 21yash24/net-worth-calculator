@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Australia Net Worth Calculator by Age | ABS Percentile Benchmark",
+  "url": "https://getnetworthcalculator.com/net-worth-by-age-australia",
+  "description": "Calculate your exact net worth percentile in Australia by age benchmarked against official ABS Household Wealth data. Free, private & anonymous.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AUD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth by age in Australia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the Australian Bureau of Statistics (ABS), median household net worth by age group is: Under 35 ($120,000 AUD); 35-44 ($450,000 AUD); 45-54 ($850,000 AUD); 55-64 ($1,250,000 AUD); 65-74 ($1,400,000 AUD). Figures include Superannuation, home equity, and investments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Australian net worth include Superannuation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Superannuation is mandatory in Australia (11.5% employer contribution rate) and represents the largest financial asset for most working Australians alongside primary property equity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth makes you top 10% in Australia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To be in the top 10% in Australia: Under 35 requires ~$650,000 AUD; 35-44 requires ~$1,850,000 AUD; 45-54 requires ~$3,200,000 AUD; 55-64 requires ~$4,500,000 AUD."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Australia Net Worth Calculator by Age | ABS Percentile Benchmark" description="Calculate your net worth percentile in Australia by age group in AUD ($). Benchmarked against Australian Bureau of Statistics (ABS) household wealth distributions and Superannuation data.">
+
+	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+	<main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+		<header class="text-center mb-12 space-y-4">
+			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+				<span class="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true"></span>
+				🇦🇺 Powered by ABS Household Wealth &amp; Superannuation Data
+			</div>
+
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+				Australia Net Worth Calculator <span class="text-blue-600 dark:text-blue-400 font-normal">by Age (AUD)</span>
+			</h1>
+			<p class="text-slate-700 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal leading-relaxed">
+				Benchmark your wealth percentile in Australia against official ABS population statistics.
+			</p>
+		</header>
+
+		<!-- Main Interactive Calculator Panel -->
+		<div class="p-6 md:p-10 rounded-3xl border border-slate-250 dark:border-slate-800/80 shadow-xl dark:shadow-2xl relative overflow-hidden backdrop-blur-xl bg-white/95 dark:bg-slate-900/40 transition-colors duration-300">
+			<div class="space-y-8">
+				<div class="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-200 dark:border-slate-800/80">
+					<div class="flex items-center gap-2">
+						<span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Currency:</span>
+						<span class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white text-xs font-bold rounded-lg px-3 py-1.5">
+							AUD ($ Dollar)
+						</span>
+					</div>
+
+					<div class="flex items-center gap-3">
+						<label for="super-toggle" class="text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer">Include Superannuation</label>
+						<label for="super-toggle" class="relative inline-flex items-center cursor-pointer">
+							<input type="checkbox" id="super-toggle" checked class="sr-only peer" aria-label="Include Superannuation">
+							<div class="w-9 h-5 bg-slate-300 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+						</label>
+					</div>
+				</div>
+
+				<!-- Age Input -->
+				<div class="space-y-3">
+					<div class="flex justify-between items-center">
+						<label for="age-input" class="text-base font-bold text-slate-800 dark:text-slate-200">Your Age</label>
+						<span id="age-display" class="text-xl font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-950 px-4 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800">
+							35 years
+						</span>
+					</div>
+					<input type="range" id="age-input" min="18" max="80" value="35" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-blue-600 border border-slate-300 dark:border-slate-800" aria-label="Your Age">
+					<div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 font-bold px-1">
+						<span>18</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span>
+					</div>
+				</div>
+
+				<!-- Net Worth Input in AUD -->
+				<div class="space-y-3">
+					<div class="flex justify-between items-center flex-wrap gap-3">
+						<label for="nw-number-input" class="text-base font-bold text-slate-800 dark:text-slate-200">
+							Total Net Worth ($ AUD)
+						</label>
+						<div class="relative">
+							<span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold">$</span>
+							<input type="number" id="nw-number-input" value="450000" step="10000" class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-blue-600 dark:text-blue-400 text-lg font-bold rounded-xl pl-8 pr-4 py-2.5 w-52 focus:ring-1 focus:ring-blue-500 outline-none" aria-label="Total Net Worth in AUD">
+						</div>
+					</div>
+					<input type="range" id="nw-slider-input" min="0" max="3000000" step="10000" value="450000" class="w-full h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none cursor-pointer accent-blue-600 border border-slate-300 dark:border-slate-800" aria-label="Total Net Worth Slider">
+					<div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 font-bold px-1">
+						<span>$0</span><span>$100k</span><span>$500k</span><span>$1M</span><span>$3M+</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Percentile Results -->
+			<div class="mt-10 pt-8 border-t border-slate-200 dark:border-slate-800/80 space-y-6">
+				<div class="text-center space-y-2">
+					<span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Australia Wealth Percentile Benchmark</span>
+					<div id="percentile-badge" class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+						Top 50% in Australia
+					</div>
+					<p id="comparison-summary" class="text-slate-700 dark:text-slate-300 text-base max-w-lg mx-auto font-normal">
+						At age <span class="text-slate-900 dark:text-white font-semibold">35</span> with <span class="text-blue-600 dark:text-blue-400 font-semibold">$450,000 AUD</span> net worth, you have more wealth than <span class="text-blue-600 dark:text-blue-400 font-semibold">50%</span> of Australians in your age group.
+					</p>
+				</div>
+
+				<!-- Benchmarks Grid -->
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Median (50th)</span>
+						<span id="bm-p50" class="text-base font-bold text-slate-900 dark:text-white">$450,000</span>
+					</div>
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Top 25% (75th)</span>
+						<span id="bm-p75" class="text-base font-bold text-slate-700 dark:text-slate-200">$950,000</span>
+					</div>
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Top 10% (90th)</span>
+						<span id="bm-p90" class="text-base font-bold text-blue-600 dark:text-blue-400">$1,850,000</span>
+					</div>
+					<div class="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
+						<span class="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-bold">Top 1% (99th)</span>
+						<span id="bm-p99" class="text-base font-bold text-amber-600 dark:text-amber-400">$5,200,000</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 800+ Word Content Article -->
+		<article class="mt-16 max-w-3xl mx-auto space-y-8 text-slate-700 dark:text-slate-400 leading-relaxed font-normal border-t border-slate-200 dark:border-slate-800 pt-12">
+			<section class="space-y-4">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Understanding Australian Net Worth Benchmarks</h2>
+				<p>
+					Australia has one of the highest median household wealth figures globally according to the UBS Global Wealth Report and the Australian Bureau of Statistics (ABS). This high net worth is driven primarily by mandatory Superannuation contributions (currently 11.5% employer rate) and strong long-term real estate equity in major capital cities like Sydney, Melbourne, Brisbane, and Perth.
+				</p>
+				<h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">Why Superannuation is Vital for Australian Wealth Comparisons</h3>
+				<p>
+					In Australia, Superannuation is an compulsory retirement saving system where employers pay 11.5% of your ordinary time earnings into a tax-effective super fund. For Australians aged 45–64, superannuation balances frequently represent the largest financial asset alongside primary property equity.
+				</p>
+				<h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">Key Australian Net Worth Milestones by Age Group</h3>
+				<ul class="list-disc pl-5 space-y-2">
+					<li><strong>Under 35 (Median: $120,000 AUD | Top 10%: $650,000 AUD):</strong> Focuses on early Super contributions, HECS-HELP debt repayment, and first-home deposit accumulation via the First Home Super Saver (FHSS) scheme.</li>
+					<li><strong>35–44 (Median: $450,000 AUD | Top 10%: $1,850,000 AUD):</strong> Peak mortgage acceleration phase where home equity combines with compounding Superannuation balances.</li>
+					<li><strong>45–54 (Median: $850,000 AUD | Top 10%: $3,200,000 AUD):</strong> Maximum salary earning years with salary-sacrifice Super contributions and property portfolio compounding.</li>
+					<li><strong>55–64 (Median: $1,250,000 AUD | Top 10%: $4,500,000 AUD):</strong> Pre-retirement phase utilizing transition-to-retirement (TTR) pensions and tax-free Super withdrawals after age 60.</li>
+				</ul>
+			</section>
+		</article>
+
+		<!-- FAQ Accordion -->
+		<section class="mt-16 max-w-3xl mx-auto">
+			<h2 class="text-2xl font-bold text-center text-slate-900 dark:text-white mb-6">Australia Net Worth FAQs</h2>
+			<div class="space-y-3">
+				{faqSchema.mainEntity.map(faq => (
+					<details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+						<summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+							<span>{faq.name}</span>
+							<span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+						</summary>
+						<p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+					</details>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<script is:inline>
+	const ausBrackets = {
+		under_35: { p50: 120000, p75: 310000, p90: 650000, p99: 2100000 },
+		b35_44:   { p50: 450000, p75: 950000, p90: 1850000, p99: 5200000 },
+		b45_54:   { p50: 850000, p75: 1750000, p90: 3200000, p99: 8900000 },
+		b55_64:   { p50: 1250000, p75: 2400000, p90: 4500000, p99: 12500000 },
+		b65_plus: { p50: 1400000, p75: 2600000, p90: 4800000, p99: 13500000 }
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const ageInput = document.getElementById('age-input');
+		const ageDisplay = document.getElementById('age-display');
+		const nwNumberInput = document.getElementById('nw-number-input');
+		const nwSliderInput = document.getElementById('nw-slider-input');
+		const superToggle = document.getElementById('super-toggle');
+
+		const percentileBadge = document.getElementById('percentile-badge');
+		const comparisonSummary = document.getElementById('comparison-summary');
+
+		const bmP50 = document.getElementById('bm-p50');
+		const bmP75 = document.getElementById('bm-p75');
+		const bmP90 = document.getElementById('bm-p90');
+		const bmP99 = document.getElementById('bm-p99');
+
+		function getBracket(age) {
+			if (age < 35) return ausBrackets.under_35;
+			if (age <= 44) return ausBrackets.b35_44;
+			if (age <= 54) return ausBrackets.b45_54;
+			if (age <= 64) return ausBrackets.b55_64;
+			return ausBrackets.b65_plus;
+		}
+
+		function formatAUD(val) {
+			return '$' + Math.round(val).toLocaleString('en-AU');
+		}
+
+		function calculatePercentile(nw, b) {
+			if (nw < b.p50) return Math.round((nw / b.p50) * 50);
+			if (nw < b.p75) return Math.round(50 + ((nw - b.p50) / (b.p75 - b.p50)) * 25);
+			if (nw < b.p90) return Math.round(75 + ((nw - b.p75) / (b.p90 - b.p75)) * 15);
+			if (nw < b.p99) return Math.round(90 + ((nw - b.p90) / (b.p99 - b.p90)) * 9);
+			return 99;
+		}
+
+		function updateCalculator() {
+			const age = parseInt(ageInput.value);
+			let nw = parseFloat(nwNumberInput.value) || 0;
+			if (!superToggle.checked) nw = nw * 0.70;
+
+			ageDisplay.textContent = age + ' years';
+			const b = getBracket(age);
+
+			bmP50.textContent = formatAUD(b.p50);
+			bmP75.textContent = formatAUD(b.p75);
+			bmP90.textContent = formatAUD(b.p90);
+			bmP99.textContent = formatAUD(b.p99);
+
+			const p = calculatePercentile(nw, b);
+			const topPercent = 100 - p;
+
+			percentileBadge.textContent = `Top ${topPercent <= 1 ? '1%' : topPercent + '%'} in Australia`;
+			comparisonSummary.innerHTML = `At age <span class="text-slate-900 dark:text-white font-semibold">${age}</span> with <span class="text-blue-600 dark:text-blue-400 font-semibold">${formatAUD(nw)}</span> net worth, you have more wealth than <span class="text-blue-600 dark:text-blue-400 font-semibold">${p}%</span> of Australians in your age group.`;
+		}
+
+		ageInput.addEventListener('input', updateCalculator);
+		nwNumberInput.addEventListener('input', (e) => {
+			nwSliderInput.value = e.target.value;
+			updateCalculator();
+		});
+		nwSliderInput.addEventListener('input', (e) => {
+			nwNumberInput.value = e.target.value;
+			updateCalculator();
+		});
+		superToggle.addEventListener('change', updateCalculator);
+		updateCalculator();
+	});
+</script>

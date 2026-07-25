@@ -2,10 +2,13 @@
 # Website: https://getnetworthcalculator.com
 
 ## About
-Get Net Worth Calculator (getnetworthcalculator.com) is a privacy-first financial benchmarking application. It calculates net worth percentiles and age-based wealth distributions benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF), UK Office for National Statistics (ONS), and Statistics Canada datasets. All calculations execute 100% client-side inside browser memory without file uploads or server logging.
+Get Net Worth Calculator (getnetworthcalculator.com) is a privacy-first financial benchmarking application. It calculates net worth percentiles and age-based wealth distributions benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF), UK Office for National Statistics (ONS), Reserve Bank of India (RBI), Australian Bureau of Statistics (ABS), and Statistics Canada datasets. All calculations execute 100% client-side inside browser memory without file uploads or server logging.
 
 ## Core Calculators & Benchmarks
 - [USA Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-usa): Benchmarked against 2022 US Federal Reserve SCF data.
+- [India Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-india): Benchmarked against RBI & SEBI Household Wealth datasets (in ₹ Lakhs & Crores).
+- [Australia Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-australia): Benchmarked against Australian Bureau of Statistics (ABS) & Superannuation data.
+- [Net Worth by Income](https://getnetworthcalculator.com/net-worth-by-income): Expected net worth formula benchmark based on Stanley's Millionaire Next Door formula (PAW vs UAW).
 - [UK Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-uk): Benchmarked against UK ONS Wealth & Assets Survey.
 - [Canada Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-canada): Benchmarked against Statistics Canada SFS survey.
 - [Average Net Worth by Age](https://getnetworthcalculator.com/average-net-worth-by-age): Global guide comparing median vs average net worth across 20s, 30s, 40s, 50s, 60s.
