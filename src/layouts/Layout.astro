@@ -101,15 +101,19 @@ const {
 				</a>
 				
 				<!-- Nav Links & Theme Toggle -->
-				<div class="flex items-center gap-6">
-					<nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-700 dark:text-slate-400">
+				<div class="flex items-center gap-4 md:gap-6">
+					<nav class="hidden md:flex items-center gap-4 text-sm font-semibold text-slate-700 dark:text-slate-400">
 						<a href="/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Calculator</a>
+						<a href="/net-worth-by-age-india" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇮🇳 India</a>
+						<a href="/net-worth-by-age-australia" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇦🇺 Australia</a>
+						<a href="/net-worth-by-income" class="hover:text-slate-900 dark:hover:text-white transition-colors">📈 By Income</a>
 						<a href="/net-worth-by-age-usa" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇺🇸 USA</a>
 						<a href="/net-worth-by-age-uk" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇬🇧 UK</a>
 						<a href="/net-worth-by-age-canada" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇨🇦 Canada</a>
+						
 						<div class="relative group">
 							<button class="hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1">Resources <span class="text-xs">▾</span></button>
-							<div class="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+							<div class="absolute top-full right-0 mt-2 w-60 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
 								<a href="/average-net-worth-by-age" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">Average Net Worth by Age</a>
 								<a href="/net-worth-percentile" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">Net Worth Percentile Guide</a>
 								<a href="/median-vs-average-net-worth" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">Median vs Average Explained</a>
@@ -121,8 +125,12 @@ const {
 								<a href="/about" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">Data Methodology</a>
 							</div>
 						</div>
-						<a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
 					</nav>
+
+					<!-- Mobile Menu Drawer Toggle -->
+					<button id="mobile-menu-btn" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300">
+						<span class="text-xl">☰</span>
+					</button>
 
 					<!-- Dark/Light Theme Toggle Button -->
 					<button id="theme-toggle-btn" aria-label="Toggle Dark or Light Theme" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all shadow-sm">
@@ -137,6 +145,22 @@ const {
 					</button>
 				</div>
 			</div>
+
+			<!-- Mobile Navigation Drawer -->
+			<div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-6 py-4 space-y-2 text-sm font-semibold">
+				<a href="/" class="block py-2 text-slate-800 dark:text-slate-200">Home Calculator</a>
+				<a href="/net-worth-by-age-india" class="block py-2 text-orange-600 dark:text-orange-400 font-bold">🇮🇳 India Net Worth Calculator</a>
+				<a href="/net-worth-by-age-australia" class="block py-2 text-blue-600 dark:text-blue-400 font-bold">🇦🇺 Australia Net Worth Calculator</a>
+				<a href="/net-worth-by-income" class="block py-2 text-emerald-600 dark:text-emerald-400 font-bold">📈 Net Worth by Income Calculator</a>
+				<a href="/net-worth-by-age-usa" class="block py-2 text-slate-800 dark:text-slate-200">🇺🇸 USA Net Worth Calculator</a>
+				<a href="/net-worth-by-age-uk" class="block py-2 text-slate-800 dark:text-slate-200">🇬🇧 UK Net Worth Calculator</a>
+				<a href="/net-worth-by-age-canada" class="block py-2 text-slate-800 dark:text-slate-200">🇨🇦 Canada Net Worth Calculator</a>
+				<div class="h-px bg-slate-200 dark:bg-slate-800 my-2"></div>
+				<a href="/average-net-worth-by-age" class="block py-2 text-slate-700 dark:text-slate-400">Average Net Worth by Age</a>
+				<a href="/net-worth-percentile" class="block py-2 text-slate-700 dark:text-slate-400">Net Worth Percentile Guide</a>
+				<a href="/about" class="block py-2 text-slate-700 dark:text-slate-400">Data Methodology</a>
+				<a href="/contact" class="block py-2 text-slate-700 dark:text-slate-400">Contact Us</a>
+			</div>
 		</header>
 		
 		<!-- Main Content Slot -->
@@ -145,18 +169,51 @@ const {
 		</div>
 
 		<!-- Footer -->
-		<footer class="w-full border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-[#04070d] mt-24 py-10 text-sm text-slate-700 dark:text-slate-400 transition-colors duration-300">
-			<div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-				<div>
-					<p class="text-slate-900 dark:text-slate-300 font-semibold">© {new Date().getFullYear()} NetWorth. All rights reserved.</p>
-					<p class="text-xs text-slate-750 dark:text-slate-400 mt-1">Benchmarked using the official Board of Governors of the Federal Reserve System Survey of Consumer Finances (SCF).</p>
+		<footer class="w-full border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-[#04070d] mt-24 py-12 text-sm text-slate-700 dark:text-slate-400 transition-colors duration-300">
+			<div class="max-w-6xl mx-auto px-6 space-y-8">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+					<div class="space-y-2">
+						<div class="text-slate-900 dark:text-white font-extrabold text-lg">GetNetWorthCalculator.com</div>
+						<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+							Privacy-first global wealth benchmarking platform. Powered by official US Fed SCF, UK ONS, RBI India, ABS Australia, and StatsCan datasets.
+						</p>
+					</div>
+					<div>
+						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Regional Calculators</h3>
+						<ul class="space-y-2 text-xs">
+							<li><a href="/net-worth-by-age-india" class="hover:text-orange-500 transition-colors">🇮🇳 India Net Worth (₹)</a></li>
+							<li><a href="/net-worth-by-age-australia" class="hover:text-blue-500 transition-colors">🇦🇺 Australia Net Worth (AUD)</a></li>
+							<li><a href="/net-worth-by-income" class="hover:text-emerald-500 transition-colors">📈 Net Worth by Income</a></li>
+							<li><a href="/net-worth-by-age-usa" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇺🇸 USA Net Worth (USD)</a></li>
+							<li><a href="/net-worth-by-age-uk" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇬🇧 UK Net Worth (GBP)</a></li>
+							<li><a href="/net-worth-by-age-canada" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇨🇦 Canada Net Worth (CAD)</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Age Benchmarks</h3>
+						<ul class="space-y-2 text-xs">
+							<li><a href="/net-worth-by-age-30" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 30</a></li>
+							<li><a href="/net-worth-by-age-40" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 40</a></li>
+							<li><a href="/net-worth-by-age-50" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 50</a></li>
+							<li><a href="/average-net-worth-by-age" class="hover:text-slate-900 dark:hover:text-white transition-colors">Average Net Worth Guide</a></li>
+							<li><a href="/median-vs-average-net-worth" class="hover:text-slate-900 dark:hover:text-white transition-colors">Median vs Average Explained</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Trust &amp; Legal</h3>
+						<ul class="space-y-2 text-xs">
+							<li><a href="/about" class="hover:text-slate-900 dark:hover:text-white transition-colors">Data Methodology</a></li>
+							<li><a href="/privacy-policy" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a></li>
+							<li><a href="/terms" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a></li>
+							<li><a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact Us</a></li>
+						</ul>
+					</div>
 				</div>
-				<nav class="flex items-center gap-6 text-xs md:text-sm font-semibold" aria-label="Footer Navigation">
-					<a href="/about" class="hover:text-slate-900 dark:hover:text-white transition-colors">Federal Reserve Data</a>
-					<a href="/privacy-policy" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a>
-					<a href="/terms" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a>
-					<a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
-				</nav>
+
+				<div class="border-t border-slate-200 dark:border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+					<p>© {new Date().getFullYear()} Get Net Worth Calculator. All rights reserved.</p>
+					<p>🔒 100% Client-Side Calculations. No data stored.</p>
+				</div>
 			</div>
 		</footer>
 
@@ -166,6 +223,8 @@ const {
 		<script is:inline>
 			document.addEventListener('DOMContentLoaded', () => {
 				const toggleBtn = document.getElementById('theme-toggle-btn');
+				const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+				const mobileMenu = document.getElementById('mobile-menu');
 				
 				toggleBtn?.addEventListener('click', () => {
 					const isDark = document.documentElement.classList.contains('dark');
@@ -176,6 +235,10 @@ const {
 						document.documentElement.classList.add('dark');
 						localStorage.setItem('theme', 'dark');
 					}
+				});
+
+				mobileMenuBtn?.addEventListener('click', () => {
+					mobileMenu?.classList.toggle('hidden');
 				});
 			});
 		</script>
