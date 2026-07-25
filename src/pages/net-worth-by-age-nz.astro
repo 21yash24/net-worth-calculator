@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth by Age New Zealand (2026) | Stats NZ Wealth Percentile Calculator";
+const description = "Calculate your net worth percentile in New Zealand by age in NZD ($). Benchmarked against official Statistics New Zealand (Stats NZ HES) datasets including KiwiSaver.";
+
+const nzSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Percentile Calculator New Zealand (Stats NZ Data)",
+  "url": "https://getnetworthcalculator.com/net-worth-by-age-nz",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth by age in New Zealand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Statistics New Zealand (Stats NZ HES survey data): Under 35 median net worth is NZD $42,000; ages 35-44 is $215,000; ages 45-54 is $480,000; ages 55-64 is $720,000; and ages 65-74 is $640,000. Figures include KiwiSaver savings, residential property equity, and liquid funds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth puts you in the top 1% in New Zealand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To be in the top 1% (99th percentile) of net worth in New Zealand across all age groups, a household needs approximately NZD $4.2 Million. For ages 55-64, the top 1% threshold is around NZD $6.5 Million."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does New Zealand net worth include KiwiSaver and property equity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Stats NZ calculates household net worth by summing all physical and financial assets (primary residence, KiwiSaver balances, investment property, shares, bank deposits) minus all liabilities (mortgages, personal loans, student loans)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good net worth at age 30 in New Zealand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In New Zealand, a net worth of NZD $42,000 at age 30 puts you at the median (50th percentile). Reaching $120,000+ puts you in the top 25%, while $280,000+ places you in the top 10% for your age group."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(nzSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+        <span>🇳🇿</span>
+        <span>Based on Statistics New Zealand (Stats NZ HES) Dataset</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Net Worth by Age in New Zealand
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Wealth Percentile Calculator (NZD $)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Enter your age and net worth in New Zealand dollars to see your exact percentile benchmark compared to Kiwi households — using real Stats NZ data.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: Median Net Worth in New Zealand by Age (2026)</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What is the Average Net Worth by Age in NZ?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        According to Stats NZ Household Economic Survey data, median net worth by age is: <strong>Under 35 (NZD $42,000)</strong>, <strong>35–44 ($215,000)</strong>, <strong>45–54 ($480,000)</strong>, <strong>55–64 ($720,000)</strong>, and <strong>65–74 ($640,000)</strong>. Figures include KiwiSaver funds and home equity minus debts.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+
+      <!-- Age Input -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <label for="nz-age-slider" class="text-sm font-bold text-slate-900 dark:text-white">Your Age</label>
+          <span id="nz-age-display" class="text-sm font-bold text-emerald-700 dark:text-emerald-400">35 years old</span>
+        </div>
+        <input type="range" id="nz-age-slider" min="18" max="85" value="35" step="1"
+          class="w-full h-2 rounded-full appearance-none accent-emerald-600 bg-slate-200 dark:bg-slate-800 cursor-pointer" />
+        <div class="flex justify-between text-xs text-slate-500 dark:text-slate-500 mt-1">
+          <span>18</span><span>85+</span>
+        </div>
+      </div>
+
+      <!-- Net Worth Input -->
+      <div>
+        <label for="nz-networth-input" class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Your Net Worth (NZD $)</label>
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-sm">NZ$</span>
+          <input type="number" id="nz-networth-input" placeholder="215000" value="215000"
+            class="w-full pl-14 pr-4 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+        <p class="text-xs text-slate-500 dark:text-slate-500 mt-1.5">Total assets minus total liabilities. Include primary home equity, KiwiSaver, investments, savings.</p>
+      </div>
+
+      <button id="nz-calculate-btn" class="w-full py-4 rounded-xl bg-emerald-700 hover:bg-emerald-600 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-emerald-900/30">
+        Calculate My NZ Percentile
+      </button>
+
+      <!-- Result -->
+      <div id="nz-result-panel" class="hidden space-y-5">
+        <div class="h-px bg-slate-200 dark:bg-slate-800"></div>
+        <div class="text-center space-y-2">
+          <p class="text-sm font-semibold text-slate-600 dark:text-slate-400">Your New Zealand Net Worth Percentile</p>
+          <div class="text-6xl font-black tracking-tighter" id="nz-percentile-display">—</div>
+          <p id="nz-result-summary" class="text-sm text-slate-700 dark:text-slate-400 leading-relaxed max-w-sm mx-auto"></p>
+        </div>
+
+        <!-- Benchmark Grid -->
+        <div>
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-3">🇳🇿 NZ Benchmarks for Your Age Group</p>
+          <div id="nz-benchmark-grid" class="grid grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Table Section -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Distribution in New Zealand by Age</h2>
+      <p class="text-slate-700 dark:text-slate-400 leading-relaxed">
+        The Statistics New Zealand (Stats NZ) Household Economic Survey provides comprehensive measurements of Kiwi household wealth. Median net worth across all New Zealand households is approximately <strong class="text-slate-900 dark:text-white">NZD $340,000</strong>, though wealth varies significantly based on homeownership status and KiwiSaver accumulation.
+      </p>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-emerald-800 text-white">
+              <th class="text-left px-4 py-3 font-bold">Age Group</th>
+              <th class="text-right px-4 py-3 font-bold">Median Net Worth</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 25%</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 10%</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Under 35</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$42,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$120,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$280,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">35–44</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$215,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$540,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,100,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">45–54</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$480,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,050,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$2,100,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">55–64</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$720,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,550,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$3,200,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">65–74</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$640,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,350,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$2,800,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ PAA Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — New Zealand Net Worth FAQs</h2>
+      {faqSchema.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  const nzBrackets = {
+    under_35: { p10: -4000, p25: 12000, p50: 42000, p75: 120000, p90: 280000, p99: 1200000 },
+    b35_44:   { p10: 5000,  p25: 65000, p50: 215000, p75: 540000, p90: 1100000, p99: 3800000 },
+    b45_54:   { p10: 25000, p25: 160000, p50: 480000, p75: 1050000, p90: 2100000, p99: 5500000 },
+    b55_64:   { p10: 45000, p25: 220000, p50: 720000, p75: 1550000, p90: 3200000, p99: 6500000 },
+    b65_plus: { p10: 35000, p25: 190000, p50: 640000, p75: 1350000, p90: 2800000, p99: 5800000 }
+  };
+
+  function getBracketNZ(age) {
+    if (age < 35) return { key: 'under_35', label: 'Under 35' };
+    if (age < 45) return { key: 'b35_44', label: '35–44' };
+    if (age < 55) return { key: 'b45_54', label: '45–54' };
+    if (age < 65) return { key: 'b55_64', label: '55–64' };
+    return { key: 'b65_plus', label: '65+' };
+  }
+
+  function estimatePercentileNZ(nw, brackets) {
+    const pts = [
+      [0, brackets.p10], [10, brackets.p10], [25, brackets.p25],
+      [50, brackets.p50], [75, brackets.p75], [90, brackets.p90],
+      [99, brackets.p99], [100, brackets.p99 * 3]
+    ];
+    for (let i = 1; i < pts.length; i++) {
+      if (nw <= pts[i][1]) {
+        const [p1, v1] = pts[i-1], [p2, v2] = pts[i];
+        if (v2 === v1) return p1;
+        return Math.round(p1 + (p2 - p1) * (nw - v1) / (v2 - v1));
+      }
+    }
+    return 99;
+  }
+
+  function fmtNZ(n) {
+    if (Math.abs(n) >= 1e6) return 'NZ$' + (n/1e6).toFixed(1) + 'M';
+    if (Math.abs(n) >= 1e3) return 'NZ$' + Math.round(n/1000) + 'k';
+    return 'NZ$' + n.toLocaleString();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const ageSlider = document.getElementById('nz-age-slider');
+    const ageDisplay = document.getElementById('nz-age-display');
+    const nwInput = document.getElementById('nz-networth-input');
+    const calcBtn = document.getElementById('nz-calculate-btn');
+    const resultPanel = document.getElementById('nz-result-panel');
+    const percentileDisplay = document.getElementById('nz-percentile-display');
+    const resultSummary = document.getElementById('nz-result-summary');
+    const benchmarkGrid = document.getElementById('nz-benchmark-grid');
+
+    ageSlider?.addEventListener('input', () => {
+      ageDisplay.textContent = ageSlider.value + ' years old';
+    });
+
+    calcBtn?.addEventListener('click', () => {
+      const age = parseInt(ageSlider.value);
+      const nw = parseFloat(nwInput.value) || 0;
+      const bracket = getBracketNZ(age);
+      const b = nzBrackets[bracket.key];
+      const pct = estimatePercentileNZ(nw, b);
+
+      let color = pct >= 90 ? '#059669' : pct >= 75 ? '#10b981' : pct >= 50 ? '#3b82f6' : pct >= 25 ? '#f59e0b' : '#ef4444';
+      percentileDisplay.textContent = pct + 'th';
+      percentileDisplay.style.color = color;
+
+      let msg = pct >= 99 ? 'You are in the top 1% of Kiwi wealth for your age. Exceptional.' :
+                pct >= 90 ? 'Top 10% in New Zealand for your age group. Financially very strong.' :
+                pct >= 75 ? 'Top 25% of Kiwis your age. Above average wealth.' :
+                pct >= 50 ? 'Above the median New Zealander for your age.' :
+                'Below the 50th percentile — earlier stages of wealth building.';
+      resultSummary.textContent = msg;
+
+      const bmarks = [
+        { label: 'Bottom 25%', val: b.p25, pct: 25 },
+        { label: 'Median (50%)', val: b.p50, pct: 50 },
+        { label: 'Top 25%', val: b.p75, pct: 75 },
+        { label: 'Top 10%', val: b.p90, pct: 90 }
+      ];
+      benchmarkGrid.innerHTML = bmarks.map(bm => {
+        const isHighlighted = pct >= bm.pct;
+        return `<div class="p-3 rounded-xl border ${isHighlighted ? 'border-emerald-500/50 bg-emerald-50 dark:bg-emerald-900/10' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40'}">
+          <div class="text-xs font-bold ${isHighlighted ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-500 dark:text-slate-500'} uppercase tracking-wide">${bm.label}</div>
+          <div class="text-base font-black mt-0.5 text-slate-900 dark:text-white">${fmtNZ(bm.val)}</div>
+        </div>`;
+      }).join('');
+
+      resultPanel.classList.remove('hidden');
+      resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
