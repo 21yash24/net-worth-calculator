@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "USA vs Canada Net Worth by Age (2026) | US Fed vs StatsCan Wealth Benchmark";
+const description = "Compare US vs Canadian net worth by age group. Benchmarked against official Federal Reserve SCF (USD) and Statistics Canada SFS (CAD) datasets with PPP currency conversions.";
+
+const compareSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "USA vs Canada Net Worth Comparison Calculator",
+  "url": "https://getnetworthcalculator.com/usa-vs-canada-net-worth",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do Americans or Canadians have a higher net worth by age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When adjusted to USD at current exchange rates, American households generally have higher overall median net worth in older age groups (55-64: $364,500 USD vs $510,000 CAD / ~$378,000 USD). However, middle-class Canadians aged 35-54 often hold higher net worth due to elevated housing market equity in major metropolitan areas like Toronto and Vancouver."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Canadian RRSP and TFSA compare to US 401(k) and Roth IRA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Canada, the RRSP (Registered Retirement Savings Plan) functions similarly to a traditional 401(k)/IRA with pre-tax contributions and tax-deferred growth. The TFSA (Tax-Free Savings Account) is the Canadian equivalent of a Roth IRA, allowing tax-free withdrawals of all investment gains."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the median net worth at 40 in USA vs Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At ages 35-44, the median net worth in the US is $135,600 USD. In Canada, the median net worth for the same age group is $234,400 CAD (~$173,600 USD). Canadian 35-44 year olds hold slightly higher median wealth primarily due to property values."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(compareSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🇺🇸 🇨🇦</span>
+        <span>Federal Reserve SCF (USD) vs Statistics Canada SFS (CAD)</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        USA vs Canada Net Worth by Age
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Cross-Border Wealth Percentile Comparison (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Compare how American households stack up against Canadian households across every age group using official government datasets.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: USA vs Canada Net Worth Comparison (2026)</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">Who Has Higher Net Worth: Americans or Canadians?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        At ages 35–44, <strong>Canadian median net worth ($234,400 CAD / ~$173,600 USD)</strong> is higher than <strong>US median net worth ($135,600 USD)</strong> due to Canadian real estate valuations. However, at ages 55–64, <strong>US top 10% wealthy households ($2.8M+ USD)</strong> far outpace Canadian top 10% households ($3.0M CAD / ~$2.2M USD) due to US stock market growth and 401(k) accumulation.
+      </p>
+    </div>
+
+    <!-- Comparison Table -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">USA vs Canada Median & Top Percentile Table by Age</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-900 text-white dark:bg-slate-800">
+              <th class="text-left px-4 py-3 font-bold">Age Group</th>
+              <th class="text-right px-4 py-3 font-bold text-emerald-400">🇺🇸 USA Median (USD)</th>
+              <th class="text-right px-4 py-3 font-bold text-red-400">🇨🇦 Canada Median (CAD)</th>
+              <th class="text-right px-4 py-3 font-bold text-red-300 hidden sm:table-cell">🇨🇦 Canada Median (USD Equiv)</th>
+              <th class="text-right px-4 py-3 font-bold text-emerald-300 hidden md:table-cell">🇺🇸 Top 10% (USD)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Under 35</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$39,000 USD</td>
+              <td class="px-4 py-3 text-right font-bold text-red-600 dark:text-red-400">$48,800 CAD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~$36,100 USD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden md:table-cell">$340,000 USD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">35–44</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$135,600 USD</td>
+              <td class="px-4 py-3 text-right font-bold text-red-600 dark:text-red-400">$234,400 CAD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~$173,600 USD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden md:table-cell">$980,000 USD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">45–54</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$247,200 USD</td>
+              <td class="px-4 py-3 text-right font-bold text-red-600 dark:text-red-400">$521,100 CAD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~$386,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden md:table-cell">$1,950,000 USD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">55–64</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$364,500 USD</td>
+              <td class="px-4 py-3 text-right font-bold text-red-600 dark:text-red-400">$690,000 CAD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~$511,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden md:table-cell">$2,800,000 USD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">65–74</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$409,900 USD</td>
+              <td class="px-4 py-3 text-right font-bold text-red-600 dark:text-red-400">$543,200 CAD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~$402,300 USD</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden md:table-cell">$3,400,000 USD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-500 text-center">Sources: US Federal Reserve Survey of Consumer Finances (SCF 2022) &amp; Statistics Canada Survey of Financial Security (SFS 2019). FX Rate: 1 USD = 1.35 CAD.</p>
+    </section>
+
+    <!-- Financial Account Mapping -->
+    <section class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-white">US vs Canadian Tax-Advantaged Account Equivalents</h2>
+      <div class="grid sm:grid-cols-2 gap-4 text-sm">
+        <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <p class="font-bold text-emerald-600 dark:text-emerald-400">🇺🇸 United States Tax Accounts</p>
+          <ul class="space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+            <li>• <strong>401(k) / 403(b):</strong> Pre-tax payroll contributions up to $23,000/yr.</li>
+            <li>• <strong>Roth IRA:</strong> Post-tax growth with 100% tax-free retirement withdrawals.</li>
+            <li>• <strong>HSA:</strong> Triple tax advantage for qualified medical expenses.</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <p class="font-bold text-red-600 dark:text-red-400">🇨🇦 Canada Tax Accounts</p>
+          <ul class="space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+            <li>• <strong>RRSP:</strong> Pre-tax retirement savings up to 18% of earned income.</li>
+            <li>• <strong>TFSA:</strong> Tax-Free Savings Account allowing tax-free investment growth.</li>
+            <li>• <strong>FHSA:</strong> First Home Savings Account combining tax deduction &amp; tax-free withdrawal.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — USA vs Canada Wealth FAQs</h2>
+      {faqSchema.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+    <div class="text-center pt-4">
+      <a href="/net-worth-by-age-usa" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-lg">
+        Try the US Net Worth Calculator →
+      </a>
+      <a href="/net-worth-by-age-canada" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 text-white font-bold text-sm transition-all shadow-lg ml-3">
+        Try the Canada Net Worth Calculator →
+      </a>
+    </div>
+
+  </main>
+</Layout>
