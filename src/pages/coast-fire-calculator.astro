@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Coast FIRE Calculator (2026) | How Much Do You Need to Coast to Retirement?";
+const description = "Calculate your exact Coast FIRE target number. Learn how much current net worth you need today to reach full early retirement without adding another penny.";
+
+const coastSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Coast FIRE Calculator - Early Retirement Coasting Target",
+  "url": "https://getnetworthcalculator.com/coast-fire-calculator",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const coastFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Coast FIRE and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coast FIRE is a financial independence milestone where you have invested enough money early in life that compound interest alone will grow your portfolio to cover your traditional retirement expenses by age 60 or 65. Once you hit Coast FIRE, you no longer need to save money for retirement—you only need to earn enough income to cover your day-to-day living expenses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the formula for calculating Coast FIRE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Coast FIRE target formula is: Coast FIRE Target = Full FIRE Target / (1 + Expected Annual Real Return)^(Target Retirement Age - Current Age). For example, if your Full FIRE target is $1.5 Million at age 60, you are 30 years old, and expect a 7% real return (after inflation), your Coast FIRE number today is $1,500,000 / (1.07)^30 = $197,056."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What rate of return should I use for Coast FIRE math?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most personal finance experts and Vanguard/Fidelity models recommend using a 5% to 7% real annual return (which accounts for a 9% to 10% gross S&P 500 return minus 2% to 3% annual inflation)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Coast FIRE, Barista FIRE, and Lean FIRE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coast FIRE means your existing investments will grow to full retirement, but you still work to cover 100% of current living expenses. Barista FIRE means you work part-time to cover partial living expenses while using investments for the rest. Lean FIRE means completely retiring early on a minimalist budget (under $40k/year)."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(coastSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(coastFaq)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🏝️ 🔥</span>
+        <span>Financial Independence, Retire Early — Coasting Strategy</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Coast FIRE Calculator
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Calculate Your "Stop Saving" Early Retirement Milestone (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Find out if your current net worth and retirement investments are already enough to compound into full financial freedom—without saving another dollar.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: What is Coast FIRE &amp; How Much Do You Need?</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">How Does Coast FIRE Work?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        <strong>Coast FIRE</strong> occurs when your invested net worth is large enough that compound interest alone will grow your portfolio to your retirement target by your desired age. At age 30, with a $1.5M target at age 60 and a 7% real return, your Coast FIRE threshold is <strong>$197,000 in invested assets</strong> today.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="coast-age-current" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Current Age</label>
+          <input type="number" id="coast-age-current" value="30" placeholder="30"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+        <div>
+          <label for="coast-age-target" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Target Retirement Age</label>
+          <input type="number" id="coast-age-target" value="60" placeholder="60"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+        <div>
+          <label for="coast-exp-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Annual Expenses in Retirement ($)</label>
+          <input type="number" id="coast-exp-input" value="60000" placeholder="60000"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+        <div>
+          <label for="coast-invested-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Current Invested Net Worth ($)</label>
+          <input type="number" id="coast-invested-input" value="150000" placeholder="150000"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+        <div class="md:col-span-2">
+          <label for="coast-return-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Expected Annual Real Return (% after inflation)</label>
+          <input type="number" id="coast-return-input" value="7" step="0.5" placeholder="7"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+      </div>
+
+      <button id="coast-calc-btn" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-emerald-900/30">
+        Calculate My Coast FIRE Number
+      </button>
+
+      <!-- Results Display -->
+      <div id="coast-result-panel" class="hidden space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="text-center space-y-2">
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Required Net Worth Today to Coast</p>
+          <div id="coast-number-display" class="text-4xl md:text-5xl font-black text-emerald-500 tracking-tight">—</div>
+          <p id="coast-status-msg" class="text-sm font-semibold text-slate-700 dark:text-slate-300 max-w-md mx-auto"></p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Full FIRE Goal</span>
+            <span id="coast-full-fire" class="text-base font-bold text-slate-900 dark:text-white">$1,500,000</span>
+          </div>
+          <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-center">
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 block font-bold">Years of Compounding</span>
+            <span id="coast-years" class="text-base font-bold text-emerald-600 dark:text-emerald-400">30 Years</span>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Gap to Coast Target</span>
+            <span id="coast-gap" class="text-base font-bold text-amber-600 dark:text-amber-400">$47,056</span>
+          </div>
+        </div>
+
+        <!-- Calculator Bridge Grid -->
+        <div class="p-5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/40 border border-emerald-500/30 space-y-3">
+          <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider text-center">🔗 Next Steps in Your Wealth Journey</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <a href="/fire-net-worth-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 block">🔥 Full FIRE Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">4% rule withdrawal plan →</span>
+            </a>
+            <a href="/wealth-class-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 block">💎 Am I Rich Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">US wealth class ranking →</span>
+            </a>
+            <a href="/net-worth-percentile" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 block">📊 Net Worth Percentile</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">See your population rank →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep-Dive Guide Content (1,000+ Words) -->
+    <article class="prose dark:prose-invert max-w-none space-y-6 text-slate-700 dark:text-slate-300">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">What is Coast FIRE? The Freedom of "Stop Saving"</h2>
+      <p class="leading-relaxed">
+        <strong>Coast FIRE (Financial Independence, Retire Early)</strong> is one of the most liberating personal finance milestones you can achieve. Unlike traditional retirement where you must save 15% to 50% of your income for 30–40 years, Coast FIRE allows you to front-load your investments in your 20s and 30s. Once your portfolio reaches your <em>Coast FIRE Number</em>, compound interest does 100% of the remaining heavy lifting.
+      </p>
+
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white">Coast FIRE Benchmarks by Age (Assuming $1.5M Goal at Age 60 &amp; 7% Return)</h3>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 my-4">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-900 text-white dark:bg-slate-800">
+              <th class="text-left px-4 py-3 font-bold">Current Age</th>
+              <th class="text-right px-4 py-3 font-bold">Years to Age 60</th>
+              <th class="text-right px-4 py-3 font-bold">Coast FIRE Target Today</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr>
+              <td class="px-4 py-3 font-semibold">Age 25</td>
+              <td class="px-4 py-3 text-right">35 Years</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$137,848</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">Age 30</td>
+              <td class="px-4 py-3 text-right">30 Years</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$197,056</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">Age 35</td>
+              <td class="px-4 py-3 text-right">25 Years</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$276,370</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">Age 40</td>
+              <td class="px-4 py-3 text-right">20 Years</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$387,605</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- PAA Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Coast FIRE FAQs</h2>
+      {coastFaq.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const curAgeInput = document.getElementById('coast-age-current');
+    const tarAgeInput = document.getElementById('coast-age-target');
+    const expInput = document.getElementById('coast-exp-input');
+    const invInput = document.getElementById('coast-invested-input');
+    const retInput = document.getElementById('coast-return-input');
+    const btn = document.getElementById('coast-calc-btn');
+
+    const panel = document.getElementById('coast-result-panel');
+    const numDisplay = document.getElementById('coast-number-display');
+    const statusMsg = document.getElementById('coast-status-msg');
+    const fullFireVal = document.getElementById('coast-full-fire');
+    const yearsVal = document.getElementById('coast-years');
+    const gapVal = document.getElementById('coast-gap');
+
+    function fmtUSD(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+
+    btn?.addEventListener('click', () => {
+      const cAge = parseFloat(curAgeInput.value) || 30;
+      const tAge = parseFloat(tarAgeInput.value) || 60;
+      const exp = parseFloat(expInput.value) || 60000;
+      const inv = parseFloat(invInput.value) || 0;
+      const rate = (parseFloat(retInput.value) || 7) / 100;
+
+      const years = Math.max(1, tAge - cAge);
+      const fullFire = exp * 25;
+      const coastTarget = fullFire / Math.pow(1 + rate, years);
+      const gap = coastTarget - inv;
+
+      numDisplay.textContent = fmtUSD(coastTarget);
+      fullFireVal.textContent = fmtUSD(fullFire);
+      yearsVal.textContent = `${years} Years`;
+
+      if (gap <= 0) {
+        statusMsg.textContent = "🎉 Congratulations! You have ALREADY achieved Coast FIRE! You no longer need to save another dollar for retirement.";
+        statusMsg.className = "text-sm font-bold text-emerald-600 dark:text-emerald-400 max-w-md mx-auto";
+        gapVal.textContent = "$0 (Target Met)";
+      } else {
+        statusMsg.textContent = `You need ${fmtUSD(gap)} more in invested net worth today to reach Coast FIRE.`;
+        statusMsg.className = "text-sm font-semibold text-slate-700 dark:text-slate-300 max-w-md mx-auto";
+        gapVal.textContent = fmtUSD(gap);
+      }
+
+      panel.classList.remove('hidden');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>

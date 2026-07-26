@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Millionaire Calculator (2026) | How Long Until You Reach $1,000,000 Net Worth?";
+const description = "Calculate how many years it will take you to become a millionaire based on your starting net worth, monthly savings, and annual investment return.";
+
+const milSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Millionaire Calculator - Timeline to $1 Million Net Worth",
+  "url": "https://getnetworthcalculator.com/millionaire-calculator",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const milFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to become a millionaire on average?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the Ramsey Solutions National Study of Millionaires, 79% of US millionaires achieved a $1M net worth through consistent 401(k) / Roth IRA investing over 28 years. However, saving $1,000/month at an 8% annual return will make you a millionaire in 24 years starting from $0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do I need to save monthly to become a millionaire in 10, 20, or 30 years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Assuming an 8% average annual market return: To become a millionaire in 10 years requires saving $5,400/month; in 20 years requires saving $1,700/month; and in 30 years requires saving $670/month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does home equity count toward being a millionaire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Total Net Worth is calculated as Total Assets (home equity + retirement + savings) minus Total Liabilities. However, for financial independence and FIRE planning, 'Investable Net Worth' (excluding primary home equity) is often used."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(milSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(milFaq)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-600 dark:text-purple-400 text-xs font-semibold">
+        <span>💰 📈</span>
+        <span>US Wealth Milestone &amp; Investment Compounder</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Millionaire Calculator
+        <span class="block text-purple-600 dark:text-purple-400 text-xl md:text-2xl mt-1 font-bold">Calculate How Long Until You Hit $1,000,000 Net Worth (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Calculate your exact timeline to reach $1 Million net worth based on your current starting balance, monthly contributions, and expected investment growth.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-purple-500/10 dark:bg-purple-950/30 border border-purple-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: How Long to Become a Millionaire?</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What Does It Take to Reach $1,000,000 Net Worth in America?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        Starting from $0 at an 8% return, saving <strong>$670/month makes you a millionaire in 30 years</strong>, <strong>$1,700/month in 20 years</strong>, and <strong>$5,400/month in 10 years</strong>. Reaching $1M puts a household in the top 8.5% of US wealth.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="mil-start-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Starting Net Worth ($)</label>
+          <input type="number" id="mil-start-input" value="50000" placeholder="50000"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
+        </div>
+        <div>
+          <label for="mil-save-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Monthly Contribution ($)</label>
+          <input type="number" id="mil-save-input" value="1000" placeholder="1000"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
+        </div>
+        <div>
+          <label for="mil-rate-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Expected Annual Return (%)</label>
+          <input type="number" id="mil-rate-input" value="8" step="0.5" placeholder="8"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
+        </div>
+        <div>
+          <label for="mil-target-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Target Wealth Goal ($)</label>
+          <input type="number" id="mil-target-input" value="1000000" placeholder="1000000"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
+        </div>
+      </div>
+
+      <button id="mil-calc-btn" class="w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-purple-900/30">
+        Calculate Time to Millionaire Status
+      </button>
+
+      <!-- Result Panel -->
+      <div id="mil-result-panel" class="hidden space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="text-center space-y-2">
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Time Required to Hit Your Goal</p>
+          <div id="mil-years-display" class="text-4xl md:text-5xl font-black text-purple-500 tracking-tight">—</div>
+          <p id="mil-summary-msg" class="text-sm font-semibold text-slate-700 dark:text-slate-300 max-w-md mx-auto"></p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Total Contributions</span>
+            <span id="mil-total-contrib" class="text-base font-bold text-slate-900 dark:text-white">$288,000</span>
+          </div>
+          <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-300 dark:border-purple-800 text-center">
+            <span class="text-xs text-purple-600 dark:text-purple-400 block font-bold">Interest Earned</span>
+            <span id="mil-interest-earned" class="text-base font-bold text-purple-600 dark:text-purple-400">$662,000</span>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Compound Growth Multiplier</span>
+            <span id="mil-multiplier" class="text-base font-bold text-emerald-600 dark:text-emerald-400">3.4x</span>
+          </div>
+        </div>
+
+        <!-- Calculator Bridge Grid -->
+        <div class="p-5 rounded-2xl bg-purple-500/10 dark:bg-purple-950/40 border border-purple-500/30 space-y-3">
+          <p class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider text-center">🔗 Continue Building Your Wealth Strategy</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <a href="/wealth-class-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-purple-500 block">💎 Am I Rich? Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">HNW &amp; UHNW status check →</span>
+            </a>
+            <a href="/coast-fire-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-purple-500 block">🏝️ Coast FIRE Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">Stop saving target →</span>
+            </a>
+            <a href="/net-worth-by-age-usa" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-purple-500 block">🇺🇸 US Age Benchmarks</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">Compare with US peers →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAA Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Millionaire Calculator FAQs</h2>
+      {milFaq.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const startInput = document.getElementById('mil-start-input');
+    const saveInput = document.getElementById('mil-save-input');
+    const rateInput = document.getElementById('mil-rate-input');
+    const targetInput = document.getElementById('mil-target-input');
+    const btn = document.getElementById('mil-calc-btn');
+
+    const panel = document.getElementById('mil-result-panel');
+    const yearsDisplay = document.getElementById('mil-years-display');
+    const summaryMsg = document.getElementById('mil-summary-msg');
+    const totalContribVal = document.getElementById('mil-total-contrib');
+    const interestEarnedVal = document.getElementById('mil-interest-earned');
+    const multiplierVal = document.getElementById('mil-multiplier');
+
+    function fmtUSD(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+
+    btn?.addEventListener('click', () => {
+      const P = parseFloat(startInput.value) || 0;
+      const PMT = parseFloat(saveInput.value) || 0;
+      const r = (parseFloat(rateInput.value) || 8) / 100 / 12;
+      const target = parseFloat(targetInput.value) || 1000000;
+
+      let months = 0;
+      let balance = P;
+      let totalSaved = P;
+
+      while (balance < target && months < 1200) {
+        balance = balance * (1 + r) + PMT;
+        totalSaved += PMT;
+        months++;
+      }
+
+      const years = (months / 12).toFixed(1);
+      const interestEarned = Math.max(0, balance - totalSaved);
+      const mult = totalSaved > 0 ? (balance / totalSaved).toFixed(1) : '1.0';
+
+      yearsDisplay.textContent = `${years} Years (${months} Months)`;
+      summaryMsg.textContent = `At $${PMT.toLocaleString()}/mo with an 8% return, you will hit $${(target/1000000).toFixed(1)}M in ${years} years.`;
+      totalContribVal.textContent = fmtUSD(totalSaved);
+      interestEarnedVal.textContent = fmtUSD(interestEarned);
+      multiplierVal.textContent = `${mult}x`;
+
+      panel.classList.remove('hidden');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
