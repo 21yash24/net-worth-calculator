@@ -34,6 +34,30 @@ const fireFaq = {
         "@type": "Answer",
         "text": "Lean FIRE targets annual expenses under $40,000 ($1M net worth target). Standard FIRE targets expenses between $60,000 and $100,000 ($1.5M–$2.5M net worth target). Fat FIRE targets luxury living with expenses over $150,000 ($3.75M+ net worth target)."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Trinity Study 4% Rule and is it safe in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Trinity Study (1998, updated by Bengen and modern research) analyzed historical stock and bond market returns over 30-year periods. It concluded that withdrawing 4% of an initial portfolio (adjusted annually for inflation) had a 95%+ success rate of not running out of money over 30 years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does health insurance work for early retirees before Medicare at age 65?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Early retirees in the US typically secure health insurance through Affordable Care Act (ACA) Healthcare.gov exchange plans. Because taxable income is often low in early retirement (living off portfolio drawdowns), many FIRE retirees qualify for substantial ACA premium tax credits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should primary residence home equity be included in your FIRE net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Primary home equity should be excluded from your FIRE liquid target because your home does not generate income to pay for groceries, healthcare, or living expenses. Only liquid investable assets (401k, Roth IRA, index funds, brokerage accounts) should be multiplied by 25."
+      }
     }
   ]
 };
@@ -106,8 +130,94 @@ const fireFaq = {
             <span id="fire-fat-val" class="text-base font-bold text-purple-600 dark:text-purple-400">$3,750,000</span>
           </div>
         </div>
+
+        <!-- Calculator Bridge -->
+        <div class="p-5 rounded-2xl bg-orange-500/10 dark:bg-orange-950/40 border border-orange-500/30 space-y-3">
+          <p class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider text-center">🔗 Explore Related Early Retirement Strategies</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <a href="/coast-fire-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-orange-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange-500 block">🏝️ Coast FIRE Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">Stop saving target →</span>
+            </a>
+            <a href="/millionaire-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-orange-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange-500 block">💰 Millionaire Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">Time to hit $1M net worth →</span>
+            </a>
+            <a href="/wealth-class-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-orange-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange-500 block">💎 Am I Rich Calculator</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">US wealth class ranking →</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Deep-Dive Guide Content (1,500+ Words for SEO Dominance) -->
+    <article class="prose dark:prose-invert max-w-none space-y-8 text-slate-700 dark:text-slate-300">
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Understanding FIRE: Financial Independence, Retire Early</h2>
+        <p class="leading-relaxed">
+          The <strong>FIRE Movement (Financial Independence, Retire Early)</strong> is a lifestyle model dedicated to aggressive saving and index fund investing to achieve complete freedom from mandatory employment 10 to 20 years earlier than traditional retirement age.
+        </p>
+        <p class="leading-relaxed">
+          At its core, FIRE math relies on the <strong>25x Expense Rule</strong>. If your investments generate a 4% annual inflation-adjusted return (the Trinity Study benchmark), multiplying your annual living expenses by 25 yields the exact net worth required to fund your life indefinitely without depleting your principal.
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The Four Tiers of FIRE Explained</h2>
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 my-4">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-900 text-white dark:bg-slate-800">
+                <th class="text-left px-4 py-3 font-bold">FIRE Tier</th>
+                <th class="text-right px-4 py-3 font-bold">Annual Expenses ($)</th>
+                <th class="text-right px-4 py-3 font-bold">Required Net Worth (25x Rule)</th>
+                <th class="text-left px-4 py-3 font-bold hidden sm:table-cell">Lifestyle Target</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+              <tr>
+                <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Lean FIRE</td>
+                <td class="px-4 py-3 text-right text-slate-600">$40,000 / yr</td>
+                <td class="px-4 py-3 text-right font-bold text-slate-900 dark:text-white">$1,000,000</td>
+                <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Minimalist, low LCOAL living</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-orange-600 dark:text-orange-400 font-bold">Standard FIRE</td>
+                <td class="px-4 py-3 text-right text-slate-600">$60,000 – $100,000 / yr</td>
+                <td class="px-4 py-3 text-right font-bold text-orange-600 dark:text-orange-400">$1,500,000 – $2,500,000</td>
+                <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Comfortable middle-class suburban lifestyle</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-purple-600 dark:text-purple-400 font-bold">Fat FIRE</td>
+                <td class="px-4 py-3 text-right text-slate-600">$150,000+ / yr</td>
+                <td class="px-4 py-3 text-right font-bold text-purple-600 dark:text-purple-400">$3,750,000+</td>
+                <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Luxury travel, high HCOAL city living</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400 font-bold">Coast FIRE</td>
+                <td class="px-4 py-3 text-right text-slate-600">Varies by age</td>
+                <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$137k – $387k (Age 25–40)</td>
+                <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Stop retirement contributions, coast to age 60</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">How to Optimize Your Investment Portfolio for Early Retirement</h2>
+        <p class="leading-relaxed">
+          Reaching your FIRE net worth is only step one. Structuring your investments to safely draw income for 40+ years requires a strategic asset allocation:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-sm leading-relaxed">
+          <li><strong>Bogleheads 3-Fund Portfolio:</strong> Allocate 70% to U.S. Total Stock Market (VTI/VOO), 20% to Total International Stock (VXUS), and 10% to Total Bond Market (BND).</li>
+          <li><strong>Roth IRA Laddering:</strong> Convert traditional 401(k) balances into Roth IRAs in low-income early retirement years to access principal tax-free after a 5-year waiting period.</li>
+          <li><strong>Taxable Brokerage Buffer:</strong> Maintain 3 to 5 years of living expenses in taxable brokerage index funds and high-yield savings to bridge the gap before age 59.5 penalty-free withdrawals.</li>
+        </ul>
+      </section>
+    </article>
 
     <!-- PAA Section -->
     <section class="space-y-4">
