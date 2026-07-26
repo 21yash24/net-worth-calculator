@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Am I Rich? Wealth Class Calculator (2026) | HNW & UHNW Percentile Tier";
+const description = "Calculate your wealth class tier (Middle Class, HNW, VHNW, UHNW) based on official US Federal Reserve, UK ONS, and global wealth distribution benchmarks.";
+
+const classSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Am I Rich? Wealth Class & Tier Calculator",
+  "url": "https://getnetworthcalculator.com/wealth-class-calculator",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const classFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is considered High Net Worth (HNWI)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In global private banking, a High Net Worth Individual (HNWI) is defined as someone with liquid investable assets of $1,000,000 USD or more, excluding primary residence real estate equity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth makes you Ultra High Net Worth (UHNW)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An Ultra High Net Worth Individual (UHNWI) is defined as someone with investable net worth exceeding $30,000,000 USD. Very High Net Worth (VHNW) status applies to individuals with $5,000,000 to $30,000,000 USD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth qualifies as Upper Middle Class?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the United States, an upper-middle-class household typically has a net worth between $500,000 and $1,500,000 USD, placing them in the 75th to 90th percentile for their age bracket."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(classSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(classFaq)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-semibold">
+        <span>💎</span>
+        <span>Private Banking HNW &amp; UHNW Tier Classification</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Am I Rich? Wealth Class Calculator
+        <span class="block text-amber-600 dark:text-amber-400 text-xl md:text-2xl mt-1 font-bold">Discover Your Global Wealth Tier (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Find out if you are Middle Class, Upper Middle Class, High Net Worth (HNW), or Ultra High Net Worth (UHNW) based on official Federal Reserve &amp; private banking standards.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: What Net Worth Defines Each Wealth Class? (2026)</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What Net Worth Threshold Makes You Rich?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        Private banking tiers define wealth as: <strong>Middle Class ($100k–$500k USD)</strong>, <strong>Upper Middle Class ($500k–$1.5M USD)</strong>, <strong>High Net Worth / HNW ($1M–$5M USD investable)</strong>, <strong>Very High Net Worth / VHNW ($5M–$30M USD)</strong>, and <strong>Ultra High Net Worth / UHNW ($30M+ USD)</strong>.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <div>
+        <label for="class-nw-input" class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Enter Your Total Net Worth (USD $)</label>
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-base">$</span>
+          <input type="number" id="class-nw-input" placeholder="750000" value="750000"
+            class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
+        </div>
+      </div>
+
+      <button id="class-calc-btn" class="w-full py-4 rounded-xl bg-amber-600 hover:bg-amber-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-amber-900/30">
+        Determine My Wealth Class
+      </button>
+
+      <div id="class-result-panel" class="hidden space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <div class="text-center space-y-2">
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Your Classified Wealth Tier</p>
+          <div id="class-tier-title" class="text-4xl font-black text-amber-500 tracking-tight">—</div>
+          <p id="class-tier-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier Breakdown Table -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Global Private Banking Wealth Tiers</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-900 text-white dark:bg-slate-800">
+              <th class="text-left px-4 py-3 font-bold">Wealth Class Tier</th>
+              <th class="text-right px-4 py-3 font-bold">Net Worth Threshold (USD)</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Global Population %</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Emerging / Mass Market</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400">Under $100,000</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~84.0%</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Middle Class</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400">$100,000 – $500,000</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~11.5%</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400 font-bold">Upper Middle Class</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 font-bold">$500,000 – $1,500,000</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~3.2%</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400 font-bold">High Net Worth (HNW)</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$1,000,000 – $5,000,000</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~1.1%</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-amber-500 font-extrabold">Very High Net Worth (VHNW)</td>
+              <td class="px-4 py-3 text-right text-amber-500 font-extrabold">$5,000,000 – $30,000,000</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~0.1%</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-purple-500 font-black">Ultra High Net Worth (UHNW)</td>
+              <td class="px-4 py-3 text-right text-purple-500 font-black">$30,000,000+</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">&lt; 0.01%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Wealth Class FAQs</h2>
+      {classFaq.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('class-nw-input');
+    const btn = document.getElementById('class-calc-btn');
+    const panel = document.getElementById('class-result-panel');
+    const title = document.getElementById('class-tier-title');
+    const desc = document.getElementById('class-tier-desc');
+
+    btn?.addEventListener('click', () => {
+      const nw = parseFloat(input.value) || 0;
+      let tier = '', color = '', text = '';
+
+      if (nw >= 30000000) {
+        tier = 'Ultra High Net Worth (UHNW)';
+        color = '#a855f7';
+        text = 'You belong to the top 0.01% of global wealth holders. Private family offices and institutional wealth preservation strategies apply.';
+      } else if (nw >= 5000000) {
+        tier = 'Very High Net Worth (VHNW)';
+        color = '#f59e0b';
+        text = 'Top 0.1% of global wealth holders. Your net worth provides substantial financial freedom and multi-generational capital.';
+      } else if (nw >= 1000000) {
+        tier = 'High Net Worth (HNW)';
+        color = '#d97706';
+        text = 'Top 1.1% of global wealth holders. Reaching $1M+ net worth qualifies you for private banking status.';
+      } else if (nw >= 500000) {
+        tier = 'Upper Middle Class';
+        color = '#10b981';
+        text = 'Top 4% of global wealth. You have achieved strong financial security and substantial asset accumulation.';
+      } else if (nw >= 100000) {
+        tier = 'Middle Class';
+        color = '#3b82f6';
+        text = 'Above the global average. You have established positive equity in assets and retirement accounts.';
+      } else {
+        tier = 'Emerging Wealth / Mass Market';
+        color = '#64748b';
+        text = 'Early stages of capital building. Focus on compounding retirement contributions and paying down debt.';
+      }
+
+      title.textContent = tier;
+      title.style.color = color;
+      desc.textContent = text;
+      panel.classList.remove('hidden');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
