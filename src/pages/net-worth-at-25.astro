@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth at 25 (2026) | US & Canada Wealth Percentile Benchmark";
+const description = "Calculate your net worth percentile at age 25 in the US and Canada. Benchmarked against official Federal Reserve (SCF) and Statistics Canada (SFS) datasets.";
+
+const schema25 = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Percentile at Age 25 Calculator",
+  "url": "https://getnetworthcalculator.com/net-worth-at-25",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const faq25 = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth at age 25 in the US and Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the US Federal Reserve Survey of Consumer Finances (SCF) and Statistics Canada (SFS), the median net worth at age 25 is approximately $10,000 to $15,000 USD ($18,000 to $25,000 CAD). The top 10% threshold for age 25 is $120,000 USD ($155,000 CAD)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good net worth at 25?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A net worth of $25,000+ at age 25 puts you in the top 35% of young adults. Reaching $100,000+ by 25 places you in the top 10%, which is exceptional considering student loan liabilities typical for recent college graduates."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema25)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faq25)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🇺🇸 🇨🇦</span>
+        <span>Federal Reserve (SCF) &amp; Statistics Canada (SFS) Age 25 Data</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Net Worth at Age 25
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">US &amp; Canada Wealth Percentile Benchmark (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        See how your net worth at 25 compares to your peers in the United States and Canada using official government population datasets.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: Average Net Worth at Age 25 (2026)</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What is the Median Net Worth at 25 in US &amp; Canada?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        In the US, median net worth at 25 is <strong>$12,500 USD</strong> (top 10% is <strong>$120,000 USD</strong>). In Canada, median net worth at 25 is <strong>$21,000 CAD</strong>. Reaching a net worth of <strong>$50,000+</strong> at 25 places you in the top 20% of young adults.
+      </p>
+    </div>
+
+    <!-- Data Table -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Percentile Table at Age 25</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-emerald-800 text-white">
+              <th class="text-left px-4 py-3 font-bold">Percentile Tier</th>
+              <th class="text-right px-4 py-3 font-bold">🇺🇸 US Net Worth (USD)</th>
+              <th class="text-right px-4 py-3 font-bold">🇨🇦 Canada Net Worth (CAD)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">25th Percentile (Starting out)</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$2,100 USD</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$4,500 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">50th Percentile (Median)</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$12,500 USD</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$21,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">75th Percentile (Above Average)</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$45,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$62,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">90th Percentile (Top 10%)</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$120,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$155,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">99th Percentile (Top 1%)</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$450,000 USD</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$580,000 CAD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PAA Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Net Worth at 25 FAQs</h2>
+      {faq25.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+    <div class="text-center pt-4">
+      <a href="/net-worth-by-age-usa" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-lg">
+        Calculate Full US Net Worth →
+      </a>
+      <a href="/net-worth-by-age-canada" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 text-white font-bold text-sm transition-all shadow-lg ml-3">
+        Calculate Full Canada Net Worth →
+      </a>
+    </div>
+  </main>
+</Layout>

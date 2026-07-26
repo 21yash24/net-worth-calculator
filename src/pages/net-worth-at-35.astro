@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth at 35 (2026) | US & Canada Wealth Percentile Benchmark";
+const description = "Calculate your net worth percentile at age 35 in the US and Canada. Benchmarked against official Federal Reserve (SCF) and Statistics Canada (SFS) datasets.";
+
+const schema35 = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Percentile at Age 35 Calculator",
+  "url": "https://getnetworthcalculator.com/net-worth-at-35",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const faq35 = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth at age 35 in the US and Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the US Federal Reserve Survey of Consumer Finances (SCF) and Statistics Canada (SFS), the median net worth at age 35 is approximately $75,000 USD in the US and $145,000 CAD in Canada. The top 10% threshold for age 35 is $450,000 USD ($650,000 CAD)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much net worth should I have by age 35 according to Fidelity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the Fidelity financial rule of thumb, you should aim to have 1.5x to 2x your annual gross salary saved in total net worth by age 35. For example, if you earn $80,000 per year, a target net worth of $120,000 to $160,000 is recommended."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema35)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faq35)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🇺🇸 🇨🇦</span>
+        <span>Federal Reserve (SCF) &amp; Statistics Canada (SFS) Age 35 Data</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Net Worth at Age 35
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">US &amp; Canada Wealth Percentile Benchmark (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        See how your net worth at 35 compares to your peers in the United States and Canada using official government population datasets.
+      </p>
+    </header>
+
+    <!-- Google AI Overview Callout Box -->
+    <div class="p-6 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+        <span>⚡</span> <span>Quick Answer: Average Net Worth at Age 35 (2026)</span>
+      </div>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What is the Median Net Worth at 35 in US &amp; Canada?</h2>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        In the US, median net worth at 35 is <strong>$75,000 USD</strong> (top 10% is <strong>$450,000 USD</strong>). In Canada, median net worth at 35 is <strong>$145,000 CAD</strong>. Fidelity recommends having <strong>1.5x to 2x salary</strong> saved in net worth by 35.
+      </p>
+    </div>
+
+    <!-- Data Table -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Percentile Table at Age 35</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-emerald-800 text-white">
+              <th class="text-left px-4 py-3 font-bold">Percentile Tier</th>
+              <th class="text-right px-4 py-3 font-bold">🇺🇸 US Net Worth (USD)</th>
+              <th class="text-right px-4 py-3 font-bold">🇨🇦 Canada Net Worth (CAD)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">25th Percentile</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$18,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$38,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">50th Percentile (Median)</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$75,000 USD</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">$145,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">75th Percentile (Above Average)</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$210,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$350,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">90th Percentile (Top 10%)</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$450,000 USD</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$650,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">99th Percentile (Top 1%)</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$1,850,000 USD</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$2,400,000 CAD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PAA Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Net Worth at 35 FAQs</h2>
+      {faq35.mainEntity.map(faq => (
+        <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+          <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
+            <span>{faq.name}</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-700 dark:text-slate-400 mt-3 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </section>
+
+    <div class="text-center pt-4">
+      <a href="/net-worth-by-age-usa" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-lg">
+        Calculate Full US Net Worth →
+      </a>
+      <a href="/net-worth-by-age-canada" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 text-white font-bold text-sm transition-all shadow-lg ml-3">
+        Calculate Full Canada Net Worth →
+      </a>
+    </div>
+  </main>
+</Layout>
