@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Am I Rich? Wealth Class Calculator (2026) | HNW & UHNW Percentile Tier";
-const description = "Calculate your wealth class tier (Middle Class, HNW, VHNW, UHNW) based on official US Federal Reserve, UK ONS, and global wealth distribution benchmarks.";
+const title = "Am I Rich Calculator USA (2026) | US Federal Reserve Wealth Class Benchmark";
+const description = "Calculate if you are Middle Class, Upper Middle Class, High Net Worth (HNW), or Ultra High Net Worth (UHNW) in America based on US Federal Reserve SCF population datasets.";
 
 const classSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Am I Rich? Wealth Class & Tier Calculator",
+  "name": "Am I Rich Calculator USA - US Wealth Class & Tier Benchmark",
   "url": "https://getnetworthcalculator.com/wealth-class-calculator",
   "description": description,
   "applicationCategory": "FinanceApplication",
@@ -21,26 +21,34 @@ const classFaq = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is considered High Net Worth (HNWI)?",
+      "name": "What is considered rich in the US in 2026?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In global private banking, a High Net Worth Individual (HNWI) is defined as someone with liquid investable assets of $1,000,000 USD or more, excluding primary residence real estate equity."
+        "text": "According to US Federal Reserve Survey of Consumer Finances (SCF) data and Schwab wealth surveys, Americans consider a net worth of $2.2 Million USD to be 'rich'. However, private wealth management defines High Net Worth (HNW) status starting at $1,000,000 USD in liquid investable assets, putting a household in the top 10% of US wealth."
       }
     },
     {
       "@type": "Question",
-      "name": "What net worth makes you Ultra High Net Worth (UHNW)?",
+      "name": "Am I middle class, upper middle class, or rich in America?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An Ultra High Net Worth Individual (UHNWI) is defined as someone with investable net worth exceeding $30,000,000 USD. Very High Net Worth (VHNW) status applies to individuals with $5,000,000 to $30,000,000 USD."
+        "text": "In the United States: Middle Class net worth ranges from $100,000 to $500,000 USD (50th to 75th percentile); Upper Middle Class net worth ranges from $500,000 to $1,500,000 USD (75th to 90th percentile); and High Net Worth (Rich) starts at $1,000,000+ USD in liquid assets (top 10%)."
       }
     },
     {
       "@type": "Question",
-      "name": "What net worth qualifies as Upper Middle Class?",
+      "name": "What net worth makes you top 1% vs top 5% in the USA?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In the United States, an upper-middle-class household typically has a net worth between $500,000 and $1,500,000 USD, placing them in the 75th to 90th percentile for their age bracket."
+        "text": "To be in the top 5% of US net worth across all ages requires approximately $1,170,000 USD. To reach the top 1% in the USA requires a net worth of approximately $5,810,000 USD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between HNW, VHNW, and UHNW in US private banking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "US private banks classify wealth tiers as: HNW (High Net Worth: $1M to $5M USD investable); VHNW (Very High Net Worth: $5M to $30M USD); and UHNW (Ultra High Net Worth: $30M+ USD in investable assets)."
       }
     }
   ]
@@ -56,26 +64,26 @@ const classFaq = {
     <!-- Header -->
     <header class="text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-semibold">
-        <span>💎</span>
-        <span>Private Banking HNW &amp; UHNW Tier Classification</span>
+        <span>🇺🇸 💎</span>
+        <span>Based on US Federal Reserve SCF &amp; US Private Banking Benchmarks</span>
       </div>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-        Am I Rich? Wealth Class Calculator
-        <span class="block text-amber-600 dark:text-amber-400 text-xl md:text-2xl mt-1 font-bold">Discover Your Global Wealth Tier (2026)</span>
+        Am I Rich? Calculator USA
+        <span class="block text-amber-600 dark:text-amber-400 text-xl md:text-2xl mt-1 font-bold">Discover Your American Wealth Class &amp; Tier (2026)</span>
       </h1>
       <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-        Find out if you are Middle Class, Upper Middle Class, High Net Worth (HNW), or Ultra High Net Worth (UHNW) based on official Federal Reserve &amp; private banking standards.
+        Find out if you are Middle Class, Upper Middle Class, High Net Worth (HNW), or Ultra High Net Worth (UHNW) in America based on US Federal Reserve Survey of Consumer Finances data.
       </p>
     </header>
 
     <!-- Google AI Overview Callout Box -->
     <div class="p-6 rounded-3xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 space-y-3">
       <div class="flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
-        <span>⚡</span> <span>Quick Answer: What Net Worth Defines Each Wealth Class? (2026)</span>
+        <span>⚡</span> <span>Quick Answer: Am I Rich in America? (2026 US Fed Benchmark)</span>
       </div>
-      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What Net Worth Threshold Makes You Rich?</h2>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What Net Worth Makes You Rich in the US?</h2>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-        Private banking tiers define wealth as: <strong>Middle Class ($100k–$500k USD)</strong>, <strong>Upper Middle Class ($500k–$1.5M USD)</strong>, <strong>High Net Worth / HNW ($1M–$5M USD investable)</strong>, <strong>Very High Net Worth / VHNW ($5M–$30M USD)</strong>, and <strong>Ultra High Net Worth / UHNW ($30M+ USD)</strong>.
+        According to the US Federal Reserve, a household is considered <strong>Upper Middle Class ($500,000–$1.5M USD net worth)</strong>, <strong>High Net Worth / HNW ($1M–$5M USD investable, top 10%)</strong>, <strong>Very High Net Worth / VHNW ($5M–$30M USD, top 1%)</strong>, and <strong>Ultra High Net Worth / UHNW ($30M+ USD)</strong>.
       </p>
     </div>
 
@@ -88,72 +96,93 @@ const classFaq = {
           <input type="number" id="class-nw-input" placeholder="750000" value="750000"
             class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
         </div>
+        <p class="text-xs text-slate-500 dark:text-slate-500 mt-1">Total assets (home equity, 401k, Roth IRA, taxable investments, cash) minus liabilities (mortgage, debt).</p>
       </div>
 
       <button id="class-calc-btn" class="w-full py-4 rounded-xl bg-amber-600 hover:bg-amber-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-amber-900/30">
-        Determine My Wealth Class
+        Determine My US Wealth Class
       </button>
 
-      <div id="class-result-panel" class="hidden space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+      <!-- Result Panel with Linked Calculators -->
+      <div id="class-result-panel" class="hidden space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
         <div class="text-center space-y-2">
-          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Your Classified Wealth Tier</p>
-          <div id="class-tier-title" class="text-4xl font-black text-amber-500 tracking-tight">—</div>
-          <p id="class-tier-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto leading-relaxed"></p>
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Your Classified American Wealth Tier</p>
+          <div id="class-tier-title" class="text-4xl md:text-5xl font-black text-amber-500 tracking-tight">—</div>
+          <p id="class-tier-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto leading-relaxed font-normal"></p>
+        </div>
+
+        <!-- Interactive Linked Calculators Bridge -->
+        <div class="p-5 rounded-2xl bg-amber-500/10 dark:bg-amber-950/40 border border-amber-500/30 space-y-3">
+          <p class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider text-center">🎯 Take Your Analysis Further with Our US Calculators</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <a href="/net-worth-by-age-usa" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-amber-500 block">🇺🇸 Check Age Percentile</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">See percentile for your age group →</span>
+            </a>
+            <a href="/usa-vs-canada-net-worth" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-amber-500 block">🇨🇦 Compare vs Canada</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">USD vs CAD PPP breakdown →</span>
+            </a>
+            <a href="/fire-net-worth-calculator" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 transition-all text-center group">
+              <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-amber-500 block">🔥 Check FIRE Freedom</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400">4% rule early retirement target →</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Tier Breakdown Table -->
+    <!-- US Wealth Tier Table -->
     <section class="space-y-6">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Global Private Banking Wealth Tiers</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">US Federal Reserve &amp; Private Banking Wealth Tiers</h2>
       <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
         <table class="w-full text-sm">
           <thead>
             <tr class="bg-slate-900 text-white dark:bg-slate-800">
               <th class="text-left px-4 py-3 font-bold">Wealth Class Tier</th>
-              <th class="text-right px-4 py-3 font-bold">Net Worth Threshold (USD)</th>
-              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Global Population %</th>
+              <th class="text-right px-4 py-3 font-bold">US Net Worth Range (USD $)</th>
+              <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">US Household %</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Emerging / Mass Market</td>
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Emerging / Lower Middle Class</td>
               <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400">Under $100,000</td>
-              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~84.0%</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~44.0%</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
               <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Middle Class</td>
               <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400">$100,000 – $500,000</td>
-              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~11.5%</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~31.0%</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
               <td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400 font-bold">Upper Middle Class</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 font-bold">$500,000 – $1,500,000</td>
-              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~3.2%</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~15.0%</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400 font-bold">High Net Worth (HNW)</td>
+              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400 font-bold">High Net Worth (HNW / Rich)</td>
               <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$1,000,000 – $5,000,000</td>
-              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~1.1%</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~8.5%</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
               <td class="px-4 py-3 font-semibold text-amber-500 font-extrabold">Very High Net Worth (VHNW)</td>
               <td class="px-4 py-3 text-right text-amber-500 font-extrabold">$5,000,000 – $30,000,000</td>
-              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~0.1%</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">~1.3%</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
               <td class="px-4 py-3 font-semibold text-purple-500 font-black">Ultra High Net Worth (UHNW)</td>
               <td class="px-4 py-3 text-right text-purple-500 font-black">$30,000,000+</td>
-              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">&lt; 0.01%</td>
+              <td class="px-4 py-3 text-right text-slate-600 dark:text-slate-400 hidden sm:table-cell">&lt; 0.1%</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- PAA Section -->
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Wealth Class FAQs</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Am I Rich in America FAQs</h2>
       {classFaq.mainEntity.map(faq => (
         <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
@@ -183,27 +212,27 @@ const classFaq = {
       if (nw >= 30000000) {
         tier = 'Ultra High Net Worth (UHNW)';
         color = '#a855f7';
-        text = 'You belong to the top 0.01% of global wealth holders. Private family offices and institutional wealth preservation strategies apply.';
+        text = 'You belong to the top 0.1% of American households. You qualify for institutional private banking and multi-generational trust services.';
       } else if (nw >= 5000000) {
         tier = 'Very High Net Worth (VHNW)';
         color = '#f59e0b';
-        text = 'Top 0.1% of global wealth holders. Your net worth provides substantial financial freedom and multi-generational capital.';
+        text = 'Top 1.3% in the USA. You have achieved complete financial independence with substantial liquid capital.';
       } else if (nw >= 1000000) {
-        tier = 'High Net Worth (HNW)';
+        tier = 'High Net Worth (HNW / Rich)';
         color = '#d97706';
-        text = 'Top 1.1% of global wealth holders. Reaching $1M+ net worth qualifies you for private banking status.';
+        text = 'Top 8.5% of US households. Reaching $1M+ net worth puts you in the official HNW rich tier in America.';
       } else if (nw >= 500000) {
         tier = 'Upper Middle Class';
         color = '#10b981';
-        text = 'Top 4% of global wealth. You have achieved strong financial security and substantial asset accumulation.';
+        text = 'Top 24% of US households. You have strong home equity and substantial 401(k) / Roth IRA retirement savings.';
       } else if (nw >= 100000) {
         tier = 'Middle Class';
         color = '#3b82f6';
-        text = 'Above the global average. You have established positive equity in assets and retirement accounts.';
+        text = 'Above the 50th percentile in America. You have established positive equity and liquid emergency savings.';
       } else {
-        tier = 'Emerging Wealth / Mass Market';
+        tier = 'Emerging Wealth';
         color = '#64748b';
-        text = 'Early stages of capital building. Focus on compounding retirement contributions and paying down debt.';
+        text = 'Early stages of wealth accumulation. Focus on 401(k) employer matching and paying down high-interest debt.';
       }
 
       title.textContent = tier;
