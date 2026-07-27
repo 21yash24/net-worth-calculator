@@ -46,6 +46,9 @@ const breadcrumbSchema = {
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={`https://getnetworthcalculator.com${pathname.replace(/\/$/, '') || '/'}`} />
+
 		<!-- BreadcrumbList Rich Snippet Schema -->
 		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -71,15 +74,27 @@ const breadcrumbSchema = {
 			}
 		</script>
 
-		<!-- Open Graph / Social SEO -->
+		<!-- OpenGraph / Twitter Social Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`https://getnetworthcalculator.com${pathname}`} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content="https://getnetworthcalculator.com/og-image.png" />
+
 		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={`https://getnetworthcalculator.com${pathname}`} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		
-		<title>{title}</title>
+		<meta property="twitter:image" content="https://getnetworthcalculator.com/og-image.png" />
+
+		<!-- Inter Font Definition -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+		<slot name="head" />
 		
 		<!-- Prevent Flash of Unstyled Theme -->
 		<script is:inline>
@@ -96,7 +111,8 @@ const breadcrumbSchema = {
 			}
 		</script>
 	</head>
-	<body class="bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col selection:bg-emerald-500/20 overflow-x-hidden relative transition-colors duration-300">
+	<body class="bg-[#060a12] text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-emerald-400">
+		<Analytics />
 		<!-- Dynamic Ambient Glow -->
 		<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none" aria-hidden="true">
 			<div class="absolute -top-[30%] left-[25%] w-[50%] h-[50%] rounded-full bg-emerald-500/5 dark:bg-emerald-950/20 blur-[160px]"></div>
@@ -123,7 +139,7 @@ const breadcrumbSchema = {
 					</div>
 					<div class="flex flex-col">
 						<span class="text-slate-900 dark:text-white font-extrabold tracking-tight text-xl leading-none">NetWorth<span class="text-emerald-500">.</span></span>
-						<span class="text-[10px] uppercase font-bold text-slate-700 dark:text-slate-400 tracking-widest leading-none mt-1">Federal Reserve Intelligence</span>
+						<span class="text-[10px] uppercase font-bold text-slate-700 dark:text-slate-400 tracking-widest leading-none mt-1">Global Wealth Benchmarks</span>
 					</div>
 				</a>
 				

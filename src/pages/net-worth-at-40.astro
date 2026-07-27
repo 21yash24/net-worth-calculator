@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth at Age 40 (2026) | US & Global Benchmark Calculator";
+const description = "Calculate your net worth percentile at age 40 benchmarked against US Federal Reserve Survey of Consumer Finances (SCF) datasets.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth at Age 40 Calculator",
+  "url": "https://getnetworthcalculator.com/net-worth-at-40",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🎂 📊</span>
+        <span>Age 40 Milestone Benchmark</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Net Worth at Age 40
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Where Do You Rank Among 40-Year-Olds? (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        According to US Federal Reserve SCF data, the median net worth for adults aged 35 to 44 is <strong>$135,600 USD</strong>, while the average is <strong>$549,600 USD</strong>.
+      </p>
+    </header>
+
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <div>
+        <label for="nw-at-40-input" class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Enter Your Total Net Worth at Age 40 ($)</label>
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-base">$</span>
+          <input type="number" id="nw-at-40-input" placeholder="135600" value="135600"
+            class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+      </div>
+
+      <button id="nw-40-calc-btn" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-emerald-900/30">
+        Calculate Age 40 Percentile
+      </button>
+
+      <div id="nw-40-result" class="hidden space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800 text-center">
+        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Age 40 Percentile Rank</p>
+        <div id="nw-40-pct-display" class="text-5xl font-black text-emerald-500 tracking-tight">—</div>
+        <p id="nw-40-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto"></p>
+
+        <div class="pt-4 flex justify-center gap-3 text-xs">
+          <a href="/net-worth-by-age-usa" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white hover:border-emerald-500 transition-all">🇺🇸 Full US Age Breakdown →</a>
+          <a href="/millionaire-calculator" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-purple-600 dark:text-purple-400 hover:border-purple-500 transition-all">💰 Millionaire Target Calculator →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('nw-at-40-input');
+    const btn = document.getElementById('nw-40-calc-btn');
+    const result = document.getElementById('nw-40-result');
+    const pctDisplay = document.getElementById('nw-40-pct-display');
+    const desc = document.getElementById('nw-40-desc');
+
+    btn?.addEventListener('click', () => {
+      const val = parseFloat(input.value) || 0;
+      let pct = 50;
+      if (val >= 2500000) pct = 99;
+      else if (val >= 780000) pct = 90;
+      else if (val >= 350000) pct = 75;
+      else if (val >= 135600) pct = 50;
+      else if (val >= 35000) pct = 25;
+      else pct = 10;
+
+      pctDisplay.textContent = `${pct}th Percentile`;
+      desc.textContent = `At age 40, a net worth of $${val.toLocaleString()} puts you in the top ${100 - pct}% of your age group in America.`;
+      result.classList.remove('hidden');
+    });
+  });
+</script>
