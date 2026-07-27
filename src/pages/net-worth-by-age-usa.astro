@@ -76,9 +76,11 @@ const faqSchema = {
 ---
 
 <Layout title={title} description={description}>
-	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-	<script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} />
-	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+	<link rel="canonical" slot="head" href="https://getnetworthcalculator.com/" />
+	<!-- JSON-LD Schema Scripts -->
+	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} slot="head" />
+	<script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} slot="head" />
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
 
 	<main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
 		<header class="text-center mb-12 space-y-4">
