@@ -4,10 +4,10 @@ import cities from '../data/citiesData.json';
 
 export async function getStaticPaths() {
   const ageBrackets = [
-    { id: "under-35", label: "Under 35", ageNum: 30, mult: 0.28 },
-    { id: "35-to-44", label: "Ages 35 to 44", ageNum: 40, mult: 0.85 },
-    { id: "45-to-54", label: "Ages 45 to 54", ageNum: 50, mult: 1.55 },
-    { id: "55-to-64", label: "Ages 55 to 64", ageNum: 60, mult: 2.15 },
+    { id: "under-35", label: "Under 35", ageNum: 30, mult: 0.28, stage: "Early Career & Savings Accumulation Stage" },
+    { id: "35-to-44", label: "Ages 35 to 44", ageNum: 40, mult: 0.85, stage: "Home Equity & Career Advancement Stage" },
+    { id: "45-to-54", label: "Ages 45 to 54", ageNum: 50, mult: 1.55, stage: "Peak Income & Investment Growth Stage" },
+    { id: "55-to-64", label: "Ages 55 to 64", ageNum: 60, mult: 2.15, stage: "Pre-Retirement Wealth Consolidation Stage" },
   ];
 
   const paths = [];
@@ -24,8 +24,13 @@ export async function getStaticPaths() {
 
 const { cityData, ageData } = Astro.props;
 
+const medianNW = Math.round(cityData.median * ageData.mult);
+const top25NW = Math.round(cityData.median * ageData.mult * 2.8);
+const top10NW = Math.round(cityData.median * ageData.mult * 8);
+const top1NW = Math.round(cityData.median * ageData.mult * 32);
+
 const title = `Net Worth ${ageData.label} in ${cityData.name}, ${cityData.state} (2026)`;
-const description = `What is a good net worth for ${ageData.label} in ${cityData.name}? Median household net worth ($${Math.round(cityData.median * ageData.mult).toLocaleString()}), top 10%, and top 1% percentiles.`;
+const description = `Detailed wealth benchmarks for ${ageData.label} in ${cityData.name}, ${cityData.state}. Median household net worth ($${medianNW.toLocaleString()}), top 10% ($${top10NW.toLocaleString()}), top 1% percentiles, housing cost impacts, and savings advice.`;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -36,7 +41,7 @@ const faqSchema = {
       "name": `What is the average net worth for ${ageData.label} in ${cityData.name}?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `The median net worth for households ${ageData.label} in ${cityData.name} is approximately $${Math.round(cityData.median * ageData.mult).toLocaleString()}.`
+        "text": `The median net worth for households ${ageData.label} in ${cityData.name} is approximately $${medianNW.toLocaleString()}.`
       }
     },
     {
@@ -44,7 +49,15 @@ const faqSchema = {
       "name": `What net worth puts you in the top 10% for ${ageData.label} in ${cityData.name}?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `In ${cityData.name}, a net worth of $${Math.round(cityData.median * ageData.mult * 8).toLocaleString()} puts you in the top 10% for the ${ageData.label} age group.`
+        "text": `In ${cityData.name}, a net worth of $${top10NW.toLocaleString()} puts a household in the top 10% for the ${ageData.label} age group.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How does housing cost affect net worth benchmarks in ${cityData.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `With median home prices in ${cityData.name} around $${cityData.home.toLocaleString()}, primary real estate home equity accounts for a major portion of total net worth.`
       }
     }
   ]
@@ -56,6 +69,7 @@ const faqSchema = {
 
   <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
     
+    <!-- Hero Header -->
     <header class="text-center mb-10 space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
         <span>🏙️</span>
@@ -66,43 +80,136 @@ const faqSchema = {
         Net Worth <span class="text-emerald-600 dark:text-emerald-400">{ageData.label}</span> in {cityData.name}
       </h1>
       <p class="text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-        Compare your wealth for {ageData.label} living in {cityData.name} using city-level housing and census benchmarks.
+        City-level wealth benchmarks and cost-of-living adjusted economic analysis for {ageData.label} in {cityData.name}.
       </p>
     </header>
 
     <!-- Quick Answer Box -->
-    <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-10 shadow-xl border border-slate-800 space-y-3">
+    <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-12 shadow-xl border border-slate-800 space-y-4">
       <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">⚡ City Benchmark: {ageData.label} in {cityData.name}</div>
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs pt-1">
-        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold">City Median</span>
-          <strong class="text-emerald-400 text-sm">${Math.round(cityData.median * ageData.mult).toLocaleString()}</strong>
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">City Median (50th)</span>
+          <strong class="text-emerald-400 text-base">${medianNW.toLocaleString()}</strong>
         </div>
-        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold">Top 25%</span>
-          <strong class="text-emerald-400 text-sm">${Math.round(cityData.median * ageData.mult * 2.8).toLocaleString()}</strong>
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 25% (75th)</span>
+          <strong class="text-emerald-400 text-base">${top25NW.toLocaleString()}</strong>
         </div>
-        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold">Top 10%</span>
-          <strong class="text-emerald-400 text-sm">${Math.round(cityData.median * ageData.mult * 8).toLocaleString()}</strong>
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 10% (90th)</span>
+          <strong class="text-emerald-400 text-base">${top10NW.toLocaleString()}</strong>
         </div>
-        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold">Top 1%</span>
-          <strong class="text-amber-400 text-sm">${Math.round(cityData.median * ageData.mult * 32).toLocaleString()}</strong>
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 1% (99th)</span>
+          <strong class="text-amber-400 text-base">${top1NW.toLocaleString()}</strong>
         </div>
       </div>
+      <p class="text-xs text-slate-400 pt-2 leading-relaxed">
+        <em>Note: Figures represent total household net worth (financial assets + home equity minus debt) adjusted for {cityData.name}'s housing market.</em>
+      </p>
     </div>
 
-    <!-- CTA to Main Calculator -->
-    <div class="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3">
-      <h2 class="text-xl font-bold text-slate-900 dark:text-white">Calculate Your Percentile Rank in {cityData.name}</h2>
-      <p class="text-xs text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
-        Input your exact net worth figure into our free client-side calculator to see where you rank in {cityData.name} and nationally.
+    <!-- Deep Analytical Content Section 1: Financial Life Stage in City -->
+    <section class="space-y-6 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Living in {cityData.name}: Wealth & Cost of Living</h2>
+      
+      <p>
+        For households <strong>{ageData.label}</strong> living in <strong>{cityData.name}, {cityData.state}</strong>, economic conditions are heavily shaped by local housing markets and local industry salaries. In this area, cost of living index is <strong>{cityData.col > 0 ? `+${cityData.col}% higher` : `${cityData.col}% lower`} than the US national average</strong>.
       </p>
-      <a href="/" class="inline-block px-5 py-2.5 rounded-xl bg-emerald-700 text-white font-bold text-xs hover:bg-emerald-600 transition-all shadow-md">
-        Launch Net Worth Calculator →
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">🏠 {cityData.name} Median Home Price</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            The median single-family home price in {cityData.name} is <strong>${cityData.home.toLocaleString()}</strong>. Real estate equity forms the largest individual component of total net worth for resident homeowners.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">💼 Local Earning Power</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            High local salaries in tech, healthcare, or corporate sectors allow faster accumulation of tax-advantaged retirement accounts (401k & IRAs), offsetting elevated local housing costs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Analytical Content Section 2: Wealth Milestones Table -->
+    <section class="space-y-6 mb-12">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">{cityData.name} Wealth Percentile Tiers ({ageData.label})</h2>
+      
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-emerald-700 text-white font-bold text-xs uppercase">
+            <tr>
+              <th class="px-5 py-4">Percentile Tier</th>
+              <th class="px-5 py-4">Required Net Worth ({cityData.name})</th>
+              <th class="px-5 py-4 text-emerald-200">Financial Benchmark Status</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-bold">50th Percentile (Median)</td>
+              <td class="px-5 py-4 font-bold text-slate-900 dark:text-white">${medianNW.toLocaleString()}</td>
+              <td class="px-5 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400">Typical Middle Class Baseline</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
+              <td class="px-5 py-4 font-bold">75th Percentile (Top 25%)</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${top25NW.toLocaleString()}</td>
+              <td class="px-5 py-4 text-xs font-semibold text-emerald-600 dark:text-emerald-400">Upper Middle Class Tier</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-bold">90th Percentile (Top 10%)</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${top10NW.toLocaleString()}</td>
+              <td class="px-5 py-4 text-xs font-semibold text-emerald-600 dark:text-emerald-400">High Net Worth Tier</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
+              <td class="px-5 py-4 font-bold">99th Percentile (Top 1%)</td>
+              <td class="px-5 py-4 font-bold text-amber-500">${top1NW.toLocaleString()}</td>
+              <td class="px-5 py-4 text-xs font-semibold text-amber-500">Very High / Elite Wealth Tier</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Interactive CTA to Main Tool -->
+    <div class="p-8 rounded-3xl bg-slate-900 text-white text-center space-y-4 shadow-xl border border-slate-800 mb-12">
+      <h2 class="text-2xl md:text-3xl font-extrabold">Calculate Your Exact Percentile Rank in {cityData.name}</h2>
+      <p class="text-xs md:text-sm text-slate-300 max-w-xl mx-auto">
+        Input your exact net worth figure into our free client-side calculator to see where you rank in {cityData.name} and across the US.
+      </p>
+      <a href="/" class="inline-block px-6 py-3 bg-emerald-500 text-slate-950 font-extrabold text-sm rounded-xl hover:bg-emerald-400 transition-all shadow-md">
+        Launch Calculator →
       </a>
     </div>
+
+    <!-- FAQs Section -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>What is the average net worth for {ageData.label} in {cityData.name}?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            The median net worth for households {ageData.label} in {cityData.name} is approximately ${medianNW.toLocaleString()}.
+          </p>
+        </details>
+
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>What net worth puts you in the top 10% for {ageData.label} in {cityData.name}?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            In {cityData.name}, a household net worth of ${top10NW.toLocaleString()} puts you in the top 10% for the {ageData.label} age bracket.
+          </p>
+        </details>
+      </div>
+    </section>
 
   </main>
 </Layout>
