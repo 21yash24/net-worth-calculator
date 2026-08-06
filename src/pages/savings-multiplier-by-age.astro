@@ -1,0 +1,305 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Savings Multiplier by Age Calculator (Fidelity Rule Benchmark) 2026";
+const description = "Calculate your target retirement savings by age using Fidelity's famous 1x at 30, 3x at 40, 6x at 50, 10x at 67 salary multiplier rule. See if you are on track.";
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Savings Multiplier by Age Calculator",
+  "url": "https://getnetworthcalculator.com/savings-multiplier-by-age",
+  "description": "Interactive Fidelity 1x-10x salary multiplier retirement calculator by age.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many times my salary should I have saved by age 30, 40, 50, and 60?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Fidelity's retirement savings benchmark: By age 30 have 1x your annual salary; by age 40 have 3x; by age 50 have 6x; by age 60 have 8x; and by age 67 (retirement) have 10x your salary saved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What counts toward your retirement savings multiplier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Retirement savings include employer 401(k) accounts, Roth IRAs, traditional IRAs, health savings accounts (HSAs), taxable brokerage accounts, and liquid cash savings earmarked for retirement. It excludes primary residence home equity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I save monthly if I am behind my age benchmark?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you are behind, financial advisors recommend contributing at least 15% of your gross annual salary (including any employer match) toward retirement accounts to catch up."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={`${title} | Net Worth Calculator`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+    
+    <!-- Hero Header -->
+    <header class="text-center mb-10 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🎯</span>
+        <span>Fidelity 1x–10x Salary Multiplier Rule (2026)</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        Savings Multiplier <span class="text-emerald-600 dark:text-emerald-400">by Age Calculator</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        How many times your annual salary should you have saved right now? Benchmark your savings against Fidelity's industry-standard 1x at 30, 3x at 40 rule.
+      </p>
+    </header>
+
+    <!-- Snippet Bait Quick Answer -->
+    <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-10 shadow-xl border border-slate-800">
+      <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">⚡ Industry Benchmark Summary (Fidelity Rule)</div>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center text-xs pt-2">
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Age 30</span>
+          <strong class="text-emerald-400 text-base">1x Salary</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Age 40</span>
+          <strong class="text-emerald-400 text-base">3x Salary</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Age 50</span>
+          <strong class="text-emerald-400 text-base">6x Salary</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Age 60</span>
+          <strong class="text-emerald-400 text-base">8x Salary</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700 col-span-2 sm:col-span-1">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Age 67</span>
+          <strong class="text-amber-400 text-base">10x Salary</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Interactive Calculator Panel -->
+    <div class="p-6 md:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl bg-white dark:bg-slate-900/50 mb-12 space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Inputs -->
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label for="sm-age-input" class="text-sm font-bold text-slate-800 dark:text-slate-200">Your Current Age</label>
+              <span id="sm-age-val" class="text-base font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-lg border border-emerald-200 dark:border-emerald-800">35 years</span>
+            </div>
+            <input type="range" id="sm-age-input" min="20" max="67" value="35" class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label for="sm-salary-input" class="text-sm font-bold text-slate-800 dark:text-slate-200">Annual Gross Salary ($)</label>
+              <span id="sm-salary-val" class="text-base font-extrabold text-slate-900 dark:text-white">$95,000</span>
+            </div>
+            <input type="number" id="sm-salary-input" value="95000" step="5000" class="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label for="sm-savings-input" class="text-sm font-bold text-slate-800 dark:text-slate-200">Current Total Savings & 401k ($)</label>
+              <span id="sm-savings-val" class="text-base font-extrabold text-slate-900 dark:text-white">$120,000</span>
+            </div>
+            <input type="number" id="sm-savings-input" value="120000" step="5000" class="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+        </div>
+
+        <!-- Live Calculation Results Card -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-6">
+          
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">Your Fidelity Multiplier Benchmark</span>
+            <div id="sm-target-multiplier" class="text-3xl font-extrabold text-slate-900 dark:text-white">2.0x Salary ($190,000)</div>
+            <p id="sm-status-text" class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              At age 35 with a $95,000 salary, your target benchmark is 2.0x ($190,000).
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-600 dark:text-slate-400">Actual Saved:</span>
+              <span id="sm-actual-display" class="text-slate-900 dark:text-white">$120,000 (1.26x)</span>
+            </div>
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-600 dark:text-slate-400">Surplus / Shortfall:</span>
+              <span id="sm-gap-display" class="text-rose-600 dark:text-rose-400">-$70,000</span>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-3 rounded-full overflow-hidden mt-2">
+              <div id="sm-progress-bar" class="bg-emerald-500 h-full transition-all duration-300" style="width: 63%"></div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center">
+            <span id="sm-verdict-badge" class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">⚡ You are at 63% of your target milestone!</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Deep SEO Educational Guide -->
+    <section class="space-y-6 mb-14 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">How the Salary Multiplier Rule Works</h2>
+      
+      <p>
+        The <strong>Salary Multiplier Rule</strong> (popularized by investment firm Fidelity) is designed to ensure you maintain your standard of living in retirement without running out of money. It assumes you will retire at age 67 and need approximately <strong>45% of your pre-retirement gross annual income</strong> from savings (with Social Security covering the rest).
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">What Counts as Savings?</h3>
+          <ul class="list-disc pl-5 space-y-1 text-xs text-slate-600 dark:text-slate-400">
+            <li>401(k) / 403(b) employer plans</li>
+            <li>Traditional & Roth IRAs</li>
+            <li>Health Savings Accounts (HSA)</li>
+            <li>Brokerage index funds & stocks</li>
+            <li>High-Yield Cash Savings</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">What Does NOT Count?</h3>
+          <ul class="list-disc pl-5 space-y-1 text-xs text-slate-600 dark:text-slate-400">
+            <li>Primary residence home equity</li>
+            <li>Personal vehicles & physical items</li>
+            <li>Emergency funds (3-6 months expenses)</li>
+            <li>Expected future inheritances</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="space-y-6 mb-14">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>How many times my salary should I have saved by age 30, 40, 50, 60?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Fidelity's rule recommends having 1x salary at 30, 3x salary at 40, 6x salary at 50, 8x salary at 60, and 10x salary at 67.
+          </p>
+        </details>
+
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>What if I am behind my age benchmark?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            If you are behind, bump up your annual 401(k) contribution rate by 1% to 2% every year, take full advantage of employer matching, and utilize IRS catch-up contributions if you are age 50 or older.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Back to Main Calculator Link -->
+    <div class="text-center pt-6">
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">
+        <span>Check Your Full Net Worth Percentile Rank →</span>
+      </a>
+    </div>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const ageInput = document.getElementById('sm-age-input');
+    const ageVal = document.getElementById('sm-age-val');
+    const salaryInput = document.getElementById('sm-salary-input');
+    const salaryVal = document.getElementById('sm-salary-val');
+    const savingsInput = document.getElementById('sm-savings-input');
+    const savingsVal = document.getElementById('sm-savings-val');
+
+    const targetMultiplierDisplay = document.getElementById('sm-target-multiplier');
+    const statusText = document.getElementById('sm-status-text');
+    const actualDisplay = document.getElementById('sm-actual-display');
+    const gapDisplay = document.getElementById('sm-gap-display');
+    const progressBar = document.getElementById('sm-progress-bar');
+    const verdictBadge = document.getElementById('sm-verdict-badge');
+
+    function getTargetMultiplier(age) {
+      if (age < 30) return 0.5 + (age - 20) * 0.05;
+      if (age <= 40) return 1.0 + (age - 30) * 0.20;
+      if (age <= 50) return 3.0 + (age - 40) * 0.30;
+      if (age <= 60) return 6.0 + (age - 50) * 0.20;
+      return 8.0 + (age - 60) * 0.285;
+    }
+
+    function formatCurrency(val) {
+      return '$' + Math.round(val).toLocaleString();
+    }
+
+    function calculate() {
+      const age = parseInt(ageInput.value);
+      const salary = parseFloat(salaryInput.value) || 0;
+      const savings = parseFloat(savingsInput.value) || 0;
+
+      ageVal.textContent = age + ' years';
+      salaryVal.textContent = formatCurrency(salary);
+      savingsVal.textContent = formatCurrency(savings);
+
+      const targetMult = getTargetMultiplier(age);
+      const targetSavings = salary * targetMult;
+      const actualMult = salary > 0 ? (savings / salary) : 0;
+      const gap = savings - targetSavings;
+      const pct = targetSavings > 0 ? Math.min(100, Math.max(0, (savings / targetSavings) * 100)) : 0;
+
+      targetMultiplierDisplay.textContent = `${targetMult.toFixed(1)}x Salary (${formatCurrency(targetSavings)})`;
+      actualDisplay.textContent = `${formatCurrency(savings)} (${actualMult.toFixed(2)}x)`;
+
+      if (gap >= 0) {
+        gapDisplay.textContent = `+${formatCurrency(gap)} (Surplus 🎉)`;
+        gapDisplay.className = 'text-emerald-600 dark:text-emerald-400 font-bold';
+        verdictBadge.textContent = '🎉 Ahead of schedule! You are exceeding your milestone.';
+      } else {
+        gapDisplay.textContent = `-${formatCurrency(Math.abs(gap))} (Deficit)`;
+        gapDisplay.className = 'text-rose-600 dark:text-rose-400 font-bold';
+        verdictBadge.textContent = `⚡ You are at ${Math.round(pct)}% of your target milestone (${formatCurrency(Math.abs(gap))} shortfall).`;
+      }
+
+      statusText.textContent = `At age ${age} with a ${formatCurrency(salary)} salary, your benchmark target is ${targetMult.toFixed(1)}x salary (${formatCurrency(targetSavings)}).`;
+      progressBar.style.width = Math.min(100, Math.round(pct)) + '%';
+    }
+
+    ageInput?.addEventListener('input', calculate);
+    salaryInput?.addEventListener('input', calculate);
+    savingsInput?.addEventListener('input', calculate);
+
+    calculate();
+  });
+</script>
