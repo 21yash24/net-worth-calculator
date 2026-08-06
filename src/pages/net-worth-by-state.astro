@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Net Worth by State USA (2026) | Median Household Net Worth by State";
+const description = "Compare your net worth by state across all 50 US states. See median household net worth, top 10% thresholds, and cost-of-living adjusted benchmarks.";
+
+const statesData = [
+  { state: "California", id: "california", median: "$380,000", top10: "$2,850,000", costOfLiving: "High (+38%)" },
+  { state: "Texas", id: "texas", median: "$185,000", top10: "$1,450,000", costOfLiving: "Average (-8%)" },
+  { state: "New York", id: "new-york", median: "$320,000", top10: "$2,600,000", costOfLiving: "High (+32%)" },
+  { state: "Florida", id: "florida", median: "$210,000", top10: "$1,680,000", costOfLiving: "Average (+2%)" },
+  { state: "Washington", id: "washington", median: "$340,000", top10: "$2,450,000", costOfLiving: "High (+18%)" },
+  { state: "Massachusetts", id: "massachusetts", median: "$395,000", top10: "$2,900,000", costOfLiving: "High (+40%)" },
+  { state: "Illinois", id: "illinois", median: "$195,000", top10: "$1,520,000", costOfLiving: "Average (-3%)" },
+  { state: "Colorado", id: "colorado", median: "$290,000", top10: "$2,100,000", costOfLiving: "High (+12%)" },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which US state has the highest median net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "States like Massachusetts ($395,000), California ($380,000), Washington ($340,000), and New Jersey ($360,000) have the highest median household net worths in America due to high property values and tech/finance salaries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does cost of living affect net worth by state?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High cost-of-living (HCOL) states like California and New York have higher nominal net worths due to primary residence home equity, but lower purchasing power for daily expenses compared to low cost-of-living (LCOL) states like Texas or Ohio."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={`${title} | Net Worth Calculator`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+    
+    <!-- Hero Header -->
+    <header class="text-center mb-12 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🗺️</span>
+        <span>US State Net Worth Benchmarks (2026)</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        Net Worth <span class="text-emerald-600 dark:text-emerald-400">by State (USA)</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        See how median household net worth and top 10% wealth thresholds vary across different US states.
+      </p>
+    </header>
+
+    <!-- Snippet Bait Quick Answer -->
+    <div class="bg-gradient-to-r from-emerald-950/20 to-slate-900/40 border-2 border-emerald-500/40 rounded-2xl p-6 md:p-8 mb-12 shadow-lg">
+      <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">⚡ State Wealth Summary (US Census & Fed Data)</div>
+      <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+        • <strong>Highest Net Worth States:</strong> Massachusetts ($395k median), California ($380k median), Washington ($340k median)<br />
+        • <strong>National US Median:</strong> $192,700<br />
+        • <strong>Key Wealth Driver:</strong> Primary residence home equity accounts for 45% to 65% of total household net worth in high-cost states.
+      </p>
+    </div>
+
+    <!-- State Comparison Table -->
+    <section class="space-y-6 mb-14">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Median Net Worth by Key US State</h2>
+      
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-emerald-700 dark:bg-emerald-800 text-white font-bold text-xs uppercase">
+            <tr>
+              <th class="px-5 py-4">State</th>
+              <th class="px-5 py-4">Median Net Worth</th>
+              <th class="px-5 py-4 text-emerald-200">Top 10% Threshold</th>
+              <th class="px-5 py-4">Cost of Living Index</th>
+              <th class="px-5 py-4 text-right">View State Guide</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
+            {statesData.map((item) => (
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                <td class="px-5 py-4 font-bold text-slate-900 dark:text-white">{item.state}</td>
+                <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">{item.median}</td>
+                <td class="px-5 py-4 font-semibold">{item.top10}</td>
+                <td class="px-5 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400">{item.costOfLiving}</td>
+                <td class="px-5 py-4 text-right">
+                  <a href={`/net-worth-by-state-${item.id}`} class="inline-block px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold hover:bg-emerald-500/20 transition-all">
+                    {item.state} Guide →
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="space-y-6 mb-14">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>Which US state has the highest median net worth?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Massachusetts ($395,000), California ($380,000), and Washington ($340,000) have the highest median household net worths due to real estate appreciation and high tech/biotech salaries.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <div class="text-center pt-4">
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">
+        <span>Calculate Your Exact Age Percentile →</span>
+      </a>
+    </div>
+
+  </main>
+</Layout>

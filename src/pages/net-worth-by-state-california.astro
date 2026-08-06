@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "California Net Worth Percentile & Benchmark 2026 | CA Wealth Data";
+const description = "Calculate your net worth percentile in California. Median household net worth ($380,000), top 10% ($2.85M), top 1% thresholds, and Bay Area vs LA comparisons.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth in California?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The median household net worth in California is approximately $380,000, which is nearly double the national US median ($192,700), driven primarily by home equity in high-cost real estate markets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth makes you top 10% in California?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A household net worth of approximately $2,850,000 puts you in the top 10% in California. In the San Francisco Bay Area, the top 10% threshold rises to $3,200,000."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={`${title} | Net Worth Calculator`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+    
+    <header class="text-center mb-10 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🐻</span>
+        <span>California Household Wealth Benchmarks (2026)</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        California Net Worth <span class="text-emerald-600 dark:text-emerald-400">Percentiles</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        Compare your wealth in California against official state census and economic survey data.
+      </p>
+    </header>
+
+    <!-- Snippet Bait Quick Answer -->
+    <div class="bg-gradient-to-r from-emerald-950/20 to-slate-900/40 border-2 border-emerald-500/40 rounded-2xl p-6 md:p-8 mb-10 shadow-lg">
+      <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">⚡ California Wealth Benchmarks (2026)</div>
+      <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+        • <strong>California Median Net Worth:</strong> $380,000 (US National: $192,700)<br />
+        • <strong>CA Top 25%:</strong> $950,000+<br />
+        • <strong>CA Top 10%:</strong> $2,850,000+<br />
+        • <strong>CA Top 1%:</strong> $11,500,000+<br />
+        <em>Primary home equity accounts for over 50% of total wealth for middle-class California homeowners.</em>
+      </p>
+    </div>
+
+    <!-- Table: California Percentiles by Age -->
+    <section class="space-y-6 mb-12">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">California Net Worth Benchmarks by Age</h2>
+      
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-emerald-700 text-white font-bold text-xs uppercase">
+            <tr>
+              <th class="px-5 py-4">Age Group</th>
+              <th class="px-5 py-4">CA Median Net Worth</th>
+              <th class="px-5 py-4 text-emerald-200">CA Top 10%</th>
+              <th class="px-5 py-4 text-amber-200">CA Top 1%</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-bold">Under 35</td>
+              <td class="px-5 py-4">$110,000</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">$750,000</td>
+              <td class="px-5 py-4 font-bold text-amber-500">$2,900,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
+              <td class="px-5 py-4 font-bold">Ages 35–44</td>
+              <td class="px-5 py-4">$320,000</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">$2,100,000</td>
+              <td class="px-5 py-4 font-bold text-amber-500">$7,200,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-bold">Ages 45–54</td>
+              <td class="px-5 py-4">$590,000</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">$3,900,000</td>
+              <td class="px-5 py-4 font-bold text-amber-500">$12,800,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
+              <td class="px-5 py-4 font-bold">Ages 55–64</td>
+              <td class="px-5 py-4">$820,000</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">$4,800,000</td>
+              <td class="px-5 py-4 font-bold text-amber-500">$16,500,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="text-center pt-4">
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">
+        <span>Launch Interactive Percentile Calculator →</span>
+      </a>
+    </div>
+
+  </main>
+</Layout>
