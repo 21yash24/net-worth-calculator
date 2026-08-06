@@ -26,7 +26,31 @@ const faqSchema = {
       "name": "What is the average net worth by age in the US?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "According to the US Federal Reserve Survey of Consumer Finances (SCF), median net worth varies significantly by age: Under 35 is ~$39,000; 35-44 is ~$135,600; 45-54 is ~$247,200; 55-64 is ~$364,500; and 65-74 is ~$409,900."
+        "text": "According to the US Federal Reserve Survey of Consumer Finances (SCF), median household net worth varies significantly by age: Under 35 is ~$39,000; 35-44 is ~$135,600; 45-54 is ~$247,200; 55-64 is ~$364,500; and 65-74 is ~$409,900."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the household net worth calculator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The household net worth calculator takes your total assets (savings, 401k, home equity, investments) minus liabilities (mortgages, student loans, credit cards) and maps your financial position against official Federal Reserve SCF population benchmarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth makes you top 10% by age 30?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Americans under age 35, a household net worth of approximately $340,000 puts you in the top 10th percentile according to Federal Reserve data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good benchmark net worth in San Francisco and HCOL cities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In San Francisco and the Bay Area, median net worth is ~$1.7 million to $2.2 million, and a net worth of $4.7 million+ is considered wealthy due to high real estate and tech equity values."
       }
     },
     {
@@ -35,22 +59,6 @@ const faqSchema = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Total net worth includes home equity (home value minus mortgage balance). However, liquid net worth excludes primary residence home equity to focus on cash, investments, and retirement accounts. Our calculator includes a toggle so you can test both."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What net worth makes you top 10% by age 30?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For Americans under age 35, a net worth of approximately $340,000 puts you in the top 10th percentile according to Federal Reserve data."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between average and median net worth?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Average net worth is calculated by adding all net worths and dividing by the total population, which is heavily distorted upward by billionaires. Median net worth represents the exact middle individual (50th percentile) and is a much more realistic benchmark."
       }
     }
   ]
@@ -77,6 +85,17 @@ const faqSchema = {
 				Calculate your exact net worth percentile in America benchmarked against official US Federal Reserve population data.
 			</p>
 		</header>
+
+		<!-- Quick Reference Snippet Box -->
+		<div class="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-5 md:p-6 mb-8 text-left space-y-2">
+			<div class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">⚡ Federal Reserve Net Worth Benchmarks by Age (2026)</div>
+			<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-800 dark:text-slate-200 font-semibold pt-1">
+				<div>Under 35: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$39,000</span></div>
+				<div>35–44: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$135,600</span></div>
+				<div>45–54: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$247,200</span></div>
+				<div>55–64: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$364,500</span></div>
+			</div>
+		</div>
 
 		<!-- Main Interactive Calculator Panel -->
 		<div class="p-6 md:p-10 rounded-3xl border border-slate-250 dark:border-slate-800/80 shadow-xl dark:shadow-2xl relative overflow-hidden backdrop-blur-xl bg-white/95 dark:bg-slate-900/40 transition-colors duration-300">
@@ -415,6 +434,11 @@ const faqSchema = {
 					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Education</div>
 					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Median vs Average Net Worth Explained</h3>
 					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Why the "average American net worth" statistic is deeply misleading and which number you should use.</p>
+				</a>
+				<a href="/benchmark-san-francisco-net-worth" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🌉 High Cost of Living</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">San Francisco Net Worth Benchmark</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">See how net worth percentiles shift in high-cost tech hubs like San Francisco and Silicon Valley.</p>
 				</a>
 			</div>
 		</section>
