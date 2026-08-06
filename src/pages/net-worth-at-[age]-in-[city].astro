@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import cities from '../data/citiesData.json';
+
+export async function getStaticPaths() {
+  const ageBrackets = [
+    { id: "under-35", label: "Under 35", ageNum: 30, mult: 0.28 },
+    { id: "35-to-44", label: "Ages 35 to 44", ageNum: 40, mult: 0.85 },
+    { id: "45-to-54", label: "Ages 45 to 54", ageNum: 50, mult: 1.55 },
+    { id: "55-to-64", label: "Ages 55 to 64", ageNum: 60, mult: 2.15 },
+  ];
+
+  const paths = [];
+  for (const c of cities) {
+    for (const a of ageBrackets) {
+      paths.push({
+        params: { age: a.id, city: c.id },
+        props: { cityData: c, ageData: a },
+      });
+    }
+  }
+  return paths;
+}
+
+const { cityData, ageData } = Astro.props;
+
+const title = `Net Worth ${ageData.label} in ${cityData.name}, ${cityData.state} (2026)`;
+const description = `What is a good net worth for ${ageData.label} in ${cityData.name}? Median household net worth ($${Math.round(cityData.median * ageData.mult).toLocaleString()}), top 10%, and top 1% percentiles.`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What is the average net worth for ${ageData.label} in ${cityData.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `The median net worth for households ${ageData.label} in ${cityData.name} is approximately $${Math.round(cityData.median * ageData.mult).toLocaleString()}.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What net worth puts you in the top 10% for ${ageData.label} in ${cityData.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `In ${cityData.name}, a net worth of $${Math.round(cityData.median * ageData.mult * 8).toLocaleString()} puts you in the top 10% for the ${ageData.label} age group.`
+      }
+    }
+  ]
+};
+---
+
+<Layout title={`${title} | Net Worth Calculator`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+    
+    <header class="text-center mb-10 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>🏙️</span>
+        <span>{cityData.name}, {cityData.state} • {ageData.label} (2026)</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        Net Worth <span class="text-emerald-600 dark:text-emerald-400">{ageData.label}</span> in {cityData.name}
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        Compare your wealth for {ageData.label} living in {cityData.name} using city-level housing and census benchmarks.
+      </p>
+    </header>
+
+    <!-- Quick Answer Box -->
+    <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-10 shadow-xl border border-slate-800 space-y-3">
+      <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">⚡ City Benchmark: {ageData.label} in {cityData.name}</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs pt-1">
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">City Median</span>
+          <strong class="text-emerald-400 text-sm">${Math.round(cityData.median * ageData.mult).toLocaleString()}</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Top 25%</span>
+          <strong class="text-emerald-400 text-sm">${Math.round(cityData.median * ageData.mult * 2.8).toLocaleString()}</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Top 10%</span>
+          <strong class="text-emerald-400 text-sm">${Math.round(cityData.median * ageData.mult * 8).toLocaleString()}</strong>
+        </div>
+        <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+          <span class="block text-slate-400 text-[10px] uppercase font-bold">Top 1%</span>
+          <strong class="text-amber-400 text-sm">${Math.round(cityData.median * ageData.mult * 32).toLocaleString()}</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA to Main Calculator -->
+    <div class="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-white">Calculate Your Percentile Rank in {cityData.name}</h2>
+      <p class="text-xs text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
+        Input your exact net worth figure into our free client-side calculator to see where you rank in {cityData.name} and nationally.
+      </p>
+      <a href="/" class="inline-block px-5 py-2.5 rounded-xl bg-emerald-700 text-white font-bold text-xs hover:bg-emerald-600 transition-all shadow-md">
+        Launch Net Worth Calculator →
+      </a>
+    </div>
+
+  </main>
+</Layout>

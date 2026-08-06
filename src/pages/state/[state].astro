@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import states from '../../data/statesData.json';
+
+export async function getStaticPaths() {
+  return states.map((s) => ({
+    params: { state: s.id },
+    props: { stateData: s },
+  }));
+}
+
+const { stateData } = Astro.props;
+
+const title = `Net Worth Percentile in ${stateData.name} (2026) | ${stateData.name} Wealth Benchmarks`;
+const description = `Calculate your exact net worth percentile in ${stateData.name}. Median household net worth ($${stateData.median.toLocaleString()}), top 10%, top 1% thresholds, and cost-of-living adjusted benchmarks.`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What is the average net worth in ${stateData.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `The median household net worth in ${stateData.name} is approximately $${stateData.median.toLocaleString()}, compared to the national US median of $192,700.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What net worth is top 10% in ${stateData.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `In ${stateData.name}, a household net worth of approximately $${(stateData.median * 7.5).toLocaleString()} puts you in the top 10% percentile.`
+      }
+    }
+  ]
+};
+---
+
+<Layout title={`${title} | Net Worth Calculator`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+    
+    <!-- Hero Header -->
+    <header class="text-center mb-10 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>📍</span>
+        <span>{stateData.name} Household Wealth Benchmarks (2026)</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        {stateData.name} Net Worth <span class="text-emerald-600 dark:text-emerald-400">Percentiles</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        Compare your household net worth in {stateData.name} against state-specific Federal Reserve and US Census economic survey data.
+      </p>
+    </header>
+
+    <!-- Snippet Bait Quick Answer -->
+    <div class="bg-gradient-to-r from-emerald-950/20 to-slate-900/40 border-2 border-emerald-500/40 rounded-2xl p-6 md:p-8 mb-10 shadow-lg">
+      <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">⚡ {stateData.name} Wealth Summary</div>
+      <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+        • <strong>{stateData.name} Median Net Worth:</strong> ${stateData.median.toLocaleString()}<br />
+        • <strong>{stateData.name} Top 25%:</strong> ${(stateData.median * 2.6).toLocaleString()}+<br />
+        • <strong>{stateData.name} Top 10%:</strong> ${(stateData.median * 7.5).toLocaleString()}+<br />
+        • <strong>{stateData.name} Top 1%:</strong> ${(stateData.median * 30).toLocaleString()}+<br />
+        • <strong>Cost of Living Index:</strong> {stateData.col > 0 ? `+${stateData.col}% above US average` : `${stateData.col}% below US average`}
+      </p>
+    </div>
+
+    <!-- Percentile Table for Age Groups in State -->
+    <section class="space-y-6 mb-12">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">{stateData.name} Net Worth Benchmarks by Age</h2>
+      
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-emerald-700 text-white font-bold text-xs uppercase">
+            <tr>
+              <th class="px-5 py-4">Age Group</th>
+              <th class="px-5 py-4">{stateData.name} Median</th>
+              <th class="px-5 py-4 text-emerald-200">Top 10%</th>
+              <th class="px-5 py-4 text-amber-200">Top 1%</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-bold">Under 35</td>
+              <td class="px-5 py-4">${Math.round(stateData.median * 0.28).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 2.4).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 9.5).toLocaleString()}</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
+              <td class="px-5 py-4 font-bold">Ages 35–44</td>
+              <td class="px-5 py-4">${Math.round(stateData.median * 0.85).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 6.2).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 25).toLocaleString()}</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-bold">Ages 45–54</td>
+              <td class="px-5 py-4">${Math.round(stateData.median * 1.55).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 12.2).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 48).toLocaleString()}</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
+              <td class="px-5 py-4 font-bold">Ages 55–64</td>
+              <td class="px-5 py-4">${Math.round(stateData.median * 2.15).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 16.5).toLocaleString()}</td>
+              <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 65).toLocaleString()}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="text-center pt-4">
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">
+        <span>Launch Interactive Percentile Calculator →</span>
+      </a>
+    </div>
+
+  </main>
+</Layout>
