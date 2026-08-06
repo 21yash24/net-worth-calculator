@@ -14,6 +14,31 @@ const { stateData } = Astro.props;
 const title = `Net Worth Percentile in ${stateData.name} (2026) | ${stateData.name} Wealth Benchmarks`;
 const description = `Calculate your exact net worth percentile in ${stateData.name}. Median household net worth ($${stateData.median.toLocaleString()}), top 10%, top 1% thresholds, and cost-of-living adjusted benchmarks.`;
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getnetworthcalculator.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Net Worth by State",
+      "item": "https://getnetworthcalculator.com/net-worth-by-state"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": stateData.name,
+      "item": `https://getnetworthcalculator.com/state/${stateData.id}`
+    }
+  ]
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -33,12 +58,21 @@ const faqSchema = {
         "@type": "Answer",
         "text": `In ${stateData.name}, a household net worth of approximately $${(stateData.median * 7.5).toLocaleString()} puts you in the top 10% percentile.`
       }
+    },
+    {
+      "@type": "Question",
+      "name": `How does median home price affect net worth in ${stateData.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `With median home prices in ${stateData.name} at $${stateData.home.toLocaleString()}, primary residence home equity represents over 45% of total wealth for homeowners in this state.`
+      }
     }
   ]
 };
 ---
 
 <Layout title={`${title} | Net Worth Calculator`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
@@ -66,6 +100,7 @@ const faqSchema = {
         • <strong>{stateData.name} Top 25%:</strong> ${(stateData.median * 2.6).toLocaleString()}+<br />
         • <strong>{stateData.name} Top 10%:</strong> ${(stateData.median * 7.5).toLocaleString()}+<br />
         • <strong>{stateData.name} Top 1%:</strong> ${(stateData.median * 30).toLocaleString()}+<br />
+        • <strong>Median Single-Family Home Price:</strong> ${stateData.home.toLocaleString()}<br />
         • <strong>Cost of Living Index:</strong> {stateData.col > 0 ? `+${stateData.col}% above US average` : `${stateData.col}% below US average`}
       </p>
     </div>
@@ -82,6 +117,7 @@ const faqSchema = {
               <th class="px-5 py-4">{stateData.name} Median</th>
               <th class="px-5 py-4 text-emerald-200">Top 10%</th>
               <th class="px-5 py-4 text-amber-200">Top 1%</th>
+              <th class="px-5 py-4 text-right">Age Breakdown Guide</th>
             </tr>
           </thead>
           <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
@@ -90,27 +126,64 @@ const faqSchema = {
               <td class="px-5 py-4">${Math.round(stateData.median * 0.28).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 2.4).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 9.5).toLocaleString()}</td>
+              <td class="px-5 py-4 text-right">
+                <a href={`/net-worth-at-under-35-in-${stateData.id}`} class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">Under 35 Guide →</a>
+              </td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
               <td class="px-5 py-4 font-bold">Ages 35–44</td>
               <td class="px-5 py-4">${Math.round(stateData.median * 0.85).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 6.2).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 25).toLocaleString()}</td>
+              <td class="px-5 py-4 text-right">
+                <a href={`/net-worth-at-35-to-44-in-${stateData.id}`} class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">35–44 Guide →</a>
+              </td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
               <td class="px-5 py-4 font-bold">Ages 45–54</td>
               <td class="px-5 py-4">${Math.round(stateData.median * 1.55).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 12.2).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 48).toLocaleString()}</td>
+              <td class="px-5 py-4 text-right">
+                <a href={`/net-worth-at-45-to-54-in-${stateData.id}`} class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">45–54 Guide →</a>
+              </td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
               <td class="px-5 py-4 font-bold">Ages 55–64</td>
               <td class="px-5 py-4">${Math.round(stateData.median * 2.15).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-emerald-600 dark:text-emerald-400">${Math.round(stateData.median * 16.5).toLocaleString()}</td>
               <td class="px-5 py-4 font-bold text-amber-500">${Math.round(stateData.median * 65).toLocaleString()}</td>
+              <td class="px-5 py-4 text-right">
+                <a href={`/net-worth-at-55-to-64-in-${stateData.id}`} class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">55–64 Guide →</a>
+              </td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- Deep Educational Guide Section -->
+    <section class="space-y-6 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Factors Shaping Wealth in {stateData.name}</h2>
+      
+      <p>
+        Building wealth in <strong>{stateData.name}</strong> presents unique opportunities and trade-offs. With a cost of living index standing at <strong>{stateData.col > 0 ? `+${stateData.col}% above` : `${stateData.col}% below`} the US national average</strong>, residents must balance property accumulation against liquid investments.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">🏡 Real Estate & Equity</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            The median single-family home price in {stateData.name} is <strong>${stateData.home.toLocaleString()}</strong>. Real estate equity forms over 50% of net worth for homeowning families in this state.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">📈 Tax Strategy & Retirement Accounts</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Utilizing tax-advantaged accounts like 401(k)s, Roth IRAs, and HSAs provides maximum tax efficiency, protecting compounding capital from state tax drag.
+          </p>
+        </div>
       </div>
     </section>
 
