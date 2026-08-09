@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Top 10% Net Worth by Age (2026) | What You Need to Be in the Top 10%";
+const description = "What net worth puts you in the top 10% for your age? See exact thresholds for every age group from the Federal Reserve SCF data. Are you in the top 10%?";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What net worth is top 10% in the US?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To be in the top 10% of all US households by net worth, you need approximately $1,900,000 or more. However, this threshold varies significantly by age: under 35 it's ~$490,000, ages 35-44 it's ~$980,000, ages 45-54 it's ~$1,710,000, ages 55-64 it's ~$2,800,000, and ages 65-74 it's ~$2,850,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 10% net worth at age 30?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Americans under 35, the top 10% net worth threshold is approximately $490,000. The median net worth for this age group is only $39,000, so being in the top 10% at 30 requires a net worth more than 12x the median."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 10% net worth at age 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the 35-44 age bracket, the top 10% net worth threshold is approximately $980,000 — just under $1 million. The median is $135,600, so top 10% Americans at 40 have about 7x the median net worth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 10% net worth at age 50?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the 45-54 age bracket, the top 10% net worth threshold is approximately $1,710,000. The median net worth for this group is $247,200."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get into the top 10% net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reaching the top 10% net worth requires: (1) Maxing out tax-advantaged accounts (401k, IRA, HSA) every year, (2) Investing consistently in low-cost index funds, (3) Owning appreciating assets like real estate, (4) Keeping your savings rate above 20% of gross income, and (5) Avoiding lifestyle inflation as income grows."
+      }
+    }
+  ]
+};
+
+const dataByAge = [
+  { bracket: "Under 35", median: "$39,000", top25: "$130,000", top10: "$490,000", top5: "$950,000", top1: "$3,500,000" },
+  { bracket: "35 – 44", median: "$135,600", top25: "$410,000", top10: "$980,000", top5: "$1,900,000", top1: "$6,800,000" },
+  { bracket: "45 – 54", median: "$247,200", top25: "$740,000", top10: "$1,710,000", top5: "$3,300,000", top1: "$11,000,000" },
+  { bracket: "55 – 64", median: "$364,500", top25: "$1,050,000", top10: "$2,800,000", top5: "$5,100,000", top1: "$16,000,000" },
+  { bracket: "65 – 74", median: "$409,900", top25: "$1,220,000", top10: "$2,850,000", top5: "$5,400,000", top1: "$17,000,000" },
+  { bracket: "75+", median: "$335,600", top25: "$960,000", top10: "$2,400,000", top5: "$4,700,000", top1: "$14,000,000" },
+];
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-14">
+
+    <!-- Hero -->
+    <section>
+      <div class="inline-flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-amber-200 dark:border-amber-800">
+        📊 Federal Reserve SCF 2022 Data
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-5">
+        Top 10% Net Worth by Age <span class="text-amber-500">(2026)</span>
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
+        Exactly how much net worth do you need to be in the top 10% for your age group? Based on the US Federal Reserve's Survey of Consumer Finances — the most authoritative source for American household wealth data — here are the precise thresholds for every age bracket.
+      </p>
+    </section>
+
+    <!-- Quick Answer Box -->
+    <div class="bg-amber-50 dark:bg-amber-900/10 border-2 border-amber-400/40 rounded-2xl p-6">
+      <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">⚡ Quick Answer</div>
+      <p class="text-slate-800 dark:text-slate-200 font-semibold text-lg leading-relaxed">
+        To be in the <strong>top 10% of all US households</strong> regardless of age, you need approximately <strong class="text-amber-500 text-2xl">$1,900,000+</strong> in net worth. But the threshold varies dramatically by age group — a 30-year-old needs far less than a 60-year-old.
+      </p>
+    </div>
+
+    <!-- Full Percentile Table -->
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-4">Top 10% (and Beyond) Net Worth Thresholds by Age</h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">Source: US Federal Reserve Survey of Consumer Finances (SCF) 2022. All figures in 2022 dollars.</p>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-100 dark:bg-slate-800/60">
+            <tr>
+              <th class="px-4 py-3 text-left font-bold text-slate-900 dark:text-white">Age Bracket</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-500">Median (50th)</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-600 dark:text-slate-400">Top 25%</th>
+              <th class="px-4 py-3 text-left font-bold text-amber-600 dark:text-amber-400">🏅 Top 10%</th>
+              <th class="px-4 py-3 text-left font-bold text-orange-600 dark:text-orange-400">Top 5%</th>
+              <th class="px-4 py-3 text-left font-bold text-red-600 dark:text-red-400">Top 1%</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dataByAge.map((row, i) => (
+              <tr class={`border-t border-slate-200 dark:border-slate-800 ${i % 2 === 1 ? 'bg-slate-50 dark:bg-slate-900/40' : ''}`}>
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">{row.bracket}</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-400">{row.median}</td>
+                <td class="px-4 py-3 text-slate-700 dark:text-slate-300 font-semibold">{row.top25}</td>
+                <td class="px-4 py-3 font-bold text-amber-600 dark:text-amber-400">{row.top10}</td>
+                <td class="px-4 py-3 font-semibold text-orange-600 dark:text-orange-400">{row.top5}</td>
+                <td class="px-4 py-3 font-bold text-red-600 dark:text-red-400">{row.top1}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- What Separates Top 10% -->
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-5">What Separates Top 10% Wealth Builders from the Rest?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          { icon: "📈", title: "They invest in index funds early", body: "Top 10% households typically started investing in their 20s, allowing compound growth to do the heavy lifting. A $500/month investment from age 25 at 8% returns = $1.3M by 55." },
+          { icon: "🏠", title: "Real estate is their #1 asset", body: "For most top 10% Americans, their primary home and any investment properties represent the single largest component of net worth — often 40-60% of total assets." },
+          { icon: "💼", title: "They max tax-advantaged accounts", body: "401(k), IRA, HSA, and 529 plans are maximized every year. At a 22% tax bracket, maxing a 401k saves $5,060/year in taxes — money that stays invested." },
+          { icon: "🚫", title: "They avoid wealth-destroying debt", body: "Car loans on depreciating vehicles, credit card balances, and lifestyle debt are minimal. The top 10% treat debt as a precision tool, not a lifestyle supplement." },
+        ].map(item => (
+          <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqSchema.mainEntity.map(faq => (
+          <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2">Q: {faq.name}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{faq.acceptedAnswer.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+      <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Wealth Calculators</h3>
+      <div class="flex flex-wrap gap-3">
+        <a href="/top-1-percent-net-worth-by-age" class="px-4 py-2 bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-full text-sm font-bold hover:bg-amber-500/20 transition-colors">🏆 Top 1% by Age</a>
+        <a href="/1-million-net-worth-by-age" class="px-4 py-2 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded-full text-sm font-bold hover:bg-emerald-500/20 transition-colors">💰 $1M Net Worth by Age</a>
+        <a href="/net-worth-percentile" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">📊 Find My Percentile</a>
+        <a href="/" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">🧮 Net Worth Calculator</a>
+        <a href="/average-net-worth-by-age" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">📈 Average Net Worth by Age</a>
+      </div>
+    </section>
+
+  </main>
+</Layout>

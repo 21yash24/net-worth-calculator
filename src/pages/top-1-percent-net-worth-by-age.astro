@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Top 1% Net Worth by Age (2026) | What You Need to Be in the Top 1%";
+const description = "What net worth makes you top 1% by age? Official US Federal Reserve Survey of Consumer Finances (SCF) data thresholds for ages 25 to 75+.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What net worth is top 1% in the US?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To be in the overall top 1% of US households regardless of age, you need a net worth of approximately $13.7 Million or more. By age group, the top 1% threshold ranges from ~$3.5 Million (under 35) to ~$17 Million (ages 65-74)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 1% net worth at age 30?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Americans under age 35, the top 1% net worth threshold is approximately $3,500,000. Reaching this milestone usually requires successful business ownership, high-tech equity, or significant inheritance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 1% net worth at age 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the 35-44 age bracket, the top 1% net worth threshold is approximately $6,800,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 1% net worth at age 50?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the 45-54 age bracket, the top 1% net worth threshold is approximately $11,000,000."
+      }
+    }
+  ]
+};
+
+const dataByAge = [
+  { bracket: "Under 35", median: "$39,000", top10: "$490,000", top5: "$950,000", top1: "$3,500,000" },
+  { bracket: "35 – 44", median: "$135,600", top10: "$980,000", top5: "$1,900,000", top1: "$6,800,000" },
+  { bracket: "45 – 54", median: "$247,200", top10: "$1,710,000", top5: "$3,300,000", top1: "$11,000,000" },
+  { bracket: "55 – 64", median: "$364,500", top10: "$2,800,000", top5: "$5,100,000", top1: "$16,000,000" },
+  { bracket: "65 – 74", median: "$409,900", top10: "$2,850,000", top5: "$5,400,000", top1: "$17,000,000" },
+  { bracket: "75+", median: "$335,600", top10: "$2,400,000", top5: "$4,700,000", top1: "$14,000,000" },
+];
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-14">
+    <section>
+      <div class="inline-flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-amber-200 dark:border-amber-800">
+        🏆 US Federal Reserve SCF 2022 Benchmark
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-5">
+        Top 1% Net Worth by Age <span class="text-amber-500">(2026)</span>
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
+        How much wealth does it take to enter America's elite 1% wealth tier at your age? Here are the exact numbers based on the Federal Reserve Survey of Consumer Finances.
+      </p>
+    </section>
+
+    <div class="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border-l-4 border-amber-500 rounded-r-2xl p-6">
+      <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">⚡ Top 1% Summary</div>
+      <p class="text-slate-800 dark:text-slate-200 font-semibold text-lg leading-relaxed">
+        Overall US Top 1% Threshold: <strong class="text-amber-500 text-2xl">$13,700,000+</strong><br/>
+        Under 35: <strong class="text-amber-500">$3.5M</strong> | 35–44: <strong class="text-amber-500">$6.8M</strong> | 45–54: <strong class="text-amber-500">$11.0M</strong> | 55–64: <strong class="text-amber-500">$16.0M</strong>
+      </p>
+    </div>
+
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-4">Top 1% Net Worth Table by Age</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-100 dark:bg-slate-800/60">
+            <tr>
+              <th class="px-4 py-3 text-left font-bold text-slate-900 dark:text-white">Age Bracket</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-500">Median</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-600 dark:text-slate-400">Top 10%</th>
+              <th class="px-4 py-3 text-left font-bold text-orange-600 dark:text-orange-400">Top 5%</th>
+              <th class="px-4 py-3 text-left font-bold text-amber-500">🏆 Top 1%</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dataByAge.map((row, i) => (
+              <tr class={`border-t border-slate-200 dark:border-slate-800 ${i % 2 === 1 ? 'bg-slate-50 dark:bg-slate-900/40' : ''}`}>
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">{row.bracket}</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-400">{row.median}</td>
+                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">{row.top10}</td>
+                <td class="px-4 py-3 text-orange-600 dark:text-orange-400 font-semibold">{row.top5}</td>
+                <td class="px-4 py-3 font-bold text-amber-500 text-base">{row.top1}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqSchema.mainEntity.map(faq => (
+          <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2">Q: {faq.name}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{faq.acceptedAnswer.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+      <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Benchmarks</h3>
+      <div class="flex flex-wrap gap-3">
+        <a href="/top-10-percent-net-worth-by-age" class="px-4 py-2 bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-full text-sm font-bold hover:bg-amber-500/20 transition-colors">Top 10% by Age</a>
+        <a href="/1-million-net-worth-by-age" class="px-4 py-2 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded-full text-sm font-bold hover:bg-emerald-500/20 transition-colors">$1M Net Worth by Age</a>
+        <a href="/average-net-worth-by-age" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">Average Net Worth by Age</a>
+      </div>
+    </section>
+  </main>
+</Layout>
