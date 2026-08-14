@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "$1 Million Net Worth by Age (2026) | When Do Americans Reach $1M?";
+const description = "At what age do Americans reach $1 million net worth? Federal Reserve SCF data showing millionaire percentage by age group and savings milestones.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What percentage of Americans have $1 million net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Approximately 8-9% of American adults have a net worth exceeding $1 million, according to Federal Reserve data. However, most millionaires are aged 50+ with decades of compounding. For under-35s, only about 1-2% reach $1M."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to save $1 million?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Saving $1 million depends entirely on savings rate and investment returns. At $1,000/month with 8% annual returns, it takes approximately 30 years. At $2,000/month, it takes about 23 years. Starting early with compound growth is the single biggest factor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth is considered a millionaire by age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Being a 'millionaire' means having $1M+ in total net worth. However, many Americans who are millionaires on paper have most wealth locked in home equity. Liquid millionaires (excluding primary residence) represent about 5-6% of adults."
+      }
+    }
+  ]
+};
+
+const millionaireData = [
+  { bracket: "Under 35", millionairePct: "1-2%", median: "$39,000", top10: "$340,000", yearsToSave: "30-35" },
+  { bracket: "35 – 44", millionairePct: "3-4%", median: "$135,600", top10: "$980,000", yearsToSave: "20-25" },
+  { bracket: "45 – 54", millionairePct: "6-8%", median: "$247,200", top10: "$1,950,000", yearsToSave: "15-20" },
+  { bracket: "55 – 64", millionairePct: "12-15%", median: "$364,500", top10: "$2,800,000", yearsToSave: "10-15" },
+  { bracket: "65 – 74", millionairePct: "15-18%", median: "$409,900", top10: "$3,400,000", yearsToSave: "N/A" },
+];
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-14">
+    <!-- Header -->
+    <section>
+      <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-emerald-200 dark:border-emerald-800">
+        💰 US Federal Reserve SCF 2022 Data
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-5">
+        $1 Million Net Worth by Age <span class="text-emerald-500">(2026)</span>
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
+        At what age do Americans actually reach $1 million in total net worth? Here's the data on millionaire prevalence by age group and how long it takes to save your first million.
+      </p>
+    </section>
+
+    <!-- Snippet Bait -->
+    <div class="bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border-l-4 border-emerald-500 rounded-r-2xl p-6">
+      <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">⚡ $1 Million Milestone Summary</div>
+      <p class="text-slate-800 dark:text-slate-200 font-semibold text-lg leading-relaxed">
+        Overall millionaire rate: <strong class="text-emerald-500 text-2xl">8-9% of US adults</strong><br/>
+        Under 35: <strong class="text-emerald-500">1-2%</strong> | 35–44: <strong class="text-emerald-500">3-4%</strong> | 45–54: <strong class="text-emerald-500">6-8%</strong> | 55–64: <strong class="text-emerald-500">12-15%</strong>
+      </p>
+    </div>
+
+    <!-- Table -->
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-4">Millionaire Prevalence by Age Group</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-100 dark:bg-slate-800/60">
+            <tr>
+              <th class="px-4 py-3 text-left font-bold text-slate-900 dark:text-white">Age Bracket</th>
+              <th class="px-4 py-3 text-left font-bold text-emerald-600 dark:text-emerald-400">% With $1M+</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-500">Median NW</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-600 dark:text-slate-400">Top 10%</th>
+              <th class="px-4 py-3 text-left font-bold text-slate-700 dark:text-slate-300">Est. Years to $1M</th>
+            </tr>
+          </thead>
+          <tbody>
+            {millionaireData.map((row, i) => (
+              <tr class={`border-t border-slate-200 dark:border-slate-800 ${i % 2 === 1 ? 'bg-slate-50 dark:bg-slate-900/40' : ''}`}>
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">{row.bracket}</td>
+                <td class="px-4 py-3 font-bold text-emerald-600 dark:text-emerald-400">{row.millionairePct}</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-400">{row.median}</td>
+                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">{row.top10}</td>
+                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">{row.yearsToSave}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Educational Content -->
+    <section class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">How Long Does It Actually Take to Save $1 Million?</h2>
+      <p>
+        The path to $1 million depends on three factors: <strong class="text-slate-900 dark:text-white">savings rate</strong>, <strong class="text-slate-900 dark:text-white">investment returns</strong>, and <strong class="text-slate-900 dark:text-white">time</strong>. Compound interest is the most powerful wealth-building force available to ordinary Americans.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 text-center space-y-2">
+          <div class="text-2xl font-extrabold text-emerald-500">$500/mo</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">SAVINGS RATE</div>
+          <div class="text-sm text-slate-700 dark:text-slate-300">~35 years to $1M at 8% returns</div>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 text-center space-y-2">
+          <div class="text-2xl font-extrabold text-emerald-500">$1,000/mo</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">SAVINGS RATE</div>
+          <div class="text-sm text-slate-700 dark:text-slate-300">~30 years to $1M at 8% returns</div>
+        </div>
+        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 text-center space-y-2">
+          <div class="text-2xl font-extrabold text-emerald-500">$2,000/mo</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">SAVINGS RATE</div>
+          <div class="text-sm text-slate-700 dark:text-slate-300">~23 years to $1M at 8% returns</div>
+        </div>
+      </div>
+      <p>
+        The key insight: starting at age 25 vs 35 can mean the difference between retiring a millionaire or not. A 25-year-old investing $500/month at 8% annual returns will have approximately $1.75 million by age 60. A 35-year-old investing the same amount will have only $745,000.
+      </p>
+    </section>
+
+    <!-- Related -->
+    <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+      <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Calculators</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">🧮</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Net Worth Calculator by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Find your exact percentile rank.</div>
+          </div>
+        </a>
+        <a href="/millionaire-calculator" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">💰</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Millionaire Calculator</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">When will you reach $1M?</div>
+          </div>
+        </a>
+        <a href="/savings-multiplier-by-age" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">🎯</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Savings Multiplier by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Fidelity 1x-10x salary rule.</div>
+          </div>
+        </a>
+        <a href="/average-net-worth-by-age" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">📊</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Average Net Worth by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Complete Federal Reserve data.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqSchema.mainEntity.map(faq => (
+          <details class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group">
+            <summary class="px-6 py-5 font-bold text-slate-900 dark:text-white cursor-pointer list-none flex justify-between items-center">
+              <span>{faq.name}</span>
+              <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{faq.acceptedAnswer.text}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -3,9 +3,19 @@ import Layout from '../layouts/Layout.astro';
 
 const title = "About & Data Methodology | Get Net Worth Calculator";
 const description = "Learn about the data methodology, official government sources, E-E-A-T editorial standards, and privacy guarantees behind GetNetWorthCalculator.com.";
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GetNetWorthCalculator",
+  "url": "https://getnetworthcalculator.com",
+  "description": "Privacy-first global wealth benchmarking platform powered by official US Federal Reserve, UK ONS, RBI India, ABS Australia, and StatsCan datasets.",
+  "sameAs": []
+};
 ---
 
 <Layout title={title} description={description}>
+	<script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
 	<main class="max-w-4xl mx-auto px-6 py-12 md:py-20">
 		<header class="text-center mb-12 space-y-3">
 			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
@@ -66,5 +76,57 @@ const description = "Learn about the data methodology, official government sourc
 				</p>
 			</section>
 		</div>
+
+		<!-- Our Calculators & Tools -->
+		<section class="mt-16">
+			<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Our Calculators &amp; Tools</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+				<a href="/" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇺🇸 USA</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Calculator by Age</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Federal Reserve SCF percentile benchmarks.</p>
+				</a>
+				<a href="/net-worth-by-age-india" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wide mb-1">🇮🇳 India</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">India Net Worth Calculator</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">RBI &amp; SEBI household wealth data in ₹.</p>
+				</a>
+				<a href="/net-worth-by-age-uk" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇬🇧 UK</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">UK Net Worth Calculator</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">ONS Wealth &amp; Assets Survey data in GBP.</p>
+				</a>
+				<a href="/net-worth-by-age-canada" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇨🇦 Canada</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Canada Net Worth Calculator</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">StatsCan SFS data in CAD.</p>
+				</a>
+				<a href="/net-worth-by-age-australia" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇦🇺 Australia</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Australia Net Worth Calculator</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">ABS &amp; RBA household finance data.</p>
+				</a>
+				<a href="/wealth-class-calculator" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wide mb-1">💎 Wealth Class</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Am I Rich? Calculator</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Discover your wealth tier (Middle, HNW, UHNW).</p>
+				</a>
+				<a href="/fire-net-worth-calculator" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wide mb-1">🔥 FIRE</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">FIRE Retirement Calculator</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">4% rule early retirement target calculator.</p>
+				</a>
+				<a href="/net-worth-percentile" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🏆 Percentile</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Percentile Ranking</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">What net worth puts you in the top 10%, 5%, 1%?</p>
+				</a>
+				<a href="/average-net-worth-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">📊 Data Guide</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Average Net Worth by Age</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Complete Federal Reserve data table with median &amp; mean.</p>
+				</a>
+			</div>
+		</section>
 	</main>
 </Layout>

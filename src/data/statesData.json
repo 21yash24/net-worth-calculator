@@ -26,7 +26,7 @@
   { "id": "missouri", "name": "Missouri", "median": 165000, "col": -10, "home": 240000 },
   { "id": "montana", "name": "Montana", "median": 240000, "col": 7, "home": 440000 },
   { "id": "nebraska", "name": "Nebraska", "median": 175000, "col": -8, "home": 250000 },
-  { "id": "nevada", "median": 215000, "id": "nevada", "col": 4, "home": 420000 },
+  { "id": "nevada", "name": "Nevada", "median": 215000, "col": 4, "home": 420000 },
   { "id": "new-hampshire", "name": "New Hampshire", "median": 315000, "col": 15, "home": 440000 },
   { "id": "new-jersey", "name": "New Jersey", "median": 360000, "col": 20, "home": 480000 },
   { "id": "new-mexico", "name": "New Mexico", "median": 150000, "col": -8, "home": 290000 },

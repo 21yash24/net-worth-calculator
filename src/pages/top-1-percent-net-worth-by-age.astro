@@ -118,12 +118,73 @@ const dataByAge = [
     </section>
 
     <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
-      <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Benchmarks</h3>
-      <div class="flex flex-wrap gap-3">
-        <a href="/top-10-percent-net-worth-by-age" class="px-4 py-2 bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-full text-sm font-bold hover:bg-amber-500/20 transition-colors">Top 10% by Age</a>
-        <a href="/1-million-net-worth-by-age" class="px-4 py-2 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded-full text-sm font-bold hover:bg-emerald-500/20 transition-colors">$1M Net Worth by Age</a>
-        <a href="/average-net-worth-by-age" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">Average Net Worth by Age</a>
+      <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Benchmarks &amp; Calculators</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/top-10-percent-net-worth-by-age" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-amber-500/50 transition-all">
+          <span class="text-amber-500 text-lg">🏆</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Top 10% Net Worth by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">What net worth puts you in the top 10%?</div>
+          </div>
+        </a>
+        <a href="/wealth-class-calculator" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-amber-500/50 transition-all">
+          <span class="text-amber-500 text-lg">💎</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Am I Rich? Calculator</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Discover your American wealth class tier.</div>
+          </div>
+        </a>
+        <a href="/" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">🧮</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Net Worth Calculator by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Find your exact percentile rank.</div>
+          </div>
+        </a>
+        <a href="/average-net-worth-by-age" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">📊</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Average Net Worth by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Complete Federal Reserve data table.</div>
+          </div>
+        </a>
+        <a href="/net-worth-percentile" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">🏆</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Net Worth Percentile Ranking</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Where do you actually stand?</div>
+          </div>
+        </a>
+        <a href="/median-vs-average-net-worth" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">⚖️</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Median vs Average Net Worth</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Why the "average" statistic lies.</div>
+          </div>
+        </a>
       </div>
+    </section>
+
+    <!-- Educational Content: What Does Top 1% Actually Mean? -->
+    <section class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">What Does "Top 1%" Actually Mean?</h2>
+      <p>
+        The top 1% wealth threshold represents the entry point into America's wealthiest households. According to the Federal Reserve's Survey of Consumer Finances, this elite tier requires total net worth (assets minus liabilities) that vastly exceeds median household wealth. For context, a household in the top 1% for the under-35 age bracket holds approximately <strong class="text-slate-900 dark:text-white">90x the median net worth</strong> of their peers.
+      </p>
+      <p>
+        It's important to distinguish between <strong class="text-slate-900 dark:text-white">net worth percentiles by age</strong> and overall net worth percentiles. A $3.5M net worth puts you in the top 1% for under-35s, but the same amount would not reach the top 1% for ages 55–64, where the threshold is $16M. This is because older households have had decades of compound growth, home equity appreciation, and retirement account accumulation.
+      </p>
+      <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 space-y-3">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Key Differences Between Wealth Tiers</h3>
+        <ul class="space-y-2 text-sm">
+          <li><strong class="text-slate-900 dark:text-white">Top 10% (Affluent):</strong> Requires $340K–$2.85M depending on age. Achievable through consistent 401(k) contributions, home equity, and index fund investing over 15–20 years.</li>
+          <li><strong class="text-slate-900 dark:text-white">Top 5% (High Net Worth):</strong> Requires $950K–$5.4M. Typically requires dual high incomes, significant equity compensation (RSUs), or business ownership.</li>
+          <li><strong class="text-slate-900 dark:text-white">Top 1% (Ultra High Net Worth):</strong> Requires $3.5M–$17M. Usually requires business equity, large stock portfolios, or generational wealth transfer.</li>
+        </ul>
+      </div>
+      <p>
+        If your goal is to reach the top 1%, focus on <strong class="text-slate-900 dark:text-white">equity compensation</strong> (tech RSUs, startup equity), <strong class="text-slate-900 dark:text-white">real estate investment properties</strong>, and <strong class="text-slate-900 dark:text-white">business ownership</strong> — the three primary wealth accelerators that separate the top 1% from the top 10%.
+      </p>
     </section>
   </main>
 </Layout>

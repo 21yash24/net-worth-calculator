@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Liquid Net Worth Calculator (2026) | Calculate Your Investable Assets";
+const description = "Calculate your liquid net worth excluding home equity and illiquid assets. Find your investable asset balance for FIRE planning and wealth benchmarking.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is liquid net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liquid net worth is your total net worth minus illiquid assets like primary residence home equity, physical property, and business equity. It includes cash, savings accounts, brokerage accounts, retirement accounts (401k, IRA), and other easily sellable investments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is liquid net worth more important than total net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liquid net worth matters more for retirement planning and financial independence because it represents assets you can actually spend. Your home doesn't pay for groceries. FIRE calculations, emergency fund planning, and wealth benchmarks all use liquid/investable assets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good liquid net worth by age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A good liquid net worth target follows Fidelity's savings multiplier: 1x salary by 30, 3x by 40, 6x by 50, 8x by 60, 10x by 67. For median US earners ($60K salary), this means $180K liquid net worth by 40."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-14">
+    <!-- Header -->
+    <section>
+      <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-emerald-200 dark:border-emerald-800">
+        💧 Liquid / Investable Assets Only
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-5">
+        Liquid Net Worth Calculator <span class="text-emerald-500">(2026)</span>
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
+        Calculate your liquid net worth — your investable assets excluding home equity and illiquid property. Essential for FIRE planning and accurate wealth benchmarking.
+      </p>
+    </section>
+
+    <!-- Snippet Bait -->
+    <div class="bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border-l-4 border-emerald-500 rounded-r-2xl p-6">
+      <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">⚡ Liquid Net Worth Quick Answer</div>
+      <p class="text-slate-800 dark:text-slate-200 font-semibold text-lg leading-relaxed">
+        Median liquid net worth (US, under 35): <strong class="text-emerald-500">$25,000</strong><br/>
+        Median liquid net worth (US, 35-44): <strong class="text-emerald-500">$95,000</strong> | Top 10%: <strong class="text-emerald-500">$680,000</strong>
+      </p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-white">Calculate Your Liquid Net Worth</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Assets -->
+        <div class="space-y-4">
+          <h3 class="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Liquid Assets</h3>
+          <div>
+            <label for="cash" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Cash &amp; Savings ($)</label>
+            <input type="number" id="cash" value="25000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-1 focus:ring-emerald-500" aria-label="Cash and Savings">
+          </div>
+          <div>
+            <label for="investments" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Investment Accounts ($)</label>
+            <input type="number" id="investments" value="50000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-1 focus:ring-emerald-500" aria-label="Investment Accounts">
+          </div>
+          <div>
+            <label for="retirement" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Retirement Accounts (401k/IRA) ($)</label>
+            <input type="number" id="retirement" value="80000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-1 focus:ring-emerald-500" aria-label="Retirement Accounts">
+          </div>
+        </div>
+
+        <!-- Liabilities -->
+        <div class="space-y-4">
+          <h3 class="text-sm font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Liquid Liabilities</h3>
+          <div>
+            <label for="credit-cards" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Credit Card Debt ($)</label>
+            <input type="number" id="credit-cards" value="5000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-1 focus:ring-emerald-500" aria-label="Credit Card Debt">
+          </div>
+          <div>
+            <label for="student-loans" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Student Loans ($)</label>
+            <input type="number" id="student-loans" value="15000" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-1 focus:ring-emerald-500" aria-label="Student Loans">
+          </div>
+          <div>
+            <label for="other-debt" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Other Debt ($)</label>
+            <input type="number" id="other-debt" value="0" class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-1 focus:ring-emerald-500" aria-label="Other Debt">
+          </div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="pt-6 border-t border-slate-200 dark:border-slate-800 text-center space-y-3">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Your Liquid Net Worth</div>
+        <div id="liquid-nw-result" class="text-4xl md:text-5xl font-extrabold text-emerald-600 dark:text-emerald-400">$135,000</div>
+        <p id="liquid-nw-summary" class="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto"></p>
+      </div>
+    </div>
+
+    <!-- Educational Content -->
+    <section class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">Why Liquid Net Worth Matters More Than Total Net Worth</h2>
+      <p>
+        Total net worth includes your primary residence home equity, which can be misleading. A family with $800K in home equity but only $50K in liquid assets cannot easily access that wealth to pay bills, invest, or retire early. <strong class="text-slate-900 dark:text-white">Liquid net worth</strong> represents your actual financial flexibility.
+      </p>
+      <p>
+        For FIRE (Financial Independence, Retire Early) planning, only liquid assets matter. The 4% Rule applies to investable portfolios, not home equity. A $1.5M total net worth with $200K in liquid assets is very different from $1.5M with $800K liquid.
+      </p>
+      <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 space-y-3">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Fidelity Savings Multiplier Targets (Liquid Net Worth)</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-sm">
+          <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80">
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">By Age 30</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white">1x</div>
+            <div class="text-xs text-slate-500">salary</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80">
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">By Age 40</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white">3x</div>
+            <div class="text-xs text-slate-500">salary</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80">
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">By Age 50</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white">6x</div>
+            <div class="text-xs text-slate-500">salary</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80">
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-bold">By Age 67</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white">10x</div>
+            <div class="text-xs text-slate-500">salary</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+      <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Calculators</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">🧮</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Net Worth Calculator by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Find your exact percentile rank.</div>
+          </div>
+        </a>
+        <a href="/fire-net-worth-calculator" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-orange-500 text-lg">🔥</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">FIRE Calculator</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">4% rule early retirement target.</div>
+          </div>
+        </a>
+        <a href="/savings-multiplier-by-age" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">🎯</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Savings Multiplier by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Fidelity 1x-10x salary rule.</div>
+          </div>
+        </a>
+        <a href="/average-net-worth-by-age" class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-emerald-500/50 transition-all">
+          <span class="text-emerald-500 text-lg">📊</span>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Average Net Worth by Age</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Complete Federal Reserve data.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqSchema.mainEntity.map(faq => (
+          <details class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group">
+            <summary class="px-6 py-5 font-bold text-slate-900 dark:text-white cursor-pointer list-none flex justify-between items-center">
+              <span>{faq.name}</span>
+              <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{faq.acceptedAnswer.text}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cash = document.getElementById('cash');
+    const investments = document.getElementById('investments');
+    const retirement = document.getElementById('retirement');
+    const creditCards = document.getElementById('credit-cards');
+    const studentLoans = document.getElementById('student-loans');
+    const otherDebt = document.getElementById('other-debt');
+    const result = document.getElementById('liquid-nw-result');
+    const summary = document.getElementById('liquid-nw-summary');
+
+    function update() {
+      const assets = (parseFloat(cash.value) || 0) + (parseFloat(investments.value) || 0) + (parseFloat(retirement.value) || 0);
+      const liabilities = (parseFloat(creditCards.value) || 0) + (parseFloat(studentLoans.value) || 0) + (parseFloat(otherDebt.value) || 0);
+      const liquidNW = assets - liabilities;
+
+      result.textContent = (liquidNW < 0 ? '-' : '') + '$' + Math.abs(liquidNW).toLocaleString();
+      result.className = `text-4xl md:text-5xl font-extrabold ${liquidNW >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-500'}`;
+
+      if (liquidNW >= 1000000) {
+        summary.textContent = "You're a liquid millionaire! Your investable assets exceed $1M.";
+      } else if (liquidNW >= 500000) {
+        summary.textContent = "Strong liquid net worth. You're in the top tier for investable assets.";
+      } else if (liquidNW >= 100000) {
+        summary.textContent = "Solid liquid net worth. You're building real financial flexibility.";
+      } else if (liquidNW >= 0) {
+        summary.textContent = "Growing your liquid net worth. Focus on increasing savings rate.";
+      } else {
+        summary.textContent = "Negative liquid net worth. Prioritize paying down high-interest debt.";
+      }
+    }
+
+    [cash, investments, retirement, creditCards, studentLoans, otherDebt].forEach(el => {
+      el.addEventListener('input', update);
+    });
+    update();
+  });
+</script>

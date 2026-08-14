@@ -1,11 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average net worth for a 30 year old?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the Federal Reserve SCF 2022 data, the median net worth for Americans under 35 is $39,000, while the mean (average) is $183,500. The large gap between these two figures reflects extreme wealth concentration among a small number of young high-earners and entrepreneurs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is considered wealthy by age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using the Federal Reserve's data, reaching the top 10% threshold for your age group is a widely accepted benchmark: Under 35 ($340,000+), 35–44 ($980,000+), 45–54 ($1,950,000+), 55–64 ($2,800,000+), 65–74 ($3,400,000+)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much net worth is enough to retire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most widely used framework is the 25x Rule: multiply your expected annual retirement spending by 25 to find your target nest egg. For example, if you plan to spend $60,000/year in retirement, you need roughly $1.5 million in investable assets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What percentage of Americans have a net worth over $1 million?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Approximately 8–9% of American adults have a net worth exceeding $1 million, roughly 22–24 million people. In terms of liquid investable assets exceeding $1 million, the percentage is closer to 5–6% of adults."
+      }
+    }
+  ]
+};
 ---
 
 <Layout
   title="Average Net Worth by Age in the US (2026) | Federal Reserve Data"
   description="Complete breakdown of average and median net worth by age group in the United States using official Federal Reserve SCF 2022 data. See how you compare."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <!-- Hero -->
   <section class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 border-b border-slate-200 dark:border-slate-800/80 py-14 px-4">
     <div class="max-w-4xl mx-auto">
@@ -321,76 +361,98 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <!-- FAQ Section with Schema -->
-    <section itemscope itemtype="https://schema.org/FAQPage">
+    <!-- FAQ Section -->
+    <section>
       <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
       <div class="space-y-4">
 
-        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
-            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
-              What is the average net worth for a 30 year old?
-            </h3>
+        <details class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden group">
+          <summary class="px-6 py-5 font-bold text-slate-900 dark:text-white cursor-pointer list-none flex justify-between items-center">
+            <span>What is the average net worth for a 30 year old?</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-5 text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+            <p>According to the Federal Reserve SCF 2022 data, the <strong class="text-slate-900 dark:text-white">median net worth for Americans under 35 is $39,000</strong>, while the mean (average) is $183,500. The large gap between these two figures reflects extreme wealth concentration among a small number of young high-earners and entrepreneurs.</p>
+            <p>A 30-year-old with a net worth of $39,000 is right at the median — meaning half of their peers have less. A reasonable wealth-building goal by 30 is to have at least 1x your annual salary saved in net assets.</p>
           </div>
-          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
-              <p>According to the Federal Reserve SCF 2022 data, the <strong class="text-slate-900 dark:text-white">median net worth for Americans under 35 is $39,000</strong>, while the mean (average) is $183,500. The large gap between these two figures reflects extreme wealth concentration among a small number of young high-earners and entrepreneurs.</p>
-              <p>A 30-year-old with a net worth of $39,000 is right at the median — meaning half of their peers have less. A reasonable wealth-building goal by 30 is to have at least 1x your annual salary saved in net assets, which for the average American income of ~$60,000 would be $60,000 in net worth.</p>
-            </div>
-          </div>
-        </div>
+        </details>
 
-        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
-            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
-              What is considered wealthy by age?
-            </h3>
+        <details class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden group">
+          <summary class="px-6 py-5 font-bold text-slate-900 dark:text-white cursor-pointer list-none flex justify-between items-center">
+            <span>What is considered wealthy by age?</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-5 text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+            <p>"Wealthy" is relative, but using the Federal Reserve's data, reaching the <strong class="text-slate-900 dark:text-white">top 10% threshold for your age group</strong> is a widely accepted benchmark:</p>
+            <ul class="list-disc pl-5 space-y-1 mt-2">
+              <li>Under 35: $340,000+ net worth</li>
+              <li>35–44: $980,000+ net worth</li>
+              <li>45–54: $1,950,000+ net worth</li>
+              <li>55–64: $2,800,000+ net worth</li>
+              <li>65–74: $3,400,000+ net worth</li>
+            </ul>
           </div>
-          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
-              <p>"Wealthy" is relative, but using the Federal Reserve's data, reaching the <strong class="text-slate-900 dark:text-white">top 10% threshold for your age group</strong> is a widely accepted benchmark for financial wealth:</p>
-              <ul class="list-disc pl-5 space-y-1 mt-2">
-                <li>Under 35: $340,000+ net worth</li>
-                <li>35–44: $980,000+ net worth</li>
-                <li>45–54: $1,950,000+ net worth</li>
-                <li>55–64: $2,800,000+ net worth</li>
-                <li>65–74: $3,400,000+ net worth</li>
-              </ul>
-              <p class="mt-2">Many financial advisors define "high net worth" as $1 million or more in investable assets (excluding primary residence), and "ultra-high net worth" as $30 million or more.</p>
-            </div>
-          </div>
-        </div>
+        </details>
 
-        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
-            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
-              How much net worth is enough to retire?
-            </h3>
+        <details class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden group">
+          <summary class="px-6 py-5 font-bold text-slate-900 dark:text-white cursor-pointer list-none flex justify-between items-center">
+            <span>How much net worth is enough to retire?</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-5 text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+            <p>The most widely used framework is the <strong class="text-slate-900 dark:text-white">"25x Rule"</strong>: multiply your expected annual retirement spending by 25 to find your target nest egg. For example, if you plan to spend $60,000/year in retirement, you need roughly <strong class="text-slate-900 dark:text-white">$1.5 million in investable assets</strong>.</p>
+            <p>Social Security income reduces the amount you need to self-fund — subtract your expected annual SS benefit before applying the 25x multiplier.</p>
           </div>
-          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
-              <p>The most widely used framework is the <strong class="text-slate-900 dark:text-white">"25x Rule"</strong>: multiply your expected annual retirement spending by 25 to find your target nest egg. This is derived from the "4% Rule," which suggests withdrawing 4% of your portfolio per year provides a very high probability of not outliving your money over a 30-year retirement.</p>
-              <p>For example: If you plan to spend $60,000/year in retirement, you need roughly <strong class="text-slate-900 dark:text-white">$1.5 million in investable assets</strong> ($60,000 x 25). Social Security income reduces the amount you need to self-fund — subtract your expected annual SS benefit before applying the 25x multiplier.</p>
-              <p>Note that this is investable net worth, not total net worth — a $300,000 home does not generate retirement income unless you sell or reverse-mortgage it.</p>
-            </div>
-          </div>
-        </div>
+        </details>
 
-        <div class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
-            <h3 class="text-base font-bold text-slate-900 dark:text-white" itemprop="name">
-              What percentage of Americans have a net worth over $1 million?
-            </h3>
+        <details class="bg-white/95 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden group">
+          <summary class="px-6 py-5 font-bold text-slate-900 dark:text-white cursor-pointer list-none flex justify-between items-center">
+            <span>What percentage of Americans have a net worth over $1 million?</span>
+            <span class="text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-5 text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
+            <p>Approximately <strong class="text-slate-900 dark:text-white">8–9% of American adults</strong> have a net worth exceeding $1 million — roughly 22–24 million people. In terms of liquid investable assets exceeding $1 million, the percentage is closer to 5–6% of adults.</p>
+            <p>To reach the top 1% of all American households by net worth, you would need approximately <strong class="text-slate-900 dark:text-white">$11 million or more</strong> in total net worth.</p>
           </div>
-          <div class="px-6 py-5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text" class="text-slate-700 dark:text-slate-400 text-sm leading-relaxed space-y-2">
-              <p>According to Credit Suisse's 2023 Global Wealth Report and Federal Reserve data, approximately <strong class="text-slate-900 dark:text-white">8–9% of American adults</strong> have a net worth exceeding $1 million — roughly 22–24 million people. This makes the US home to the largest millionaire population of any country in the world.</p>
-              <p>However, "millionaire" status is increasingly ordinary given home price appreciation. Many Americans who appear to be millionaires on paper have most of their wealth locked in their primary residence and relatively little in liquid, investable assets. In terms of liquid investable assets exceeding $1 million, the percentage is considerably lower — closer to 5–6% of adults.</p>
-              <p>To reach the top 1% of all American households by net worth, you would need approximately <strong class="text-slate-900 dark:text-white">$11 million or more</strong> in total net worth, per Federal Reserve estimates.</p>
-            </div>
-          </div>
-        </div>
+        </details>
 
+      </div>
+    </section>
+
+    <!-- Related Calculators & Guides -->
+    <section class="mt-16 max-w-3xl mx-auto">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5">More Net Worth Resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="/" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+          <div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🧮 Calculator</div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Calculator by Age</h3>
+          <p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Find your exact percentile rank against Federal Reserve data.</p>
+        </a>
+        <a href="/net-worth-percentile" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+          <div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🏆 Percentile</div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Percentile Ranking</h3>
+          <p class="text-xs text-slate-700 dark:text-slate-400 mt-1">What net worth puts you in the top 10%, 5%, and 1%?</p>
+        </a>
+        <a href="/median-vs-average-net-worth" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+          <div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">⚖️ Education</div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Median vs Average Net Worth</h3>
+          <p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Why the "average American" statistic is deeply misleading.</p>
+        </a>
+        <a href="/top-1-percent-net-worth-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+          <div class="text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wide mb-1">🏆 Top 1%</div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Top 1% Net Worth by Age</h3>
+          <p class="text-xs text-slate-700 dark:text-slate-400 mt-1">What net worth makes you top 1% in every age bracket?</p>
+        </a>
+        <a href="/state/california" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+          <div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">📍 By State</div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth by State (California)</h3>
+          <p class="text-xs text-slate-700 dark:text-slate-400 mt-1">See how your state compares with cost-of-living adjusted benchmarks.</p>
+        </a>
+        <a href="/savings-multiplier-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+          <div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🎯 Salary Benchmarks</div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Savings Multiplier by Age (Fidelity)</h3>
+          <p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Calculate if you have 1x at 30, 3x at 40, or 6x at 50 saved.</p>
+        </a>
       </div>
     </section>
 

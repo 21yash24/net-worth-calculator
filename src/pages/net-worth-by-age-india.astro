@@ -48,7 +48,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title="India Net Worth Calculator by Age | RBI & SEBI Percentile Benchmark" description="Calculate your net worth percentile in India by age group in Rupees (₹ Lakhs & Crores). Benchmarked against Reserve Bank of India (RBI) and SEBI household wealth distributions.">
+<Layout title="India Net Worth Calculator by Age | RBI & SEBI Percentile Benchmark" 	description="Calculate your net worth percentile in India by age in ₹ Lakhs & Crores. Benchmarked against RBI and SEBI household wealth data.">
 
 	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
 	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -214,6 +214,43 @@ const faqSchema = {
 				</div>
 			</section>
 		</article>
+
+		<!-- Related Calculators & Guides -->
+		<section class="mt-16 max-w-3xl mx-auto">
+			<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5">Compare Net Worth Across Countries</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<a href="/" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇺🇸 United States</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">US Net Worth Calculator (USD)</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Benchmark against Federal Reserve SCF data in dollars.</p>
+				</a>
+				<a href="/net-worth-by-age-uk" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇬🇧 United Kingdom</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">UK Net Worth Calculator (GBP)</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Benchmark against ONS Wealth &amp; Assets Survey data.</p>
+				</a>
+				<a href="/net-worth-by-age-australia" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇦🇺 Australia</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Australia Net Worth Calculator (AUD)</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Benchmark against ABS Survey of Income &amp; Housing.</p>
+				</a>
+				<a href="/net-worth-by-age-canada" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇨🇦 Canada</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Canada Net Worth Calculator (CAD)</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Benchmark against Statistics Canada SFS data.</p>
+				</a>
+				<a href="/average-net-worth-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">📊 Global Data</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Average Net Worth by Age Guide</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Complete Federal Reserve data table with median &amp; mean breakdown.</p>
+				</a>
+				<a href="/net-worth-percentile" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
+					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🏆 Percentile Guide</div>
+					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Percentile: Where Do You Stand?</h3>
+					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1">Find out what net worth puts you in the top 10%, 5%, and 1%.</p>
+				</a>
+			</div>
+		</section>
 
 		<!-- FAQ Accordion -->
 		<section class="mt-16 max-w-3xl mx-auto">
