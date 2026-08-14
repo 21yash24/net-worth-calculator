@@ -11,8 +11,8 @@ export async function getStaticPaths() {
 
 const { stateData } = Astro.props;
 
-const title = `Net Worth Percentile in ${stateData.name} (2026) | ${stateData.name} Wealth Benchmarks`;
-const description = `Calculate your exact net worth percentile in ${stateData.name}. Median household net worth ($${stateData.median.toLocaleString()}), top 10%, top 1% thresholds, and cost-of-living adjusted benchmarks.`;
+const title = `${stateData.name} Net Worth 2026: Median $${(stateData.median / 1000).toFixed(0)}K, Top 1% $${Math.round(stateData.median * 30 / 1e6 * 10) / 10}M`;
+const description = `See where you rank: median household net worth in ${stateData.name} is $${stateData.median.toLocaleString()} — top 10% starts at $${Math.round(stateData.median * 7.5 / 1e6 * 10) / 10}M, top 1% at $${Math.round(stateData.median * 30 / 1e6 * 10) / 10}M. Free percentile calculator with 2026 Fed data.`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -71,7 +71,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={`${title} | Net Worth Calculator`} description={description}>
+<Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -184,6 +184,23 @@ const faqSchema = {
             Utilizing tax-advantaged accounts like 401(k)s, Roth IRAs, and HSAs provides maximum tax efficiency, protecting compounding capital from state tax drag.
           </p>
         </div>
+      </div>
+    </section>
+
+    <!-- Cross-Link: Related State Guides -->
+    <section class="space-y-4 mb-12">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-white">More Net Worth by State Guides</h2>
+      <div class="flex flex-wrap gap-2">
+        {states
+          .filter((s) => s.id !== stateData.id)
+          .map((s) => (
+            <a
+              href={`/state/${s.id}`}
+              class="px-3.5 py-2 rounded-lg bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/30 transition-all"
+            >
+              {s.name}
+            </a>
+          ))}
       </div>
     </section>
 
