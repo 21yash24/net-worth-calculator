@@ -46,8 +46,8 @@ const breadcrumbSchema = {
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Canonical URL -->
-		<link rel="canonical" href={`https://getnetworthcalculator.com${pathname.replace(/\/$/, '') || '/'}`} />
+		<!-- Canonical URL — always the trailing-slash form, matching the sitemap and served pages -->
+		<link rel="canonical" href={`https://getnetworthcalculator.com${pathname.endsWith('/') ? pathname : pathname + '/'}`} />
 
 		<!-- BreadcrumbList Rich Snippet Schema -->
 		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

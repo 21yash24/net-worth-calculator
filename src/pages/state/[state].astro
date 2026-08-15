@@ -92,6 +92,12 @@ const faqSchema = {
       </p>
     </header>
 
+    <!-- Data Methodology Disclaimer -->
+    <div class="mb-10 p-4 rounded-2xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+      <strong class="text-slate-900 dark:text-white font-bold block mb-1">Data Methodology</strong>
+      Percentiles shown for {stateData.name} are <em>derived estimates</em> based on the US Federal Reserve Survey of Consumer Finances (SCF) national age benchmarks scaled to {stateData.name}'s reported median household net worth (${stateData.median.toLocaleString()}), median home price (${stateData.home.toLocaleString()}), and cost-of-living index. They are an approximation, not an official state statistical release. For authoritative figures, refer to the Federal Reserve SCF and US Census data.
+    </div>
+
     <!-- Snippet Bait Quick Answer -->
     <div class="bg-gradient-to-r from-emerald-950/20 to-slate-900/40 border-2 border-emerald-500/40 rounded-2xl p-6 md:p-8 mb-10 shadow-lg">
       <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">⚡ {stateData.name} Wealth Summary</div>

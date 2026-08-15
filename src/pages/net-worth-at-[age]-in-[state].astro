@@ -86,6 +86,12 @@ const faqSchema = {
       </p>
     </header>
 
+    <!-- Data Methodology Disclaimer -->
+    <div class="mb-10 p-4 rounded-2xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+      <strong class="text-slate-900 dark:text-white font-bold block mb-1">Data Methodology</strong>
+      Figures on this page are <em>derived estimates</em>. {stateData.name}'s median household net worth of ${stateData.median.toLocaleString()} (median home ${stateData.home.toLocaleString()}, cost of living {stateData.col > 0 ? `+${stateData.col}%` : `${stateData.col}%`} vs the US average) is scaled to the {ageData.label} age cohort using US Federal Reserve SCF age-wealth ratios. These are approximations for comparison, not an official state statistic. Source: Federal Reserve SCF + US Census.
+    </div>
+
     <!-- Quick Answer Snippet Box -->
     <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-12 shadow-xl border border-slate-800 space-y-4">
       <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">⚡ Benchmark Summary: {ageData.label} in {stateData.name}</div>
