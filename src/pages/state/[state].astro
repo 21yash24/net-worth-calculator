@@ -11,8 +11,8 @@ export async function getStaticPaths() {
 
 const { stateData } = Astro.props;
 
-const title = `${stateData.name} Net Worth 2026: Median $${(stateData.median / 1000).toFixed(0)}K, Top 1% $${Math.round(stateData.median * 30 / 1e6 * 10) / 10}M`;
-const description = `See where you rank: median household net worth in ${stateData.name} is $${stateData.median.toLocaleString()} — top 10% starts at $${Math.round(stateData.median * 7.5 / 1e6 * 10) / 10}M, top 1% at $${Math.round(stateData.median * 30 / 1e6 * 10) / 10}M. Free percentile calculator with 2026 Fed data.`;
+const title = `${stateData.name} Net Worth Benchmark & Percentiles (2026)`;
+const description = `See where you rank in ${stateData.name}. Median net worth is $${stateData.median.toLocaleString()} with top 10% and top 1% wealth percentiles from US Fed data.`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

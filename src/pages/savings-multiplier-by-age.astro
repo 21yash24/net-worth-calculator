@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Savings Multiplier by Age (Fidelity Rule Benchmark 2026)";
-const description = "Calculate your target retirement savings by age using Fidelity's famous 1x at 30, 3x at 40, 6x at 50, 10x at 67 salary multiplier rule. See if you are on track.";
+const title = "Savings Multiplier by Age | Fidelity Retirement Rule";
+const description = "Calculate your target retirement savings by age using the Fidelity 1x at 30, 3x at 40, 6x at 50, and 10x at 67 salary multiplier rule.";
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -51,7 +51,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={`${title} | Net Worth Calculator`} description={description}>
+<Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 

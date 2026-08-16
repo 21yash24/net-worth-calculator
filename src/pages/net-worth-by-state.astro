@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Net Worth by State USA (2026) | Median Household Net Worth by State";
-const description = "Compare your net worth by state across all 50 US states. See median household net worth, top 10% thresholds, and cost-of-living adjusted benchmarks.";
+const title = "Net Worth by State USA (2026) | Median Wealth Data";
+const description = "Compare your net worth across all 50 US states. See median household wealth, top 10% thresholds, and cost-of-living adjusted benchmarks.";
 
 const statesData = [
   { state: "California", id: "california", median: "$380,000", top10: "$2,850,000", costOfLiving: "High (+38%)" },
@@ -39,7 +39,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={`${title} | Net Worth Calculator`} description={description}>
+<Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">

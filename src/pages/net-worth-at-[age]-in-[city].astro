@@ -29,8 +29,9 @@ const top25NW = Math.round(cityData.median * ageData.mult * 2.8);
 const top10NW = Math.round(cityData.median * ageData.mult * 8);
 const top1NW = Math.round(cityData.median * ageData.mult * 32);
 
-const title = `Net Worth ${ageData.label} in ${cityData.name}, ${cityData.state} (2026)`;
-const description = `Detailed wealth benchmarks for ${ageData.label} in ${cityData.name}, ${cityData.state}. Median household net worth ($${medianNW.toLocaleString()}), top 10% ($${top10NW.toLocaleString()}), top 1% percentiles, housing cost impacts, and savings advice.`;
+const stateDisp = cityData.state === 'District of Columbia' ? 'DC' : cityData.state;
+const title = `Net Worth ${ageData.label} in ${cityData.name}, ${stateDisp}`;
+const description = `Explore net worth benchmarks for ${ageData.label} in ${cityData.name}, ${stateDisp}. Median household net worth is $${medianNW.toLocaleString()} with top 10% ($${top10NW.toLocaleString()}).`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -89,7 +90,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={`${title} | Net Worth Calculator`} description={description}>
+<Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 

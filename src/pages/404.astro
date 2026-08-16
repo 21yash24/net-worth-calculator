@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="404 Page Not Found | Net Worth Calculator">
+<Layout title="404 - Page Not Found | Net Worth Calculator" description="The requested page could not be found. Return to Net Worth Calculator to explore wealth benchmarks by age and state.">
+	<meta slot="head" name="robots" content="noindex, follow" />
 	<main class="max-w-md mx-auto px-6 py-24 text-center">
 		<div class="w-20 h-20 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 dark:text-emerald-400">
 			<span class="text-3xl font-black">$</span>

@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "San Francisco Net Worth Benchmark 2026 | Bay Area Wealth Percentiles";
-const description = "Compare your net worth to San Francisco & Bay Area benchmarks. Schwab Modern Wealth Survey & Census data for SF, Silicon Valley, and HCOL cities.";
+const title = "San Francisco Net Worth Benchmark (2026 Bay Area Data)";
+const description = "Compare your net worth to San Francisco and Bay Area benchmarks. Schwab Modern Wealth Survey and Census data for Silicon Valley and SF.";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -36,7 +36,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={`${title} | Net Worth Calculator`} description={description}>
+<Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">

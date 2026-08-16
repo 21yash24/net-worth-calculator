@@ -12,7 +12,12 @@ const {
 	description = "Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) data. 100% free, private & anonymous."
 } = Astro.props;
 
-const pathname = Astro.url.pathname;
+const rawPath = Astro.url.pathname;
+const cleanPath = rawPath.replace(/\/+$/, '') || '';
+const canonicalURL = cleanPath === '' 
+  ? 'https://getnetworthcalculator.com' 
+  : `https://getnetworthcalculator.com${cleanPath}`;
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -23,11 +28,11 @@ const breadcrumbSchema = {
       "name": "Home",
       "item": "https://getnetworthcalculator.com"
     },
-    ...(pathname !== '/' ? [{
+    ...(cleanPath !== '' ? [{
       "@type": "ListItem",
       "position": 2,
       "name": title.split('|')[0].trim(),
-      "item": `https://getnetworthcalculator.com${pathname}`
+      "item": canonicalURL
     }] : [])
   ]
 };
@@ -46,8 +51,8 @@ const breadcrumbSchema = {
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Canonical URL — always the trailing-slash form, matching the sitemap and served pages -->
-		<link rel="canonical" href={`https://getnetworthcalculator.com${pathname.endsWith('/') ? pathname : pathname + '/'}`} />
+		<!-- Canonical URL — clean URL matching sitemap and static routing -->
+		<link rel="canonical" href={canonicalURL} />
 
 		<!-- BreadcrumbList Rich Snippet Schema -->
 		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -78,13 +83,13 @@ const breadcrumbSchema = {
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={`https://getnetworthcalculator.com${pathname}`} />
+		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content="https://getnetworthcalculator.com/og-image.png" />
 
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={`https://getnetworthcalculator.com${pathname}`} />
+		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content="https://getnetworthcalculator.com/og-image.png" />

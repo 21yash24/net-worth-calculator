@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Texas Net Worth Percentile & Benchmark 2026 | TX Wealth Data";
-const description = "Calculate your net worth percentile in Texas. Median household net worth ($185,000), top 10% ($1.45M), top 1% thresholds, and Austin vs Dallas wealth comparisons.";
+const title = "Texas Net Worth Percentile & Benchmark 2026";
+const description = "Calculate your net worth percentile in Texas. Median household net worth is $185,000 with top 10% and top 1% wealth comparisons.";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -28,7 +28,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={`${title} | Net Worth Calculator`} description={description}>
+<Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
