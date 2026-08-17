@@ -193,17 +193,53 @@ const faqSchema = {
       </a>
     </div>
 
+    <!-- Deep Analytical Content Section 3: Tax Drag & Cost of Living Impact -->
+    <section class="space-y-4 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">State Tax Drag &amp; Purchasing Power in {stateData.name}</h2>
+      <p>
+        Building wealth is not merely a function of gross annual earnings; it is deeply influenced by the statutory tax environment and regional purchasing power of <strong>{stateData.name}</strong>. With a state cost of living index indexed at <strong>{stateData.col > 0 ? `+${stateData.col}%` : `${stateData.col}%`}</strong> relative to the national benchmark, household discretionary savings rates diverge significantly from national averages.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 space-y-1.5">
+          <strong class="text-slate-900 dark:text-white font-bold block text-sm">Tax Efficiency &amp; Asset Location</strong>
+          <p class="text-slate-600 dark:text-slate-400">
+            For households in the {ageData.label} bracket, utilizing tax-advantaged vehicles (such as Roth IRAs, 401(k) matching, and Health Savings Accounts) is critical to shield capital gains and dividend yields from dual federal and state tax liabilities in {stateData.name}.
+          </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 space-y-1.5">
+          <strong class="text-slate-900 dark:text-white font-bold block text-sm">Inflation &amp; Regional Property Taxes</strong>
+          <p class="text-slate-600 dark:text-slate-400">
+            With median residential valuations at approximately ${stateData.home.toLocaleString()}, recurring property tax assessments represent an ongoing carrying cost that must be balanced against liquid retirement portfolio accumulation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Analytical Content Section 4: Retirement Readiness Milestones -->
+    <section class="space-y-4 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Retirement Readiness &amp; Savings Multipliers</h2>
+      <p>
+        According to institutional wealth guidelines from Fidelity and Vanguard, households {ageData.label} living in {stateData.name} should benchmark their progress against annual salary accumulation multiples to maintain their standard of living into retirement:
+      </p>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+        <li><strong>Early Career (Under 35):</strong> Focus on securing the full employer 401(k) match and building a 6-month liquid emergency fund calibrated to {stateData.name}'s monthly living costs.</li>
+        <li><strong>Mid Career (35–44):</strong> Target 3x annual household income in total investments, while managing mortgage amortization and eliminating non-mortgage consumer debts.</li>
+        <li><strong>Peak Earning (45–54):</strong> Target 6x annual income, maximizing annual IRS tax-deferred contribution limits and catch-up allocations.</li>
+        <li><strong>Pre-Retirement (55–64):</strong> Target 8x–10x annual income with defensive asset allocation to protect against sequence-of-returns risk before initiating safe withdrawals.</li>
+      </ul>
+    </section>
+
     <!-- FAQs Section -->
-    <section class="space-y-6">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h2>
+    <section class="space-y-6 mb-12">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions: {stateData.name}</h2>
       <div class="space-y-4">
         <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
-            <span>What is the average net worth for {ageData.label} in {stateData.name}?</span>
+            <span>What is the median net worth for {ageData.label} in {stateData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            The median net worth for households {ageData.label} in {stateData.name} is approximately ${medianNW.toLocaleString()}.
+            The median household net worth for {ageData.label} in {stateData.name} is approximately <strong>${medianNW.toLocaleString()}</strong>. This figure represents the exact 50th percentile midpoint of assets minus liabilities.
           </p>
         </details>
 
@@ -213,7 +249,27 @@ const faqSchema = {
             <span class="group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            In {stateData.name}, a household net worth of ${top10NW.toLocaleString()} puts you in the top 10% for the {ageData.label} age bracket.
+            In {stateData.name}, a total household net worth of <strong>${top10NW.toLocaleString()}</strong> qualifies a family for the top 10% (90th percentile) for the {ageData.label} demographic cohort.
+          </p>
+        </details>
+
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>How does {stateData.name}'s cost of living affect net worth comparisons?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            {stateData.name} has a cost of living index of {stateData.col > 0 ? `+${stateData.col}% above` : `${Math.abs(stateData.col)}% below`} the national average. While nominal net worth may be {stateData.col > 0 ? 'higher' : 'lower'}, real purchasing power depends on housing expenses and state tax rates.
+          </p>
+        </details>
+
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>Does this calculation include primary home equity in {stateData.name}?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Yes. Total net worth includes primary residence home equity (estimated home market value minus remaining mortgage principal). You can toggle between total and liquid net worth on our interactive homepage calculator.
           </p>
         </details>
       </div>
