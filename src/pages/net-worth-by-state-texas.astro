@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Texas Net Worth Percentile & Benchmark 2026";
-const description = "Calculate your net worth percentile in Texas. Median household net worth is $185,000 with top 10% and top 1% wealth comparisons.";
+const title = "Texas Net Worth Percentile & Wealth Benchmark 2026";
+const description = "Calculate your net worth percentile in Texas. Median household net worth is $185,000 with top 10% and top 1% wealth comparisons, zero income tax advantages & Austin/Dallas breakdowns.";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -23,6 +23,14 @@ const faqSchema = {
         "@type": "Answer",
         "text": "A household net worth of approximately $1,450,000 puts you in the top 10% in Texas."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How does 0% state income tax in Texas help net worth growth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With 0% state income tax, Texas workers retain a higher portion of salary to invest into taxable brokerage accounts and retirement vehicles, though higher local property taxes must be planned for."
+      }
     }
   ]
 };
@@ -36,14 +44,14 @@ const faqSchema = {
     <header class="text-center mb-10 space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
         <span>🤠</span>
-        <span>Texas Household Wealth Benchmarks (2026)</span>
+        <span>Texas Household Wealth Benchmarks & Economics (2026)</span>
       </div>
 
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
         Texas Net Worth <span class="text-emerald-600 dark:text-emerald-400">Percentiles</span>
       </h1>
       <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-        Compare your wealth in Texas against official state census and Federal Reserve data.
+        Compare your personal wealth in Texas against official state census and Federal Reserve data.
       </p>
     </header>
 
@@ -102,6 +110,38 @@ const faqSchema = {
         </table>
       </div>
     </section>
+
+    <!-- In-Depth Texas Economic Dynamics Article -->
+    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed mb-12">
+      <h2 class="text-2xl font-bold text-white">The Texas Wealth Landscape: Zero Income Tax & High Growth Metros</h2>
+      
+      <p>
+        Texas has emerged as one of the fastest-growing financial and corporate hubs in the United States. Driven by massive inflows of corporate headquarters (Austin tech corridor, Dallas financial services, Houston energy), Texas household balance sheets reflect strong income retention enabled by a <strong>0% state individual income tax policy</strong>.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">The Zero State Tax Advantage</h3>
+          <p class="text-xs text-slate-400">
+            A Texas worker earning $150,000 retains approximately $10,000 to $15,000 more per year in take-home pay compared to an equivalent earner in high-tax states. Re-investing this surplus at an 8% annual return yields over $300,000 in additional compound wealth over a 12-year window.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">Property Tax Considerations</h3>
+          <p class="text-xs text-slate-400">
+            Because Texas does not collect state income tax, local governments rely heavily on property taxes (averaging 1.6% to 2.2% of appraised value). Homeowners must account for annual property tax holding costs when projecting retirement expenses.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-white pt-2">Key Financial Recommendations for Texas Residents</h3>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+        <li><strong>Channel Tax Savings into Index Funds:</strong> Automatically transfer the state income tax savings directly into low-cost index funds to maximize compounding.</li>
+        <li><strong>Utilize Homestead Exemptions:</strong> Ensure your primary Texas residence is registered for county homestead exemptions to cap annual assessed value increases.</li>
+        <li><strong>Plan for Metropolitan Differences:</strong> In Austin, Dallas, and Houston, median benchmarks run 20% to 40% higher than statewide averages.</li>
+      </ul>
+    </article>
 
     <div class="text-center pt-4">
       <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">

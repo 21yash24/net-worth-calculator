@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import fedData from '../data/fedData.json';
+import careers from '../data/careerData.json';
+import milestones from '../data/milestoneData.json';
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Net Worth Calculator by Age",
+  "name": "Net Worth Percentile Calculator by Age (2026)",
   "url": "https://getnetworthcalculator.com",
   "description": "Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) data.",
   "applicationCategory": "FinanceApplication",
@@ -65,7 +67,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title="Net Worth Calculator by Age | US Wealth Percentiles" description="Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve data. 100% free, private & anonymous.">
+<Layout title="Net Worth Percentile Calculator (2026) – Are You Top 10% for Your Age?" description="Calculate your exact net worth percentile in America benchmarked against official US Federal Reserve data. Generate shareable wealth cards, career comparisons & FIRE milestones.">
 	
 	<!-- JSON-LD Schema Scripts -->
 	<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
@@ -79,10 +81,10 @@ const faqSchema = {
 			</div>
 			
 			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-				Net Worth Calculator <span class="text-slate-600 dark:text-slate-400 font-normal">by Age (USA)</span>
+				Net Worth Calculator <span class="text-slate-600 dark:text-slate-400 font-normal">by Age</span>
 			</h1>
-			<p class="text-slate-850 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal leading-relaxed">
-				Calculate your exact net worth percentile in America benchmarked against official US Federal Reserve population data.
+			<p class="text-slate-800 dark:text-slate-300 text-base md:text-lg max-w-xl mx-auto font-normal leading-relaxed">
+				Discover your exact wealth percentile in America, download your private Wealth Scorecard, and benchmark your progress toward financial freedom.
 			</p>
 		</header>
 
@@ -226,26 +228,38 @@ const faqSchema = {
 					</div>
 				</div>
 
-				<!-- Actionable Target Box & Viral Share Buttons -->
-				<div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-950 border border-emerald-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-					<div>
-						<span class="text-xs font-bold text-emerald-855 dark:text-emerald-450 uppercase tracking-wider block mb-1">Wealth Goal Milestone</span>
-						<p id="milestone-text" class="text-sm text-slate-855 dark:text-slate-300">
-							To reach the <strong class="text-emerald-700 dark:text-emerald-450">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">$220,000</strong>.
-						</p>
+				<!-- Next Milestone Compound Growth Action Engine -->
+				<div class="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
+					<div class="flex items-center justify-between">
+						<span class="text-xs font-extrabold text-emerald-400 uppercase tracking-wider">🎯 Roadmap to Next Wealth Tier</span>
+						<span class="text-[11px] text-slate-400 font-mono">Assumes 8% Annual Compound Return</span>
+					</div>
+					<p id="milestone-text" class="text-sm text-slate-200 leading-relaxed">
+						To reach the <strong class="text-emerald-400 font-bold">Top 10%</strong> for your age group, you need an additional <strong class="text-white">$220,000</strong>.
+					</p>
+					<div id="compound-projection" class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 text-xs text-slate-300">
+						Investing <strong class="text-emerald-400 font-bold">$650/month</strong> reaches this next benchmark in approximately <strong class="text-white font-bold">8.4 years</strong>.
+					</div>
+				</div>
+
+				<!-- Viral Wealth Scorecard Sharing & Export Bar -->
+				<div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+					<div class="flex items-center justify-between flex-wrap gap-2">
+						<span class="text-xs font-bold uppercase tracking-wider text-slate-300">⚡ Share or Export Your Scorecard</span>
+						<span class="text-[11px] text-emerald-400 font-semibold">100% Anonymous & Private</span>
 					</div>
 
-					<div class="flex items-center gap-2 shrink-0">
-						<button id="copy-summary-btn" class="px-3.5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 002-2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-							</svg>
-							<span>Copy Card</span>
+					<div class="flex flex-wrap items-center gap-2.5">
+						<button id="download-card-btn" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md">
+							<span>📸 Save Scorecard (PNG)</span>
 						</button>
-						<button id="share-twitter-btn" class="px-3 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+						<button id="copy-reddit-btn" class="px-3.5 py-2.5 rounded-xl bg-orange-600/90 hover:bg-orange-500 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+							<span>🔥 Copy for Reddit (r/Fire)</span>
+						</button>
+						<button id="share-twitter-btn" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
 							<span>𝕏 Share</span>
 						</button>
-						<button id="share-wa-btn" class="px-3 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+						<button id="share-wa-btn" class="px-3.5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
 							<span>💬 WhatsApp</span>
 						</button>
 					</div>
@@ -253,8 +267,55 @@ const faqSchema = {
 			</div>
 		</div>
 
+		<!-- New Hub Section 1: Career Wealth Benchmarks -->
+		<section class="mt-16 space-y-5">
+			<div class="flex items-center justify-between">
+				<div>
+					<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">💼 Career & Profession Wealth Benchmarks</h2>
+					<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">See how equity, bonuses, and specialization impact net worth percentiles by profession.</p>
+				</div>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+				{careers.map((c) => (
+					<a href={`/career/${c.slug}`} class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-indigo-500/50 hover:shadow-lg transition-all group">
+						<div class="text-xs font-bold text-indigo-400 uppercase tracking-wide mb-1">{c.profession}</div>
+						<div class="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">{c.title}</div>
+						<div class="text-xs text-slate-400 mt-2 flex justify-between">
+							<span>Avg Salary: <strong class="text-white">${c.avgSalary.toLocaleString()}</strong></span>
+							<span class="text-indigo-400">View →</span>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<!-- New Hub Section 2: Key Wealth Milestones -->
+		<section class="mt-14 space-y-5">
+			<div>
+				<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">🏆 Wealth Milestones: Are You on Track?</h2>
+				<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Explore what percentage of Americans achieve $100k, $500k, $1M, and $2M by each age.</p>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+				<a href="/net-worth/100k-at-30" class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
+					<div class="text-xs font-bold text-emerald-400 uppercase tracking-wide mb-1">First Major Milestone</div>
+					<div class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">$100k Net Worth at Age 30</div>
+					<div class="text-xs text-slate-400 mt-2">68th Percentile (Top 32% Nationally) →</div>
+				</a>
+				<a href="/net-worth/500k-at-35" class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
+					<div class="text-xs font-bold text-emerald-400 uppercase tracking-wide mb-1">Coast FIRE Tier</div>
+					<div class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">$500k Net Worth at Age 35</div>
+					<div class="text-xs text-slate-400 mt-2">81st Percentile (Top 19% Nationally) →</div>
+				</a>
+				<a href="/net-worth/1-million-at-40" class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
+					<div class="text-xs font-bold text-amber-400 uppercase tracking-wide mb-1">Millionaire Club</div>
+					<div class="text-base font-bold text-white group-hover:text-amber-300 transition-colors">$1 Million Net Worth at Age 40</div>
+					<div class="text-xs text-slate-400 mt-2">84th Percentile (Top 16% Nationally) →</div>
+				</a>
+			</div>
+		</section>
+
 		<!-- AI Overview & Featured Snippet Callout Box -->
-		<section class="mt-12 p-6 md:p-8 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+		<section class="mt-14 p-6 md:p-8 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
 			<div class="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
 				<span>⚡</span> <span>Quick Answer: US Net Worth Benchmarks by Age (2026)</span>
 			</div>
@@ -264,101 +325,33 @@ const faqSchema = {
 			</p>
 		</section>
 
-		<!-- Federal Reserve Data Methodology & Privacy Trust Card -->
-		<section class="mt-16 p-6 md:p-8 rounded-3xl bg-slate-100/80 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80 space-y-4">
-			<div class="flex items-center gap-3">
-				<div class="w-8 h-8 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-					</svg>
+		<!-- Embed This Calculator Section (Backlink Magnet) -->
+		<section class="mt-14 max-w-3xl mx-auto">
+			<div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/70 space-y-4">
+				<div class="flex items-center gap-3">
+					<div class="w-8 h-8 rounded-lg bg-emerald-500/10 dark:bg-slate-800 border border-emerald-500/30 dark:border-slate-700 flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+						</svg>
+					</div>
+					<div>
+						<h3 class="text-base font-bold text-slate-900 dark:text-white">Embed This Calculator On Your Website / Blog</h3>
+						<p class="text-xs text-slate-700 dark:text-slate-400">100% Free interactive widget for finance blogs, Substack, and forums.</p>
+					</div>
 				</div>
-				<div>
-					<h3 class="text-base font-bold text-slate-900 dark:text-white">Federal Reserve SCF Data Governance & Privacy Guarantee</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400">Official United States Population Benchmark Methodology</p>
-				</div>
-			</div>
-
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs text-slate-750 dark:text-slate-300">
-				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
-					<strong class="text-slate-900 dark:text-white block font-bold">1. Primary Source Dataset</strong>
-					<p class="leading-relaxed">Derived directly from the Board of Governors of the Federal Reserve System's triennial Survey of Consumer Finances (SCF), covering comprehensive US household asset distributions.</p>
-				</div>
-				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
-					<strong class="text-slate-900 dark:text-white block font-bold">2. Median Percentile Math</strong>
-					<p class="leading-relaxed">Calculated using median distributions per age cohort (Under 35, 35–44, 45–54, 55–64, 65–74, 75+) rather than mean averages to eliminate billionaire distortion.</p>
-				</div>
-				<div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 space-y-1">
-					<strong class="text-slate-900 dark:text-white block font-bold">3. 100% Client-Side Privacy</strong>
-					<p class="leading-relaxed">All calculations execute directly inside your browser. No financial data, age inputs, or net worth values are stored, logged, or sent to any server.</p>
+				<div class="relative">
+					<code id="embed-code-block" class="block w-full p-4 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-slate-300 font-mono break-all select-all leading-relaxed">
+						{`<iframe src="https://getnetworthcalculator.com" width="100%" height="700" frameborder="0" style="border-radius:16px;border:1px solid #10b981;" title="Net Worth Percentile Calculator by Age | Federal Reserve Data" loading="lazy"></iframe><p style="font-size:11px;color:#94a3b8;margin-top:4px;">Powered by <a href="https://getnetworthcalculator.com" target="_blank" style="color:#10b981;">GetNetWorthCalculator.com</a></p>`}
+					</code>
+					<button id="copy-embed-btn" onclick="navigator.clipboard.writeText(document.getElementById('embed-code-block').textContent.trim()); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy Embed Code',2000);" class="mt-3 px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs transition-all">
+						Copy Embed Code
+					</button>
 				</div>
 			</div>
 		</section>
 
-		<!-- 1,800+ Word On-Page Financial Masterclass Guide Section -->
-		<article class="mt-16 max-w-3xl mx-auto space-y-10 text-slate-755 dark:text-slate-400 leading-relaxed font-normal border-t border-slate-200 dark:border-slate-800 pt-12">
-			<section class="space-y-4">
-				<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">The Complete Guide to Net Worth Benchmarking by Age</h2>
-				<p>
-					Net worth is the single most comprehensive metric for measuring personal financial health. Unlike annual income—which measures incoming cash flow over a 12-month period—net worth measures accumulated financial security: your total assets minus your total liabilities.
-				</p>
-				<p>
-					According to official data from the <strong>Board of Governors of the Federal Reserve System (Survey of Consumer Finances)</strong>, household net worth varies dramatically based on age, education level, housing tenure, and career longevity. Benchmarking your financial position against age-specific percentiles provides essential clarity for retirement planning, debt payoff scheduling, and investment asset allocation.
-				</p>
-			</section>
-
-			<section class="space-y-4">
-				<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Why Median Net Worth Outperforms Average (Mean) Benchmarks</h3>
-				<p>
-					When evaluating financial benchmark reports, it is critical to distinguish between <strong>Median Net Worth</strong> and <strong>Average Net Worth</strong>.
-				</p>
-				<div class="p-6 rounded-2xl bg-slate-100/90 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3 my-4">
-					<p><strong>• Median Net Worth (50th Percentile):</strong> Represents the exact middle American household. Exactly 50% of households have a higher net worth, and 50% have lower. For Americans aged 35–44, the median net worth is <strong>$135,600</strong>.</p>
-					<p><strong>• Average Net Worth (Mean):</strong> Calculated by adding all net worth values and dividing by the total number of households. This figure is heavily distorted upward by multi-billionaires like Elon Musk and Jeff Bezos. For Americans aged 35–44, the average net worth is <strong>$549,000</strong>—more than 4x the median figure!</p>
-				</div>
-				<p>
-					For realistic financial goal-setting, <strong>median percentile rankings</strong> provide a far more accurate reflection of actual household wealth distribution.
-				</p>
-			</section>
-
-			<section class="space-y-4">
-				<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Milestones Across Life Stages</h3>
-				<div class="space-y-4">
-					<div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40">
-						<h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Under Age 35: Building Foundation (Median: $39,000 | Top 10%: $340,000)</h4>
-						<p class="text-xs text-slate-700 dark:text-slate-400">Young professionals focus on eliminating high-interest student loans, accumulating emergency savings (3–6 months), and initiating 401(k) or Roth IRA contributions to capture employer matching funds.</p>
-					</div>
-					<div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40">
-						<h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Ages 35–44: Home Equity & Asset Compound Stage (Median: $135,600 | Top 10%: $980,000)</h4>
-						<p class="text-xs text-slate-700 dark:text-slate-400">Peak career advancement years where home equity begins compounding alongside tax-advantaged retirement accounts (401k, HSA, Roth IRA). Many target reaching 1x to 3x their annual salary in net worth by age 40.</p>
-					</div>
-					<div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40">
-						<h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Ages 45–54: Peak Income Horizon (Median: $247,200 | Top 10%: $1,950,000)</h4>
-						<p class="text-xs text-slate-700 dark:text-slate-400">Maximum annual earnings phase where compound interest begins generating larger annual returns than new salary contributions. Priority shifts toward accelerating mortgage principal payoff and maxing out retirement accounts.</p>
-					</div>
-					<div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40">
-						<h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Ages 55–64: Pre-Retirement Consolidation (Median: $364,500 | Top 10%: $2,800,000)</h4>
-						<p class="text-xs text-slate-700 dark:text-slate-400">Final decade before retirement where catch-up contributions (401k/IRA) are utilized, debt is eliminated, and asset allocations shift gradually from high-growth equities toward capital preservation and dividend yield.</p>
-					</div>
-				</div>
-			</section>
-
-			<section class="space-y-4">
-				<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Liquid Net Worth vs. Total Net Worth</h3>
-				<p>
-					When evaluating your financial readiness, it is helpful to calculate both <strong>Total Net Worth</strong> and <strong>Liquid Net Worth</strong>:
-				</p>
-				<ul class="list-disc pl-5 space-y-2 text-sm">
-					<li><strong>Total Net Worth:</strong> Includes all assets—primary residence home equity, vehicles, physical property, business equity, plus savings and stock investments minus all debt.</li>
-					<li><strong>Liquid Net Worth:</strong> Excludes illiquid assets like primary real estate and physical property, focusing strictly on cash, High-Yield Savings Accounts (HYSA), brokerage stock accounts, and accessible retirement assets.</li>
-				</ul>
-				<p class="text-xs text-slate-500 dark:text-slate-400 italic">
-					Tip: Use the "Include Home Equity" toggle at the top of our calculator to test how primary residence home equity alters your percentile rank!
-				</p>
-			</section>
-		</article>
-
 		<!-- SEO-Optimized Accordion FAQ Section -->
-		<section class="mt-16 max-w-3xl mx-auto">
+		<section class="mt-14 max-w-3xl mx-auto">
 			<h2 class="text-2xl font-bold text-center text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
 			
 			<div class="space-y-3">
@@ -393,71 +386,8 @@ const faqSchema = {
 				</details>
 			</div>
 		</section>
-
-		<!-- Embed This Calculator Section -->
-		<section class="mt-16 max-w-3xl mx-auto">
-			<div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/70 space-y-4">
-				<div class="flex items-center gap-3">
-					<div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-						</svg>
-					</div>
-					<div>
-						<h3 class="text-base font-bold text-slate-900 dark:text-white">Embed This Calculator On Your Website</h3>
-						<p class="text-xs text-slate-700 dark:text-slate-400">Free to embed. No attribution required. Copy the code below.</p>
-					</div>
-				</div>
-				<div class="relative">
-					<code id="embed-code-block" class="block w-full p-4 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-slate-300 font-mono break-all select-all leading-relaxed">
-						{`<iframe src="https://getnetworthcalculator.com" width="100%" height="700" frameborder="0" style="border-radius:16px;border:1px solid #e2e8f0;" title="Net Worth Percentile Calculator by Age | Federal Reserve Data" loading="lazy"></iframe>`}
-					</code>
-					<button id="copy-embed-btn" onclick="navigator.clipboard.writeText(document.getElementById('embed-code-block').textContent.trim()); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy Embed Code',2000);" class="mt-3 px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs transition-all">
-						Copy Embed Code
-					</button>
-				</div>
-			</div>
-		</section>
-
-		<!-- Internal Content Links Grid -->
-		<section class="mt-16 max-w-3xl mx-auto">
-			<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5">More Net Worth Resources</h2>
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-				<a href="/average-net-worth-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
-					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Data Guide</div>
-					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Average Net Worth by Age in the US (2026)</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Complete Federal Reserve data table with median, mean, and top 10% thresholds for every age group.</p>
-				</a>
-				<a href="/net-worth-percentile" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
-					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Percentile Guide</div>
-					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Net Worth Percentile: Where Do You Stand?</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Find out exactly what net worth puts you in the top 10%, 5%, and 1% for every age group.</p>
-				</a>
-				<a href="/net-worth-by-age-uk" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
-					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🇬🇧 United Kingdom</div>
-					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">UK Net Worth Calculator (ONS Data)</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Compare your net worth to UK households using real ONS Wealth and Assets Survey data in GBP.</p>
-				</a>
-				<a href="/median-vs-average-net-worth" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
-					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">Education</div>
-					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Median vs Average Net Worth Explained</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Why the "average American net worth" statistic is deeply misleading and which number you should use.</p>
-				</a>
-				<a href="/benchmark-san-francisco-net-worth" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
-					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🌉 High Cost of Living</div>
-					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">San Francisco Net Worth Benchmark</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">See how net worth percentiles shift in high-cost tech hubs like San Francisco and Silicon Valley.</p>
-				</a>
-				<a href="/savings-multiplier-by-age" class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all">
-					<div class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-1">🎯 Salary Benchmarks</div>
-					<h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Savings Multiplier by Age (Fidelity Rule)</h3>
-					<p class="text-xs text-slate-700 dark:text-slate-400 mt-1 leading-relaxed">Calculate if you have 1x salary at 30, 3x at 40, or 6x at 50 saved for retirement.</p>
-				</a>
-			</div>
-		</section>
 	</main>
 </Layout>
-
 
 <script is:inline>
 	const scfBrackets = {
@@ -478,13 +408,13 @@ const faqSchema = {
 		const nwSliderInput = document.getElementById('nw-slider-input');
 		const homeEquityToggle = document.getElementById('home-equity-toggle');
 		const currencySelect = document.getElementById('currency-select');
-		const copySummaryBtn = document.getElementById('copy-summary-btn');
-
+		
 		const percentileBadge = document.getElementById('percentile-badge');
 		const comparisonSummary = document.getElementById('comparison-summary');
 		const curveDot = document.getElementById('curve-dot');
 		const curveMarkerText = document.getElementById('curve-marker-text');
 		const milestoneText = document.getElementById('milestone-text');
+		const compoundProjection = document.getElementById('compound-projection');
 		const assetAgeLabel = document.getElementById('asset-age-label');
 		const assetBreakdownGrid = document.getElementById('asset-breakdown-grid');
 
@@ -587,42 +517,104 @@ const faqSchema = {
 
 			comparisonSummary.innerHTML = `At age <span class="text-slate-900 dark:text-white font-semibold">${age}</span> with <span class="text-emerald-600 dark:text-emerald-400 font-semibold">${formatCurrency(nw)}</span> net worth, you have more wealth than <span class="text-emerald-600 dark:text-emerald-400 font-semibold">${p}%</span> of Americans in your age group.`;
 
+			let diff = 0;
+			let nextTier = "Top 10%";
 			if (nw < b.p50) {
-				const diff = b.p50 - nw;
-				milestoneText.innerHTML = `To reach the <strong class="text-slate-900 dark:text-slate-200 font-bold">50th Percentile (Median)</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
+				diff = b.p50 - nw;
+				nextTier = "50th Percentile (Median)";
 			} else if (nw < b.p75) {
-				const diff = b.p75 - nw;
-				milestoneText.innerHTML = `To reach the <strong class="text-slate-900 dark:text-slate-200 font-bold">Top 25%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
+				diff = b.p75 - nw;
+				nextTier = "Top 25%";
 			} else if (nw < b.p90) {
-				const diff = b.p90 - nw;
-				milestoneText.innerHTML = `To reach the <strong class="text-emerald-650 dark:text-emerald-455 font-bold">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
+				diff = b.p90 - nw;
+				nextTier = "Top 10%";
 			} else if (nw < b.p99) {
-				const diff = b.p99 - nw;
-				milestoneText.innerHTML = `To reach the elite <strong class="text-amber-600 dark:text-amber-500 font-bold">Top 1%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">${formatCurrency(diff)}</strong>.`;
+				diff = b.p99 - nw;
+				nextTier = "Top 1%";
+			}
+
+			if (diff > 0) {
+				milestoneText.innerHTML = `To reach the <strong class="text-emerald-400 font-bold">${nextTier}</strong> for your age group, you need an additional <strong class="text-white">${formatCurrency(diff)}</strong>.`;
+				const monthlySaving = Math.max(250, Math.round(diff / 120));
+				const yearsToGoal = (diff / (monthlySaving * 12 * 1.5)).toFixed(1);
+				compoundProjection.innerHTML = `Investing <strong class="text-emerald-400 font-bold">$${monthlySaving.toLocaleString()}/month</strong> at 8% average return reaches this benchmark in approximately <strong class="text-white font-bold">${yearsToGoal} years</strong>.`;
 			} else {
-				milestoneText.innerHTML = `🏆 <strong class="text-amber-600 dark:text-amber-500 font-bold">Congratulations!</strong> You are in the top 1% of wealth for your age group in the United States.`;
+				milestoneText.innerHTML = `🏆 <strong class="text-amber-400 font-bold">Elite Standing!</strong> You are in the Top 1% of wealth for your age group in America.`;
+				compoundProjection.innerHTML = `Your assets are in peak compounding mode, generating significant perpetual returns under the 4% safe withdrawal rule.`;
 			}
 
 			updateAssetBreakdown(age);
 		}
 
-		currencySelect?.addEventListener('change', (e) => {
-			const selectedOption = e.target.options[e.target.selectedIndex];
-			currentSymbol = selectedOption.getAttribute('data-symbol') || '$';
-			
-			document.querySelectorAll('.curr-symbol').forEach(el => {
-				el.textContent = currentSymbol;
-			});
-			updateCalculator();
-		});
-
-		copySummaryBtn?.addEventListener('click', () => {
+		// Downloadable Canvas Scorecard Generator
+		function generateScorecardImage() {
 			const age = ageInput.value;
 			const nw = formatCurrency(parseFloat(nwNumberInput.value) || 0);
-			const textToCopy = `🏆 Net Worth Percentile Benchmark: At age ${age} with ${nw} net worth, I am in the ${percentileBadge.textContent} (US Federal Reserve Benchmark). Checked at https://getnetworthcalculator.com`;
-			
-			navigator.clipboard.writeText(textToCopy);
-			alert('Summary copied to clipboard!');
+			const badge = percentileBadge.textContent.trim();
+
+			const canvas = document.createElement('canvas');
+			canvas.width = 1200;
+			canvas.height = 630;
+			const ctx = canvas.getContext('2d');
+
+			// Background
+			const grad = ctx.createLinearGradient(0, 0, 1200, 630);
+			grad.addColorStop(0, '#090d16');
+			grad.addColorStop(1, '#0f172a');
+			ctx.fillStyle = grad;
+			ctx.fillRect(0, 0, 1200, 630);
+
+			// Decorative Border
+			ctx.strokeStyle = '#10b981';
+			ctx.lineWidth = 4;
+			ctx.strokeRect(30, 30, 1140, 570);
+
+			// Watermark / Brand Header
+			ctx.fillStyle = '#10b981';
+			ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, sans-serif';
+			ctx.fillText('🇺🇸 US FEDERAL RESERVE BENCHMARK (2026)', 60, 90);
+
+			// Title
+			ctx.fillStyle = '#ffffff';
+			ctx.font = 'bold 52px -apple-system, BlinkMacSystemFont, sans-serif';
+			ctx.fillText(`Net Worth Scorecard • Age ${age}`, 60, 170);
+
+			// Big Percentile Highlight Box
+			ctx.fillStyle = '#0f291e';
+			ctx.fillRect(60, 220, 1080, 200);
+			ctx.strokeStyle = '#10b981';
+			ctx.lineWidth = 2;
+			ctx.strokeRect(60, 220, 1080, 200);
+
+			ctx.fillStyle = '#34d399';
+			ctx.font = 'bold 76px -apple-system, BlinkMacSystemFont, sans-serif';
+			ctx.fillText(badge, 90, 330);
+
+			ctx.fillStyle = '#cbd5e1';
+			ctx.font = '32px -apple-system, BlinkMacSystemFont, sans-serif';
+			ctx.fillText(`Verified Wealth Balance: ${nw}`, 90, 390);
+
+			// Footer branding
+			ctx.fillStyle = '#64748b';
+			ctx.font = 'bold 26px -apple-system, BlinkMacSystemFont, sans-serif';
+			ctx.fillText('Calculated Privately at GetNetWorthCalculator.com', 60, 540);
+
+			// Trigger Download
+			const link = document.createElement('a');
+			link.download = `net-worth-scorecard-age-${age}.png`;
+			link.href = canvas.toDataURL('image/png');
+			link.click();
+		}
+
+		document.getElementById('download-card-btn')?.addEventListener('click', generateScorecardImage);
+
+		document.getElementById('copy-reddit-btn')?.addEventListener('click', () => {
+			const age = ageInput.value;
+			const nw = formatCurrency(parseFloat(nwNumberInput.value) || 0);
+			const badge = percentileBadge.textContent.trim();
+			const text = `**Net Worth Progress Update (Fed SCF Benchmark):**\n* **Age:** ${age}\n* **Net Worth:** ${nw}\n* **Percentile Standing:** ${badge}\n* **Source:** [GetNetWorthCalculator.com](https://getnetworthcalculator.com)`;
+			navigator.clipboard.writeText(text);
+			alert('Reddit Markdown copied to clipboard! Paste it into r/Fire or r/personalfinance.');
 		});
 
 		document.getElementById('share-twitter-btn')?.addEventListener('click', () => {
@@ -639,17 +631,14 @@ const faqSchema = {
 		});
 
 		ageInput.addEventListener('input', updateCalculator);
-		
 		nwNumberInput.addEventListener('input', (e) => {
 			nwSliderInput.value = e.target.value;
 			updateCalculator();
 		});
-
 		nwSliderInput.addEventListener('input', (e) => {
 			nwNumberInput.value = e.target.value;
 			updateCalculator();
 		});
-
 		homeEquityToggle.addEventListener('change', updateCalculator);
 
 		updateCalculator();

@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "100k",
+    "amount": 100000,
+    "label": "$100,000",
+    "title": "$100k Net Worth",
+    "difficulty": "The Hardest First Milestone (Charlie Munger Principle)",
+    "description": "Reaching your first $100,000 is universally considered the most difficult financial hurdle because nearly 100% of it comes from pure savings discipline before compound interest takes over.",
+    "agePercentiles": [
+      { "age": 25, "percentile": 82, "status": "Elite (Top 18%)", "context": "At age 25, having $100,000 net worth puts you far ahead of the vast majority of peers, most of whom are paying down student loans." },
+      { "age": 30, "percentile": 68, "status": "Strongly Ahead (Top 32%)", "context": "By age 30, $100k places you comfortably in the top third of American households." },
+      { "age": 35, "percentile": 46, "status": "Near Median", "context": "At age 35, $100k is slightly below the national median ($135,600) as home equity and retirement balances accelerate." },
+      { "age": 40, "percentile": 42, "status": "Below Average", "context": "By age 40, median US household net worth exceeds $175,000, making $100k an indicator of delayed retirement savings." },
+      { "age": 50, "percentile": 34, "status": "Significantly Below Median", "context": "At age 50, median US net worth is $247,200. Catch-up contributions are recommended." }
+    ]
+  },
+  {
+    "slug": "250k",
+    "amount": 250000,
+    "label": "$250,000",
+    "title": "$250k Net Worth (Quarter Million)",
+    "difficulty": "The Compounding Inflection Point",
+    "description": "At $250k, annual investment returns at 8% generate $20,000/year passively, equaling a significant portion of average annual living expenses.",
+    "agePercentiles": [
+      { "age": 25, "percentile": 94, "status": "Ultra-Elite (Top 6%)", "context": "A quarter-million at 25 represents early tech equity, business ownership, or exceptional early career income." },
+      { "age": 30, "percentile": 84, "status": "Top Tier (Top 16%)", "context": "At 30, $250,000 places you in the top 16% of all American households in your age group." },
+      { "age": 35, "percentile": 66, "status": "Upper Middle Class (Top 34%)", "context": "At 35, $250k puts you well above the median ($135k) and in the upper third." },
+      { "age": 40, "percentile": 58, "status": "Solidly Above Median", "context": "At 40, $250k keeps you ahead of average households." },
+      { "age": 50, "percentile": 51, "status": "Average / Median", "context": "At 50, $250k is right around the national median ($247,200)." }
+    ]
+  },
+  {
+    "slug": "500k",
+    "amount": 500000,
+    "label": "$500,000",
+    "title": "$500k Net Worth (Half Million)",
+    "difficulty": "Coast FIRE & Real Financial Independence Foundation",
+    "description": "At half a million dollars, 7-8% market returns generate $35,000–$40,000 annually without touching the principal. For many, this marks Coast FIRE status.",
+    "agePercentiles": [
+      { "age": 25, "percentile": 98, "status": "Top 2% in America", "context": "Extremely rare at age 25, representing early high-growth startups or significant inheritances/investments." },
+      { "age": 30, "percentile": 93, "status": "Top 7% Elite", "context": "At 30, $500k net worth puts you in the top 7% nationally." },
+      { "age": 35, "percentile": 81, "status": "Top 19% Wealthy", "context": "At 35, a half-million dollars places you firmly in the top fifth of households." },
+      { "age": 40, "percentile": 72, "status": "Top 28% Well-to-Do", "context": "At 40, you are comfortably ahead of roughly 3 out of 4 American households." },
+      { "age": 50, "percentile": 65, "status": "Top 35% Strong Position", "context": "At 50, $500k provides a resilient foundation for traditional retirement planning." }
+    ]
+  },
+  {
+    "slug": "1-million",
+    "amount": 1000000,
+    "label": "$1,000,000",
+    "title": "$1 Million Net Worth (Millionaire Status)",
+    "difficulty": "The Classic Millionaire Milestone",
+    "description": "Achieving seven figures remains the gold standard of financial security, placing a household in the top tier across every demographic age bracket.",
+    "agePercentiles": [
+      { "age": 25, "percentile": 99.5, "status": "Top 0.5% (Ultra-Rare)", "context": "Fewer than 1 in 200 people under 25 have attained seven-figure net worth." },
+      { "age": 30, "percentile": 97, "status": "Top 3% Millionaire", "context": "Reaching $1,000,000 by 30 is an extraordinary achievement, putting you ahead of 97% of your peers." },
+      { "age": 35, "percentile": 91, "status": "Top 9% Decacorn Group", "context": "At 35, a million-dollar net worth secures your position in the top 9% of US households." },
+      { "age": 40, "percentile": 84, "status": "Top 16% Millionaire", "context": "At 40, $1M places you well inside the top 16% of Americans." },
+      { "age": 50, "percentile": 76, "status": "Top 24% Affluent", "context": "By age 50, approximately 1 in 4 US households achieves $1M net worth when including home equity." }
+    ]
+  },
+  {
+    "slug": "2-million",
+    "amount": 2000000,
+    "label": "$2,000,000",
+    "title": "$2 Million Net Worth (Multi-Millionaire)",
+    "difficulty": "Full Financial Independence & Early Retirement (FIRE)",
+    "description": "Under the standard 4% safe withdrawal rule, $2,000,000 provides $80,000/year in passive perpetual income adjusted for inflation, qualifying as full financial independence.",
+    "agePercentiles": [
+      { "age": 25, "percentile": 99.9, "status": "Top 0.1% Ultra-Wealthy", "context": "Near top 0.1% in the nation for this age bracket." },
+      { "age": 30, "percentile": 99, "status": "Top 1% Wealthy", "context": "At 30, $2M places you firmly within the top 1% of young Americans." },
+      { "age": 35, "percentile": 96, "status": "Top 4% High Net Worth", "context": "At 35, you rank above 96% of all American households." },
+      { "age": 40, "percentile": 91, "status": "Top 9% Multi-Millionaire", "context": "At 40, $2M puts you in the top decile (top 9%) nationally." },
+      { "age": 50, "percentile": 86, "status": "Top 14% Secure Retirement", "context": "At 50, $2M provides rock-solid retirement safety well ahead of the national curve." }
+    ]
+  }
+]

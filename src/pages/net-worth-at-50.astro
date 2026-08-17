@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Net Worth at 50 (2026) | US Wealth Benchmark Tool";
-const description = "Calculate your net worth percentile at age 50. Benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) datasets.";
+const title = "Net Worth at Age 50 (2026) | US Wealth Percentile Benchmark";
+const description = "Find out where your net worth ranks at age 50. Compare against official US Federal Reserve Survey of Consumer Finances (SCF) datasets, median benchmarks & top 10% percentiles.";
 
 const schema = {
   "@context": "https://schema.org",
@@ -14,23 +14,55 @@ const schema = {
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the median net worth at age 50 in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to the Federal Reserve SCF data, the median net worth for households in the 45 to 54 age bracket (centered around age 50) is $247,200 USD, while the average is $975,800 USD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth puts you in the top 10% at age 50?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A net worth of approximately $1,950,000 USD places a 50-year-old in the top 10% (90th percentile) nationally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should you have saved by age 50 according to retirement guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard Fidelity savings rule recommends having 6x your annual gross salary saved across retirement and investment accounts by age 50."
+      }
+    }
+  ]
+};
 ---
 
 <Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
     <header class="text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
         <span>🎂 📊</span>
-        <span>Age 50 Milestone Benchmark</span>
+        <span>Age 50 Milestone Benchmark (2026)</span>
       </div>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
         Net Worth at Age 50
-        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Where Do You Rank Among 50-Year-Olds? (2026)</span>
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Where Do You Rank Among 50-Year-Olds?</span>
       </h1>
       <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-        According to US Federal Reserve SCF data, the median net worth for adults aged 45 to 54 is <strong>$247,200 USD</strong>, while the average is <strong>$975,800 USD</strong>.
+        According to US Federal Reserve SCF data, the median net worth for adults aged 45 to 54 is <strong>$247,200 USD</strong>, while the average is <strong>$975,800 USD</strong> due to high-net-worth outliers.
       </p>
     </header>
 
@@ -52,8 +84,89 @@ const schema = {
         <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Age 50 Percentile Rank</p>
         <div id="nw-50-pct-display" class="text-5xl font-black text-emerald-500 tracking-tight">—</div>
         <p id="nw-50-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto"></p>
+
+        <div class="pt-4 flex justify-center flex-wrap gap-3 text-xs">
+          <a href="/net-worth-by-age-usa" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white hover:border-emerald-500 transition-all">🇺🇸 Full US Age Breakdown →</a>
+          <a href="/millionaire-calculator" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-purple-600 dark:text-purple-400 hover:border-purple-500 transition-all">💰 Millionaire Target Calculator →</a>
+          <a href="/net-worth/1-million-at-50" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-indigo-400 hover:border-indigo-500 transition-all">$1M at 50 Guide →</a>
+        </div>
       </div>
     </div>
+
+    <!-- Age 50 Data Table -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Percentile Table at Age 50 (US Fed SCF)</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-900 text-white dark:bg-slate-800">
+              <th class="text-left px-4 py-3 font-bold">Percentile</th>
+              <th class="text-right px-4 py-3 font-bold">US Net Worth at Age 50 ($)</th>
+              <th class="text-left px-4 py-3 font-bold hidden sm:table-cell">Status Category</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr>
+              <td class="px-4 py-3 font-semibold">25th Percentile</td>
+              <td class="px-4 py-3 text-right font-bold">$48,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Catch-up Recommended</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">50th Percentile (Median)</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$247,200</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">National Middle Benchmark</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">75th Percentile</td>
+              <td class="px-4 py-3 text-right font-bold">$780,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Strong Retirement Track</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">90th Percentile (Top 10%)</td>
+              <td class="px-4 py-3 text-right font-bold text-purple-600 dark:text-purple-400">$1,950,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Multi-Millionaire Path</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">99th Percentile (Top 1%)</td>
+              <td class="px-4 py-3 text-right font-bold text-amber-500">$9,200,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Top 1% Ultra-Affluent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Comprehensive Age 50 Financial Strategy Guide -->
+    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed">
+      <h2 class="text-2xl font-bold text-white">The Financial Playbook for Age 50: The Final Pre-Retirement Consolidation Window</h2>
+      
+      <p>
+        Reaching age 50 opens crucial legal and tax advantages in the United States. It marks the start of IRS "catch-up contribution" allowances, enabling individuals to contribute thousands of extra dollars into 401(k) and IRA accounts tax-deferred.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">The Fidelity 6x Salary Rule</h3>
+          <p class="text-xs text-slate-400">
+            Fidelity guidelines suggest holding <strong>6x your annual gross salary</strong> across your retirement accounts by age 50. For a salary of $100,000, holding $600,000 in diversified investments provides a clear path to retiring by 65 with full replacement income.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">IRS Age 50+ Catch-Up Limits</h3>
+          <p class="text-xs text-slate-400">
+            At age 50, you become eligible for annual catch-up contributions: an additional $7,500 in 401(k) plans (totaling $31,000/year) and an additional $1,000 in IRAs. Maximizing these accelerates retirement readiness significantly.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-white pt-2">Key Financial Moves to Make at 50</h3>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+        <li><strong>Stress-Test Retirement Projections:</strong> Run conservative simulations assuming a 3.5% to 4.0% safe withdrawal rate across your combined liquid assets, Social Security benefits, and pensions.</li>
+        <li><strong>Eliminate Debt Before Retirement:</strong> Plan mortgage payoff schedules so primary housing costs are minimal by the time earned labor income stops.</li>
+        <li><strong>Review Long-Term Healthcare Protection:</strong> Evaluate long-term care insurance policies and Health Savings Account (HSA) balances to shield retirement capital against late-life medical expenses.</li>
+      </ul>
+    </article>
   </main>
 </Layout>
 
@@ -68,11 +181,11 @@ const schema = {
     btn?.addEventListener('click', () => {
       const val = parseFloat(input.value) || 0;
       let pct = 50;
-      if (val >= 4200000) pct = 99;
-      else if (val >= 1450000) pct = 90;
-      else if (val >= 620000) pct = 75;
+      if (val >= 9200000) pct = 99;
+      else if (val >= 1950000) pct = 90;
+      else if (val >= 780000) pct = 75;
       else if (val >= 247200) pct = 50;
-      else if (val >= 65000) pct = 25;
+      else if (val >= 48000) pct = 25;
       else pct = 10;
 
       pctDisplay.textContent = `${pct}th Percentile`;

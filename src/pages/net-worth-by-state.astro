@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Net Worth by State USA (2026) | Median Wealth Data";
-const description = "Compare your net worth across all 50 US states. See median household wealth, top 10% thresholds, and cost-of-living adjusted benchmarks.";
+const title = "Net Worth by State USA (2026) | Median Wealth & Cost of Living Benchmarks";
+const description = "Compare your net worth across all 50 US states. See median household wealth, top 10% thresholds, real estate appreciation factors, and cost-of-living adjusted benchmarks.";
 
 const statesData = [
   { state: "California", id: "california", median: "$380,000", top10: "$2,850,000", costOfLiving: "High (+38%)" },
@@ -13,6 +13,8 @@ const statesData = [
   { state: "Massachusetts", id: "massachusetts", median: "$395,000", top10: "$2,900,000", costOfLiving: "High (+40%)" },
   { state: "Illinois", id: "illinois", median: "$195,000", top10: "$1,520,000", costOfLiving: "Average (-3%)" },
   { state: "Colorado", id: "colorado", median: "$290,000", top10: "$2,100,000", costOfLiving: "High (+12%)" },
+  { state: "New Jersey", id: "new-jersey", median: "$360,000", top10: "$2,750,000", costOfLiving: "High (+28%)" },
+  { state: "Virginia", id: "virginia", median: "$275,000", top10: "$2,050,000", costOfLiving: "Moderate (+5%)" }
 ];
 
 const faqSchema = {
@@ -34,6 +36,14 @@ const faqSchema = {
         "@type": "Answer",
         "text": "High cost-of-living (HCOL) states like California and New York have higher nominal net worths due to primary residence home equity, but lower purchasing power for daily expenses compared to low cost-of-living (LCOL) states like Texas or Ohio."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average national US household net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The national median US household net worth according to the Federal Reserve Survey of Consumer Finances is approximately $192,700, while the average is distorted upward to $1,063,700 by ultra-high-net-worth billionaires."
+      }
     }
   ]
 };
@@ -48,14 +58,14 @@ const faqSchema = {
     <header class="text-center mb-12 space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
         <span>🗺️</span>
-        <span>US State Net Worth Benchmarks (2026)</span>
+        <span>US State Net Worth Benchmarks & Geographic Economics (2026)</span>
       </div>
 
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
         Net Worth <span class="text-emerald-600 dark:text-emerald-400">by State (USA)</span>
       </h1>
       <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-        See how median household net worth and top 10% wealth thresholds vary across different US states.
+        Discover how household net worth, property equity, and top 10% wealth thresholds shift across all 50 US states.
       </p>
     </header>
 
@@ -65,7 +75,7 @@ const faqSchema = {
       <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
         • <strong>Highest Net Worth States:</strong> Massachusetts ($395k median), California ($380k median), Washington ($340k median)<br />
         • <strong>National US Median:</strong> $192,700<br />
-        • <strong>Key Wealth Driver:</strong> Primary residence home equity accounts for 45% to 65% of total household net worth in high-cost states.
+        • <strong>Key Wealth Driver:</strong> Primary residence home equity accounts for 45% to 65% of total household net worth in coastal states, while low-tax states emphasize liquid investment accounts.
       </p>
     </div>
 
@@ -103,6 +113,38 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- Deep Geographic Wealth Dynamics Guide -->
+    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed mb-12">
+      <h2 class="text-2xl font-bold text-white">Geographic Wealth Disparities: Understanding Cost of Living vs. Real Net Worth</h2>
+      
+      <p>
+        Evaluating your personal net worth without considering local geographic purchasing power can be deceptive. A net worth of <strong>$500,000</strong> in high-cost states like California, New York, or Massachusetts represents an entirely different standard of living compared to holding $500,000 in low-cost, zero-income-tax states like Texas, Florida, or Tennessee.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">The Real Estate Amortization Effect</h3>
+          <p class="text-xs text-slate-400">
+            In states with median home prices exceeding $750,000, homeowners automatically build large balance sheet equity through fixed-rate mortgage paydown and structural housing appreciation. However, this equity is illiquid unless accessed via home equity loans or downsizing.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">State Tax Policy & Liquid Compounding</h3>
+          <p class="text-xs text-slate-400">
+            States without individual income taxes (Texas, Florida, Washington, Nevada, Tennessee) allow high earners to retain a larger percentage of gross income, accelerating liquid contributions into taxable brokerage accounts and retirement vehicles.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-white pt-2">How to Calibrate Your State Benchmark</h3>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+        <li><strong>Separate Liquid from Illiquid Assets:</strong> Calculate your liquid investment portfolio independently from primary residence value to determine genuine retirement readiness.</li>
+        <li><strong>Factor Local Tax Drag:</strong> Take into account property taxes, state income taxes, and sales taxes when planning annual withdrawal rates in retirement.</li>
+        <li><strong>Explore State-by-State Breakdown:</strong> Use our individual state pages to see how your specific age cohort stacks up within your home state.</li>
+      </ul>
+    </article>
+
     <!-- FAQs -->
     <section class="space-y-6 mb-14">
       <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h2>
@@ -113,7 +155,17 @@ const faqSchema = {
             <span class="group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Massachusetts ($395,000), California ($380,000), and Washington ($340,000) have the highest median household net worths due to real estate appreciation and high tech/biotech salaries.
+            Massachusetts ($395,000), California ($380,000), New Jersey ($360,000), and Washington ($340,000) lead the nation in median household net worth due to strong technology, biotech, and financial industries paired with high real estate values.
+          </p>
+        </details>
+
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+          <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
+            <span>How does cost of living affect net worth comparisons?</span>
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            While nominal net worth figures are higher in coastal states, everyday goods, services, and housing costs consume a larger share of income. When adjusted for purchasing power parity, median households in moderate-cost states often achieve equal or higher discretionary savings rates.
           </p>
         </details>
       </div>

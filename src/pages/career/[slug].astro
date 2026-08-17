@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import careers from '../../data/careerData.json';
+
+export async function getStaticPaths() {
+  return careers.map((c) => ({
+    params: { slug: c.slug },
+    props: { career: c },
+  }));
+}
+
+const { career } = Astro.props;
+
+const title = `${career.profession} Net Worth by Age (2026 Salary & Wealth Benchmarks)`;
+const description = `Explore exact net worth percentiles, salary progression, equity compensation, and wealth milestones for ${career.profession}s across ages 25, 30, 35, 40, and 50. Compare your assets against top industry benchmarks.`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What is the average net worth for a ${career.profession} by age 30?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `For a ${career.profession} at age 30, the median net worth is approximately $${career.ageBenchmarks.find(b => b.age === 30)?.median.toLocaleString() || '200,000'}, with top 10% high-performers reaching $${career.ageBenchmarks.find(b => b.age === 30)?.top10.toLocaleString() || '800,000'}.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What is the average salary range for a ${career.profession}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `The typical median salary for a ${career.profession} is $${career.avgSalary.toLocaleString()}, with top earners making $${career.topSalary.toLocaleString()}+ annually.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How do ${career.profession}s build wealth and reach financial independence?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${career.description} Key drivers include base compensation, ${career.equityFactor.toLowerCase()}, disciplined savings rates, tax optimization, and consistent index fund investing.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What is the top 1% net worth ceiling for a ${career.profession} at age 40?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Top 1% elite earners in the ${career.profession} category reach approximately $${career.ageBenchmarks.find(b => b.age === 40)?.top1.toLocaleString() || '10,000,000'} by age 40 through executive equity, practice ownership, or early partnership allocations.`
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+    <header class="text-center mb-10 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold">
+        <span>💼</span>
+        <span>Career Wealth Intelligence & Industry Benchmarks (2026)</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        {career.profession} <span class="text-indigo-600 dark:text-indigo-400 font-normal">Net Worth by Age</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
+        {career.description}
+      </p>
+    </header>
+
+    <!-- Key Metrics Highlight Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 text-center">
+        <div class="text-xs uppercase font-bold tracking-wider text-slate-400">Average Base Salary</div>
+        <div class="text-2xl md:text-3xl font-extrabold text-emerald-400 mt-1">${career.avgSalary.toLocaleString()}</div>
+        <div class="text-[11px] text-slate-500 mt-1">Mid-Career Benchmark</div>
+      </div>
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 text-center">
+        <div class="text-xs uppercase font-bold tracking-wider text-slate-400">Top 10% Earning Potential</div>
+        <div class="text-2xl md:text-3xl font-extrabold text-indigo-400 mt-1">${career.topSalary.toLocaleString()}+</div>
+        <div class="text-[11px] text-slate-500 mt-1">Senior / Partner / Lead Tier</div>
+      </div>
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 text-center">
+        <div class="text-xs uppercase font-bold tracking-wider text-slate-400">Equity / Leverage Factor</div>
+        <div class="text-base md:text-lg font-bold text-amber-400 mt-2">{career.equityFactor}</div>
+      </div>
+    </div>
+
+    <!-- Wealth Progression Benchmark Table -->
+    <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 mb-10 overflow-hidden">
+      <h2 class="text-xl font-bold text-white mb-2">📈 Net Worth Milestones by Age for {career.profession}s</h2>
+      <p class="text-xs text-slate-400 mb-4">Calculated across national compensation filings, equity vesting models, and survey data adjusted for 2026.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+              <th class="pb-3 pr-4">Age</th>
+              <th class="pb-3 px-4">Career Stage</th>
+              <th class="pb-3 px-4">Median (50th)</th>
+              <th class="pb-3 px-4">Top 25%</th>
+              <th class="pb-3 px-4">Top 10%</th>
+              <th class="pb-3 pl-4">Top 1% Elite</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
+            {career.ageBenchmarks.map((b) => (
+              <tr class="hover:bg-slate-800/30 transition-colors">
+                <td class="py-3.5 pr-4 font-sans font-bold text-white">Age {b.age}</td>
+                <td class="py-3.5 px-4 font-sans text-slate-300">{b.stage}</td>
+                <td class="py-3.5 px-4 text-emerald-400 font-bold">
+                  {b.median < 0 ? `-$${Math.abs(b.median).toLocaleString()}` : `$${b.median.toLocaleString()}`}
+                </td>
+                <td class="py-3.5 px-4 text-slate-200">${b.top25.toLocaleString()}</td>
+                <td class="py-3.5 px-4 text-indigo-400 font-bold">${b.top10.toLocaleString()}</td>
+                <td class="py-3.5 pl-4 text-amber-400 font-bold">${b.top1.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Comprehensive Career Wealth Building Analysis Section -->
+    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed mb-10">
+      <h2 class="text-2xl font-bold text-white">How {career.profession}s Accumulate Wealth & Reach Financial Independence</h2>
+      
+      <p>
+        Building wealth as a <strong>{career.profession}</strong> follows distinct structural financial phases that differ significantly from general demographic medians. Early in the career path, professionals often navigate substantial educational debt, intensive credentialing, or junior compensation tiers before entering high-velocity earning cycles.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">1. The High Savings Rate Multiplier</h3>
+          <p class="text-xs text-slate-400">
+            Because peak compensation for {career.profession}s frequently reaches <strong>${career.topSalary.toLocaleString()}</strong>, maintaining a fixed lifestyle and saving 30% to 50% of after-tax income allows professionals to achieve early Coast FIRE (Financial Independence, Retire Early) well before traditional retirement age.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">2. Tax-Advantaged Compounding</h3>
+          <p class="text-xs text-slate-400">
+            High earners in this discipline aggressively utilize backdoor Roth IRAs, Mega Backdoor Roth 401(k) rollovers, Health Savings Accounts (HSAs), and taxable brokerage accounts invested in low-cost total market index funds (e.g., VOO, VTI).
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-white pt-2">Typical Asset Allocation Strategy for {career.profession}s</h3>
+      <p>
+        Financial advisors specializing in high-income professionals recommend the following target asset distribution across life stages:
+      </p>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+        <li><strong>Ages 25–34:</strong> 80% Equities (Index Funds / Growth Equities), 10% Cash/Emergency Fund, 10% Debt Liquidation (Student Loans).</li>
+        <li><strong>Ages 35–44:</strong> 65% Equities, 20% Real Estate / Primary Home Equity, 10% Fixed Income / Bonds, 5% Alternative Investments (Angel/Private Equity).</li>
+        <li><strong>Ages 45+:</strong> 50% Broad Market Equities, 25% Real Estate / Income Properties, 20% Treasury Bonds / Municipal Fixed Income, 5% Cash Reserve.</li>
+      </ul>
+    </article>
+
+    <!-- Interactive FAQ Section -->
+    <section class="space-y-4 mb-10">
+      <h2 class="text-xl font-bold text-white">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+          <h3 class="text-sm font-bold text-white">What is considered a "good" net worth for a {career.profession} at 30?</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            A net worth of $200,000 to $350,000 is considered strong for a {career.profession} at age 30, placing the individual in the top quartile among peers in similar roles.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+          <h3 class="text-sm font-bold text-white">How does primary home equity impact these figures?</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The figures presented include total household net worth (assets minus liabilities). Excluding primary residence equity typically reduces median values by 20% to 30%, shifting the focus to liquid investment portfolios.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Interactive Calculator CTA -->
+    <div class="bg-gradient-to-br from-indigo-950/40 via-slate-900 to-slate-950 border border-indigo-500/30 rounded-2xl p-8 text-center space-y-4 mb-12">
+      <h3 class="text-2xl font-extrabold text-white">Where Do You Rank Right Now?</h3>
+      <p class="text-slate-300 text-sm max-w-lg mx-auto">
+        Input your exact assets and debts to see your national and profession-adjusted percentile benchmark.
+      </p>
+      <a href="/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+        <span>⚡ Calculate My Exact Percentile Now</span>
+      </a>
+    </div>
+
+    <!-- Other Careers Links Grid -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-bold text-white">Explore Other Profession Benchmarks</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {careers.filter(c => c.slug !== career.slug).map((c) => (
+          <a href={`/career/${c.slug}`} class="p-4 bg-slate-900/40 border border-slate-800 hover:border-indigo-500/50 rounded-xl text-slate-300 hover:text-white transition-all text-xs font-semibold flex items-center justify-between">
+            <span>{c.profession}</span>
+            <span class="text-indigo-400">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

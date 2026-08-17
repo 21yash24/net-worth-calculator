@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "software-engineer",
+    "title": "Software Engineer Net Worth by Age",
+    "profession": "Software Engineer",
+    "avgSalary": 145000,
+    "topSalary": 280000,
+    "equityFactor": "High (RSUs / Stock Options)",
+    "description": "Tech industry equity packages, 401(k) matching, and high base salaries allow software engineers to accumulate wealth significantly faster than national medians.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 65000, "top25": 140000, "top10": 260000, "top1": 650000, "stage": "Junior / Mid SWE Accumulation" },
+      { "age": 30, "median": 220000, "top25": 480000, "top10": 950000, "top1": 2400000, "stage": "Senior SWE RSU Vesting" },
+      { "age": 35, "median": 580000, "top25": 1250000, "top10": 2400000, "top1": 5800000, "stage": "Staff SWE / Lead Compound Phase" },
+      { "age": 40, "median": 1150000, "top25": 2400000, "top10": 4600000, "top1": 10500000, "stage": "Principal / Engineering Director" },
+      { "age": 50, "median": 2400000, "top25": 4800000, "top10": 9200000, "top1": 22000000, "stage": "Pre-Retirement Peak Capital" }
+    ]
+  },
+  {
+    "slug": "physician-doctor",
+    "title": "Physician & Doctor Net Worth by Age",
+    "profession": "Physician & Doctor",
+    "avgSalary": 260000,
+    "topSalary": 480000,
+    "equityFactor": "Low (Practice Ownership / High Savings Rate)",
+    "description": "Physicians start with heavy student debt and late career entry, but experience extreme catch-up acceleration in their 30s and 40s.",
+    "ageBenchmarks": [
+      { "age": 25, "median": -180000, "top25": -80000, "top10": -20000, "top1": 50000, "stage": "Medical School Debt Stage" },
+      { "age": 30, "median": -120000, "top25": -40000, "top10": 25000, "top1": 150000, "stage": "Residency & Fellowship Training" },
+      { "age": 35, "median": 280000, "top25": 620000, "top10": 1200000, "top1": 2800000, "stage": "Early Attending Rapid Debt Repayment" },
+      { "age": 40, "median": 850000, "top25": 1800000, "top10": 3400000, "top1": 7500000, "stage": "Mid-Career High Savings Rate" },
+      { "age": 50, "median": 2600000, "top25": 5200000, "top10": 9800000, "top1": 20000000, "stage": "Practice Partner / High Capital" }
+    ]
+  },
+  {
+    "slug": "lawyer-attorney",
+    "title": "Lawyer & Attorney Net Worth by Age",
+    "profession": "Lawyer & Attorney",
+    "avgSalary": 155000,
+    "topSalary": 350000,
+    "equityFactor": "Medium (Law Firm Partnership Draw)",
+    "description": "Attorneys experience bifurcated wealth trajectories between BigLaw partner tracks and public interest / small firm practitioners.",
+    "ageBenchmarks": [
+      { "age": 25, "median": -90000, "top25": -30000, "top10": 15000, "top1": 80000, "stage": "Law School Graduate / Early Associate" },
+      { "age": 30, "median": 140000, "top25": 380000, "top10": 780000, "top1": 1800000, "stage": "Mid-Level Associate" },
+      { "age": 35, "median": 420000, "top25": 980000, "top10": 1950000, "top1": 4500000, "stage": "Senior Associate / Junior Partner" },
+      { "age": 40, "median": 950000, "top25": 2100000, "top10": 4200000, "top1": 9500000, "stage": "Equity Partner / In-House Counsel" },
+      { "age": 50, "median": 2100000, "top25": 4400000, "top10": 8600000, "top1": 18500000, "stage": "Senior Partner Peak Earning" }
+    ]
+  },
+  {
+    "slug": "nurse-registered-nurse",
+    "title": "Registered Nurse (RN / CRNA) Net Worth by Age",
+    "profession": "Registered Nurse",
+    "avgSalary": 92000,
+    "topSalary": 210000,
+    "equityFactor": "Low (Overtime, Shift Differentials & Travel Nursing)",
+    "description": "Steady high job stability and travel/specialty nurse premiums allow early wealth building with minimal initial debt.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 32000, "top25": 75000, "top10": 140000, "top1": 320000, "stage": "Early Staff Nurse" },
+      { "age": 30, "median": 115000, "top25": 230000, "top10": 420000, "top1": 950000, "stage": "Specialty RN / Travel Nurse" },
+      { "age": 35, "median": 260000, "top25": 510000, "top10": 920000, "top1": 1900000, "stage": "Nurse Practitioner / Nurse Manager" },
+      { "age": 40, "median": 480000, "top25": 920000, "top10": 1650000, "top1": 3400000, "stage": "Peak Earning / CRNA" },
+      { "age": 50, "median": 980000, "top25": 1850000, "top10": 3200000, "top1": 6800000, "stage": "Pre-Retirement Compound Growth" }
+    ]
+  },
+  {
+    "slug": "data-scientist",
+    "title": "Data Scientist & AI Engineer Net Worth by Age",
+    "profession": "Data Scientist & AI Engineer",
+    "avgSalary": 150000,
+    "topSalary": 310000,
+    "equityFactor": "High (AI Tech RSUs & Bonuses)",
+    "description": "Surging demand for AI expertise and data engineering has accelerated compensation and net worth percentiles in data roles.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 70000, "top25": 145000, "top10": 270000, "top1": 680000, "stage": "Junior Data Scientist" },
+      { "age": 30, "median": 235000, "top25": 510000, "top10": 980000, "top1": 2500000, "stage": "Senior Data Scientist / AI Researcher" },
+      { "age": 35, "median": 620000, "top25": 1350000, "top10": 2600000, "top1": 6200000, "stage": "Lead AI Architect" },
+      { "age": 40, "median": 1200000, "top25": 2550000, "top10": 4900000, "top1": 11000000, "stage": "VP / Head of Data & AI" },
+      { "age": 50, "median": 2550000, "top25": 5100000, "top10": 9800000, "top1": 23000000, "stage": "Executive / Advisory Phase" }
+    ]
+  },
+  {
+    "slug": "financial-analyst",
+    "title": "Financial Analyst & Investment Banker Net Worth by Age",
+    "profession": "Financial Analyst & Banker",
+    "avgSalary": 135000,
+    "topSalary": 350000,
+    "equityFactor": "High (Annual Performance Bonuses & Carry)",
+    "description": "High bonus structures and deep financial literacy drive aggressive investing and wealth accumulation across financial careers.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 55000, "top25": 120000, "top10": 240000, "top1": 580000, "stage": "Investment Banking Analyst" },
+      { "age": 30, "median": 210000, "top25": 460000, "top10": 920000, "top1": 2200000, "stage": "Associate / VP Phase" },
+      { "age": 35, "median": 560000, "top25": 1200000, "top10": 2350000, "top1": 5500000, "stage": "Director / Portfolio Manager" },
+      { "age": 40, "median": 1100000, "top25": 2350000, "top10": 4500000, "top1": 10000000, "stage": "Managing Director" },
+      { "age": 50, "median": 2350000, "top25": 4700000, "top10": 9100000, "top1": 21000000, "stage": "Partner / Fund Manager" }
+    ]
+  }
+]

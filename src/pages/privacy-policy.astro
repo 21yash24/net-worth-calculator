@@ -2,74 +2,66 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Privacy Policy | Net Worth Calculator by Age" description="Read our privacy policy. NetWorth runs 100% client-side with zero data collection, tracking, or selling of your financial information.">
+<Layout title="Privacy Policy & Google AdSense Disclosures | Net Worth Calculator" description="Read our privacy policy, cookie governance, Google AdSense disclosures, and GDPR/CCPA compliance standards. 100% private, client-side calculator execution.">
 	<main class="max-w-4xl mx-auto px-6 py-12 md:py-20">
 		<header class="text-center mb-12 space-y-2">
-			<h1 class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Privacy Policy</h1>
+			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+				<span>🔒</span>
+				<span>Privacy Governance & Ad Transparency</span>
+			</div>
+			<h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Privacy Policy</h1>
 			<p class="text-slate-700 dark:text-slate-400">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
 		</header>
 
-		<div class="p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/60 shadow-xl backdrop-blur-xl text-slate-800 dark:text-slate-300 space-y-6 font-normal leading-relaxed">
-			<section>
-				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">1. 100% Client-Side Calculations</h2>
-				<p>Your privacy is paramount. NetWorth executes all age, income, and net worth percentile calculations locally in your Web browser. We do not store, record, or transmit your financial inputs to any server.</p>
+		<div class="p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/60 shadow-xl backdrop-blur-xl text-slate-800 dark:text-slate-300 space-y-8 font-normal leading-relaxed">
+			
+			<section class="space-y-3">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">1. 100% Client-Side Private Computation</h2>
+				<p>
+					At <strong>GetNetWorthCalculator.com</strong>, your financial privacy is our fundamental design constraint. Every calculation—including your age, liquid savings, investment balances, home equity, mortgages, and debt obligations—runs 100% locally in your personal web browser using client-side JavaScript.
+				</p>
+				<p>
+					We do not transmit, record, store, or sell any financial figures or personal net worth inputs to our servers or any third-party entities.
+				</p>
 			</section>
 
-			<section>
-				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">2. Cookies and Local Storage</h2>
-				<p>We do not use tracking cookies to build personal user profiles. Local storage may be utilized solely to remember your preferred theme or currency preferences across browser visits.</p>
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">2. Google AdSense & Third-Party Advertising Policy</h2>
+				<p>
+					To keep our financial tools and educational benchmarks 100% free and accessible to the public without subscription fees or paywalls, we display advertisements served by third-party advertising partners, including <strong>Google AdSense</strong>.
+				</p>
+				<div class="p-5 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3 text-xs">
+					<p><strong>• Use of Cookies by Ad Networks:</strong> Third-party vendors, including Google, use cookies (such as DoubleClick DART cookies) to serve ads based on a user's prior visits to this website or other websites across the internet.</p>
+					<p><strong>• Personalized Advertising:</strong> Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</p>
+					<p><strong>• User Opt-Out Rights:</strong> Users may opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline font-semibold">Google Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline font-semibold">www.aboutads.info</a> or <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline font-semibold">Network Advertising Initiative</a>.</p>
+				</div>
 			</section>
 
-			<section>
-				<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">3. Analytics & Ad Networks</h2>
-				<p>We use privacy-preserving analytics to understand aggregate traffic patterns. Non-intrusive advertisements served by trusted partners like Google AdSense may be displayed in accordance with standard web privacy rules.</p>
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">3. Cookies, Web Beacons & Local Storage</h2>
+				<p>
+					We do not use tracking cookies to construct personal behavioral profiles. Minimal browser LocalStorage is utilized solely to remember your preferred visual theme (dark or light mode) and selected currency symbol across visits. You can clear this at any time through your browser settings.
+				</p>
+			</section>
+
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">4. GDPR & CCPA/CPRA Compliance Rights</h2>
+				<p>
+					Under the General Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA), users possess explicit rights regarding data transparency and control:
+				</p>
+				<ul class="list-disc pl-5 space-y-2 text-xs">
+					<li><strong>Right to Know / Access:</strong> You have the right to request information regarding any personal data collected. As noted, GetNetWorthCalculator.com stores zero personal financial inputs.</li>
+					<li><strong>Right to Deletion:</strong> Users have the right to request deletion of any stored data. Clearing your browser LocalStorage immediately purges all local preferences.</li>
+					<li><strong>Non-Discrimination:</strong> We will never discriminate against you for exercising your privacy rights. All calculator features remain 100% free and fully functional.</li>
+				</ul>
+			</section>
+
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">5. Contact Information & Privacy Queries</h2>
+				<p>
+					If you have any questions regarding this Privacy Policy, our Google AdSense compliance, or our client-side data protection architecture, please contact us via our <a href="/contact" class="text-emerald-600 dark:text-emerald-400 underline font-semibold">Contact Page</a> or via email at <code class="px-2 py-1 bg-slate-100 dark:bg-slate-950 rounded text-xs font-mono">privacy@getnetworthcalculator.com</code>.
+				</p>
 			</section>
 		</div>
-	
-    <!-- In-Depth Privacy Policy -->
-    <section class="space-y-4 text-slate-700 dark:text-slate-300 text-sm leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-8 mt-8">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Full Privacy Protection & Security Policy</h2>
-      <p>
-        At Get Net Worth Calculator (getnetworthcalculator.com), your financial privacy is our top priority. This Privacy Policy details the strict client-side architecture and zero-logging principles governing our application.
-      </p>
-
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">1. Zero Financial Data Transmission</h3>
-      <p>
-        Every calculation executed on Get Net Worth Calculator (including liquid savings, stock portfolios, real estate equity, mortgages, and consumer debt) runs 100% locally within your client web browser via JavaScript. No financial values entered into calculator fields are sent to or stored on our servers.
-      </p>
-
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">2. Analytics & Server Log Files</h3>
-      <p>
-        Like standard web services, our servers log non-identifiable technical parameters such as IP address, browser type, operating system, timestamp, and referring URLs solely for bandwidth optimization, DDoS protection, and server health diagnostics.
-      </p>
-
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">3. Cookies & Local Storage</h3>
-      <p>
-        We utilize minimal browser LocalStorage exclusively to persist user settings (such as dark mode toggle or selected currency preferences) on your local device. We do not use intrusive cross-site tracking cookies.
-      </p>
-    </section>
-
-  
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">4. Third-Party Links & External Government Services</h3>
-      <p>
-        Our website contains reference links to external government and central bank research portals (such as federalreserve.gov, ons.gov.uk, and statcan.gc.ca). Get Net Worth Calculator is not responsible for the content or privacy practices of third-party domains.
-      </p>
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">5. Updates to This Privacy Policy</h3>
-      <p>
-        We may update this Privacy Policy periodically to reflect new browser security standards or privacy regulations. Revisions will be posted immediately to this page with an updated modification date.
-      </p>
-
-  
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">6. Compliance with International Privacy Standards</h3>
-      <p>
-        Get Net Worth Calculator adheres to international web privacy frameworks including GDPR (General Data Protection Regulation) and CCPA (California Consumer Privacy Act). Users have complete autonomy over their browser storage. Clearing your browser cache or LocalStorage immediately wipes all locally saved calculator settings from your device.
-      </p>
-
-  
-      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">Global Wealth Percentile Standards</h3>
-      <p>
-        Get Net Worth Calculator adheres to modern web standards, W3C accessibility guidelines, and fast Core Web Vitals responsiveness. Whether calculating liquid net worth, analyzing retirement readiness, or benchmarking household balance sheets against central bank surveys, our platform delivers instant, reliable financial modeling with zero data tracking.
-      </p>
-
-  </main>
+	</main>
 </Layout>

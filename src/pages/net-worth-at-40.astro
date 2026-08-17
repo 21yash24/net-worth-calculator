@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Net Worth at 40 (2026) | US Wealth Benchmark Tool";
-const description = "Calculate your net worth percentile at age 40. Benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) datasets.";
+const title = "Net Worth at Age 40 (2026) | US Wealth Percentile Benchmark";
+const description = "Find out where your net worth ranks at age 40. Compare against official US Federal Reserve Survey of Consumer Finances (SCF) datasets, median benchmarks & top 10% percentiles.";
 
 const schema = {
   "@context": "https://schema.org",
@@ -14,23 +14,55 @@ const schema = {
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the median net worth at age 40 in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Federal Reserve SCF data, the median net worth for households in the 35 to 44 age cohort (centered on age 40) is $135,600 USD, while the average is $549,600 USD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What net worth is top 10% at age 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A net worth of approximately $980,000 USD places a 40-year-old in the top 10% (90th percentile) nationally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should you have saved by age 40 according to retirement guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Fidelity retirement milestone rule recommends having 3x your annual gross salary saved across retirement and investment accounts by age 40."
+      }
+    }
+  ]
+};
 ---
 
 <Layout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
     <header class="text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
         <span>🎂 📊</span>
-        <span>Age 40 Milestone Benchmark</span>
+        <span>Age 40 Milestone Benchmark (2026)</span>
       </div>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
         Net Worth at Age 40
-        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Where Do You Rank Among 40-Year-Olds? (2026)</span>
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Where Do You Rank Among 40-Year-Olds?</span>
       </h1>
       <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-        According to US Federal Reserve SCF data, the median net worth for adults aged 35 to 44 is <strong>$135,600 USD</strong>, while the average is <strong>$549,600 USD</strong>.
+        According to US Federal Reserve SCF data, the median net worth for adults aged 35 to 44 is <strong>$135,600 USD</strong>, while the average is <strong>$549,600 USD</strong> due to high-net-worth outliers.
       </p>
     </header>
 
@@ -53,12 +85,88 @@ const schema = {
         <div id="nw-40-pct-display" class="text-5xl font-black text-emerald-500 tracking-tight">—</div>
         <p id="nw-40-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto"></p>
 
-        <div class="pt-4 flex justify-center gap-3 text-xs">
+        <div class="pt-4 flex justify-center flex-wrap gap-3 text-xs">
           <a href="/net-worth-by-age-usa" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white hover:border-emerald-500 transition-all">🇺🇸 Full US Age Breakdown →</a>
           <a href="/millionaire-calculator" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-purple-600 dark:text-purple-400 hover:border-purple-500 transition-all">💰 Millionaire Target Calculator →</a>
+          <a href="/net-worth/1-million-at-40" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-indigo-400 hover:border-indigo-500 transition-all">$1M at 40 Guide →</a>
         </div>
       </div>
     </div>
+
+    <!-- Age 40 Data Table -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Net Worth Percentile Table at Age 40 (US Fed SCF)</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-900 text-white dark:bg-slate-800">
+              <th class="text-left px-4 py-3 font-bold">Percentile</th>
+              <th class="text-right px-4 py-3 font-bold">US Net Worth at Age 40 ($)</th>
+              <th class="text-left px-4 py-3 font-bold hidden sm:table-cell">Status Category</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tr>
+              <td class="px-4 py-3 font-semibold">25th Percentile</td>
+              <td class="px-4 py-3 text-right font-bold">$35,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Catch-up Recommended</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">50th Percentile (Median)</td>
+              <td class="px-4 py-3 text-right font-bold text-emerald-600 dark:text-emerald-400">$135,600</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">National Middle Benchmark</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">75th Percentile</td>
+              <td class="px-4 py-3 text-right font-bold">$410,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Upper Middle Tier</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">90th Percentile (Top 10%)</td>
+              <td class="px-4 py-3 text-right font-bold text-purple-600 dark:text-purple-400">$980,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Emerging Millionaire</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold">99th Percentile (Top 1%)</td>
+              <td class="px-4 py-3 text-right font-bold text-amber-500">$4,500,000</td>
+              <td class="px-4 py-3 text-slate-500 hidden sm:table-cell">Top 1% Wealth Class</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Comprehensive Age 40 Financial Strategy Guide -->
+    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed">
+      <h2 class="text-2xl font-bold text-white">The Financial Playbook for Age 40: Peak Earnings and Compound Acceleration</h2>
+      
+      <p>
+        At age 40, professionals enter their peak compensation decades. Between home equity amortization and 15+ years of compounding inside 401(k) and brokerage accounts, your existing assets should begin generating annual capital returns comparable to your earned salary.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">The Fidelity 3x Salary Milestone</h3>
+          <p class="text-xs text-slate-400">
+            Fidelity guidelines suggest holding <strong>3x your gross annual salary</strong> in investments by age 40. For a household earning $150,000, maintaining a $450,000 portfolio positions you comfortably for financial independence by your late 50s or early 60s.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">Real Estate vs. Liquid Net Worth</h3>
+          <p class="text-xs text-slate-400">
+            Many 40-year-olds see a large portion of their net worth tied up in primary residence home equity. While real estate builds balance sheet strength, building a parallel taxable brokerage portfolio ensures liquidity for early retirement options.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-white pt-2">Key Financial Milestones to Target at 40</h3>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+        <li><strong>Eliminate High-Interest Liabilities:</strong> Carry zero revolving credit card debt and personal loans. Focus non-mortgage payments on productive investments.</li>
+        <li><strong>Max Out Catch-up & Tax Shelters:</strong> Fully fund 401(k)s ($23,500), Backdoor Roth IRAs ($7,000), and Health Savings Accounts (HSAs).</li>
+        <li><strong>Establish Estate Planning Basics:</strong> Draft a formal will, set up revocable living trusts if owning real estate, and ensure correct beneficiary designations on retirement accounts.</li>
+      </ul>
+    </article>
   </main>
 </Layout>
 
@@ -73,9 +181,9 @@ const schema = {
     btn?.addEventListener('click', () => {
       const val = parseFloat(input.value) || 0;
       let pct = 50;
-      if (val >= 2500000) pct = 99;
-      else if (val >= 780000) pct = 90;
-      else if (val >= 350000) pct = 75;
+      if (val >= 4500000) pct = 99;
+      else if (val >= 980000) pct = 90;
+      else if (val >= 410000) pct = 75;
       else if (val >= 135600) pct = 50;
       else if (val >= 35000) pct = 25;
       else pct = 10;

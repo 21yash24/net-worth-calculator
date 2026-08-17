@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "California Net Worth Percentile & Benchmark 2026";
-const description = "Calculate your net worth percentile in California. Median household net worth is $380,000 with top 10% and top 1% wealth comparisons.";
+const title = "California Net Worth Percentile & Wealth Benchmark 2026";
+const description = "Calculate your net worth percentile in California. Median household net worth is $380,000 with top 10% and top 1% wealth comparisons, Bay Area adjustments, and age breakdowns.";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -22,6 +22,14 @@ const faqSchema = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "A household net worth of approximately $2,850,000 puts you in the top 10% in California. In the San Francisco Bay Area, the top 10% threshold rises to $3,200,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the top 1% wealth threshold in California?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To be in the top 1% in California, a household requires a net worth of approximately $11,500,000, driven by Silicon Valley tech equity, venture capital, and commercial real estate."
       }
     }
   ]
@@ -43,7 +51,7 @@ const faqSchema = {
         California Net Worth <span class="text-emerald-600 dark:text-emerald-400">Percentiles</span>
       </h1>
       <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-        Compare your wealth in California against official state census and economic survey data.
+        Compare your personal wealth in the Golden State against official California Department of Finance and Federal Reserve economic survey data.
       </p>
     </header>
 
@@ -102,6 +110,38 @@ const faqSchema = {
         </table>
       </div>
     </section>
+
+    <!-- In-Depth California Economic Dynamics Article -->
+    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed mb-12">
+      <h2 class="text-2xl font-bold text-white">The Anatomy of Wealth in California: Real Estate Amortization & Tech Equity</h2>
+      
+      <p>
+        California represents the largest state economy in the United States and the fifth-largest globally. Wealth accumulation in California is characterized by extreme bifurcations between high-income metropolitan tech corridors (Silicon Valley, San Francisco, Los Angeles, San Diego) and rural agricultural inland regions.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">The Proposition 13 Housing Lock-In</h3>
+          <p class="text-xs text-slate-400">
+            California's Proposition 13 limits property tax assessment increases to 2% annually until a property is sold. This structural tax incentive has enabled multi-generational home equity accumulation, locking in massive un-taxed capital gains for long-term homeowners.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-base">Top Income Tax Drag (13.3%)</h3>
+          <p class="text-xs text-slate-400">
+            With California's top marginal state income tax bracket reaching 13.3%, high earners must aggressively utilize pre-tax 401(k) deductions, municipal bond funds, and tax-loss harvesting strategies to protect capital compounding.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-white pt-2">Key Financial Takeaways for California Residents</h3>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+        <li><strong>Separate Home Equity from Liquid Freedom:</strong> Ensure your investment portfolio holds sufficient liquidity outside of California real estate to prevent being "house rich and cash poor."</li>
+        <li><strong>Maximize California Tax Deductions:</strong> Contribute the maximum allowable amounts to tax-advantaged accounts to lower taxable California adjusted gross income (AGI).</li>
+        <li><strong>Benchmark by Metro:</strong> If you live in the San Francisco Bay Area or West LA, adjust baseline targets upward by 30% to 50% relative to state medians.</li>
+      </ul>
+    </article>
 
     <div class="text-center pt-4">
       <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">
