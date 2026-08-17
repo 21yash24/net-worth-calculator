@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Financial & Editorial Disclaimer | Net Worth Calculator";
+const description = "Read the financial and calculation disclaimer for GetNetWorthCalculator.com. All tools and statistical benchmarks are provided for educational and illustrative purposes only.";
+---
+
+<Layout title={title} description={description}>
+	<main class="max-w-4xl mx-auto px-6 py-12 md:py-20 text-slate-800 dark:text-slate-200">
+		<header class="text-center mb-12 space-y-4">
+			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-semibold">
+				<span>⚖️</span>
+				<span>Legal & Financial Notice</span>
+			</div>
+			<h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+				Financial Disclaimer
+			</h1>
+			<p class="text-slate-600 dark:text-slate-400 text-sm">
+				Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+			</p>
+		</header>
+
+		<div class="p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 shadow-xl backdrop-blur-xl space-y-8 leading-relaxed">
+			
+			<section class="space-y-3">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">1. Not Professional Financial Advice</h2>
+				<p>
+					The content, calculators, percentiles, and statistical tools provided on <strong>GetNetWorthCalculator.com</strong> are published strictly for educational, informational, and illustrative modeling purposes. The information on this website does not constitute financial, investment, tax, legal, or accounting advice.
+				</p>
+				<p>
+					You should consult with a certified financial planner (CFP), registered investment advisor (RIA), or licensed CPA before making major financial decisions, tax filings, or retirement withdrawals.
+				</p>
+			</section>
+
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">2. Mathematical Estimations & Data Accuracy</h2>
+				<p>
+					All wealth percentile comparisons are derived from official public government surveys, primarily the <strong>United States Federal Reserve Board's Survey of Consumer Finances (SCF)</strong>, the <strong>UK Office for National Statistics (ONS)</strong>, <strong>Statistics Canada</strong>, <strong>Australian Bureau of Statistics (ABS)</strong>, and the <strong>Reserve Bank of India (RBI)</strong>.
+				</p>
+				<p>
+					While we strive for the highest mathematical precision, economic data is subject to triennial sampling intervals, macroeconomic shifts, and inflation adjustments. No warranty or guarantee of absolute accuracy is expressed or implied.
+				</p>
+			</section>
+
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">3. Investment Risk & Compounding Assumptions</h2>
+				<p>
+					Compound growth projections (such as the 8% annualized equity return benchmark or the 4% safe withdrawal rule) are hypothetical historical models. Past investment returns of the S&amp;P 500 or global stock markets are not a guarantee of future returns.
+				</p>
+			</section>
+
+			<section class="space-y-3 border-t border-slate-200 dark:border-slate-800 pt-6">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white">4. Contact For Legal Questions</h2>
+				<p>
+					If you have questions regarding this disclaimer, please contact our legal and editorial team via our <a href="/contact" class="text-emerald-600 dark:text-emerald-400 font-bold underline">Contact Page</a>.
+				</p>
+			</section>
+
+		</div>
+	</main>
+</Layout>
