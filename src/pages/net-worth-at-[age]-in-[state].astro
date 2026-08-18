@@ -31,8 +31,8 @@ const top25NW = Math.round(stateData.median * ageData.mult * 2.8);
 const top10NW = Math.round(stateData.median * ageData.mult * 8);
 const top1NW = Math.round(stateData.median * ageData.mult * 32);
 
-const title = `Net Worth ${ageData.label} in ${stateData.name} (2026)`;
-const description = `Explore net worth benchmarks for ${ageData.label} in ${stateData.name}. Median household net worth is $${medianNW.toLocaleString()} with top 10% ($${top10NW.toLocaleString()}) percentiles.`;
+const title = `Net Worth at ${ageData.label} in ${stateData.name}: Top 10% & Median [2026]`;
+const description = `What is the median net worth for ${ageData.label} in ${stateData.name}? Explore median ($${medianNW.toLocaleString()}), top 10% ($${top10NW.toLocaleString()}), and top 1% wealth benchmarks.`;
 
 const faqSchema = {
   "@context": "https://schema.org",

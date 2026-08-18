@@ -30,8 +30,8 @@ const top10NW = Math.round(cityData.median * ageData.mult * 8);
 const top1NW = Math.round(cityData.median * ageData.mult * 32);
 
 const stateDisp = cityData.state === 'District of Columbia' ? 'DC' : cityData.state;
-const title = `Net Worth ${ageData.label} in ${cityData.name}, ${stateDisp}`;
-const description = `Explore net worth benchmarks for ${ageData.label} in ${cityData.name}, ${stateDisp}. Median household net worth is $${medianNW.toLocaleString()} with top 10% ($${top10NW.toLocaleString()}).`;
+const title = `Net Worth at ${ageData.label} in ${cityData.name}, ${stateDisp}: Top 10% & Median [2026]`;
+const description = `What is the median net worth for ${ageData.label} in ${cityData.name}, ${stateDisp}? Explore median ($${medianNW.toLocaleString()}), top 10% ($${top10NW.toLocaleString()}), and top 1% wealth benchmarks.`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

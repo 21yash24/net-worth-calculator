@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Millionaire Calculator (2026) | Time to $1,000,000";
-const description = "Calculate how many years it will take to become a millionaire based on your current net worth, monthly savings, and annual investment returns.";
+const title = "Millionaire Next Door Calculator: PAW Score & Timeline [2026]";
+const description = "Calculate when you will become a millionaire and find your Prodigious Accumulator of Wealth (PAW) score based on the Millionaire Next Door formula.";
 
 const milSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Millionaire Calculator - Timeline to $1 Million Net Worth",
+  "name": "Millionaire Next Door & PAW Formula Calculator",
   "url": "https://getnetworthcalculator.com/millionaire-calculator",
   "description": description,
   "applicationCategory": "FinanceApplication",
@@ -19,6 +19,14 @@ const milFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Prodigious Accumulator of Wealth (PAW) formula?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From 'The Millionaire Next Door' by Thomas J. Stanley: Expected Net Worth = (Age × Pre-Tax Annual Income) ÷ 10. If your net worth is 2x or more your expected net worth, you are a Prodigious Accumulator of Wealth (PAW). If your net worth is below expected, you are an Under Accumulator of Wealth (UAW)."
+      }
+    },
     {
       "@type": "Question",
       "name": "How long does it take to become a millionaire on average?",
@@ -50,14 +58,6 @@ const milFaq = {
         "@type": "Answer",
         "text": "According to US Federal Reserve Survey of Consumer Finances (SCF) data and Credit Suisse Global Wealth Reports, approximately 8.5% of US households (roughly 22 million individuals) have a net worth exceeding $1,000,000 USD."
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the fastest way to become a millionaire for everyday earners?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The single most reliable path to $1M net worth for everyday earners is maxing out tax-advantaged accounts: 1) Max out employer 401(k) matching, 2) Max out a Roth IRA ($7,000/yr), 3) Invest in low-cost S&P 500 or Total Stock Market index funds (VOO/VTI), and 4) Avoid high-interest consumer debt."
-      }
     }
   ]
 };
@@ -73,39 +73,49 @@ const milFaq = {
     <header class="text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-600 dark:text-purple-400 text-xs font-semibold">
         <span>💰 📈</span>
-        <span>US Wealth Milestone &amp; Investment Compounder</span>
+        <span>Millionaire Next Door (PAW Formula) &amp; Wealth Compounder</span>
       </div>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-        Millionaire Calculator
-        <span class="block text-purple-600 dark:text-purple-400 text-xl md:text-2xl mt-1 font-bold">Calculate How Long Until You Hit $1,000,000 Net Worth (2026)</span>
+        Millionaire Next Door Calculator
+        <span class="block text-purple-600 dark:text-purple-400 text-xl md:text-2xl mt-1 font-bold">Calculate Your PAW Score &amp; Timeline to $1,000,000 (2026)</span>
       </h1>
       <p class="text-slate-700 dark:text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-        Calculate your exact timeline to reach $1 Million net worth based on your current starting balance, monthly contributions, and expected investment growth.
+        Calculate your Prodigious Accumulator of Wealth (PAW) score and your exact monthly timeline to reach $1 Million net worth based on your age and income.
       </p>
     </header>
 
     <!-- Google AI Overview Callout Box -->
     <div class="p-6 rounded-3xl bg-purple-500/10 dark:bg-purple-950/30 border border-purple-500/30 space-y-3">
       <div class="flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">
-        <span>⚡</span> <span>Quick Answer: How Long to Become a Millionaire?</span>
+        <span>⚡</span> <span>Quick Answer: The Millionaire Next Door PAW Formula</span>
       </div>
-      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What Does It Take to Reach $1,000,000 Net Worth in America?</h2>
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">What is a Prodigious Accumulator of Wealth (PAW)?</h2>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-        Starting from $0 at an 8% return, saving <strong>$670/month makes you a millionaire in 30 years</strong>, <strong>$1,700/month in 20 years</strong>, and <strong>$5,400/month in 10 years</strong>. Reaching $1M puts a household in the top 8.5% of US wealth.
+        According to <em>The Millionaire Next Door</em>, your <strong>Expected Net Worth = (Age × Pre-Tax Annual Income) ÷ 10</strong>. A <strong>PAW</strong> has a net worth at least <strong>2× their expected net worth</strong>, placing them among America's top wealth accumulators regardless of income.
       </p>
     </div>
 
     <!-- Calculator Card -->
     <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label for="mil-start-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Starting Net Worth ($)</label>
-          <input type="number" id="mil-start-input" value="50000" placeholder="50000"
+          <label for="mil-age-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Your Age</label>
+          <input type="number" id="mil-age-input" value="35" placeholder="35"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
+        </div>
+        <div>
+          <label for="mil-income-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Annual Pre-Tax Income ($)</label>
+          <input type="number" id="mil-income-input" value="100000" placeholder="100000"
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
+        </div>
+        <div>
+          <label for="mil-start-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Current Net Worth ($)</label>
+          <input type="number" id="mil-start-input" value="150000" placeholder="150000"
             class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
         </div>
         <div>
           <label for="mil-save-input" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Monthly Contribution ($)</label>
-          <input type="number" id="mil-save-input" value="1000" placeholder="1000"
+          <input type="number" id="mil-save-input" value="1500" placeholder="1500"
             class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-base focus:outline-none focus:ring-2 focus:ring-purple-500/50" />
         </div>
         <div>
@@ -121,18 +131,29 @@ const milFaq = {
       </div>
 
       <button id="mil-calc-btn" class="w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-purple-900/30">
-        Calculate Time to Millionaire Status
+        Calculate My PAW Score &amp; Millionaire Timeline
       </button>
 
       <!-- Result Panel -->
       <div id="mil-result-panel" class="hidden space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+        <!-- PAW Score Banner -->
+        <div id="paw-badge-container" class="p-4 rounded-2xl border text-center space-y-1">
+          <div class="text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">Millionaire Next Door Status</div>
+          <div id="paw-status-badge" class="text-xl md:text-2xl font-black">—</div>
+          <p id="paw-desc-text" class="text-xs max-w-lg mx-auto font-medium"></p>
+        </div>
+
         <div class="text-center space-y-2">
-          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Time Required to Hit Your Goal</p>
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Time Required to Reach $1,000,000</p>
           <div id="mil-years-display" class="text-4xl md:text-5xl font-black text-purple-500 tracking-tight">—</div>
           <p id="mil-summary-msg" class="text-sm font-semibold text-slate-700 dark:text-slate-300 max-w-md mx-auto"></p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
+            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Expected Net Worth (PAW)</span>
+            <span id="mil-expected-nw" class="text-base font-bold text-slate-900 dark:text-white">$350,000</span>
+          </div>
           <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
             <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Total Contributions</span>
             <span id="mil-total-contrib" class="text-base font-bold text-slate-900 dark:text-white">$288,000</span>
@@ -142,7 +163,7 @@ const milFaq = {
             <span id="mil-interest-earned" class="text-base font-bold text-purple-600 dark:text-purple-400">$662,000</span>
           </div>
           <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center">
-            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Compound Growth Multiplier</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 block font-bold">Compound Multiplier</span>
             <span id="mil-multiplier" class="text-base font-bold text-emerald-600 dark:text-emerald-400">3.4x</span>
           </div>
         </div>
@@ -232,23 +253,27 @@ const milFaq = {
       </section>
 
       <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The Power of Compound Interest: Your Money Does the Heavy Lifting</h2>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">The PAW Formula from The Millionaire Next Door Explained</h2>
         <p class="leading-relaxed">
-          Notice the dramatic difference between a 10-year timeline and a 30-year timeline in the table above:
+          In their groundbreaking research on American wealth, Dr. Thomas J. Stanley and Dr. William D. Danko developed the <strong>Wealth Accumulator Benchmark formula</strong>:
+        </p>
+        <div class="p-5 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-center font-mono font-bold text-lg text-purple-700 dark:text-purple-300">
+          Expected Net Worth = (Age × Pre-Tax Household Income) ÷ 10
+        </div>
+        <p class="leading-relaxed">
+          Based on this ratio, wealth builders fall into one of three categories:
         </p>
         <ul class="list-disc pl-6 space-y-2 text-sm leading-relaxed">
-          <li><strong>Over 10 Years:</strong> You must personally deposit <strong>$655,920 (65.5% of the total)</strong>. Compound interest only contributes $344,080.</li>
-          <li><strong>Over 30 Years:</strong> You only deposit <strong>$241,560 (24.1% of the total)</strong>. Compound interest contributes a staggering <strong>$758,440 (75.9% of your total net worth!)</strong>.</li>
+          <li><strong>PAW (Prodigious Accumulator of Wealth):</strong> Net Worth is <strong>≥ 2.0×</strong> Expected. You convert income to wealth at a world-class level.</li>
+          <li><strong>AAW (Average Accumulator of Wealth):</strong> Net Worth is between <strong>1.0× and 1.99×</strong> Expected. You are on track with typical Americans in your demographic.</li>
+          <li><strong>UAW (Under Accumulator of Wealth):</strong> Net Worth is <strong>&lt; 1.0×</strong> Expected. Your lifestyle consumption is outpacing your wealth creation.</li>
         </ul>
-        <p class="leading-relaxed">
-          This mathematical phenomenon proves that starting early—even with small monthly investments like $250 or $500—is vastly more effective than attempting to save large lump sums late in life.
-        </p>
       </section>
     </article>
 
     <!-- PAA Section -->
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Millionaire Calculator FAQs</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">People Also Ask (PAA) — Millionaire &amp; PAW FAQs</h2>
       {milFaq.mainEntity.map(faq => (
         <details class="p-5 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="text-base font-semibold text-slate-900 dark:text-white flex justify-between items-center list-none">
@@ -265,6 +290,8 @@ const milFaq = {
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
+    const ageInput = document.getElementById('mil-age-input');
+    const incomeInput = document.getElementById('mil-income-input');
     const startInput = document.getElementById('mil-start-input');
     const saveInput = document.getElementById('mil-save-input');
     const rateInput = document.getElementById('mil-rate-input');
@@ -272,6 +299,10 @@ const milFaq = {
     const btn = document.getElementById('mil-calc-btn');
 
     const panel = document.getElementById('mil-result-panel');
+    const pawBadgeContainer = document.getElementById('paw-badge-container');
+    const pawStatusBadge = document.getElementById('paw-status-badge');
+    const pawDescText = document.getElementById('paw-desc-text');
+    const expectedNwDisplay = document.getElementById('mil-expected-nw');
     const yearsDisplay = document.getElementById('mil-years-display');
     const summaryMsg = document.getElementById('mil-summary-msg');
     const totalContribVal = document.getElementById('mil-total-contrib');
@@ -283,11 +314,34 @@ const milFaq = {
     }
 
     btn?.addEventListener('click', () => {
+      const age = parseFloat(ageInput.value) || 35;
+      const income = parseFloat(incomeInput.value) || 100000;
       const P = parseFloat(startInput.value) || 0;
       const PMT = parseFloat(saveInput.value) || 0;
       const r = (parseFloat(rateInput.value) || 8) / 100 / 12;
       const target = parseFloat(targetInput.value) || 1000000;
 
+      // 1. Calculate PAW
+      const expectedNW = (age * income) / 10;
+      const pawRatio = expectedNW > 0 ? (P / expectedNW) : 1;
+
+      if (pawRatio >= 2.0) {
+        pawBadgeContainer.className = 'p-4 rounded-2xl border text-center space-y-1 bg-emerald-500/10 border-emerald-500/40 text-emerald-700 dark:text-emerald-300';
+        pawStatusBadge.textContent = `🟢 PAW (Prodigious Accumulator of Wealth) — ${pawRatio.toFixed(2)}x Target`;
+        pawDescText.textContent = `Outstanding! Your net worth is over 2× your expected target ($${Math.round(expectedNW).toLocaleString()}). You are an elite wealth builder.`;
+      } else if (pawRatio >= 1.0) {
+        pawBadgeContainer.className = 'p-4 rounded-2xl border text-center space-y-1 bg-amber-500/10 border-amber-500/40 text-amber-700 dark:text-amber-300';
+        pawStatusBadge.textContent = `🟡 AAW (Average Accumulator of Wealth) — ${pawRatio.toFixed(2)}x Target`;
+        pawDescText.textContent = `Solid! Your net worth meets your expected baseline of $${Math.round(expectedNW).toLocaleString()} based on your age and income.`;
+      } else {
+        pawBadgeContainer.className = 'p-4 rounded-2xl border text-center space-y-1 bg-rose-500/10 border-rose-500/40 text-rose-700 dark:text-rose-300';
+        pawStatusBadge.textContent = `🔴 UAW (Under Accumulator of Wealth) — ${pawRatio.toFixed(2)}x Target`;
+        pawDescText.textContent = `Your expected benchmark is $${Math.round(expectedNW).toLocaleString()}. Increasing your savings rate will help you transition to AAW status.`;
+      }
+
+      expectedNwDisplay.textContent = fmtUSD(expectedNW);
+
+      // 2. Calculate Timeline
       let months = 0;
       let balance = P;
       let totalSaved = P;

@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { 
-	title = "Net Worth Calculator by Age | US Wealth Percentile Benchmark", 
+	title = "Net Worth Calculator by Age (2026): Exact Percentile Benchmark [US Fed Data]", 
 	description = "Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) data. 100% free, private & anonymous."
 } = Astro.props;
 
@@ -39,7 +39,7 @@ const breadcrumbSchema = {
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -125,11 +125,14 @@ const breadcrumbSchema = {
 
 		<slot name="head" />
 		
-		<!-- Prevent Flash of Unstyled Theme -->
+		<!-- Prevent Flash of Unstyled Theme (Runs immediately in head) -->
 		<script is:inline>
 			const theme = (() => {
 				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
 					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+					return 'light';
 				}
 				return 'dark';
 			})();
@@ -140,7 +143,7 @@ const breadcrumbSchema = {
 			}
 		</script>
 	</head>
-	<body class="bg-[#060a12] text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-emerald-400">
+	<body class="bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-emerald-400">
 		<Analytics />
 		<!-- Dynamic Ambient Glow -->
 		<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none" aria-hidden="true">
@@ -372,14 +375,21 @@ const breadcrumbSchema = {
 	::-webkit-scrollbar {
 		width: 8px;
 	}
-	::-webkit-scrollbar-track {
+	html.dark ::-webkit-scrollbar-track {
 		background: #04070d;
 	}
-	::-webkit-scrollbar-thumb {
+	html:not(.dark) ::-webkit-scrollbar-track {
+		background: #f1f5f9;
+	}
+	html.dark ::-webkit-scrollbar-thumb {
 		background: #1e293b;
 		border-radius: 4px;
 	}
+	html:not(.dark) ::-webkit-scrollbar-thumb {
+		background: #cbd5e1;
+		border-radius: 4px;
+	}
 	::-webkit-scrollbar-thumb:hover {
-		background: #334155;
+		background: #94a3b8;
 	}
 </style>

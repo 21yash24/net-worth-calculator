@@ -11,8 +11,8 @@ export async function getStaticPaths() {
 
 const { stateData } = Astro.props;
 
-const title = `${stateData.name} Net Worth Benchmark & Percentiles (2026)`;
-const description = `See where you rank in ${stateData.name}. Median net worth is $${stateData.median.toLocaleString()} with top 10% and top 1% wealth percentiles from US Fed data.`;
+const title = `Net Worth in ${stateData.name} (2026): Median & Top 10% Wealth Benchmarks`;
+const description = `What is a good net worth in ${stateData.name}? Median household wealth is $${stateData.median.toLocaleString()} (Top 10%: $${(stateData.median * 8).toLocaleString()}). Compare your percentiles.`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
