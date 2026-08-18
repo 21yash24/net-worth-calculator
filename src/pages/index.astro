@@ -75,7 +75,7 @@ const faqSchema = {
 
 	<main class="max-w-4xl mx-auto px-6 py-10 md:py-16">
 		<header class="text-center mb-12 space-y-4">
-			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+			<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs font-bold">
 				<span>🇺🇸</span>
 				<span>Official US Federal Reserve SCF Wealth Data (2026)</span>
 			</div>
@@ -89,13 +89,13 @@ const faqSchema = {
 		</header>
 
 		<!-- Quick Reference Snippet Box -->
-		<div class="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-5 md:p-6 mb-8 text-left space-y-2">
-			<div class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">⚡ Federal Reserve Net Worth Benchmarks by Age (2026)</div>
-			<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-800 dark:text-slate-200 font-semibold pt-1">
-				<div>Under 35: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$39,000</span></div>
-				<div>35–44: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$135,600</span></div>
-				<div>45–54: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$247,200</span></div>
-				<div>55–64: <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">$364,500</span></div>
+		<div class="bg-emerald-950/10 dark:bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-5 md:p-6 mb-8 text-left space-y-2">
+			<div class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">⚡ Federal Reserve Net Worth Benchmarks by Age (2026)</div>
+			<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-900 dark:text-slate-200 font-bold pt-1">
+				<div>Under 35: <span class="text-emerald-800 dark:text-emerald-300 font-extrabold">$39,000</span></div>
+				<div>35–44: <span class="text-emerald-800 dark:text-emerald-300 font-extrabold">$135,600</span></div>
+				<div>45–54: <span class="text-emerald-800 dark:text-emerald-300 font-extrabold">$247,200</span></div>
+				<div>55–64: <span class="text-emerald-800 dark:text-emerald-300 font-extrabold">$364,500</span></div>
 			</div>
 		</div>
 
@@ -106,7 +106,7 @@ const faqSchema = {
 				<!-- Top Controls Bar: Currency Selector & Options -->
 				<div class="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-200 dark:border-slate-800/80">
 					<div class="flex items-center gap-2">
-						<label for="currency-select" class="text-xs font-bold uppercase tracking-wider text-slate-750 dark:text-slate-300">Currency (USD):</label>
+						<label for="currency-select" class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Currency (USD):</label>
 						<select id="currency-select" class="bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white text-xs font-bold rounded-lg px-3 py-1.5 outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer">
 							<option value="USD" data-symbol="$">USD ($) — US Fed Data</option>
 						</select>
@@ -114,11 +114,11 @@ const faqSchema = {
 
 					<!-- Option Toggle: Home Equity -->
 					<div class="flex items-center gap-3">
-						<label for="home-equity-toggle" class="text-xs font-bold text-slate-750 dark:text-slate-300 cursor-pointer">Include Home Equity</label>
-						<label for="home-equity-toggle" class="relative inline-flex items-center cursor-pointer">
+						<label for="home-equity-toggle" class="text-xs font-bold text-slate-800 dark:text-slate-200 cursor-pointer">Include Home Equity</label>
+						<span class="relative inline-flex items-center cursor-pointer">
 							<input type="checkbox" id="home-equity-toggle" checked class="sr-only peer" aria-label="Include Home Equity">
 							<div class="w-9 h-5 bg-slate-300 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
-						</label>
+						</span>
 					</div>
 				</div>
 
@@ -200,20 +200,20 @@ const faqSchema = {
 				<!-- Benchmarks Matrix Grid -->
 				<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
 					<div class="p-4 rounded-xl bg-slate-100/90 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-600 dark:text-slate-400 block mb-1 font-bold">Median (50th)</span>
+						<span class="text-xs text-slate-700 dark:text-slate-300 block mb-1 font-bold">Median (50th)</span>
 						<span id="bm-p50" class="text-base font-bold text-slate-900 dark:text-white">$39,000</span>
 					</div>
 					<div class="p-4 rounded-xl bg-slate-100/90 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-600 dark:text-slate-400 block mb-1 font-bold">Top 25% (75th)</span>
+						<span class="text-xs text-slate-700 dark:text-slate-300 block mb-1 font-bold">Top 25% (75th)</span>
 						<span id="bm-p75" class="text-base font-bold text-slate-900 dark:text-slate-200">$145,000</span>
 					</div>
 					<div class="p-4 rounded-xl bg-slate-100/90 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-600 dark:text-slate-400 block mb-1 font-bold">Top 10% (90th)</span>
-						<span id="bm-p90" class="text-base font-bold text-emerald-600 dark:text-emerald-400">$340,000</span>
+						<span class="text-xs text-slate-700 dark:text-slate-300 block mb-1 font-bold">Top 10% (90th)</span>
+						<span id="bm-p90" class="text-base font-bold text-emerald-800 dark:text-emerald-300">$340,000</span>
 					</div>
 					<div class="p-4 rounded-xl bg-slate-100/90 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-center">
-						<span class="text-xs text-slate-600 dark:text-slate-400 block mb-1 font-bold">Top 1% (99th)</span>
-						<span id="bm-p99" class="text-base font-bold text-amber-600 dark:text-amber-400">$1,400,000</span>
+						<span class="text-xs text-slate-700 dark:text-slate-300 block mb-1 font-bold">Top 1% (99th)</span>
+						<span id="bm-p99" class="text-base font-bold text-amber-800 dark:text-amber-300">$1,400,000</span>
 					</div>
 				</div>
 
@@ -221,7 +221,7 @@ const faqSchema = {
 				<div class="p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 space-y-3">
 					<div class="flex items-center justify-between">
 						<span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Recommended Asset Allocation for Age <span id="asset-age-label">32</span></span>
-						<span class="text-xs text-slate-600 dark:text-slate-400 font-bold">Benchmark Model</span>
+						<span class="text-xs text-slate-700 dark:text-slate-300 font-bold">Benchmark Model</span>
 					</div>
 					<div id="asset-breakdown-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
 						<!-- Populated via JS -->
@@ -231,35 +231,35 @@ const faqSchema = {
 				<!-- Next Milestone Compound Growth Action Engine -->
 				<div class="p-5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-500/30 space-y-3">
 					<div class="flex items-center justify-between">
-						<span class="text-xs font-extrabold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">🎯 Roadmap to Next Wealth Tier</span>
-						<span class="text-[11px] text-slate-600 dark:text-slate-400 font-mono">Assumes 8% Annual Compound Return</span>
+						<span class="text-xs font-extrabold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">🎯 Roadmap to Next Wealth Tier</span>
+						<span class="text-[11px] text-slate-700 dark:text-slate-300 font-mono">Assumes 8% Annual Compound Return</span>
 					</div>
 					<p id="milestone-text" class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-						To reach the <strong class="text-emerald-700 dark:text-emerald-400 font-bold">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white">$220,000</strong>.
+						To reach the <strong class="text-emerald-800 dark:text-emerald-300 font-bold">Top 10%</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white font-bold">$220,000</strong>.
 					</p>
 					<div id="compound-projection" class="p-3 bg-white/90 dark:bg-slate-900/60 rounded-xl border border-emerald-500/20 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300">
-						Investing <strong class="text-emerald-700 dark:text-emerald-400 font-bold">$650/month</strong> reaches this next benchmark in approximately <strong class="text-slate-900 dark:text-white font-bold">8.4 years</strong>.
+						Investing <strong class="text-emerald-800 dark:text-emerald-300 font-bold">$650/month</strong> reaches this next benchmark in approximately <strong class="text-slate-900 dark:text-white font-bold">8.4 years</strong>.
 					</div>
 				</div>
 
 				<!-- Viral Wealth Scorecard Sharing & Export Bar -->
 				<div class="p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-3">
 					<div class="flex items-center justify-between flex-wrap gap-2">
-						<span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">⚡ Share or Export Your Scorecard</span>
-						<span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">100% Anonymous & Private</span>
+						<span class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">⚡ Share or Export Your Scorecard</span>
+						<span class="text-[11px] text-emerald-800 dark:text-emerald-300 font-bold">100% Anonymous & Private</span>
 					</div>
 
 					<div class="flex flex-wrap items-center gap-2.5">
-						<button id="download-card-btn" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md">
+						<button id="download-card-btn" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md">
 							<span>📸 Save Scorecard (PNG)</span>
 						</button>
-						<button id="copy-reddit-btn" class="px-3.5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+						<button id="copy-reddit-btn" class="px-3.5 py-2.5 rounded-xl bg-orange-700 hover:bg-orange-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
 							<span>🔥 Copy for Reddit (r/Fire)</span>
 						</button>
-						<button id="share-twitter-btn" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+						<button id="share-twitter-btn" class="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
 							<span>𝕏 Share</span>
 						</button>
-						<button id="share-wa-btn" class="px-3.5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+						<button id="share-wa-btn" class="px-3.5 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
 							<span>💬 WhatsApp</span>
 						</button>
 					</div>
@@ -272,17 +272,17 @@ const faqSchema = {
 			<div class="flex items-center justify-between">
 				<div>
 					<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">💼 Career & Profession Wealth Benchmarks</h2>
-					<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">See how equity, bonuses, and specialization impact net worth percentiles by profession.</p>
+					<p class="text-xs text-slate-700 dark:text-slate-300 mt-1 font-medium">See how equity, bonuses, and specialization impact net worth percentiles by profession.</p>
 				</div>
 			</div>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 				{careers.map((c) => (
 					<a href={`/career/${c.slug}`} class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-indigo-500/50 hover:shadow-lg transition-all group">
-						<div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide mb-1">{c.profession}</div>
+						<div class="text-xs font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wide mb-1">{c.profession}</div>
 						<div class="text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">{c.title}</div>
-						<div class="text-xs text-slate-600 dark:text-slate-400 mt-2 flex justify-between">
+						<div class="text-xs text-slate-700 dark:text-slate-300 mt-2 flex justify-between">
 							<span>Avg Salary: <strong class="text-slate-900 dark:text-white">${c.avgSalary.toLocaleString()}</strong></span>
-							<span class="text-indigo-600 dark:text-indigo-400 font-semibold">View →</span>
+							<span class="text-indigo-700 dark:text-indigo-300 font-bold">View →</span>
 						</div>
 					</a>
 				))}
@@ -293,23 +293,23 @@ const faqSchema = {
 		<section class="mt-14 space-y-5">
 			<div>
 				<h2 class="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">🏆 Wealth Milestones: Are You on Track?</h2>
-				<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Explore what percentage of Americans achieve $100k, $500k, $1M, and $2M by each age.</p>
+				<p class="text-xs text-slate-700 dark:text-slate-300 mt-1 font-medium">Explore what percentage of Americans achieve $100k, $500k, $1M, and $2M by each age.</p>
 			</div>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 				<a href="/net-worth/100k-at-30" class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
-					<div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-1">First Major Milestone</div>
+					<div class="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wide mb-1">First Major Milestone</div>
 					<div class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">$100k Net Worth at Age 30</div>
-					<div class="text-xs text-slate-600 dark:text-slate-400 mt-2">68th Percentile (Top 32% Nationally) →</div>
+					<div class="text-xs text-slate-700 dark:text-slate-300 mt-2 font-medium">68th Percentile (Top 32% Nationally) →</div>
 				</a>
 				<a href="/net-worth/500k-at-35" class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
-					<div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-1">Coast FIRE Tier</div>
+					<div class="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wide mb-1">Coast FIRE Tier</div>
 					<div class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">$500k Net Worth at Age 35</div>
-					<div class="text-xs text-slate-600 dark:text-slate-400 mt-2">81st Percentile (Top 19% Nationally) →</div>
+					<div class="text-xs text-slate-700 dark:text-slate-300 mt-2 font-medium">81st Percentile (Top 19% Nationally) →</div>
 				</a>
 				<a href="/net-worth/1-million-at-40" class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
-					<div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide mb-1">Millionaire Club</div>
+					<div class="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wide mb-1">Millionaire Club</div>
 					<div class="text-base font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">$1 Million Net Worth at Age 40</div>
-					<div class="text-xs text-slate-600 dark:text-slate-400 mt-2">84th Percentile (Top 16% Nationally) →</div>
+					<div class="text-xs text-slate-700 dark:text-slate-300 mt-2 font-medium">84th Percentile (Top 16% Nationally) →</div>
 				</a>
 			</div>
 		</section>
@@ -371,60 +371,60 @@ const faqSchema = {
 							<tr>
 								<th class="p-3.5">Age Bracket</th>
 								<th class="p-3.5">25th Percentile</th>
-								<th class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">Median (50th)</th>
+								<th class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">Median (50th)</th>
 								<th class="p-3.5">75th Percentile</th>
 								<th class="p-3.5">Top 10% (90th)</th>
-								<th class="p-3.5 text-amber-600 dark:text-amber-400 font-extrabold">Top 1% (99th)</th>
+								<th class="p-3.5 text-amber-800 dark:text-amber-300 font-extrabold">Top 1% (99th)</th>
 							</tr>
 						</thead>
 						<tbody class="divide-y divide-slate-200 dark:divide-slate-800 bg-white/50 dark:bg-slate-950/50">
 							<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
 								<td class="p-3.5 font-bold text-slate-900 dark:text-white">Under 35</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$3,200</td>
-								<td class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">$39,000</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$145,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$3,200</td>
+								<td class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">$39,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$145,000</td>
 								<td class="p-3.5 text-slate-900 dark:text-white font-bold">$340,000</td>
-								<td class="p-3.5 text-amber-600 dark:text-amber-400 font-bold">$1,400,000</td>
+								<td class="p-3.5 text-amber-800 dark:text-amber-300 font-bold">$1,400,000</td>
 							</tr>
 							<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
 								<td class="p-3.5 font-bold text-slate-900 dark:text-white">Ages 35–44</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$24,000</td>
-								<td class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">$135,600</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$410,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$24,000</td>
+								<td class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">$135,600</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$410,000</td>
 								<td class="p-3.5 text-slate-900 dark:text-white font-bold">$980,000</td>
-								<td class="p-3.5 text-amber-600 dark:text-amber-400 font-bold">$4,500,000</td>
+								<td class="p-3.5 text-amber-800 dark:text-amber-300 font-bold">$4,500,000</td>
 							</tr>
 							<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
 								<td class="p-3.5 font-bold text-slate-900 dark:text-white">Ages 45–54</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$48,000</td>
-								<td class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">$247,200</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$780,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$48,000</td>
+								<td class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">$247,200</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$780,000</td>
 								<td class="p-3.5 text-slate-900 dark:text-white font-bold">$1,950,000</td>
-								<td class="p-3.5 text-amber-600 dark:text-amber-400 font-bold">$9,200,000</td>
+								<td class="p-3.5 text-amber-800 dark:text-amber-300 font-bold">$9,200,000</td>
 							</tr>
 							<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
 								<td class="p-3.5 font-bold text-slate-900 dark:text-white">Ages 55–64</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$65,000</td>
-								<td class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">$364,500</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$1,150,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$65,000</td>
+								<td class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">$364,500</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$1,150,000</td>
 								<td class="p-3.5 text-slate-900 dark:text-white font-bold">$2,800,000</td>
-								<td class="p-3.5 text-amber-600 dark:text-amber-400 font-bold">$14,500,000</td>
+								<td class="p-3.5 text-amber-800 dark:text-amber-300 font-bold">$14,500,000</td>
 							</tr>
 							<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
 								<td class="p-3.5 font-bold text-slate-900 dark:text-white">Ages 65–74</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$82,000</td>
-								<td class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">$409,900</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$1,380,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$82,000</td>
+								<td class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">$409,900</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$1,380,000</td>
 								<td class="p-3.5 text-slate-900 dark:text-white font-bold">$3,400,000</td>
-								<td class="p-3.5 text-amber-600 dark:text-amber-400 font-bold">$17,800,000</td>
+								<td class="p-3.5 text-amber-800 dark:text-amber-300 font-bold">$17,800,000</td>
 							</tr>
 							<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
 								<td class="p-3.5 font-bold text-slate-900 dark:text-white">Ages 75+</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$75,000</td>
-								<td class="p-3.5 text-emerald-600 dark:text-emerald-400 font-extrabold">$335,600</td>
-								<td class="p-3.5 text-slate-600 dark:text-slate-400">$1,100,000</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$75,000</td>
+								<td class="p-3.5 text-emerald-800 dark:text-emerald-300 font-extrabold">$335,600</td>
+								<td class="p-3.5 text-slate-700 dark:text-slate-300 font-medium">$1,100,000</td>
 								<td class="p-3.5 text-slate-900 dark:text-white font-bold">$2,900,000</td>
-								<td class="p-3.5 text-amber-600 dark:text-amber-400 font-bold">$15,200,000</td>
+								<td class="p-3.5 text-amber-800 dark:text-amber-300 font-bold">$15,200,000</td>
 							</tr>
 						</tbody>
 					</table>
@@ -441,24 +441,24 @@ const faqSchema = {
 				</p>
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
 					<div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-						<div class="text-emerald-600 dark:text-emerald-400 font-bold">Age 30 Target</div>
+						<div class="text-emerald-800 dark:text-emerald-300 font-bold">Age 30 Target</div>
 						<div class="text-lg font-extrabold text-slate-900 dark:text-white">1x Annual Salary</div>
-						<p class="text-slate-500 text-[11px]">If earning $80k, your target savings & 401(k) balance is $80,000.</p>
+						<p class="text-slate-700 dark:text-slate-300 text-[11px]">If earning $80k, your target savings & 401(k) balance is $80,000.</p>
 					</div>
 					<div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-						<div class="text-emerald-600 dark:text-emerald-400 font-bold">Age 40 Target</div>
+						<div class="text-emerald-800 dark:text-emerald-300 font-bold">Age 40 Target</div>
 						<div class="text-lg font-extrabold text-slate-900 dark:text-white">3x Annual Salary</div>
-						<p class="text-slate-500 text-[11px]">If earning $120k, your target total accumulated wealth is $360,000.</p>
+						<p class="text-slate-700 dark:text-slate-300 text-[11px]">If earning $120k, your target total accumulated wealth is $360,000.</p>
 					</div>
 					<div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-						<div class="text-emerald-600 dark:text-emerald-400 font-bold">Age 50 Target</div>
+						<div class="text-emerald-800 dark:text-emerald-300 font-bold">Age 50 Target</div>
 						<div class="text-lg font-extrabold text-slate-900 dark:text-white">6x Annual Salary</div>
-						<p class="text-slate-500 text-[11px]">Compound interest begins generating more annual growth than contributions.</p>
+						<p class="text-slate-700 dark:text-slate-300 text-[11px]">Compound interest begins generating more annual growth than contributions.</p>
 					</div>
 					<div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-						<div class="text-emerald-600 dark:text-emerald-400 font-bold">Age 67 Target</div>
+						<div class="text-emerald-800 dark:text-emerald-300 font-bold">Age 67 Target</div>
 						<div class="text-lg font-extrabold text-slate-900 dark:text-white">10x Annual Salary</div>
-						<p class="text-slate-500 text-[11px]">Enables a sustainable 4% annual safe withdrawal rate in retirement.</p>
+						<p class="text-slate-700 dark:text-slate-300 text-[11px]">Enables a sustainable 4% annual safe withdrawal rate in retirement.</p>
 					</div>
 				</div>
 			</section>
@@ -484,12 +484,12 @@ const faqSchema = {
 				<h3 class="text-2xl font-bold text-slate-900 dark:text-white">
 					Step-by-Step Mathematical Calculation Checklist
 				</h3>
-				<p class="text-xs text-slate-600 dark:text-slate-300">
+				<p class="text-xs text-slate-700 dark:text-slate-300 font-medium">
 					Use this balance sheet framework to accurately tally your financial balance before entering it into our percentile engine:
 				</p>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 text-xs">
 					<div class="space-y-2">
-						<h4 class="text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">✅ Total Assets (What You Own)</h4>
+						<h4 class="text-emerald-800 dark:text-emerald-300 font-bold uppercase tracking-wider">✅ Total Assets (What You Own)</h4>
 						<ul class="space-y-1.5 text-slate-700 dark:text-slate-300 list-disc pl-4">
 							<li>Checking &amp; High-Yield Savings Accounts (HYSA)</li>
 							<li>Employer 401(k), 403(b), Thrift Savings Plan (TSP)</li>
@@ -729,7 +729,7 @@ const faqSchema = {
 				percentileBadge.className = 'text-4xl md:text-5xl font-extrabold text-slate-700 dark:text-slate-300 tracking-tight';
 			}
 
-			comparisonSummary.innerHTML = `At age <span class="text-slate-900 dark:text-white font-semibold">${age}</span> with <span class="text-emerald-600 dark:text-emerald-400 font-semibold">${formatCurrency(nw)}</span> net worth, you have more wealth than <span class="text-emerald-600 dark:text-emerald-400 font-semibold">${p}%</span> of Americans in your age group.`;
+			comparisonSummary.innerHTML = `At age <span class="text-slate-900 dark:text-white font-semibold">${age}</span> with <span class="text-emerald-800 dark:text-emerald-300 font-bold">${formatCurrency(nw)}</span> net worth, you have more wealth than <span class="text-emerald-800 dark:text-emerald-300 font-bold">${p}%</span> of Americans in your age group.`;
 
 			let diff = 0;
 			let nextTier = "Top 10%";
@@ -748,12 +748,12 @@ const faqSchema = {
 			}
 
 			if (diff > 0) {
-				milestoneText.innerHTML = `To reach the <strong class="text-emerald-400 font-bold">${nextTier}</strong> for your age group, you need an additional <strong class="text-white">${formatCurrency(diff)}</strong>.`;
+				milestoneText.innerHTML = `To reach the <strong class="text-emerald-800 dark:text-emerald-300 font-bold">${nextTier}</strong> for your age group, you need an additional <strong class="text-slate-900 dark:text-white font-bold">${formatCurrency(diff)}</strong>.`;
 				const monthlySaving = Math.max(250, Math.round(diff / 120));
 				const yearsToGoal = (diff / (monthlySaving * 12 * 1.5)).toFixed(1);
-				compoundProjection.innerHTML = `Investing <strong class="text-emerald-400 font-bold">$${monthlySaving.toLocaleString()}/month</strong> at 8% average return reaches this benchmark in approximately <strong class="text-white font-bold">${yearsToGoal} years</strong>.`;
+				compoundProjection.innerHTML = `Investing <strong class="text-emerald-800 dark:text-emerald-300 font-bold">$${monthlySaving.toLocaleString()}/month</strong> at 8% average return reaches this benchmark in approximately <strong class="text-slate-900 dark:text-white font-bold">${yearsToGoal} years</strong>.`;
 			} else {
-				milestoneText.innerHTML = `🏆 <strong class="text-amber-400 font-bold">Elite Standing!</strong> You are in the Top 1% of wealth for your age group in America.`;
+				milestoneText.innerHTML = `🏆 <strong class="text-amber-700 dark:text-amber-300 font-bold">Elite Standing!</strong> You are in the Top 1% of wealth for your age group in America.`;
 				compoundProjection.innerHTML = `Your assets are in peak compounding mode, generating significant perpetual returns under the 4% safe withdrawal rule.`;
 			}
 
