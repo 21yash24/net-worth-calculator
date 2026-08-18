@@ -81,10 +81,10 @@
   },
   {
     "slug": "financial-analyst",
-    "title": "Financial Analyst & Investment Banker Net Worth by Age",
-    "profession": "Financial Analyst & Banker",
-    "avgSalary": 135000,
-    "topSalary": 350000,
+    "title": "Investment Banker & Financial Analyst Net Worth by Age",
+    "profession": "Investment Banker & Financial Analyst",
+    "avgSalary": 160000,
+    "topSalary": 420000,
     "equityFactor": "High (Annual Performance Bonuses & Carry)",
     "description": "High bonus structures and deep financial literacy drive aggressive investing and wealth accumulation across financial careers.",
     "ageBenchmarks": [
@@ -93,6 +93,86 @@
       { "age": 35, "median": 560000, "top25": 1200000, "top10": 2350000, "top1": 5500000, "stage": "Director / Portfolio Manager" },
       { "age": 40, "median": 1100000, "top25": 2350000, "top10": 4500000, "top1": 10000000, "stage": "Managing Director" },
       { "age": 50, "median": 2350000, "top25": 4700000, "top10": 9100000, "top1": 21000000, "stage": "Partner / Fund Manager" }
+    ]
+  },
+  {
+    "slug": "dentist",
+    "title": "Dentist & Orthodontist Net Worth by Age",
+    "profession": "Dentist",
+    "avgSalary": 185000,
+    "topSalary": 380000,
+    "equityFactor": "High (Dental Practice Ownership)",
+    "description": "Dental clinic ownership allows dentists to capture high operational margins and equity value when exiting or selling to Dental Service Organizations (DSOs).",
+    "ageBenchmarks": [
+      { "age": 25, "median": -140000, "top25": -60000, "top10": 10000, "top1": 90000, "stage": "Dental School Debt Phase" },
+      { "age": 30, "median": 85000, "top25": 240000, "top10": 520000, "top1": 1200000, "stage": "Associate Dentist Debt Paydown" },
+      { "age": 35, "median": 450000, "top25": 980000, "top10": 1850000, "top1": 4200000, "stage": "Practice Acquisition & Expansion" },
+      { "age": 40, "median": 1050000, "top25": 2250000, "top10": 4400000, "top1": 9800000, "stage": "Multi-Chair Practice Equity" },
+      { "age": 50, "median": 2750000, "top25": 5400000, "top10": 10500000, "top1": 24000000, "stage": "Peak Practice Value & Real Estate" }
+    ]
+  },
+  {
+    "slug": "commercial-pilot",
+    "title": "Commercial Airline Pilot Net Worth by Age",
+    "profession": "Commercial Airline Pilot",
+    "avgSalary": 175000,
+    "topSalary": 390000,
+    "equityFactor": "Medium (Direct Retirement Contributions & Captain Seniority)",
+    "description": "Major US airline captains receive substantial company direct retirement contributions (up to 16-18% of salary), producing massive retirement portflios.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 25000, "top25": 65000, "top10": 130000, "top1": 310000, "stage": "Flight Instructor / Regional First Officer" },
+      { "age": 30, "median": 140000, "top25": 310000, "top10": 620000, "top1": 1400000, "stage": "Major Airline First Officer" },
+      { "age": 35, "median": 420000, "top25": 890000, "top10": 1750000, "top1": 3800000, "stage": "Narrow-Body Captain Upgrade" },
+      { "age": 40, "median": 920000, "top25": 1950000, "top10": 3700000, "top1": 8200000, "stage": "Wide-Body Captain Seniority" },
+      { "age": 50, "median": 2100000, "top25": 4200000, "top10": 7900000, "top1": 17500000, "stage": "Peak Seniority Direct Contribution" }
+    ]
+  },
+  {
+    "slug": "accountant-cpa",
+    "title": "Certified Public Accountant (CPA) Net Worth by Age",
+    "profession": "Accountant & CPA",
+    "avgSalary": 98000,
+    "topSalary": 240000,
+    "equityFactor": "Medium (Accounting Firm Partnership)",
+    "description": "High financial literacy, tax optimization awareness, and steady partnership track compensation make CPAs consistent wealth accumulators.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 35000, "top25": 75000, "top10": 145000, "top1": 340000, "stage": "Big 4 / Staff Accountant" },
+      { "age": 30, "median": 135000, "top25": 280000, "top10": 540000, "top1": 1250000, "stage": "Senior Manager / Industry Controller" },
+      { "age": 35, "median": 340000, "top25": 720000, "top10": 1450000, "top1": 3200000, "stage": "Director / CPA Practice Partner" },
+      { "age": 40, "median": 720000, "top25": 1550000, "top10": 3100000, "top1": 6900000, "stage": "Equity Partner / CFO Track" },
+      { "age": 50, "median": 1650000, "top25": 3400000, "top10": 6800000, "top1": 15000000, "stage": "Senior Partner Wealth Consolidation" }
+    ]
+  },
+  {
+    "slug": "real-estate-agent",
+    "title": "Real Estate Agent & Broker Net Worth by Age",
+    "profession": "Real Estate Agent & Broker",
+    "avgSalary": 115000,
+    "topSalary": 450000,
+    "equityFactor": "High (Direct Property Investments & 1031 Exchanges)",
+    "description": "Top agents leverage commission cash flows directly into multi-family real estate syndications, BRRRR properties, and tax-deferred 1031 exchanges.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 20000, "top25": 55000, "top10": 120000, "top1": 350000, "stage": "Early Commission Building" },
+      { "age": 30, "median": 125000, "top25": 320000, "top10": 740000, "top1": 1850000, "stage": "First Investment Property Acquisition" },
+      { "age": 35, "median": 390000, "top25": 920000, "top10": 1950000, "top1": 4800000, "stage": "Brokerage Team / Portfolio Expansion" },
+      { "age": 40, "median": 890000, "top25": 2100000, "top10": 4500000, "top1": 11000000, "stage": "Commercial Syndications & Brokerage Owner" },
+      { "age": 50, "median": 2200000, "top25": 4900000, "top10": 10500000, "top1": 26000000, "stage": "Real Estate Asset Maturity" }
+    ]
+  },
+  {
+    "slug": "electrician-tradesperson",
+    "title": "Electrician & Skilled Trades Net Worth by Age",
+    "profession": "Electrician & Skilled Trades",
+    "avgSalary": 85000,
+    "topSalary": 210000,
+    "equityFactor": "High (Contracting Business Ownership)",
+    "description": "Zero college debt, early union apprenticeships, and the ability to scale an independent subcontracting business enable rapid early net worth building.",
+    "ageBenchmarks": [
+      { "age": 25, "median": 45000, "top25": 95000, "top10": 175000, "top1": 390000, "stage": "Journeyman Electrician (Zero Debt)" },
+      { "age": 30, "median": 140000, "top25": 290000, "top10": 580000, "top1": 1350000, "stage": "Master Electrician / Union Lead" },
+      { "age": 35, "median": 310000, "top25": 680000, "top10": 1380000, "top1": 3200000, "stage": "Electrical Contracting Business Owner" },
+      { "age": 40, "median": 620000, "top25": 1380000, "top10": 2750000, "top1": 6500000, "stage": "Commercial Contractor Expansion" },
+      { "age": 50, "median": 1350000, "top25": 2850000, "top10": 5600000, "top1": 13500000, "stage": "Business Equity & Real Estate Holdings" }
     ]
   }
 ]

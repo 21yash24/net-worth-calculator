@@ -78,21 +78,21 @@ const faqSchema = {
     </header>
 
     <!-- Percentile Rank Hero Card -->
-    <div class="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 rounded-3xl p-8 mb-10 text-center relative overflow-hidden">
-      <div class="text-xs uppercase font-extrabold tracking-widest text-emerald-400 mb-2">National Wealth Standing</div>
-      <div class="text-5xl md:text-7xl font-black text-white tracking-tight">
-        {ageData.percentile}<span class="text-2xl md:text-3xl text-emerald-400 font-bold">th</span>
+    <div class="bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-8 mb-10 text-center relative overflow-hidden shadow-lg">
+      <div class="text-xs uppercase font-extrabold tracking-widest text-emerald-600 dark:text-emerald-400 mb-2">National Wealth Standing</div>
+      <div class="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight">
+        {ageData.percentile}<span class="text-2xl md:text-3xl text-emerald-600 dark:text-emerald-400 font-bold">th</span>
       </div>
-      <div class="text-base md:text-lg font-bold text-slate-200 mt-2">
+      <div class="text-base md:text-lg font-bold text-slate-700 dark:text-slate-200 mt-2">
         Percentile for Americans Age {ageData.age}
       </div>
-      <div class="inline-block mt-3 px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-extrabold">
+      <div class="inline-block mt-3 px-4 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-500/20">
         Rank: {ageData.status}
       </div>
 
       <!-- Live Progress Bar -->
       <div class="max-w-md mx-auto mt-6">
-        <div class="w-full bg-slate-800 rounded-full h-3.5 p-0.5 overflow-hidden">
+        <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-3.5 p-0.5 overflow-hidden">
           <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-1000" style={`width: ${ageData.percentile}%`}></div>
         </div>
         <div class="flex justify-between text-[11px] text-slate-500 font-mono mt-1.5">
@@ -103,63 +103,92 @@ const faqSchema = {
       </div>
     </div>
 
+    <!-- On-Page Milestone Timeline Calculator -->
+    <div class="p-6 md:p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl mb-10 space-y-5">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-4">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">🧮 Milestone Target &amp; Compounding Calculator</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Calculate how long it takes to reach or double {milestoneData.label}</p>
+        </div>
+        <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Rule of 72 Engine</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+          <span class="block text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">4% Safe Perpetual Cashflow</span>
+          <strong class="text-xl font-black text-emerald-600 dark:text-emerald-400">${(milestoneData.amount * 0.04).toLocaleString()}/yr</strong>
+          <span class="block text-[10px] text-slate-400 mt-1">Inflation-adjusted Trinity rule</span>
+        </div>
+        <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+          <span class="block text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">10-Year Growth (@ 8%)</span>
+          <strong class="text-xl font-black text-slate-900 dark:text-white">${(milestoneData.amount * Math.pow(1.08, 10)).toLocaleString(undefined, {maximumFractionDigits: 0})}</strong>
+          <span class="block text-[10px] text-slate-400 mt-1">Zero additional contributions</span>
+        </div>
+        <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+          <span class="block text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">Next Double Milestone</span>
+          <strong class="text-xl font-black text-teal-600 dark:text-teal-400">${(milestoneData.amount * 2).toLocaleString()}</strong>
+          <span class="block text-[10px] text-slate-400 mt-1">~9.0 years at 8% CAGR</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Deep Analysis / Insight Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 space-y-3">
-        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10 text-slate-700 dark:text-slate-300">
+      <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-3 shadow-sm">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <span>💡</span> Key Milestone Insight
         </h2>
-        <p class="text-slate-300 text-sm leading-relaxed">
+        <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
           {milestoneData.description}
         </p>
-        <div class="pt-2 text-xs font-semibold text-emerald-400">
+        <div class="pt-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
           Difficulty Tier: {milestoneData.difficulty}
         </div>
       </div>
 
-      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 space-y-3">
-        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+      <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-3 shadow-sm">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <span>⚡</span> The Compounding Power of {milestoneData.label}
         </h2>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          At an 8% average annual return, <strong class="text-white">{milestoneData.label}</strong> generates approximately <strong class="text-emerald-400">${(milestoneData.amount * 0.08).toLocaleString()}/year</strong> completely passively without liquidating any principal capital.
+        <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          At an 8% average annual return, <strong class="text-slate-900 dark:text-white">{milestoneData.label}</strong> generates approximately <strong class="text-emerald-600 dark:text-emerald-400">${(milestoneData.amount * 0.08).toLocaleString()}/year</strong> completely passively without liquidating any principal capital.
         </p>
-        <div class="text-xs text-slate-400">
-          In 10 years at 8%, this milestone compounds to <strong class="text-white">${(milestoneData.amount * Math.pow(1.08, 10)).toLocaleString(undefined, {maximumFractionDigits: 0})}</strong>.
+        <div class="text-xs text-slate-500 dark:text-slate-400">
+          In 10 years at 8%, this milestone compounds to <strong class="text-slate-900 dark:text-white">${(milestoneData.amount * Math.pow(1.08, 10)).toLocaleString(undefined, {maximumFractionDigits: 0})}</strong>.
         </div>
       </div>
     </div>
 
     <!-- Deep Guide on Achieving & Protecting This Milestone -->
-    <article class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed mb-10">
-      <h2 class="text-2xl font-bold text-white">Strategic Roadmap: How to Capitalize on {milestoneData.label} at Age {ageData.age}</h2>
+    <article class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-10 shadow-sm">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Strategic Roadmap: How to Capitalize on {milestoneData.label} at Age {ageData.age}</h2>
       
       <p>
         Reaching <strong>{milestoneData.label}</strong> at <strong>age {ageData.age}</strong> places you squarely in the <strong>{ageData.status}</strong> category. At this stage of wealth accumulation, the dynamics of personal finance shift from pure labor-driven savings to capital efficiency and tax preservation.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-4">
-        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
-          <div class="text-xs font-bold text-emerald-400 uppercase">4% Safe Withdrawal</div>
-          <div class="text-xl font-extrabold text-white">${(milestoneData.amount * 0.04).toLocaleString()}/yr</div>
-          <div class="text-[11px] text-slate-400">Perpetual inflation-adjusted annual cashflow.</div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-1.5">
+          <div class="font-bold text-emerald-600 dark:text-emerald-400 uppercase">4% Safe Withdrawal</div>
+          <div class="text-lg font-extrabold text-slate-900 dark:text-white">${(milestoneData.amount * 0.04).toLocaleString()}/yr</div>
+          <div class="text-slate-500 dark:text-slate-400">Perpetual inflation-adjusted annual cashflow.</div>
         </div>
 
-        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
-          <div class="text-xs font-bold text-teal-400 uppercase">Rule of 72 Doubling Time</div>
-          <div class="text-xl font-extrabold text-white">~9.0 Years</div>
-          <div class="text-[11px] text-slate-400">Grows to ${(milestoneData.amount * 2).toLocaleString()} at 8% compound return.</div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-1.5">
+          <div class="font-bold text-teal-600 dark:text-teal-400 uppercase">Rule of 72 Doubling Time</div>
+          <div class="text-lg font-extrabold text-slate-900 dark:text-white">~9.0 Years</div>
+          <div class="text-slate-500 dark:text-slate-400">Grows to ${(milestoneData.amount * 2).toLocaleString()} at 8% compound return.</div>
         </div>
 
-        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
-          <div class="text-xs font-bold text-indigo-400 uppercase">Coast FIRE Horizon</div>
-          <div class="text-xl font-extrabold text-white">{ageData.age <= 35 ? "Achieved / On Track" : "Mature Foundation"}</div>
-          <div class="text-[11px] text-slate-400">Projected traditional retirement readiness.</div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-1.5">
+          <div class="font-bold text-indigo-600 dark:text-indigo-400 uppercase">Coast FIRE Horizon</div>
+          <div class="text-lg font-extrabold text-slate-900 dark:text-white">{ageData.age <= 35 ? "Achieved / On Track" : "Mature Foundation"}</div>
+          <div class="text-slate-500 dark:text-slate-400">Projected traditional retirement readiness.</div>
         </div>
       </div>
 
-      <h3 class="text-lg font-bold text-white pt-2">Recommended Financial Priorities for This Bracket</h3>
-      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-300">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white pt-2">Recommended Financial Priorities for This Bracket</h3>
+      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-400">
         <li><strong>Automate Investment Buckets:</strong> Ensure maximum contributions to tax-advantaged accounts (401k, Backdoor Roth, HSA) before funding taxable brokerage accounts.</li>
         <li><strong>Maintain Liquid Buffer:</strong> Keep 3 to 6 months of essential living expenses in a High-Yield Savings Account (HYSA) or short-term Treasury bills to prevent premature liquidation of equities during market drawdowns.</li>
         <li><strong>Avoid Lifestyle Inflation:</strong> As investment returns begin matching or exceeding salary income, maintain consistent spending habits to allow compound growth to accelerate exponentially.</li>
@@ -167,29 +196,33 @@ const faqSchema = {
     </article>
 
     <!-- Compare Across Other Ages Table -->
-    <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 mb-10">
-      <h3 class="text-lg font-bold text-white mb-2">How {milestoneData.label} Ranks Across Different Age Groups</h3>
-      <p class="text-xs text-slate-400 mb-4">Federal Reserve Survey of Consumer Finances (SCF) population percentile breakdown.</p>
+    <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-10 shadow-sm">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">How {milestoneData.label} Ranks Across Different Age Groups</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Federal Reserve Survey of Consumer Finances (SCF) population percentile breakdown.</p>
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
           <thead>
-            <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+            <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs uppercase tracking-wider">
               <th class="pb-3 pr-4">Age</th>
               <th class="pb-3 px-4">Percentile</th>
               <th class="pb-3 px-4">Classification</th>
               <th class="pb-3 pl-4">Explore</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
             {milestoneData.agePercentiles.map((ap) => (
-              <tr class={`hover:bg-slate-800/30 transition-colors ${ap.age === ageData.age ? 'bg-emerald-500/10' : ''}`}>
-                <td class="py-3.5 pr-4 font-sans font-bold text-white">Age {ap.age}</td>
-                <td class="py-3.5 px-4 text-emerald-400 font-bold">{ap.percentile}th Percentile</td>
-                <td class="py-3.5 px-4 font-sans text-slate-300">{ap.status}</td>
-                <td class="py-3.5 pl-4 font-sans">
-                  <a href={`/net-worth/${milestoneData.slug}-at-${ap.age}`} class="text-emerald-400 hover:text-emerald-300 underline font-semibold">
-                    View Benchmark →
-                  </a>
+              <tr class={ap.age === ageData.age ? "bg-emerald-500/10 font-bold" : "hover:bg-slate-50 dark:hover:bg-slate-800/40"}>
+                <td class="py-3.5 pr-4 text-slate-900 dark:text-white">Age {ap.age}</td>
+                <td class="py-3.5 px-4 text-emerald-600 dark:text-emerald-400 font-extrabold">{ap.percentile}th</td>
+                <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-400">{ap.status}</td>
+                <td class="py-3.5 pl-4">
+                  {ap.age === ageData.age ? (
+                    <span class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">Current Page</span>
+                  ) : (
+                    <a href={`/net-worth/${milestoneData.slug}-at-${ap.age}`} class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline">
+                      View Age {ap.age} →
+                    </a>
+                  )}
                 </td>
               </tr>
             ))}
@@ -197,6 +230,41 @@ const faqSchema = {
         </table>
       </div>
     </div>
+
+    <!-- Explore Other Milestone Amounts Grid -->
+    <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-10 shadow-sm space-y-4">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Explore Other Wealth Milestones at Age {ageData.age}</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-xs">
+        {milestones.filter(m => m.slug !== milestoneData.slug).map((m) => {
+          const matchingAge = m.agePercentiles.find(ap => ap.age === ageData.age);
+          if (!matchingAge) return null;
+          return (
+            <a href={`/net-worth/${m.slug}-at-${ageData.age}`} class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block group">
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 block">{m.label}</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 block">{matchingAge.percentile}th %ile</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- FAQs Section -->
+    <section class="space-y-4 mb-10">
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h3>
+      <div class="space-y-3">
+        {faqSchema.mainEntity.map((faq) => (
+          <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+            <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-sm">
+              <span>{faq.name}</span>
+              <span class="group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              {faq.acceptedAnswer.text}
+            </p>
+          </details>
+        ))}
+      </div>
+    </section>
 
     <!-- Live Interactive Calculator CTA -->
     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center space-y-4">
