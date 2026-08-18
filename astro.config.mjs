@@ -9,6 +9,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://getnetworthcalculator.com',
   trailingSlash: 'never',
+  build: {
+    inlineStylesheets: 'always'
+  },
   vite: {
     plugins: [tailwindcss()]
   },
