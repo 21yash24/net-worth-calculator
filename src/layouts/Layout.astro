@@ -96,6 +96,7 @@ const breadcrumbSchema = {
 					window.removeEventListener('mousemove', loadThirdParty);
 					window.removeEventListener('touchstart', loadThirdParty);
 					window.removeEventListener('keydown', loadThirdParty);
+					window.removeEventListener('click', loadThirdParty);
 
 					// GA4
 					const ga = document.createElement('script');
@@ -117,12 +118,7 @@ const breadcrumbSchema = {
 				window.addEventListener('mousemove', loadThirdParty, { passive: true, once: true });
 				window.addEventListener('touchstart', loadThirdParty, { passive: true, once: true });
 				window.addEventListener('keydown', loadThirdParty, { passive: true, once: true });
-
-				if ('requestIdleCallback' in window) {
-					requestIdleCallback(() => setTimeout(loadThirdParty, 4500));
-				} else {
-					setTimeout(loadThirdParty, 4500);
-				}
+				window.addEventListener('click', loadThirdParty, { passive: true, once: true });
 			})();
 		</script>
 
@@ -140,15 +136,6 @@ const breadcrumbSchema = {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content="https://getnetworthcalculator.com/og-image.png" />
-
-		<!-- Inter Font Definition (Asynchronous Non-Blocking) -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-		</noscript>
 
 		<slot name="head" />
 		
