@@ -855,6 +855,11 @@ const faqSchema = {
 		});
 		homeEquityToggle.addEventListener('change', updateCalculator);
 
-		updateCalculator();
+		// Non-blocking initial sync (eliminates forced reflow)
+		if (window.requestAnimationFrame) {
+			requestAnimationFrame(updateCalculator);
+		} else {
+			updateCalculator();
+		}
 	});
 </script>
