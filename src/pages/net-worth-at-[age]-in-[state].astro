@@ -93,34 +93,74 @@ const faqSchema = {
     </div>
 
     <!-- Quick Answer Snippet Box -->
-    <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-12 shadow-xl border border-slate-800 space-y-4">
-      <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">⚡ Benchmark Summary: {ageData.label} in {stateData.name}</div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs pt-1">
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">State Median (50th)</span>
-          <strong class="text-emerald-400 text-base">${medianNW.toLocaleString()}</strong>
+    <div class="bg-slate-100 dark:bg-slate-900/80 rounded-3xl p-6 md:p-8 mb-10 shadow-lg border border-slate-200 dark:border-slate-800 space-y-5">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">⚡ Benchmark Summary: {ageData.label} in {stateData.name}</span>
+        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">2026 Fed SCF Benchmark</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">State Median (50th)</span>
+          <strong class="text-slate-900 dark:text-white text-lg font-extrabold">${medianNW.toLocaleString()}</strong>
         </div>
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 25% (75th)</span>
-          <strong class="text-emerald-400 text-base">${top25NW.toLocaleString()}</strong>
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">Top 25% (75th)</span>
+          <strong class="text-slate-900 dark:text-slate-200 text-lg font-extrabold">${top25NW.toLocaleString()}</strong>
         </div>
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 10% (90th)</span>
-          <strong class="text-emerald-400 text-base">${top10NW.toLocaleString()}</strong>
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">Top 10% (90th)</span>
+          <strong class="text-emerald-600 dark:text-emerald-400 text-lg font-extrabold">${top10NW.toLocaleString()}</strong>
         </div>
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 1% (99th)</span>
-          <strong class="text-amber-400 text-base">${top1NW.toLocaleString()}</strong>
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">Top 1% (99th)</span>
+          <strong class="text-amber-600 dark:text-amber-400 text-lg font-extrabold">${top1NW.toLocaleString()}</strong>
         </div>
       </div>
-      <p class="text-xs text-slate-400 pt-2 leading-relaxed">
-        <em>Note: Figures represent total household net worth (all financial assets + primary residence home equity minus total liabilities) adjusted for {stateData.name}'s economic parameters.</em>
-      </p>
+
+      <!-- On-Page Interactive Calculator Widget -->
+      <div class="p-5 bg-white dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <label for="state-calc-input" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            🧮 Check Your Exact Percentile in {stateData.name} ({ageData.label})
+          </label>
+          <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">100% Anonymous &amp; Instant</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-grow">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">$</span>
+            <input
+              type="number"
+              id="state-calc-input"
+              placeholder={`e.g. ${medianNW}`}
+              value={medianNW}
+              class="w-full pl-8 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+          <button
+            id="state-calc-btn"
+            class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap"
+          >
+            <span>Calculate My Rank</span>
+          </button>
+        </div>
+
+        <!-- Real-time dynamic output -->
+        <div id="state-calc-output" class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-1">
+          <p class="text-slate-800 dark:text-slate-200">
+            With <strong class="text-emerald-700 dark:text-emerald-400 font-bold" id="res-val">${medianNW.toLocaleString()}</strong>, you rank at the <strong class="text-emerald-700 dark:text-emerald-400 font-extrabold text-sm" id="res-pct">50th Percentile</strong> in {stateData.name} for {ageData.label}.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-[11px]" id="res-desc">
+            You match the exact median baseline for households in your age cohort in {stateData.name}.
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- Deep Analytical Content Section 1: Financial Life Stage -->
     <section class="space-y-6 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Understanding Wealth Building for {ageData.label}</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Understanding Wealth Building for {ageData.label} in {stateData.name}</h2>
       
       <p>
         Households in the <strong>{ageData.label}</strong> age bracket in <strong>{stateData.name}</strong> are typically navigating the <em>{ageData.stage}</em>. At this point in life, financial priorities balance active income generation, long-term equity growth (via 401k/IRA investments), and real estate equity accumulation.
@@ -149,11 +189,11 @@ const faqSchema = {
       
       <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <table class="w-full text-sm text-left">
-          <thead class="bg-emerald-700 text-white font-bold text-xs uppercase">
+          <thead class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs uppercase border-b border-slate-200 dark:border-slate-800">
             <tr>
               <th class="px-5 py-4">Percentile Rank</th>
               <th class="px-5 py-4">Required Net Worth ({stateData.name})</th>
-              <th class="px-5 py-4 text-emerald-200">Financial Classification</th>
+              <th class="px-5 py-4 text-emerald-600 dark:text-emerald-400">Financial Classification</th>
             </tr>
           </thead>
           <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
@@ -174,24 +214,13 @@ const faqSchema = {
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
               <td class="px-5 py-4 font-bold">99th Percentile (Top 1%)</td>
-              <td class="px-5 py-4 font-bold text-amber-500">${top1NW.toLocaleString()}</td>
-              <td class="px-5 py-4 text-xs font-semibold text-amber-500">Very High / Elite Wealth Tier</td>
+              <td class="px-5 py-4 font-bold text-amber-600 dark:text-amber-400">${top1NW.toLocaleString()}</td>
+              <td class="px-5 py-4 text-xs font-semibold text-amber-600 dark:text-amber-400">Very High / Elite Wealth Tier</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-
-    <!-- Interactive CTA to Main Tool -->
-    <div class="p-8 rounded-3xl bg-slate-900 text-white text-center space-y-4 shadow-xl border border-slate-800 mb-12">
-      <h2 class="text-2xl md:text-3xl font-extrabold">Calculate Your Exact National & State Percentile</h2>
-      <p class="text-xs md:text-sm text-slate-300 max-w-xl mx-auto">
-        Compare your exact net worth against Federal Reserve age benchmarks with our 100% private, client-side calculator.
-      </p>
-      <a href="/" class="inline-block px-6 py-3 bg-emerald-500 text-slate-950 font-extrabold text-sm rounded-xl hover:bg-emerald-400 transition-all shadow-md">
-        Launch Calculator →
-      </a>
-    </div>
 
     <!-- Deep Analytical Content Section 3: Tax Drag & Cost of Living Impact -->
     <section class="space-y-4 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
@@ -215,25 +244,29 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- Deep Analytical Content Section 4: Retirement Readiness Milestones -->
-    <section class="space-y-4 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Retirement Readiness &amp; Savings Multipliers</h2>
-      <p>
-        According to institutional wealth guidelines from Fidelity and Vanguard, households {ageData.label} living in {stateData.name} should benchmark their progress against annual salary accumulation multiples to maintain their standard of living into retirement:
-      </p>
-      <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-400">
-        <li><strong>Early Career (Under 35):</strong> Focus on securing the full employer 401(k) match and building a 6-month liquid emergency fund calibrated to {stateData.name}'s monthly living costs.</li>
-        <li><strong>Mid Career (35–44):</strong> Target 3x annual household income in total investments, while managing mortgage amortization and eliminating non-mortgage consumer debts.</li>
-        <li><strong>Peak Earning (45–54):</strong> Target 6x annual income, maximizing annual IRS tax-deferred contribution limits and catch-up allocations.</li>
-        <li><strong>Pre-Retirement (55–64):</strong> Target 8x–10x annual income with defensive asset allocation to protect against sequence-of-returns risk before initiating safe withdrawals.</li>
-      </ul>
+    <!-- Compare Across Other Top States Grid (Internal Mesh Architecture) -->
+    <section class="space-y-4 mb-12">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Compare {ageData.label} Net Worth Across Other States</h2>
+      <p class="text-xs text-slate-600 dark:text-slate-400">Explore how {ageData.label} benchmarks compare in key neighboring and high-population states:</p>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-xs">
+        {states.filter(s => s.id !== stateData.id).slice(0, 12).map(s => {
+          const sMed = Math.round(s.median * ageData.mult);
+          return (
+            <a href={`/net-worth-at-${ageData.id}-in-${s.id}`} class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group block shadow-sm">
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 block">{s.name}</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">Median: <strong class="text-slate-700 dark:text-slate-300">${sMed.toLocaleString()}</strong></span>
+            </a>
+          );
+        })}
+      </div>
     </section>
 
     <!-- FAQs Section -->
     <section class="space-y-6 mb-12">
       <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions: {stateData.name}</h2>
       <div class="space-y-4">
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>What is the median net worth for {ageData.label} in {stateData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -243,7 +276,7 @@ const faqSchema = {
           </p>
         </details>
 
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>What net worth puts you in the top 10% for {ageData.label} in {stateData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -253,7 +286,7 @@ const faqSchema = {
           </p>
         </details>
 
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>How does {stateData.name}'s cost of living affect net worth comparisons?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -263,7 +296,7 @@ const faqSchema = {
           </p>
         </details>
 
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>Does this calculation include primary home equity in {stateData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -279,15 +312,15 @@ const faqSchema = {
     <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
       <h2 class="text-xl font-bold text-slate-900 dark:text-white">Explore More Wealth Benchmarks</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-        <a href="/wealth-class-calculator" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block">
+        <a href="/wealth-class-calculator" class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block shadow-sm">
           <strong class="text-slate-900 dark:text-white block font-bold">Am I Rich? Class Calculator</strong>
           <span class="text-slate-500 dark:text-slate-400 mt-1 block">Middle class vs upper middle vs rich thresholds.</span>
         </a>
-        <a href="/net-worth-by-income" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block">
+        <a href="/net-worth-by-income" class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block shadow-sm">
           <strong class="text-slate-900 dark:text-white block font-bold">Net Worth by Salary & Income</strong>
           <span class="text-slate-500 dark:text-slate-400 mt-1 block">Calculate expected net worth by annual earnings.</span>
         </a>
-        <a href="/coast-fire-calculator" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block">
+        <a href="/coast-fire-calculator" class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block shadow-sm">
           <strong class="text-slate-900 dark:text-white block font-bold">Coast FIRE Milestone Tool</strong>
           <span class="text-slate-500 dark:text-slate-400 mt-1 block">Check when compounding takes over retirement savings.</span>
         </a>
@@ -295,4 +328,47 @@ const faqSchema = {
     </section>
 
   </main>
+
+  <script is:inline define:vars={{ medianNW, top25NW, top10NW, top1NW, stateName: stateData.name, ageLabel: ageData.label }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('state-calc-input');
+      const btn = document.getElementById('state-calc-btn');
+      const resVal = document.getElementById('res-val');
+      const resPct = document.getElementById('res-pct');
+      const resDesc = document.getElementById('res-desc');
+
+      function calculate() {
+        const val = parseFloat(input.value) || 0;
+        let pct = 50;
+        let tier = 'Middle Class';
+
+        if (val < medianNW * 0.2) {
+          pct = 15;
+          tier = 'Emerging Wealth Tier';
+        } else if (val < medianNW) {
+          pct = Math.round(15 + (val / medianNW) * 35);
+          tier = 'Lower Middle Class';
+        } else if (val < top25NW) {
+          pct = Math.round(50 + ((val - medianNW) / (top25NW - medianNW)) * 25);
+          tier = 'Middle Class';
+        } else if (val < top10NW) {
+          pct = Math.round(75 + ((val - top25NW) / (top10NW - top25NW)) * 15);
+          tier = 'Upper Middle Class';
+        } else if (val < top1NW) {
+          pct = Math.round(90 + ((val - top10NW) / (top1NW - top10NW)) * 9);
+          tier = 'High Net Worth (Top 10%)';
+        } else {
+          pct = 99;
+          tier = 'Top 1% Elite Wealth';
+        }
+
+        resVal.textContent = '$' + Math.round(val).toLocaleString();
+        resPct.textContent = pct + 'th Percentile';
+        resDesc.textContent = `You rank higher than ${pct}% of ${ageLabel} households in ${stateName} (${tier}).`;
+      }
+
+      btn?.addEventListener('click', calculate);
+      input?.addEventListener('input', calculate);
+    });
+  </script>
 </Layout>

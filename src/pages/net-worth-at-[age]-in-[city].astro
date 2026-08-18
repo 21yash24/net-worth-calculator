@@ -118,34 +118,74 @@ const faqSchema = {
     </div>
 
     <!-- Quick Answer Box -->
-    <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 mb-12 shadow-xl border border-slate-800 space-y-4">
-      <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">⚡ City Benchmark: {ageData.label} in {cityData.name}</div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs pt-1">
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">City Median (50th)</span>
-          <strong class="text-emerald-400 text-base">${medianNW.toLocaleString()}</strong>
+    <div class="bg-slate-100 dark:bg-slate-900/80 rounded-3xl p-6 md:p-8 mb-10 shadow-lg border border-slate-200 dark:border-slate-800 space-y-5">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">⚡ City Benchmark: {ageData.label} in {cityData.name}</span>
+        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">2026 SCF Derived Benchmark</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">City Median (50th)</span>
+          <strong class="text-slate-900 dark:text-white text-lg font-extrabold">${medianNW.toLocaleString()}</strong>
         </div>
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 25% (75th)</span>
-          <strong class="text-emerald-400 text-base">${top25NW.toLocaleString()}</strong>
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">Top 25% (75th)</span>
+          <strong class="text-slate-900 dark:text-slate-200 text-lg font-extrabold">${top25NW.toLocaleString()}</strong>
         </div>
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 10% (90th)</span>
-          <strong class="text-emerald-400 text-base">${top10NW.toLocaleString()}</strong>
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">Top 10% (90th)</span>
+          <strong class="text-emerald-600 dark:text-emerald-400 text-lg font-extrabold">${top10NW.toLocaleString()}</strong>
         </div>
-        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700">
-          <span class="block text-slate-400 text-[10px] uppercase font-bold mb-1">Top 1% (99th)</span>
-          <strong class="text-amber-400 text-base">${top1NW.toLocaleString()}</strong>
+        <div class="p-4 bg-white dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="block text-slate-500 dark:text-slate-400 text-[11px] uppercase font-bold mb-1">Top 1% (99th)</span>
+          <strong class="text-amber-600 dark:text-amber-400 text-lg font-extrabold">${top1NW.toLocaleString()}</strong>
         </div>
       </div>
-      <p class="text-xs text-slate-400 pt-2 leading-relaxed">
-        <em>Note: Figures represent total household net worth (financial assets + home equity minus debt) adjusted for {cityData.name}'s housing market.</em>
-      </p>
+
+      <!-- On-Page Interactive Calculator Widget -->
+      <div class="p-5 bg-white dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <label for="city-calc-input" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            🧮 Check Your Exact Percentile in {cityData.name} ({ageData.label})
+          </label>
+          <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">100% Anonymous &amp; Instant</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-grow">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">$</span>
+            <input
+              type="number"
+              id="city-calc-input"
+              placeholder={`e.g. ${medianNW}`}
+              value={medianNW}
+              class="w-full pl-8 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+          <button
+            id="city-calc-btn"
+            class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap"
+          >
+            <span>Calculate My Rank</span>
+          </button>
+        </div>
+
+        <!-- Real-time dynamic output -->
+        <div id="city-calc-output" class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-1">
+          <p class="text-slate-800 dark:text-slate-200">
+            With <strong class="text-emerald-700 dark:text-emerald-400 font-bold" id="cres-val">${medianNW.toLocaleString()}</strong>, you rank at the <strong class="text-emerald-700 dark:text-emerald-400 font-extrabold text-sm" id="cres-pct">50th Percentile</strong> in {cityData.name} for {ageData.label}.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-[11px]" id="cres-desc">
+            You match the median baseline for households in your age cohort in {cityData.name}.
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- Deep Analytical Content Section 1: Financial Life Stage in City -->
     <section class="space-y-6 mb-12 text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Living in {cityData.name}: Wealth & Cost of Living</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Living in {cityData.name}: Wealth &amp; Cost of Living</h2>
       
       <p>
         For households <strong>{ageData.label}</strong> living in <strong>{cityData.name}, {cityData.state}</strong>, economic conditions are heavily shaped by local housing markets and local industry salaries. In this area, cost of living index is <strong>{cityData.col > 0 ? `+${cityData.col}% higher` : `${cityData.col}% lower`} than the US national average</strong>.
@@ -162,7 +202,7 @@ const faqSchema = {
         <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-2">
           <h3 class="font-bold text-slate-900 dark:text-white text-base">💼 Local Earning Power</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            High local salaries in tech, healthcare, or corporate sectors allow faster accumulation of tax-advantaged retirement accounts (401k & IRAs), offsetting elevated local housing costs.
+            High local salaries in tech, healthcare, or corporate sectors allow faster accumulation of tax-advantaged retirement accounts (401k &amp; IRAs), offsetting elevated local housing costs.
           </p>
         </div>
       </div>
@@ -174,11 +214,11 @@ const faqSchema = {
       
       <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <table class="w-full text-sm text-left">
-          <thead class="bg-emerald-700 text-white font-bold text-xs uppercase">
+          <thead class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs uppercase border-b border-slate-200 dark:border-slate-800">
             <tr>
               <th class="px-5 py-4">Percentile Tier</th>
               <th class="px-5 py-4">Required Net Worth ({cityData.name})</th>
-              <th class="px-5 py-4 text-emerald-200">Financial Benchmark Status</th>
+              <th class="px-5 py-4 text-emerald-600 dark:text-emerald-400">Financial Benchmark Status</th>
             </tr>
           </thead>
           <tbody class="bg-white dark:bg-slate-900/60 divide-y divide-slate-200 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
@@ -199,8 +239,8 @@ const faqSchema = {
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 bg-slate-50/50 dark:bg-slate-900/20">
               <td class="px-5 py-4 font-bold">99th Percentile (Top 1%)</td>
-              <td class="px-5 py-4 font-bold text-amber-500">${top1NW.toLocaleString()}</td>
-              <td class="px-5 py-4 text-xs font-semibold text-amber-500">Very High / Elite Wealth Tier</td>
+              <td class="px-5 py-4 font-bold text-amber-600 dark:text-amber-400">${top1NW.toLocaleString()}</td>
+              <td class="px-5 py-4 text-xs font-semibold text-amber-600 dark:text-amber-400">Very High / Elite Wealth Tier</td>
             </tr>
           </tbody>
         </table>
@@ -240,11 +280,29 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- Compare Across Other Top US Cities Grid (Internal Mesh Architecture) -->
+    <section class="space-y-4 mb-12">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Compare {ageData.label} Net Worth Across Other US Cities</h2>
+      <p class="text-xs text-slate-600 dark:text-slate-400">Explore how {ageData.label} benchmarks compare in other major metropolitan areas:</p>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-xs">
+        {cities.filter(c => c.id !== cityData.id).slice(0, 12).map(c => {
+          const cMed = Math.round(c.median * ageData.mult);
+          return (
+            <a href={`/net-worth-at-${ageData.id}-in-${c.id}`} class="p-3.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group block shadow-sm">
+              <span class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 block">{c.name}</span>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">Median: <strong class="text-slate-700 dark:text-slate-300">${cMed.toLocaleString()}</strong></span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
     <!-- FAQs Section -->
     <section class="space-y-6 mb-12">
       <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions: {cityData.name}</h2>
       <div class="space-y-4">
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>What is the median net worth for {ageData.label} in {cityData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -254,7 +312,7 @@ const faqSchema = {
           </p>
         </details>
 
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>What net worth puts you in the top 10% for {ageData.label} in {cityData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -264,7 +322,7 @@ const faqSchema = {
           </p>
         </details>
 
-        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center">
             <span>Does this figure include primary residence equity in {cityData.name}?</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
@@ -280,20 +338,63 @@ const faqSchema = {
     <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
       <h2 class="text-xl font-bold text-slate-900 dark:text-white">Explore Related Wealth Tools</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-        <a href="/wealth-class-calculator" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block">
+        <a href="/wealth-class-calculator" class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block shadow-sm">
           <strong class="text-slate-900 dark:text-white block font-bold">Am I Rich? Class Tool</strong>
           <span class="text-slate-500 dark:text-slate-400 mt-1 block">Middle class vs upper middle vs rich brackets.</span>
         </a>
-        <a href="/net-worth-by-income" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block">
+        <a href="/net-worth-by-income" class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block shadow-sm">
           <strong class="text-slate-900 dark:text-white block font-bold">Salary Wealth Multiplier</strong>
           <span class="text-slate-500 dark:text-slate-400 mt-1 block">Calculate expected net worth by annual earnings.</span>
         </a>
-        <a href="/coast-fire-calculator" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block">
-          <strong class="text-slate-900 dark:text-white block font-bold">Coast FIRE Calculator</strong>
-          <span class="text-slate-500 dark:text-slate-400 mt-1 block">Check when investment compound growth takes over.</span>
+        <a href="/coast-fire-calculator" class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all block shadow-sm">
+          <strong class="text-slate-900 dark:text-white block font-bold">Coast FIRE Milestone Tool</strong>
+          <span class="text-slate-500 dark:text-slate-400 mt-1 block">Check when compounding takes over retirement savings.</span>
         </a>
       </div>
     </section>
 
   </main>
+
+  <script is:inline define:vars={{ medianNW, top25NW, top10NW, top1NW, cityName: cityData.name, ageLabel: ageData.label }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('city-calc-input');
+      const btn = document.getElementById('city-calc-btn');
+      const resVal = document.getElementById('cres-val');
+      const resPct = document.getElementById('cres-pct');
+      const resDesc = document.getElementById('cres-desc');
+
+      function calculate() {
+        const val = parseFloat(input.value) || 0;
+        let pct = 50;
+        let tier = 'Middle Class';
+
+        if (val < medianNW * 0.2) {
+          pct = 15;
+          tier = 'Emerging Wealth Tier';
+        } else if (val < medianNW) {
+          pct = Math.round(15 + (val / medianNW) * 35);
+          tier = 'Lower Middle Class';
+        } else if (val < top25NW) {
+          pct = Math.round(50 + ((val - medianNW) / (top25NW - medianNW)) * 25);
+          tier = 'Middle Class';
+        } else if (val < top10NW) {
+          pct = Math.round(75 + ((val - top25NW) / (top10NW - top25NW)) * 15);
+          tier = 'Upper Middle Class';
+        } else if (val < top1NW) {
+          pct = Math.round(90 + ((val - top10NW) / (top1NW - top10NW)) * 9);
+          tier = 'High Net Worth (Top 10%)';
+        } else {
+          pct = 99;
+          tier = 'Top 1% Elite Wealth';
+        }
+
+        resVal.textContent = '$' + Math.round(val).toLocaleString();
+        resPct.textContent = pct + 'th Percentile';
+        resDesc.textContent = `You rank higher than ${pct}% of ${ageLabel} households in ${cityName} (${tier}).`;
+      }
+
+      btn?.addEventListener('click', calculate);
+      input?.addEventListener('input', calculate);
+    });
+  </script>
 </Layout>
