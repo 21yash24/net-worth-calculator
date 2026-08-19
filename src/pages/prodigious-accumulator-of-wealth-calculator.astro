@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Prodigious Accumulator of Wealth (PAW) Calculator: Formula & Test (2026)";
+const description = "Calculate your Prodigious Accumulator of Wealth (PAW) score using the official Millionaire Next Door formula: Expected Net Worth = (Age × Income) / 10.";
+
+const pawSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Prodigious Accumulator of Wealth (PAW) Formula Calculator",
+  "url": "https://getnetworthcalculator.com/prodigious-accumulator-of-wealth-calculator",
+  "description": description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const pawFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Prodigious Accumulator of Wealth (PAW) formula?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Defined in 'The Millionaire Next Door' by Dr. Thomas J. Stanley and Dr. William D. Danko: Expected Net Worth = (Age × Realized Pre-Tax Annual Household Income) ÷ 10. For example, a 40-year-old earning $100,000 should have an expected net worth of $400,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between PAW, AAW, and UAW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1. PAW (Prodigious Accumulator of Wealth): Actual Net Worth is at least 2.0x your expected net worth (top quartile wealth builder).\n2. AAW (Average Accumulator of Wealth): Actual Net Worth is between 0.5x and 2.0x your expected net worth (median wealth builder).\n3. UAW (Under Accumulator of Wealth): Actual Net Worth is below 0.5x your expected net worth (bottom quartile wealth builder)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the PAW formula include primary home equity and inheritances?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The original formula includes total net worth (assets minus liabilities, including home equity). However, Stanley and Danko noted that true PAWs accumulate wealth through liquid investments and business equity rather than oversized primary residences."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the PAW formula adjusted for people under 30 or over 65?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For young adults under 30 with student loans or newly established careers, the standard formula often sets an unrealistically high hurdle. Similarly, for retirees over 65 who are drawing down wealth, the formula may overstate target accumulation."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(pawSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(pawFaq)} slot="head" />
+
+  <main class="px-4 py-12 max-w-4xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+        <span>📖 🏆</span>
+        <span>The Millionaire Next Door Accumulator Benchmark</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Prodigious Accumulator of Wealth Calculator
+        <span class="block text-emerald-600 dark:text-emerald-400 text-xl md:text-2xl mt-1 font-bold">Calculate Your Official PAW / AAW / UAW Wealth Score (2026)</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-400 text-base max-w-2xl mx-auto leading-relaxed">
+        Test your wealth building efficiency using the famous formula from <em>The Millionaire Next Door</em>: discover whether you are a <strong>PAW</strong>, <strong>AAW</strong>, or <strong>UAW</strong> based on your age and income.
+      </p>
+    </header>
+
+    <!-- Formula Callout Card -->
+    <div class="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-slate-900/10 border border-emerald-500/30 shadow-lg space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+        <span>⚡</span> <span>The PAW Formula</span>
+      </div>
+      <div class="text-xl md:text-2xl font-mono font-bold text-slate-900 dark:text-white bg-slate-900/5 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center">
+        Expected Net Worth = (Age × Pre-Tax Annual Income) ÷ 10
+      </div>
+      <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 text-center">
+        If your Actual Net Worth ≥ <strong>2× Expected Net Worth</strong>, you are a <strong>Prodigious Accumulator of Wealth (PAW)</strong>.
+      </p>
+    </div>
+
+    <!-- Interactive PAW Calculator Card -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Current Age</label>
+          <input type="number" id="paw-age" value="38" min="18" max="100" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white font-bold text-lg focus:ring-2 focus:ring-emerald-500" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Pre-Tax Annual Income ($)</label>
+          <input type="number" id="paw-income" value="125000" step="5000" min="1000" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white font-bold text-lg focus:ring-2 focus:ring-emerald-500" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Current Net Worth ($)</label>
+          <input type="number" id="paw-networth" value="850000" step="10000" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white font-bold text-lg focus:ring-2 focus:ring-emerald-500" />
+        </div>
+      </div>
+
+      <!-- Results Display -->
+      <div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700 pb-3">
+          <span class="text-sm font-medium text-slate-600 dark:text-slate-400">Your Wealth Category:</span>
+          <span id="paw-status-badge" class="px-3.5 py-1 rounded-full text-sm font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+            PRODIGIOUS ACCUMULATOR (PAW)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-3 bg-white dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Expected Net Worth</div>
+            <div id="paw-expected" class="text-lg md:text-xl font-bold text-slate-900 dark:text-white">$475,000</div>
+          </div>
+          <div class="p-3 bg-white dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">PAW Threshold (2.0x)</div>
+            <div id="paw-threshold" class="text-lg md:text-xl font-bold text-emerald-600 dark:text-emerald-400">$950,000</div>
+          </div>
+          <div class="p-3 bg-white dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Your PAW Multiple</div>
+            <div id="paw-multiple" class="text-lg md:text-xl font-bold text-cyan-600 dark:text-cyan-400">1.79x</div>
+          </div>
+        </div>
+
+        <p id="paw-summary-text" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-2">
+          Based on your age of 38 and annual income of $125,000, your expected baseline wealth is $475,000. With an actual net worth of $850,000, you are accumulating wealth faster than the median American earner.
+        </p>
+      </div>
+    </div>
+
+    <!-- The 3 Wealth Accumulator Tiers Explained -->
+    <div class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Understanding the 3 Wealth Accumulator Classes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 space-y-2">
+          <div class="text-emerald-500 font-extrabold text-lg">PAW (Top 25%)</div>
+          <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Prodigious Accumulator</div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Net worth is <strong>2.0× or greater</strong> than expected net worth. PAWs live well below their means, prioritize index investing, and drive pre-owned vehicles.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl border border-blue-500/30 bg-blue-500/5 space-y-2">
+          <div class="text-blue-500 font-extrabold text-lg">AAW (Middle 50%)</div>
+          <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Average Accumulator</div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Net worth is between <strong>0.5× and 1.99×</strong> of expected net worth. AAWs track roughly equal to their earnings level with moderate retirement savings.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl border border-rose-500/30 bg-rose-500/5 space-y-2">
+          <div class="text-rose-500 font-extrabold text-lg">UAW (Bottom 25%)</div>
+          <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Under Accumulator</div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Net worth is <strong>under 0.5×</strong> expected net worth. High earners in this category often spend heavily on luxury lifestyle status markers and have high debt.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crosslink Hub -->
+    <div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Related Wealth Calculators</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+        <a href="/millionaire-calculator" class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-medium hover:border-emerald-500 transition-colors">
+          💰 Millionaire Timeline Calculator →
+        </a>
+        <a href="/wealth-class-calculator" class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-medium hover:border-emerald-500 transition-colors">
+          👑 Wealth Class (Am I Rich?) →
+        </a>
+        <a href="/coast-fire-calculator" class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-medium hover:border-emerald-500 transition-colors">
+          🏖️ Coast FIRE Calculator →
+        </a>
+      </div>
+    </div>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  function recalculatePaw() {
+    const age = parseFloat(document.getElementById('paw-age').value) || 30;
+    const income = parseFloat(document.getElementById('paw-income').value) || 0;
+    const networth = parseFloat(document.getElementById('paw-networth').value) || 0;
+
+    const expected = (age * income) / 10;
+    const pawThreshold = expected * 2;
+    const multiple = expected > 0 ? (networth / expected) : 0;
+
+    document.getElementById('paw-expected').textContent = '$' + Math.round(expected).toLocaleString();
+    document.getElementById('paw-threshold').textContent = '$' + Math.round(pawThreshold).toLocaleString();
+    document.getElementById('paw-multiple').textContent = multiple.toFixed(2) + 'x';
+
+    const badge = document.getElementById('paw-status-badge');
+    const summary = document.getElementById('paw-summary-text');
+
+    if (multiple >= 2.0) {
+      badge.textContent = 'PRODIGIOUS ACCUMULATOR (PAW)';
+      badge.className = 'px-3.5 py-1 rounded-full text-sm font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+      summary.textContent = `Outstanding! Your actual net worth is ${multiple.toFixed(1)}x your expected baseline. You qualify as a Prodigious Accumulator of Wealth (PAW), placing you in the top tier of wealth builders for your income level.`;
+    } else if (multiple >= 0.5) {
+      badge.textContent = 'AVERAGE ACCUMULATOR (AAW)';
+      badge.className = 'px-3.5 py-1 rounded-full text-sm font-extrabold bg-blue-500/20 text-blue-400 border border-blue-500/40';
+      summary.textContent = `Solid standing! Your net worth is ${multiple.toFixed(1)}x your expected baseline ($${Math.round(expected).toLocaleString()}). You are an Average Accumulator of Wealth (AAW). Reaching $${Math.round(pawThreshold).toLocaleString()} will promote you to PAW status.`;
+    } else {
+      badge.textContent = 'UNDER ACCUMULATOR (UAW)';
+      badge.className = 'px-3.5 py-1 rounded-full text-sm font-extrabold bg-rose-500/20 text-rose-400 border border-rose-500/40';
+      summary.textContent = `Your net worth multiple is ${multiple.toFixed(1)}x, below the 0.5x threshold. You are currently classified as an Under Accumulator of Wealth (UAW) relative to your earnings. Increasing savings rate and automated index investing will rapidly improve your multiple.`;
+    }
+  }
+
+  ['paw-age', 'paw-income', 'paw-networth'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', recalculatePaw);
+  });
+
+  recalculatePaw();
+</script>
