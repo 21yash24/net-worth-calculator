@@ -150,41 +150,69 @@ const faqSchema = {
               <th class="text-right px-4 py-3 font-bold">Median Net Worth</th>
               <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 25%</th>
               <th class="text-right px-4 py-3 font-bold hidden sm:table-cell">Top 10%</th>
+              <th class="text-right px-4 py-3 font-bold text-amber-300">Top 1%</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Under 35</td>
-              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$42,000</td>
-              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$120,000</td>
-              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$280,000</td>
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">Under 25</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$15,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$45,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$110,000</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">NZ$450,000</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors bg-emerald-500/5">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">25–34 (Young Professionals)</td>
+              <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400 font-bold">NZ$68,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$185,000</td>
+              <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$390,000</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">NZ$1,250,000</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
               <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">35–44</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$215,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$540,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,100,000</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">NZ$3,100,000</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
               <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">45–54</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$480,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,050,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$2,100,000</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">NZ$5,200,000</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
               <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">55–64</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$720,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,550,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$3,200,000</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">NZ$6,800,000</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
               <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">65–74</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">NZ$640,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$1,350,000</td>
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300 hidden sm:table-cell">NZ$2,800,000</td>
+              <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">NZ$5,900,000</td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Specific Age 25-34 & KiwiSaver Insights -->
+      <div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-3">
+        <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <span>📊</span> <span>Statistics NZ Household Economic Survey (Age 25–34 Focus)</span>
+        </h3>
+        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          For Kiwis aged <strong>25 to 34</strong>, median individual net worth is <strong>NZD $68,000</strong>. Key wealth drivers in this cohort include:
+        </p>
+        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside">
+          <li><strong>Average KiwiSaver Balance:</strong> NZ$28,500 for age 25–34 contributors.</li>
+          <li><strong>Homeownership Impact:</strong> Kiwis in this age bracket with a first home have a median net worth of NZ$195,000, compared to NZ$32,000 for non-homeowners.</li>
+          <li><strong>Top 10% (90th Percentile) Threshold:</strong> Reaching <strong>NZD $390,000</strong> before turning 35 places you in the top decile of young New Zealanders.</li>
+        </ul>
       </div>
     </section>
 

@@ -65,8 +65,39 @@ const faq35 = {
       </div>
       <h2 class="text-lg font-bold text-slate-900 dark:text-white">What is the Median Net Worth at 35 in US &amp; Canada?</h2>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-        In the US, median net worth at 35 is <strong>$75,000 USD</strong> (top 10% is <strong>$450,000 USD</strong>). In Canada, median net worth at 35 is <strong>$145,000 CAD</strong>. Fidelity recommends having <strong>1.5x to 2x salary</strong> saved in net worth by 35.
+        In the US, median net worth at 35 is <strong>$75,000 USD</strong> (top 10% is <strong>$450,000 USD</strong>; top 1% is <strong>$1.85M USD</strong>). In Canada, median net worth at 35 is <strong>$145,000 CAD</strong>. Fidelity's rule recommends having <strong>1.5x to 2.0x your annual salary</strong> in net worth by age 35.
       </p>
+    </div>
+
+    <!-- Interactive Age 35 Calculator -->
+    <div class="p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 shadow-xl space-y-6">
+      <div>
+        <label for="nw-at-35-input" class="block text-sm font-bold text-slate-900 dark:text-white mb-2">Enter Your Total Net Worth at Age 35 ($ USD)</label>
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-base">$</span>
+          <input type="number" id="nw-at-35-input" placeholder="75000" value="75000" step="5000"
+            class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
+        </div>
+      </div>
+
+      <button id="nw-35-calc-btn" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-extrabold text-base transition-all tracking-wide shadow-lg shadow-emerald-900/30 cursor-pointer">
+        Calculate My Exact Age 35 Percentile Rank
+      </button>
+
+      <div id="nw-35-result" class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800 text-center">
+        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Age 35 Percentile Ranking</p>
+        <div id="nw-35-pct-display" class="text-5xl font-black text-emerald-500 tracking-tight">50th Percentile</div>
+        <p id="nw-35-desc" class="text-sm text-slate-700 dark:text-slate-300 max-w-md mx-auto">
+          At $75,000 USD, your net worth matches the exact US median benchmark for 35-year-olds.
+        </p>
+
+        <div class="pt-4 flex justify-center flex-wrap gap-3 text-xs">
+          <a href="/net-worth-by-age-usa" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white hover:border-emerald-500 transition-all">🇺🇸 Full US Age Breakdown →</a>
+          <a href="/millionaire-calculator" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-emerald-600 dark:text-emerald-400 hover:border-emerald-500 transition-all">💰 Timeline to $1M from 35 →</a>
+          <a href="/prodigious-accumulator-of-wealth-calculator" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-cyan-400 hover:border-cyan-500 transition-all">📖 Test PAW Formula Score →</a>
+          <a href="/coast-fire-calculator" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold text-amber-400 hover:border-amber-500 transition-all">🏖️ Coast FIRE Target at 35 →</a>
+        </div>
+      </div>
     </div>
 
     <!-- Data Table -->
@@ -103,6 +134,11 @@ const faq35 = {
               <td class="px-4 py-3 text-right text-slate-700 dark:text-slate-300">$650,000 CAD</td>
             </tr>
             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+              <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">95th Percentile (Top 5%)</td>
+              <td class="px-4 py-3 text-right text-purple-600 dark:text-purple-400 font-bold">$850,000 USD</td>
+              <td class="px-4 py-3 text-right text-purple-600 dark:text-purple-400 font-bold">$1,200,000 CAD</td>
+            </tr>
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
               <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">99th Percentile (Top 1%)</td>
               <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$1,850,000 USD</td>
               <td class="px-4 py-3 text-right text-amber-600 dark:text-amber-400 font-bold">$2,400,000 CAD</td>
@@ -136,3 +172,49 @@ const faq35 = {
     </div>
   </main>
 </Layout>
+
+<script is:inline>
+  (function() {
+    const input = document.getElementById('nw-at-35-input');
+    const calcBtn = document.getElementById('nw-35-calc-btn');
+    const pctDisplay = document.getElementById('nw-35-pct-display');
+    const descDisplay = document.getElementById('nw-35-desc');
+
+    function calculate35() {
+      const val = parseFloat(input.value) || 0;
+      let pct = 50;
+      let text = '';
+
+      if (val >= 1850000) {
+        pct = 99;
+        text = `Phenomenal! With $${val.toLocaleString()} at age 35, you rank in the Top 1% of all 35-year-olds in the United States.`;
+      } else if (val >= 850000) {
+        pct = 95;
+        text = `Incredible standing! With $${val.toLocaleString()}, you rank in the Top 5% (95th percentile) for age 35.`;
+      } else if (val >= 450000) {
+        pct = 90;
+        text = `High Net Worth Builder! With $${val.toLocaleString()}, you are in the Top 10% (90th percentile) nationally.`;
+      } else if (val >= 210000) {
+        pct = 75;
+        text = `Well above average! With $${val.toLocaleString()}, you rank in the Top 25% (75th percentile) of 35-year-olds.`;
+      } else if (val >= 75000) {
+        pct = 50;
+        text = `Solid middle ground! With $${val.toLocaleString()}, you match or exceed the median US benchmark for age 35 ($75,000 USD).`;
+      } else if (val >= 18000) {
+        pct = 25;
+        text = `Building foundation. With $${val.toLocaleString()}, you are at the 25th percentile for age 35. Increasing savings rate will rapidly elevate your percentile.`;
+      } else {
+        pct = 10;
+        text = `You are in the initial wealth accumulation phase. Standard debt payoff and index investing will propel you toward the median.`;
+      }
+
+      pctDisplay.textContent = pct === 99 ? 'Top 1% (99th Percentile)' : `${pct}th Percentile`;
+      descDisplay.textContent = text;
+    }
+
+    if (calcBtn) calcBtn.addEventListener('click', calculate35);
+    if (input) input.addEventListener('input', calculate35);
+    calculate35();
+  })();
+</script>
+
