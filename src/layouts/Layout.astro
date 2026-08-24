@@ -12,10 +12,10 @@ const {
 } = Astro.props;
 
 const rawPath = Astro.url.pathname;
-const normalizedPath = rawPath === '/' || rawPath === '' ? '/' : (rawPath.endsWith('/') ? rawPath : `${rawPath}/`);
-const canonicalURL = normalizedPath === '/' 
-  ? 'https://getnetworthcalculator.com/' 
-  : `https://getnetworthcalculator.com${normalizedPath}`;
+const cleanPath = rawPath.replace(/\/+$/, '') || '';
+const canonicalURL = cleanPath === '' 
+  ? 'https://getnetworthcalculator.com' 
+  : `https://getnetworthcalculator.com${cleanPath}`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -25,9 +25,9 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://getnetworthcalculator.com/"
+      "item": "https://getnetworthcalculator.com"
     },
-    ...(normalizedPath !== '/' ? [{
+    ...(cleanPath !== '' ? [{
       "@type": "ListItem",
       "position": 2,
       "name": title.split('|')[0].trim(),
@@ -61,15 +61,15 @@ const breadcrumbSchema = {
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Organization",
-			"name": "Get Net Worth Calculator",
-			"url": "https://getnetworthcalculator.com/",
+			"name": "GetNetWorthCalculator",
+			"url": "https://getnetworthcalculator.com",
 			"logo": "https://getnetworthcalculator.com/favicon-512x512.png",
 			"description": "Privacy-first global wealth benchmarking platform powered by official US Federal Reserve SCF datasets.",
 			"contactPoint": {
 				"@type": "ContactPoint",
 				"contactType": "Customer Support",
 				"email": "support@getnetworthcalculator.com",
-				"url": "https://getnetworthcalculator.com/contact/"
+				"url": "https://getnetworthcalculator.com/contact"
 			}
 		})} />
 
@@ -82,28 +82,31 @@ const breadcrumbSchema = {
 		<!-- Google AdSense Account Verification Tag -->
 		<meta name="google-adsense-account" content="ca-pub-9007237469731115" />
 
-		<!-- Google tag (gtag.js) Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD357K3PTD"></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-MD357K3PTD');
-		</script>
-
-		<!-- High Performance Deferred AdSense (0 Blocking Time) -->
+		<!-- High Performance Deferred Analytics & AdSense (0 Blocking Time) -->
 		<script is:inline>
 			(function() {
-				let adLoaded = false;
-				function loadAdSense() {
-					if (adLoaded) return;
-					adLoaded = true;
-					window.removeEventListener('scroll', loadAdSense);
-					window.removeEventListener('mousemove', loadAdSense);
-					window.removeEventListener('touchstart', loadAdSense);
-					window.removeEventListener('keydown', loadAdSense);
-					window.removeEventListener('click', loadAdSense);
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				let loaded = false;
 
+				function loadThirdParty() {
+					if (loaded) return;
+					loaded = true;
+					window.removeEventListener('scroll', loadThirdParty);
+					window.removeEventListener('mousemove', loadThirdParty);
+					window.removeEventListener('touchstart', loadThirdParty);
+					window.removeEventListener('keydown', loadThirdParty);
+					window.removeEventListener('click', loadThirdParty);
+
+					// GA4
+					const ga = document.createElement('script');
+					ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MD357K3PTD';
+					ga.async = true;
+					document.head.appendChild(ga);
+					gtag('js', new Date());
+					gtag('config', 'G-MD357K3PTD');
+
+					// AdSense
 					const ad = document.createElement('script');
 					ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007237469731115';
 					ad.crossOrigin = 'anonymous';
@@ -111,11 +114,11 @@ const breadcrumbSchema = {
 					document.head.appendChild(ad);
 				}
 
-				window.addEventListener('scroll', loadAdSense, { passive: true, once: true });
-				window.addEventListener('mousemove', loadAdSense, { passive: true, once: true });
-				window.addEventListener('touchstart', loadAdSense, { passive: true, once: true });
-				window.addEventListener('keydown', loadAdSense, { passive: true, once: true });
-				window.addEventListener('click', loadAdSense, { passive: true, once: true });
+				window.addEventListener('scroll', loadThirdParty, { passive: true, once: true });
+				window.addEventListener('mousemove', loadThirdParty, { passive: true, once: true });
+				window.addEventListener('touchstart', loadThirdParty, { passive: true, once: true });
+				window.addEventListener('keydown', loadThirdParty, { passive: true, once: true });
+				window.addEventListener('click', loadThirdParty, { passive: true, once: true });
 			})();
 		</script>
 
@@ -154,21 +157,38 @@ const breadcrumbSchema = {
 			}
 		</script>
 	</head>
-	<body class="bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white transition-colors duration-300">
-		<!-- Global Navigation Header -->
-		<header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/80 dark:bg-[#060a12]/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
-			<div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+	<body class="bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-emerald-400">
+		<!-- Dynamic Ambient Glow -->
+		<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none" aria-hidden="true">
+			<div class="absolute -top-[30%] left-[25%] w-[50%] h-[50%] rounded-full bg-emerald-500/5 dark:bg-emerald-950/20 blur-[160px]"></div>
+			<div class="absolute top-[45%] -right-[15%] w-[45%] h-[45%] rounded-full bg-slate-300/30 dark:bg-slate-900/40 blur-[140px]"></div>
+		</div>
+
+		<!-- Navigation Header -->
+		<header class="w-full border-b border-slate-200 dark:border-slate-800/60 backdrop-blur-xl bg-white/80 dark:bg-[#060a12]/85 sticky top-0 z-50 transition-colors duration-300">
+			<div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 				<!-- Brand Logo -->
 				<a href="/" class="flex items-center gap-3.5 group" aria-label="NetWorth. Homepage">
-					<div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center font-black text-xl text-slate-950 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-						NW
+					<div class="w-9 h-9 relative flex items-center justify-center transition-transform group-hover:scale-105">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-full h-full" fill="none" aria-hidden="true">
+							<path d="M16 3L27 9.35V22.65L16 29L5 22.65V9.35L16 3Z" class="fill-slate-100 dark:fill-[#0b1324] stroke-slate-300 dark:stroke-[#1e293b]" stroke-width="1.5"/>
+							<path d="M16 7L23 11.03V19.03L16 23.06L9 19.03V11.03L16 7Z" fill="url(#brand-grad)" stroke="#10b981" stroke-width="1"/>
+							<path d="M16 11V19M12 15H20" class="stroke-slate-100 dark:stroke-[#060a12]" stroke-width="2.2" stroke-linecap="round"/>
+							<defs>
+								<linearGradient id="brand-grad" x1="9" y1="7" x2="23" y2="23" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#10b981"/>
+									<stop offset="1" stop-color="#047857"/>
+								</linearGradient>
+							</defs>
+						</svg>
 					</div>
-					<span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white flex items-center">
-						NetWorth<span class="text-emerald-500 font-black text-2xl leading-none">.</span>
-					</span>
+					<div class="flex flex-col">
+						<span class="text-slate-900 dark:text-white font-extrabold tracking-tight text-xl leading-none">NetWorth<span class="text-emerald-500">.</span></span>
+						<span class="text-[10px] uppercase font-bold text-slate-700 dark:text-slate-400 tracking-widest leading-none mt-1">Global Wealth Benchmarks</span>
+					</div>
 				</a>
-
-				<!-- Desktop Navigation Menu -->
+				
+				<!-- Nav Links & Theme Toggle -->
 				<div class="flex items-center gap-4 md:gap-6">
 					<nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-700 dark:text-slate-400">
 						<a href="/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Calculator</a>
@@ -179,13 +199,13 @@ const breadcrumbSchema = {
 								<span>🌍 Countries</span> <span class="text-xs">▾</span>
 							</button>
 							<div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-								<a href="/usa-vs-canada-net-worth/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold transition-colors rounded-lg mx-1">🇺🇸 vs 🇨🇦 USA vs Canada Comparison</a>
-								<a href="/net-worth-by-age-usa/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🇺🇸 USA (Federal Reserve)</a>
-								<a href="/net-worth-by-age-canada/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🇨🇦 Canada (StatsCan)</a>
-								<a href="/net-worth-by-age-india/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-orange-600 dark:text-orange-400 font-bold transition-colors rounded-lg mx-1">🇮🇳 India (₹ Lakhs &amp; Crores)</a>
-								<a href="/net-worth-by-age-australia/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-blue-600 dark:text-blue-400 font-bold transition-colors rounded-lg mx-1">🇦🇺 Australia (AUD Super)</a>
-								<a href="/net-worth-by-age-nz/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold transition-colors rounded-lg mx-1">🇳🇿 New Zealand (Stats NZ)</a>
-								<a href="/net-worth-by-age-uk/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🇬🇧 UK (ONS Survey)</a>
+								<a href="/usa-vs-canada-net-worth" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold transition-colors rounded-lg mx-1">🇺🇸 vs 🇨🇦 USA vs Canada Comparison</a>
+								<a href="/net-worth-by-age-usa" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🇺🇸 USA (Federal Reserve)</a>
+								<a href="/net-worth-by-age-canada" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🇨🇦 Canada (StatsCan)</a>
+								<a href="/net-worth-by-age-india" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-orange-600 dark:text-orange-400 font-bold transition-colors rounded-lg mx-1">🇮🇳 India (₹ Lakhs &amp; Crores)</a>
+								<a href="/net-worth-by-age-australia" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-blue-600 dark:text-blue-400 font-bold transition-colors rounded-lg mx-1">🇦🇺 Australia (AUD Super)</a>
+								<a href="/net-worth-by-age-nz" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold transition-colors rounded-lg mx-1">🇳🇿 New Zealand (Stats NZ)</a>
+								<a href="/net-worth-by-age-uk" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🇬🇧 UK (ONS Survey)</a>
 							</div>
 						</div>
 
@@ -195,24 +215,24 @@ const breadcrumbSchema = {
 								<span>📚 Guides &amp; Tools</span> <span class="text-xs">▾</span>
 							</button>
 							<div class="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-								<a href="/wealth-class-calculator/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-amber-600 dark:text-amber-400 font-bold transition-colors rounded-lg mx-1">💎 Am I Rich? Calculator</a>
-								<a href="/fire-net-worth-calculator/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-orange-600 dark:text-orange-400 font-bold transition-colors rounded-lg mx-1">🔥 FIRE Net Worth Calculator</a>
-								<a href="/coast-fire-calculator/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold transition-colors rounded-lg mx-1">🏝️ Coast FIRE Calculator</a>
-								<a href="/millionaire-calculator/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-purple-600 dark:text-purple-400 font-bold transition-colors rounded-lg mx-1">💰 Millionaire Calculator</a>
-								<a href="/net-worth-by-income/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold transition-colors rounded-lg mx-1">📈 Net Worth by Income (Stanley)</a>
-								<a href="/average-net-worth-by-age/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📊 Average Net Worth by Age Guide</a>
-								<a href="/net-worth-percentile/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🏆 Wealth Percentile Ranking</a>
-								<a href="/median-vs-average-net-worth/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">⚖️ Median vs Average Explained</a>
+								<a href="/wealth-class-calculator" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-amber-600 dark:text-amber-400 font-bold transition-colors rounded-lg mx-1">💎 Am I Rich? Calculator</a>
+								<a href="/fire-net-worth-calculator" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-orange-600 dark:text-orange-400 font-bold transition-colors rounded-lg mx-1">🔥 FIRE Net Worth Calculator</a>
+								<a href="/coast-fire-calculator" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold transition-colors rounded-lg mx-1">🏝️ Coast FIRE Calculator</a>
+								<a href="/millionaire-calculator" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-purple-600 dark:text-purple-400 font-bold transition-colors rounded-lg mx-1">💰 Millionaire Calculator</a>
+								<a href="/net-worth-by-income" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold transition-colors rounded-lg mx-1">📈 Net Worth by Income (Stanley)</a>
+								<a href="/average-net-worth-by-age" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📊 Average Net Worth by Age Guide</a>
+								<a href="/net-worth-percentile" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🏆 Wealth Percentile Ranking</a>
+								<a href="/median-vs-average-net-worth" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">⚖️ Median vs Average Explained</a>
 								<div class="h-px bg-slate-100 dark:bg-slate-800 mx-3 my-1"></div>
-								<a href="/net-worth-by-age-30/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📅 Net Worth at Age 30</a>
-								<a href="/net-worth-by-age-40/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📅 Net Worth at Age 40</a>
-								<a href="/net-worth-by-age-50/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📅 Net Worth at Age 50</a>
+								<a href="/net-worth-by-age-30" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📅 Net Worth at Age 30</a>
+								<a href="/net-worth-by-age-40" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📅 Net Worth at Age 40</a>
+								<a href="/net-worth-by-age-50" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">📅 Net Worth at Age 50</a>
 								<div class="h-px bg-slate-100 dark:bg-slate-800 mx-3 my-1"></div>
-								<a href="/about/" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🛡️ Data Methodology</a>
+								<a href="/about" class="block px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg mx-1">🛡️ Data Methodology</a>
 							</div>
 						</div>
 
-						<a href="/contact/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
+						<a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
 					</nav>
 
 					<!-- Mobile Menu Drawer Toggle -->
@@ -237,17 +257,17 @@ const breadcrumbSchema = {
 			<!-- Mobile Navigation Drawer -->
 			<div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-6 py-4 space-y-2 text-sm font-semibold">
 				<a href="/" class="block py-2 text-slate-800 dark:text-slate-200">Home Calculator</a>
-				<a href="/net-worth-by-age-india/" class="block py-2 text-orange-600 dark:text-orange-400 font-bold">🇮🇳 India Net Worth Calculator</a>
-				<a href="/net-worth-by-age-australia/" class="block py-2 text-blue-600 dark:text-blue-400 font-bold">🇦🇺 Australia Net Worth Calculator</a>
-				<a href="/net-worth-by-income/" class="block py-2 text-emerald-600 dark:text-emerald-400 font-bold">📈 Net Worth by Income Calculator</a>
-				<a href="/net-worth-by-age-usa/" class="block py-2 text-slate-800 dark:text-slate-200">🇺🇸 USA Net Worth Calculator</a>
-				<a href="/net-worth-by-age-uk/" class="block py-2 text-slate-800 dark:text-slate-200">🇬🇧 UK Net Worth Calculator</a>
-				<a href="/net-worth-by-age-canada/" class="block py-2 text-slate-800 dark:text-slate-200">🇨🇦 Canada Net Worth Calculator</a>
+				<a href="/net-worth-by-age-india" class="block py-2 text-orange-600 dark:text-orange-400 font-bold">🇮🇳 India Net Worth Calculator</a>
+				<a href="/net-worth-by-age-australia" class="block py-2 text-blue-600 dark:text-blue-400 font-bold">🇦🇺 Australia Net Worth Calculator</a>
+				<a href="/net-worth-by-income" class="block py-2 text-emerald-600 dark:text-emerald-400 font-bold">📈 Net Worth by Income Calculator</a>
+				<a href="/net-worth-by-age-usa" class="block py-2 text-slate-800 dark:text-slate-200">🇺🇸 USA Net Worth Calculator</a>
+				<a href="/net-worth-by-age-uk" class="block py-2 text-slate-800 dark:text-slate-200">🇬🇧 UK Net Worth Calculator</a>
+				<a href="/net-worth-by-age-canada" class="block py-2 text-slate-800 dark:text-slate-200">🇨🇦 Canada Net Worth Calculator</a>
 				<div class="h-px bg-slate-200 dark:bg-slate-800 my-2"></div>
-				<a href="/average-net-worth-by-age/" class="block py-2 text-slate-700 dark:text-slate-400">Average Net Worth by Age</a>
-				<a href="/net-worth-percentile/" class="block py-2 text-slate-700 dark:text-slate-400">Net Worth Percentile Guide</a>
-				<a href="/about/" class="block py-2 text-slate-700 dark:text-slate-400">Data Methodology</a>
-				<a href="/contact/" class="block py-2 text-slate-700 dark:text-slate-400">Contact Us</a>
+				<a href="/average-net-worth-by-age" class="block py-2 text-slate-700 dark:text-slate-400">Average Net Worth by Age</a>
+				<a href="/net-worth-percentile" class="block py-2 text-slate-700 dark:text-slate-400">Net Worth Percentile Guide</a>
+				<a href="/about" class="block py-2 text-slate-700 dark:text-slate-400">Data Methodology</a>
+				<a href="/contact" class="block py-2 text-slate-700 dark:text-slate-400">Contact Us</a>
 			</div>
 		</header>
 		
@@ -269,59 +289,59 @@ const breadcrumbSchema = {
 					<div>
 						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Regional Calculators</h3>
 						<ul class="space-y-2 text-xs">
-							<li><a href="/net-worth-by-age-india/" class="hover:text-orange-500 transition-colors">🇮🇳 India Net Worth (₹)</a></li>
-							<li><a href="/net-worth-by-age-australia/" class="hover:text-blue-500 transition-colors">🇦🇺 Australia Net Worth (AUD)</a></li>
-							<li><a href="/net-worth-by-income/" class="hover:text-emerald-500 transition-colors">📈 Net Worth by Income</a></li>
-							<li><a href="/net-worth-by-age-usa/" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇺🇸 USA Net Worth (USD)</a></li>
-							<li><a href="/net-worth-by-age-uk/" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇬🇧 UK Net Worth (GBP)</a></li>
-							<li><a href="/net-worth-by-age-canada/" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇨🇦 Canada Net Worth (CAD)</a></li>
+							<li><a href="/net-worth-by-age-india" class="hover:text-orange-500 transition-colors">🇮🇳 India Net Worth (₹)</a></li>
+							<li><a href="/net-worth-by-age-australia" class="hover:text-blue-500 transition-colors">🇦🇺 Australia Net Worth (AUD)</a></li>
+							<li><a href="/net-worth-by-income" class="hover:text-emerald-500 transition-colors">📈 Net Worth by Income</a></li>
+							<li><a href="/net-worth-by-age-usa" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇺🇸 USA Net Worth (USD)</a></li>
+							<li><a href="/net-worth-by-age-uk" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇬🇧 UK Net Worth (GBP)</a></li>
+							<li><a href="/net-worth-by-age-canada" class="hover:text-slate-900 dark:hover:text-white transition-colors">🇨🇦 Canada Net Worth (CAD)</a></li>
 						</ul>
 					</div>
 					<div>
 						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Age Benchmarks</h3>
 						<ul class="space-y-2 text-xs">
-							<li><a href="/wealth-class-calculator/" class="text-amber-800 dark:text-amber-300 font-bold hover:underline transition-colors">💎 Am I Rich? Calculator</a></li>
-							<li><a href="/fire-net-worth-calculator/" class="text-orange-800 dark:text-orange-300 font-bold hover:underline transition-colors">🔥 FIRE Calculator</a></li>
-							<li><a href="/coast-fire-calculator/" class="text-emerald-800 dark:text-emerald-300 font-bold hover:underline transition-colors">🏝️ Coast FIRE Calculator</a></li>
-							<li><a href="/millionaire-calculator/" class="text-purple-800 dark:text-purple-300 font-bold hover:underline transition-colors">💰 Millionaire Calculator</a></li>
-							<li><a href="/net-worth-at-25/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 25</a></li>
-							<li><a href="/net-worth-at-30/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 30</a></li>
-							<li><a href="/net-worth-at-35/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 35</a></li>
-							<li><a href="/net-worth-at-40/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 40</a></li>
-							<li><a href="/net-worth-at-50/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 50</a></li>
-							<li><a href="/net-worth-at-60/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 60</a></li>
+							<li><a href="/wealth-class-calculator" class="text-amber-800 dark:text-amber-300 font-bold hover:underline transition-colors">💎 Am I Rich? Calculator</a></li>
+							<li><a href="/fire-net-worth-calculator" class="text-orange-800 dark:text-orange-300 font-bold hover:underline transition-colors">🔥 FIRE Calculator</a></li>
+							<li><a href="/coast-fire-calculator" class="text-emerald-800 dark:text-emerald-300 font-bold hover:underline transition-colors">🏝️ Coast FIRE Calculator</a></li>
+							<li><a href="/millionaire-calculator" class="text-purple-800 dark:text-purple-300 font-bold hover:underline transition-colors">💰 Millionaire Calculator</a></li>
+							<li><a href="/net-worth-at-25" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 25</a></li>
+							<li><a href="/net-worth-at-30" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 30</a></li>
+							<li><a href="/net-worth-at-35" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 35</a></li>
+							<li><a href="/net-worth-at-40" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 40</a></li>
+							<li><a href="/net-worth-at-50" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 50</a></li>
+							<li><a href="/net-worth-at-60" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth at Age 60</a></li>
 						</ul>
 					</div>
 					<div>
 						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Wealth Tiers</h3>
 						<ul class="space-y-2 text-xs">
-							<li><a href="/top-1-percent-net-worth-by-age/" class="text-amber-800 dark:text-amber-300 font-bold hover:underline transition-colors">🏆 Top 1% Net Worth by Age</a></li>
-							<li><a href="/top-10-percent-net-worth-by-age/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Top 10% Net Worth by Age</a></li>
-							<li><a href="/1-million-net-worth-by-age/" class="hover:text-slate-900 dark:hover:text-white transition-colors">$1 Million Net Worth by Age</a></li>
-							<li><a href="/liquid-net-worth-calculator/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Liquid Net Worth Calculator</a></li>
-							<li><a href="/net-worth-percentile/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth Percentile Rank</a></li>
-							<li><a href="/average-net-worth-by-age/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Average Net Worth by Age</a></li>
+							<li><a href="/top-1-percent-net-worth-by-age" class="text-amber-800 dark:text-amber-300 font-bold hover:underline transition-colors">🏆 Top 1% Net Worth by Age</a></li>
+							<li><a href="/top-10-percent-net-worth-by-age" class="hover:text-slate-900 dark:hover:text-white transition-colors">Top 10% Net Worth by Age</a></li>
+							<li><a href="/1-million-net-worth-by-age" class="hover:text-slate-900 dark:hover:text-white transition-colors">$1 Million Net Worth by Age</a></li>
+							<li><a href="/liquid-net-worth-calculator" class="hover:text-slate-900 dark:hover:text-white transition-colors">Liquid Net Worth Calculator</a></li>
+							<li><a href="/net-worth-percentile" class="hover:text-slate-900 dark:hover:text-white transition-colors">Net Worth Percentile Rank</a></li>
+							<li><a href="/average-net-worth-by-age" class="hover:text-slate-900 dark:hover:text-white transition-colors">Average Net Worth by Age</a></li>
 						</ul>
 					</div>
 					<div>
 						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Net Worth by State</h3>
 						<ul class="space-y-2 text-xs">
-							<li><a href="/state/california/" class="hover:text-slate-900 dark:hover:text-white transition-colors">🌴 California Net Worth</a></li>
-							<li><a href="/state/texas/" class="hover:text-slate-900 dark:hover:text-white transition-colors">⭐ Texas Net Worth</a></li>
-							<li><a href="/state/new-york/" class="hover:text-slate-900 dark:hover:text-white transition-colors">🗽 New York Net Worth</a></li>
-							<li><a href="/state/florida/" class="hover:text-slate-900 dark:hover:text-white transition-colors">☀️ Florida Net Worth</a></li>
-							<li><a href="/state/washington/" class="hover:text-slate-900 dark:hover:text-white transition-colors">🌲 Washington Net Worth</a></li>
-							<li><a href="/net-worth-by-state/" class="text-emerald-800 dark:text-emerald-300 font-bold hover:underline transition-colors">View All 50 States →</a></li>
+							<li><a href="/state/california" class="hover:text-slate-900 dark:hover:text-white transition-colors">🌴 California Net Worth</a></li>
+							<li><a href="/state/texas" class="hover:text-slate-900 dark:hover:text-white transition-colors">⭐ Texas Net Worth</a></li>
+							<li><a href="/state/new-york" class="hover:text-slate-900 dark:hover:text-white transition-colors">🗽 New York Net Worth</a></li>
+							<li><a href="/state/florida" class="hover:text-slate-900 dark:hover:text-white transition-colors">☀️ Florida Net Worth</a></li>
+							<li><a href="/state/washington" class="hover:text-slate-900 dark:hover:text-white transition-colors">🌲 Washington Net Worth</a></li>
+							<li><a href="/net-worth-by-state" class="text-emerald-800 dark:text-emerald-300 font-bold hover:underline transition-colors">View All 50 States →</a></li>
 						</ul>
 					</div>
 					<div>
 						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Trust &amp; Legal</h3>
 						<ul class="space-y-2 text-xs">
-							<li><a href="/about/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Data Methodology</a></li>
-							<li><a href="/privacy-policy/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a></li>
-							<li><a href="/terms/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a></li>
-							<li><a href="/disclaimer/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Financial Disclaimer</a></li>
-							<li><a href="/contact/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact Us</a></li>
+							<li><a href="/about" class="hover:text-slate-900 dark:hover:text-white transition-colors">Data Methodology</a></li>
+							<li><a href="/privacy-policy" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a></li>
+							<li><a href="/terms" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a></li>
+							<li><a href="/disclaimer" class="hover:text-slate-900 dark:hover:text-white transition-colors">Financial Disclaimer</a></li>
+							<li><a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact Us</a></li>
 						</ul>
 					</div>
 				</div>

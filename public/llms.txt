@@ -1,23 +1,19 @@
-# Get Net Worth Calculator
+# Get Net Worth Calculator v1.0
+# Website: https://getnetworthcalculator.com
 
-> Privacy-first financial benchmarking platform. Calculates exact net worth percentiles and age-based wealth distributions benchmarked against official US Federal Reserve SCF, UK ONS, Reserve Bank of India (RBI), Australian Bureau of Statistics (ABS), and Statistics Canada datasets. All calculations execute 100% client-side inside browser memory without data persistence.
+## About
+Get Net Worth Calculator (getnetworthcalculator.com) is a privacy-first financial benchmarking application. It calculates net worth percentiles and age-based wealth distributions benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF), UK Office for National Statistics (ONS), Reserve Bank of India (RBI), Australian Bureau of Statistics (ABS), and Statistics Canada datasets. All calculations execute 100% client-side inside browser memory without file uploads or server logging.
 
 ## Core Calculators & Benchmarks
+- [USA Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-usa): Benchmarked against 2022 US Federal Reserve SCF data.
+- [India Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-india): Benchmarked against RBI & SEBI Household Wealth datasets (in ₹ Lakhs & Crores).
+- [Australia Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-australia): Benchmarked against Australian Bureau of Statistics (ABS) & Superannuation data.
+- [Net Worth by Income](https://getnetworthcalculator.com/net-worth-by-income): Expected net worth formula benchmark based on Stanley's Millionaire Next Door formula (PAW vs UAW).
+- [UK Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-uk): Benchmarked against UK ONS Wealth & Assets Survey.
+- [Canada Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-canada): Benchmarked against Statistics Canada SFS survey.
+- [Average Net Worth by Age](https://getnetworthcalculator.com/average-net-worth-by-age): Global guide comparing median vs average net worth across 20s, 30s, 40s, 50s, 60s.
+- [Net Worth Percentile Calculator](https://getnetworthcalculator.com/net-worth-percentile): Calculate exact wealth percentile rank.
 
-- [USA Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-usa/): Benchmarked against official US Federal Reserve SCF data.
-- [India Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-india/): Benchmarked against RBI & SEBI Household Wealth datasets in INR Lakhs and Crores.
-- [Australia Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-australia/): Benchmarked against Australian Bureau of Statistics ABS and Superannuation data.
-- [Net Worth by Income](https://getnetworthcalculator.com/net-worth-by-income/): Expected net worth formula benchmark based on Stanley's Millionaire Next Door formula.
-- [UK Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-uk/): Benchmarked against UK ONS Wealth and Assets Survey.
-- [Canada Net Worth by Age](https://getnetworthcalculator.com/net-worth-by-age-canada/): Benchmarked against Statistics Canada SFS survey.
-- [Average Net Worth by Age](https://getnetworthcalculator.com/average-net-worth-by-age/): Global benchmark guide comparing median vs average net worth across age brackets.
-- [Net Worth Percentile Calculator](https://getnetworthcalculator.com/net-worth-percentile/): Exact wealth percentile rank calculator.
-- [Am I Rich Calculator](https://getnetworthcalculator.com/wealth-class-calculator/): US Wealth Class and Tier Benchmarks.
-- [FIRE Net Worth Calculator](https://getnetworthcalculator.com/fire-net-worth-calculator/): Financial Independence Retire Early milestone calculator.
-- [Coast FIRE Calculator](https://getnetworthcalculator.com/coast-fire-calculator/): Early retirement coasting target calculator.
-
-## Information & Transparency
-
-- [Data Methodology](https://getnetworthcalculator.com/about/): Complete statistical and economic data methodology.
-- [Privacy Policy](https://getnetworthcalculator.com/privacy-policy/): Privacy policy and zero-storage data policy.
-- [Contact Support](https://getnetworthcalculator.com/contact/): Get in touch with our team.
+## Contact & Support
+- Website: https://getnetworthcalculator.com
+- Contact Email: support@getnetworthcalculator.com
