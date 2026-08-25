@@ -82,31 +82,28 @@ const breadcrumbSchema = {
 		<!-- Google AdSense Account Verification Tag -->
 		<meta name="google-adsense-account" content="ca-pub-9007237469731115" />
 
-		<!-- High Performance Deferred Analytics & AdSense (0 Blocking Time) -->
+		<!-- Google tag (gtag.js) Google Analytics - Immediate Page Open Tracking -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD357K3PTD"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-MD357K3PTD');
+		</script>
+
+		<!-- High Performance Deferred AdSense (0 Blocking Time) -->
 		<script is:inline>
 			(function() {
-				window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				let loaded = false;
+				let adLoaded = false;
+				function loadAdSense() {
+					if (adLoaded) return;
+					adLoaded = true;
+					window.removeEventListener('scroll', loadAdSense);
+					window.removeEventListener('mousemove', loadAdSense);
+					window.removeEventListener('touchstart', loadAdSense);
+					window.removeEventListener('keydown', loadAdSense);
+					window.removeEventListener('click', loadAdSense);
 
-				function loadThirdParty() {
-					if (loaded) return;
-					loaded = true;
-					window.removeEventListener('scroll', loadThirdParty);
-					window.removeEventListener('mousemove', loadThirdParty);
-					window.removeEventListener('touchstart', loadThirdParty);
-					window.removeEventListener('keydown', loadThirdParty);
-					window.removeEventListener('click', loadThirdParty);
-
-					// GA4
-					const ga = document.createElement('script');
-					ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MD357K3PTD';
-					ga.async = true;
-					document.head.appendChild(ga);
-					gtag('js', new Date());
-					gtag('config', 'G-MD357K3PTD');
-
-					// AdSense
 					const ad = document.createElement('script');
 					ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007237469731115';
 					ad.crossOrigin = 'anonymous';
@@ -114,11 +111,11 @@ const breadcrumbSchema = {
 					document.head.appendChild(ad);
 				}
 
-				window.addEventListener('scroll', loadThirdParty, { passive: true, once: true });
-				window.addEventListener('mousemove', loadThirdParty, { passive: true, once: true });
-				window.addEventListener('touchstart', loadThirdParty, { passive: true, once: true });
-				window.addEventListener('keydown', loadThirdParty, { passive: true, once: true });
-				window.addEventListener('click', loadThirdParty, { passive: true, once: true });
+				window.addEventListener('scroll', loadAdSense, { passive: true, once: true });
+				window.addEventListener('mousemove', loadAdSense, { passive: true, once: true });
+				window.addEventListener('touchstart', loadAdSense, { passive: true, once: true });
+				window.addEventListener('keydown', loadAdSense, { passive: true, once: true });
+				window.addEventListener('click', loadAdSense, { passive: true, once: true });
 			})();
 		</script>
 
