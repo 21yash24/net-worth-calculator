@@ -12,7 +12,10 @@ const {
 } = Astro.props;
 
 const rawPath = Astro.url.pathname;
-const cleanPath = rawPath.replace(/\.html$/, '').replace(/\/+$/, '') || '';
+let cleanPath = rawPath.replace(/\.html$/, '').replace(/\/+$/, '') || '';
+if (cleanPath === '/index' || cleanPath === 'index') {
+  cleanPath = '';
+}
 const canonicalURL = cleanPath === '' 
   ? 'https://getnetworthcalculator.com' 
   : `https://getnetworthcalculator.com${cleanPath}`;
