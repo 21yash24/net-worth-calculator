@@ -46,7 +46,8 @@ for (const r of routes) {
 xml += `</urlset>\n`;
 
 fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), xml, 'utf-8');
-// Also write to public so it is included in future builds
+fs.writeFileSync(path.join(DIST_DIR, 'sitemap-index.xml'), xml, 'utf-8');
 fs.writeFileSync(path.resolve('public/sitemap.xml'), xml, 'utf-8');
+fs.writeFileSync(path.resolve('public/sitemap-index.xml'), xml, 'utf-8');
 
-console.log(`✅ Generated dist/sitemap.xml and public/sitemap.xml with ${routes.length} URLs!`);
+console.log(`✅ Generated dist/sitemap.xml and dist/sitemap-index.xml with ${routes.length} URLs!`);
