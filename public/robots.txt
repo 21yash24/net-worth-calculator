@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://getnetworthcalculator.com/sitemap.xml
-Sitemap: https://getnetworthcalculator.com/sitemap-index.xml
