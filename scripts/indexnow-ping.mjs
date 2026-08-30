@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const HOST = 'getnetworthcalculator.com';
 const KEY = '9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
-const SITEMAP_PATH = path.resolve(__dirname, '../dist/sitemap-0.xml');
+const SITEMAP_PATH = path.resolve(__dirname, '../dist/sitemap.xml');
 
 async function pingIndexNow() {
   try {
