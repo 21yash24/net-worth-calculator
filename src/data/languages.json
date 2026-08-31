@@ -1,0 +1,72 @@
+[
+  {
+    "code": "es",
+    "name": "Español",
+    "flag": "🇪🇸",
+    "title": "Calculadora de Patrimonio Neto por Edad (2026) | Percentil Exacto",
+    "metaDesc": "Calcula tu percentil exacto de patrimonio neto según tu edad comparado con datos financieros oficiales. Calculadora de riqueza personal 100% gratuita.",
+    "heroTag": "📊 Benchmark Oficial de Patrimonio",
+    "heroTitle": "Calculadora de <span class='text-emerald-400'>Patrimonio Neto por Edad</span>",
+    "heroSub": "Calcula tu percentil exacto de riqueza personal y descubre en qué posición financiera te encuentras respecto a tu grupo de edad.",
+    "ageLabel": "Tu Edad",
+    "netWorthLabel": "Tu Patrimonio Neto Total ($ / €)",
+    "calcBtn": "CALCULAR MI PERCENTIL",
+    "searchQuery": "calculadora de patrimonio neto por edad"
+  },
+  {
+    "code": "pt",
+    "name": "Português",
+    "flag": "🇧🇷",
+    "title": "Calculadora de Patrimônio Líquido por Idade (2026) | Percentil de Riqueza",
+    "metaDesc": "Calcule seu percentil exato de patrimônio líquido por idade com base em dados oficiais. Descubra sua posição financeira de forma 100% gratuita.",
+    "heroTag": "📊 Benchmark Oficial de Riqueza",
+    "heroTitle": "Calculadora de <span class='text-emerald-400'>Patrimônio Líquido por Idade</span>",
+    "heroSub": "Descubra seu percentil de riqueza por idade e veja se você está entre os 10% ou 1% mais ricos da sua faixa etária.",
+    "ageLabel": "Sua Idade",
+    "netWorthLabel": "Seu Patrimônio Líquido Total ($ / R$)",
+    "calcBtn": "CALCULAR MEU PERCENTIL",
+    "searchQuery": "calculadora patrimonio liquido por idade"
+  },
+  {
+    "code": "de",
+    "name": "Deutsch",
+    "flag": "🇩🇪",
+    "title": "Nettovermögen Rechner nach Alter (2026) | Vermögens-Perzentil",
+    "metaDesc": "Berechnen Sie Ihr genaues Nettovermögen-Perzentil nach Alter. Vergleichen Sie Ihr Vermögen mit offiziellen Haushaltsstatistiken kostenlos.",
+    "heroTag": "📊 Offizieller Vermögens-Vergleich",
+    "heroTitle": "Nettovermögen Rechner <span class='text-emerald-400'>nach Alter</span>",
+    "heroSub": "Ermitteln Sie Ihr Nettovermögen-Perzentil und erfahren Sie, wo Sie im Vermögensvergleich Ihrer Altersgruppe stehen.",
+    "ageLabel": "Ihr Alter",
+    "netWorthLabel": "Gesamtes Nettovermögen ($ / €)",
+    "calcBtn": "PERZENTIL BERECHNEN",
+    "searchQuery": "nettovermögen rechner alter"
+  },
+  {
+    "code": "fr",
+    "name": "Français",
+    "flag": "🇫🇷",
+    "title": "Calculateur de Valeur Nette par Âge (2026) | Centile de Richesse",
+    "metaDesc": "Calculez votre centile de patrimoine net par âge selon les données officielles. Évaluez votre niveau de richesse personnel gratuitement.",
+    "heroTag": "📊 Benchmark Officiel de Patrimoine",
+    "heroTitle": "Calculateur de <span class='text-emerald-400'>Valeur Nette par Âge</span>",
+    "heroSub": "Découvrez votre centile de patrimoine net et comparez votre situation financière par rapport à votre tranche d'âge.",
+    "ageLabel": "Votre Âge",
+    "netWorthLabel": "Valeur Nette Totale ($ / €)",
+    "calcBtn": "CALCULER MON CENTILE",
+    "searchQuery": "calculateur de patrimoine net par age"
+  },
+  {
+    "code": "it",
+    "name": "Italiano",
+    "flag": "🇮🇹",
+    "title": "Calcolatore Patrimonio Netto per Età (2026) | Percentile di Ricchezza",
+    "metaDesc": "Calcola il tuo percentile esatto di patrimonio netto in base all'età. Confronta la tua ricchezza con statistiche ufficiali gratuitamente.",
+    "heroTag": "📊 Benchmark Ufficiale Patrimonio",
+    "heroTitle": "Calcolatore <span class='text-emerald-400'>Patrimonio Netto per Età</span>",
+    "heroSub": "Calcola il tuo percentile di ricchezza per età e scopri la tua posizione finanziaria rispetto alla media nazionale.",
+    "ageLabel": "La Tua Età",
+    "netWorthLabel": "Patrimonio Netto Totale ($ / €)",
+    "calcBtn": "CALCOLA IL MIO PERCENTILE",
+    "searchQuery": "calcolo patrimonio netto per eta"
+  }
+]
