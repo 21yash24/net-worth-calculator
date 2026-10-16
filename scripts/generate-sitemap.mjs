@@ -4,50 +4,74 @@ import path from 'path';
 const DOMAIN = 'https://getnetworthcalculator.com';
 const DIST_DIR = path.resolve('dist');
 
-function getAllHtmlFiles(dir, fileList = []) {
+function getAllHtmlRoutes(dir, fileList = []) {
   if (!fs.existsSync(dir)) return fileList;
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const fullPath = path.join(dir, file);
     if (fs.statSync(fullPath).isDirectory()) {
-      getAllHtmlFiles(fullPath, fileList);
-    } else if (file === 'index.html') {
-      const relPath = path.relative(DIST_DIR, path.dirname(fullPath));
-      const route = relPath === '' ? '/' : `/${relPath.replace(/\\/g, '/')}`;
-      if (!route.startsWith('/404')) {
-        fileList.push(route);
+      getAllHtmlRoutes(fullPath, fileList);
+    } else if (file.endsWith('.html')) {
+      if (file === '404.html') continue;
+      const relPath = path.relative(DIST_DIR, fullPath).replace(/\\/g, '/');
+      let route;
+      if (relPath === 'index.html') {
+        route = '/';
+      } else if (relPath.endsWith('/index.html')) {
+        route = '/' + relPath.replace(/\/index\.html$/, '');
+      } else {
+        route = '/' + relPath.replace(/\.html$/, '');
       }
+      fileList.push(route);
     }
   }
   return fileList;
 }
 
-const routes = getAllHtmlFiles(DIST_DIR);
+const rawRoutes = getAllHtmlRoutes(DIST_DIR);
+// Remove duplicates and sort, ensuring root '/' is always first
+const uniqueRoutes = Array.from(new Set(rawRoutes)).sort((a, b) => {
+  if (a === '/') return -1;
+  if (b === '/') return 1;
+  return a.localeCompare(b);
+});
+
 const today = new Date().toISOString().split('T')[0];
 
-console.log(`Generating sitemap for ${routes.length} routes...`);
+console.log(`Generating sitemap for ${uniqueRoutes.length} clean routes...`);
 
-let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+// 1. Generate primary sitemap.xml with <urlset>
+let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-for (const r of routes) {
+for (const r of uniqueRoutes) {
   const url = r === '/' ? `${DOMAIN}/` : `${DOMAIN}${r}`;
   const priority = r === '/' ? '1.0' : (r.split('/').length <= 2 ? '0.8' : '0.6');
   const changefreq = r === '/' ? 'daily' : 'weekly';
 
-  xml += `  <url>\n`;
-  xml += `    <loc>${url}</loc>\n`;
-  xml += `    <lastmod>${today}</lastmod>\n`;
-  xml += `    <changefreq>${changefreq}</changefreq>\n`;
-  xml += `    <priority>${priority}</priority>\n`;
-  xml += `  </url>\n`;
+  sitemapXml += `  <url>\n`;
+  sitemapXml += `    <loc>${url}</loc>\n`;
+  sitemapXml += `    <lastmod>${today}</lastmod>\n`;
+  sitemapXml += `    <changefreq>${changefreq}</changefreq>\n`;
+  sitemapXml += `    <priority>${priority}</priority>\n`;
+  sitemapXml += `  </url>\n`;
 }
 
-xml += `</urlset>\n`;
+sitemapXml += `</urlset>\n`;
 
-fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), xml, 'utf-8');
-fs.writeFileSync(path.join(DIST_DIR, 'sitemap-index.xml'), xml, 'utf-8');
-fs.writeFileSync(path.resolve('public/sitemap.xml'), xml, 'utf-8');
-fs.writeFileSync(path.resolve('public/sitemap-index.xml'), xml, 'utf-8');
+// 2. Generate valid sitemap-index.xml with <sitemapindex>
+let sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+sitemapIndexXml += `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+sitemapIndexXml += `  <sitemap>\n`;
+sitemapIndexXml += `    <loc>${DOMAIN}/sitemap.xml</loc>\n`;
+sitemapIndexXml += `    <lastmod>${today}</lastmod>\n`;
+sitemapIndexXml += `  </sitemap>\n`;
+sitemapIndexXml += `</sitemapindex>\n`;
 
-console.log(`✅ Generated dist/sitemap.xml and dist/sitemap-index.xml with ${routes.length} URLs!`);
+// Write to dist/ and public/
+fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapXml, 'utf-8');
+fs.writeFileSync(path.join(DIST_DIR, 'sitemap-index.xml'), sitemapIndexXml, 'utf-8');
+fs.writeFileSync(path.resolve('public/sitemap.xml'), sitemapXml, 'utf-8');
+fs.writeFileSync(path.resolve('public/sitemap-index.xml'), sitemapIndexXml, 'utf-8');
+
+console.log(`✅ Successfully generated sitemap.xml (${uniqueRoutes.length} URLs) and valid sitemap-index.xml!`);

@@ -18,7 +18,7 @@ if (cleanPath === '/index' || cleanPath === 'index') {
   cleanPath = '';
 }
 const canonicalURL = cleanPath === '' 
-  ? 'https://getnetworthcalculator.com' 
+  ? 'https://getnetworthcalculator.com/' 
   : `https://getnetworthcalculator.com${cleanPath}`;
 
 const activeLang = languages.find(l => cleanPath === `/${l.code}` || cleanPath.startsWith(`/${l.code}/`))?.code || '';
@@ -31,7 +31,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://getnetworthcalculator.com"
+      "item": "https://getnetworthcalculator.com/"
     },
     ...(cleanPath !== '' ? [{
       "@type": "ListItem",
@@ -70,12 +70,21 @@ const breadcrumbSchema = {
 			<link rel="alternate" hreflang={l.code} href={`https://getnetworthcalculator.com/${l.code}`} />
 		))}
 
+		<!-- WebSite Schema -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "GetNetWorthCalculator",
+			"url": "https://getnetworthcalculator.com/"
+		})} />
+
+
 		<!-- Organization & Publisher Schema -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Organization",
 			"name": "GetNetWorthCalculator",
-			"url": "https://getnetworthcalculator.com",
+			"url": "https://getnetworthcalculator.com/",
 			"logo": "https://getnetworthcalculator.com/favicon-512x512.png",
 			"description": "Privacy-first global wealth benchmarking platform powered by official US Federal Reserve SCF datasets.",
 			"contactPoint": {

@@ -8,7 +8,7 @@ export default defineConfig({
   trailingSlash: 'never',
   build: {
     inlineStylesheets: 'always',
-    format: 'directory'
+    format: 'file'
   },
   vite: {
     plugins: [tailwindcss()]

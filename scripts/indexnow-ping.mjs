@@ -12,7 +12,7 @@ const SITEMAP_PATH = path.resolve(__dirname, '../dist/sitemap.xml');
 
 async function pingIndexNow() {
   try {
-    console.log('📖 Reading dist/sitemap-0.xml to extract URLs...');
+    console.log('📖 Reading dist/sitemap.xml to extract URLs...');
     if (!fs.existsSync(SITEMAP_PATH)) {
       console.error('❌ Sitemap not found at', SITEMAP_PATH, '. Run npm run build first.');
       return;
