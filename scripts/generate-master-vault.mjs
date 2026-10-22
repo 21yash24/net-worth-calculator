@@ -51,7 +51,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 0: 🟢 START HERE (60-SECOND HUMAN GUIDE — OFFICIAL GETNETWORTH TOUCH)
   // =========================================================================
-  const wsGuide = workbook.addWorksheet('🟢 START HERE (60-Sec Guide)', {
+  const wsGuide = workbook.addWorksheet('START HERE', {
     views: [{ showGridLines: true }]
   });
 
@@ -88,7 +88,7 @@ async function createMasterVault() {
   wsGuide.getRow(5).height = 22;
 
   const steps = [
-    { step: 'Step 1: Open Tab 2', title: "Click '⚡ 2-Min Quick Check-In'", desc: 'On the 1st of every month, open the second tab.' },
+    { step: 'Step 1: Open Tab 2', title: "Click '2-Min Check-In'", desc: 'On the 1st of every month, open the second tab.' },
     { step: 'Step 2: Enter 4 Numbers', title: 'Fill the Green Cells Only', desc: 'Type your: (1) Cash, (2) Invested Portfolio, (3) Property Value, (4) Total Debts.' },
     { step: 'Step 3: You Are Done!', title: 'Relax & Enjoy Your Life', desc: 'All formulas, Fed Reserve Percentile rankings, FIRE retirement dates, and Safe-to-Spend buffers calculate automatically!' }
   ];
@@ -136,11 +136,11 @@ async function createMasterVault() {
   wsGuide.getRow(15).height = 22;
 
   const tabDescriptions = [
-    { name: '⚡ 2-Min Quick Check-In', purpose: 'For 90% of months: Type 4 numbers once a month in 90 seconds. Zero homework.' },
+    { name: '2-Min Check-In', purpose: 'For 90% of months: Type 4 numbers once a month in 90 seconds. Zero homework.' },
     { name: '📊 Executive Dashboard', purpose: 'Bloomberg-style visual terminal with Stanley & Danko Wealth Class (PAW/UAW) Engine.' },
     { name: '💸 Smart Budget (50/30/20)', purpose: "Answers: 'How much can I spend today guilt-free?' (Needs 50%, Wants 30%, Wealth 20%)." },
-    { name: '🎯 Sinking Funds Shield', purpose: 'Prevents budget shock from car repairs, holiday travel, and annual insurance renewals.' },
-    { name: '🔥 FIRE Freedom Engine', purpose: 'Trinity 4% rule calculator showing your Coast FIRE milestone and exact retirement date.' },
+    { name: 'Sinking Funds Shield', purpose: 'Prevents budget shock from car repairs, holiday travel, and annual insurance renewals.' },
+    { name: 'FIRE Freedom Engine', purpose: 'Trinity 4% rule calculator showing your Coast FIRE milestone and exact retirement date.' },
     { name: '💳 Debt Accelerator', purpose: 'Side-by-side Avalanche (interest saver) vs Snowball (momentum builder) payoff rank.' },
     { name: '🏛️ Fed & State Benchmarks', purpose: 'Official US Federal Reserve SCF microdata + 50 US States Median Wealth Index.' }
   ];
@@ -168,7 +168,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 1: ⚡ 2-MINUTE MONTHLY QUICK-CHECK (SOLVES SPREADSHEET FATIGUE)
   // =========================================================================
-  const wsQuick = workbook.addWorksheet('⚡ 2-Min Quick Check-In', {
+  const wsQuick = workbook.addWorksheet('2-Min Check-In', {
     views: [{ showGridLines: true }]
   });
 
@@ -253,7 +253,7 @@ async function createMasterVault() {
     wsQuick.getCell(`F${rowNum}`).numFmt = '$#,##0';
 
     const nwCell = wsQuick.getCell(`G${rowNum}`);
-    nwCell.value = { formula: `=(C${rowNum}+D${rowNum}+E${rowNum})-F${rowNum}` };
+    nwCell.value = { formula: `(C${rowNum}+D${rowNum}+E${rowNum})-F${rowNum}` };
     nwCell.numFmt = '$#,##0';
     nwCell.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FF065F46' } };
 
@@ -263,21 +263,21 @@ async function createMasterVault() {
       deltaCell.value = 0;
       pctCell.value = 0;
     } else {
-      deltaCell.value = { formula: `=G${rowNum}-G${rowNum - 1}` };
-      pctCell.value = { formula: `=(G${rowNum}-G${rowNum - 1})/G${rowNum - 1}` };
+      deltaCell.value = { formula: `G${rowNum}-G${rowNum - 1}` };
+      pctCell.value = { formula: `(G${rowNum}-G${rowNum - 1})/G${rowNum - 1}` };
     }
     deltaCell.numFmt = '+$#,##0;-$#,##0;$0';
     pctCell.numFmt = '+0.0%;-0.0%;0.0%';
 
     // Liquid Net Worth (Cash + Invested)
     const liqCell = wsQuick.getCell(`J${rowNum}`);
-    liqCell.value = { formula: `=C${rowNum}+D${rowNum}` };
+    liqCell.value = { formula: `C${rowNum}+D${rowNum}` };
     liqCell.numFmt = '$#,##0';
     liqCell.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FF10B981' } };
 
     // Liquid Ratio (% of Total Net Worth)
     const liqRatioCell = wsQuick.getCell(`K${rowNum}`);
-    liqRatioCell.value = { formula: `=(C${rowNum}+D${rowNum})/G${rowNum}` };
+    liqRatioCell.value = { formula: `(C${rowNum}+D${rowNum})/G${rowNum}` };
     liqRatioCell.numFmt = '0.0%';
 
     ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'].forEach(col => {
@@ -293,15 +293,15 @@ async function createMasterVault() {
   wsQuick.getRow(qSumRow).height = 22;
   wsQuick.getCell(`B${qSumRow}`).value = 'LATEST / ANNUAL';
   wsQuick.getCell(`B${qSumRow}`).font = { bold: true };
-  wsQuick.getCell(`C${qSumRow}`).value = { formula: '=C17' };
-  wsQuick.getCell(`D${qSumRow}`).value = { formula: '=D17' };
-  wsQuick.getCell(`E${qSumRow}`).value = { formula: '=E17' };
-  wsQuick.getCell(`F${qSumRow}`).value = { formula: '=F17' };
-  wsQuick.getCell(`G${qSumRow}`).value = { formula: '=G17' };
-  wsQuick.getCell(`H${qSumRow}`).value = { formula: '=G17-G6' };
-  wsQuick.getCell(`I${qSumRow}`).value = { formula: '=(G17-G6)/G6' };
-  wsQuick.getCell(`J${qSumRow}`).value = { formula: '=C17+D17' };
-  wsQuick.getCell(`K${qSumRow}`).value = { formula: '=(C17+D17)/G17' };
+  wsQuick.getCell(`C${qSumRow}`).value = { formula: 'C17' };
+  wsQuick.getCell(`D${qSumRow}`).value = { formula: 'D17' };
+  wsQuick.getCell(`E${qSumRow}`).value = { formula: 'E17' };
+  wsQuick.getCell(`F${qSumRow}`).value = { formula: 'F17' };
+  wsQuick.getCell(`G${qSumRow}`).value = { formula: 'G17' };
+  wsQuick.getCell(`H${qSumRow}`).value = { formula: 'G17-G6' };
+  wsQuick.getCell(`I${qSumRow}`).value = { formula: '(G17-G6)/G6' };
+  wsQuick.getCell(`J${qSumRow}`).value = { formula: 'C17+D17' };
+  wsQuick.getCell(`K${qSumRow}`).value = { formula: '(C17+D17)/G17' };
 
   ['C', 'D', 'E', 'F', 'G', 'H', 'J'].forEach(c => wsQuick.getCell(`${c}${qSumRow}`).numFmt = '$#,##0');
   ['I', 'K'].forEach(c => wsQuick.getCell(`${c}${qSumRow}`).numFmt = '+0.0%;-0.0%;0.0%');
@@ -315,7 +315,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 2: 📊 EXECUTIVE WEALTH DASHBOARD (BLOOMBERG STYLE TERMINAL)
   // =========================================================================
-  const ws1 = workbook.addWorksheet('📊 Executive Dashboard', {
+  const ws1 = workbook.addWorksheet('Executive Dashboard', {
     views: [{ showGridLines: true }]
   });
 
@@ -358,7 +358,7 @@ async function createMasterVault() {
 
   ws1.mergeCells('B6:C6');
   const nwKPI = ws1.getCell('B6');
-  nwKPI.value = { formula: "='⚡ 2-Min Quick Check-In'!G18" };
+  nwKPI.value = { formula: "'2-Min Check-In'!G18" };
   nwKPI.font = { size: 18, bold: true, color: { argb: 'FFFFFFFF' } };
   nwKPI.numFmt = '$#,##0';
   nwKPI.fill = solidFill(colors.cardBg);
@@ -366,7 +366,7 @@ async function createMasterVault() {
 
   ws1.mergeCells('B7:C7');
   const nwSub = ws1.getCell('B7');
-  nwSub.value = { formula: `="▲ Annual Growth: " & TEXT('⚡ 2-Min Quick Check-In'!I18, "+0.0%") & " (+$" & TEXT('⚡ 2-Min Quick Check-In'!H18, "#,##0") & ")"` };
+  nwSub.value = { formula: `"▲ Annual Growth: " & TEXT('2-Min Check-In'!I18, "+0.0%") & " (+$" & TEXT('2-Min Check-In'!H18, "#,##0") & ")"` };
   nwSub.font = { size: 9, bold: true, color: { argb: 'FF10B981' } };
   nwSub.fill = solidFill(colors.cardBg);
 
@@ -378,7 +378,7 @@ async function createMasterVault() {
 
   ws1.mergeCells('D6:E6');
   const liqKPI = ws1.getCell('D6');
-  liqKPI.value = { formula: "='⚡ 2-Min Quick Check-In'!C18+'⚡ 2-Min Quick Check-In'!D18" };
+  liqKPI.value = { formula: "'2-Min Check-In'!C18+'2-Min Check-In'!D18" };
   liqKPI.font = { size: 18, bold: true, color: { argb: 'FF10B981' } };
   liqKPI.numFmt = '$#,##0';
   liqKPI.fill = solidFill(colors.cardBg);
@@ -386,7 +386,7 @@ async function createMasterVault() {
 
   ws1.mergeCells('D7:E7');
   const liqSub = ws1.getCell('D7');
-  liqSub.value = { formula: `="Liquid Ratio: " & TEXT(('⚡ 2-Min Quick Check-In'!C18+'⚡ 2-Min Quick Check-In'!D18)/('⚡ 2-Min Quick Check-In'!G18+'⚡ 2-Min Quick Check-In'!F18), "0.0%") & " of total assets"` };
+  liqSub.value = { formula: `"Liquid Ratio: " & TEXT(('2-Min Check-In'!C18+'2-Min Check-In'!D18)/('2-Min Check-In'!G18+'2-Min Check-In'!F18), "0.0%") & " of total assets"` };
   liqSub.font = { size: 9, color: { argb: 'FFCBD5E1' } };
   liqSub.fill = solidFill(colors.cardBg);
 
@@ -432,11 +432,11 @@ async function createMasterVault() {
   });
 
   const milestones = [
-    { label: 'Q1 (Jan 2026 Baseline)', nw: "='⚡ 2-Min Quick Check-In'!G6", inv: "='⚡ 2-Min Quick Check-In'!D6", debt: "='⚡ 2-Min Quick Check-In'!F6", note: 'Starting 2026 Baseline' },
-    { label: 'Q2 (Apr 2026)', nw: "='⚡ 2-Min Quick Check-In'!G9", inv: "='⚡ 2-Min Quick Check-In'!D9", debt: "='⚡ 2-Min Quick Check-In'!F9", note: 'Q1 Tax Optimization' },
-    { label: 'Q3 (Jul 2026)', nw: "='⚡ 2-Min Quick Check-In'!G12", inv: "='⚡ 2-Min Quick Check-In'!D12", debt: "='⚡ 2-Min Quick Check-In'!F12", note: 'Mid-Year Portfolio Rebalance' },
-    { label: 'Q4 (Oct 2026)', nw: "='⚡ 2-Min Quick Check-In'!G15", inv: "='⚡ 2-Min Quick Check-In'!D15", debt: "='⚡ 2-Min Quick Check-In'!F15", note: 'Year-End Sinking Fund Push' },
-    { label: 'Year-End Total (Dec 2026)', nw: "='⚡ 2-Min Quick Check-In'!G17", inv: "='⚡ 2-Min Quick Check-In'!D17", debt: "='⚡ 2-Min Quick Check-In'!F17", note: 'Annual Target Achieved' }
+    { label: 'Q1 (Jan 2026 Baseline)', nw: "'2-Min Check-In'!G6", inv: "'2-Min Check-In'!D6", debt: "'2-Min Check-In'!F6", note: 'Starting 2026 Baseline' },
+    { label: 'Q2 (Apr 2026)', nw: "'2-Min Check-In'!G9", inv: "'2-Min Check-In'!D9", debt: "'2-Min Check-In'!F9", note: 'Q1 Tax Optimization' },
+    { label: 'Q3 (Jul 2026)', nw: "'2-Min Check-In'!G12", inv: "'2-Min Check-In'!D12", debt: "'2-Min Check-In'!F12", note: 'Mid-Year Portfolio Rebalance' },
+    { label: 'Q4 (Oct 2026)', nw: "'2-Min Check-In'!G15", inv: "'2-Min Check-In'!D15", debt: "'2-Min Check-In'!F15", note: 'Year-End Sinking Fund Push' },
+    { label: 'Year-End Total (Dec 2026)', nw: "'2-Min Check-In'!G17", inv: "'2-Min Check-In'!D17", debt: "'2-Min Check-In'!F17", note: 'Annual Target Achieved' }
   ];
 
   milestones.forEach((m, idx) => {
@@ -532,7 +532,7 @@ async function createMasterVault() {
 
   // Expected Net Worth: =(B24*C24)/10
   const expCell = ws1.getCell('D24');
-  expCell.value = { formula: '=(B24*C24)/10' };
+  expCell.value = { formula: '(B24*C24)/10' };
   expCell.numFmt = '$#,##0';
   expCell.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   expCell.fill = solidFill(colors.cardBg);
@@ -541,7 +541,7 @@ async function createMasterVault() {
 
   // Wealth Multiplier: =QuickCheckIn!G18/D24
   const mulCell = ws1.getCell('E24');
-  mulCell.value = { formula: "='⚡ 2-Min Quick Check-In'!G18/D24" };
+  mulCell.value = { formula: "'2-Min Check-In'!G18/D24" };
   mulCell.numFmt = '0.00"x"';
   mulCell.font = { size: 12, bold: true, color: { argb: 'FF10B981' } };
   mulCell.fill = solidFill(colors.cardBg);
@@ -550,7 +550,7 @@ async function createMasterVault() {
 
   // Wealth Class Status Formula
   const statCell = ws1.getCell('F24');
-  statCell.value = { formula: '=IF(\'⚡ 2-Min Quick Check-In\'!G18>=2*D24, "🏆 PAW (Top 10% Accumulator)", IF(\'⚡ 2-Min Quick Check-In\'!G18>=D24, "⚡ AAW (Solid Average)", "⚠️ UAW (Under Accumulator)"))' };
+  statCell.value = { formula: 'IF(\'⚡ 2-Min Quick Check-In\'!G18>=2*D24, "🏆 PAW (Top 10% Accumulator)", IF(\'⚡ 2-Min Quick Check-In\'!G18>=D24, "⚡ AAW (Solid Average)", "⚠️ UAW (Under Accumulator)"))' };
   statCell.font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
   statCell.fill = solidFill(colors.cardBg);
   statCell.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -605,14 +605,14 @@ async function createMasterVault() {
 
     // Progress: =MIN(1, QuickCheckIn!G18 / target)
     const progCell = ws1.getCell(`D${r}`);
-    progCell.value = { formula: `=MIN(1, '⚡ 2-Min Quick Check-In'!G18/C${r})` };
+    progCell.value = { formula: `MIN(1, '2-Min Check-In'!G18/C${r})` };
     progCell.numFmt = '0.0%';
     progCell.font = { size: 9, bold: true, color: { argb: 'FF10B981' } };
     progCell.border = thinBorder;
 
     // Remaining Gap: =MAX(0, target - QuickCheckIn!G18)
     const gapCell = ws1.getCell(`E${r}`);
-    gapCell.value = { formula: `=MAX(0, C${r}-'⚡ 2-Min Quick Check-In'!G18)` };
+    gapCell.value = { formula: `MAX(0, C${r}-'2-Min Check-In'!G18)` };
     gapCell.numFmt = '$#,##0';
     gapCell.font = { size: 9, bold: true };
     gapCell.border = thinBorder;
@@ -655,28 +655,28 @@ async function createMasterVault() {
 
   ws1.getRow(35).height = 24;
   const lAsset = ws1.getCell('B35');
-  lAsset.value = { formula: "='⚡ 2-Min Quick Check-In'!C18+'⚡ 2-Min Quick Check-In'!D18" };
+  lAsset.value = { formula: "'2-Min Check-In'!C18+'2-Min Check-In'!D18" };
   lAsset.numFmt = '$#,##0';
   lAsset.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   lAsset.fill = solidFill(colors.cardBg);
   lAsset.border = thinBorder;
 
   const lNeeds = ws1.getCell('C35');
-  lNeeds.value = { formula: "='💸 Smart Budget (50-30-20)'!C20" };
+  lNeeds.value = { formula: "'Smart Budget (50-30-20)'!C20" };
   lNeeds.numFmt = '$#,##0';
   lNeeds.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   lNeeds.fill = solidFill(colors.cardBg);
   lNeeds.border = thinBorder;
 
   const lRunway = ws1.getCell('D35');
-  lRunway.value = { formula: '=B35/C35' };
+  lRunway.value = { formula: 'B35/C35' };
   lRunway.numFmt = '0.0" Months"';
   lRunway.font = { size: 12, bold: true, color: { argb: 'FF10B981' } };
   lRunway.fill = solidFill(colors.cardBg);
   lRunway.border = thinBorder;
 
   const lRatio = ws1.getCell('E35');
-  lRatio.value = { formula: "=B35/'⚡ 2-Min Quick Check-In'!G18" };
+  lRatio.value = { formula: "B35/'2-Min Check-In'!G18" };
   lRatio.numFmt = '0.0%';
   lRatio.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   lRatio.fill = solidFill(colors.cardBg);
@@ -701,7 +701,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 3: 💸 SMART MONTHLY BUDGET (50/30/20 & GUILT-FREE SPENDING BUFFER)
   // =========================================================================
-  const wsBudget = workbook.addWorksheet('💸 Smart Budget (50-30-20)', {
+  const wsBudget = workbook.addWorksheet('Smart Budget (50-30-20)', {
     views: [{ showGridLines: true }]
   });
 
@@ -733,7 +733,7 @@ async function createMasterVault() {
 
   wsBudget.mergeCells('B6:D6');
   const safeSpendCell = wsBudget.getCell('B6');
-  safeSpendCell.value = { formula: '=E24' };
+  safeSpendCell.value = { formula: 'E24' };
   safeSpendCell.numFmt = '$#,##0';
   safeSpendCell.font = { size: 18, bold: true, color: { argb: 'FF10B981' } };
   safeSpendCell.fill = solidFill(colors.cardBg);
@@ -745,7 +745,7 @@ async function createMasterVault() {
 
   wsBudget.mergeCells('E6:F6');
   const dailySpendCell = wsBudget.getCell('E6');
-  dailySpendCell.value = { formula: '=E24/30' };
+  dailySpendCell.value = { formula: 'E24/30' };
   dailySpendCell.numFmt = '$#,##0/day';
   dailySpendCell.font = { size: 15, bold: true, color: { argb: 'FFFFFFFF' } };
   dailySpendCell.fill = solidFill(colors.cardBg);
@@ -787,7 +787,7 @@ async function createMasterVault() {
     wsBudget.getCell(`B${r}`).value = item.name;
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
-    wsBudget.getCell(`E${r}`).value = { formula: `=D${r}-C${r}` };
+    wsBudget.getCell(`E${r}`).value = { formula: `D${r}-C${r}` };
     wsBudget.getCell(`F${r}`).value = 'Inflow';
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
@@ -798,9 +798,9 @@ async function createMasterVault() {
   wsBudget.getRow(rIncTot).height = 20;
   wsBudget.getCell(`B${rIncTot}`).value = 'TOTAL NET INCOME';
   wsBudget.getCell(`B${rIncTot}`).font = { bold: true };
-  wsBudget.getCell(`C${rIncTot}`).value = { formula: '=SUM(C10:C12)' };
-  wsBudget.getCell(`D${rIncTot}`).value = { formula: '=SUM(D10:D12)' };
-  wsBudget.getCell(`E${rIncTot}`).value = { formula: '=D13-C13' };
+  wsBudget.getCell(`C${rIncTot}`).value = { formula: 'SUM(C10:C12)' };
+  wsBudget.getCell(`D${rIncTot}`).value = { formula: 'SUM(D10:D12)' };
+  wsBudget.getCell(`E${rIncTot}`).value = { formula: 'D13-C13' };
   wsBudget.getCell(`F${rIncTot}`).value = '100.0% Baseline';
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rIncTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
@@ -831,8 +831,8 @@ async function createMasterVault() {
     wsBudget.getCell(`B${r}`).value = item.name;
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
-    wsBudget.getCell(`E${r}`).value = { formula: `=C${r}-D${r}` };
-    wsBudget.getCell(`F${r}`).value = { formula: `=TEXT(D${r}/$D$13, "0.0%")` };
+    wsBudget.getCell(`E${r}`).value = { formula: `C${r}-D${r}` };
+    wsBudget.getCell(`F${r}`).value = { formula: `TEXT(D${r}/$D$13, "0.0%")` };
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
   });
@@ -841,10 +841,10 @@ async function createMasterVault() {
   const rNeedTot = 20;
   wsBudget.getRow(rNeedTot).height = 20;
   wsBudget.getCell(`B${rNeedTot}`).value = 'TOTAL ESSENTIAL NEEDS';
-  wsBudget.getCell(`C${rNeedTot}`).value = { formula: '=SUM(C15:C19)' };
-  wsBudget.getCell(`D${rNeedTot}`).value = { formula: '=SUM(D15:D19)' };
-  wsBudget.getCell(`E${rNeedTot}`).value = { formula: '=C20-D20' };
-  wsBudget.getCell(`F${rNeedTot}`).value = { formula: `="Actual: " & TEXT(D20/D13, "0.0%") & " (Target: ≤50%)"` };
+  wsBudget.getCell(`C${rNeedTot}`).value = { formula: 'SUM(C15:C19)' };
+  wsBudget.getCell(`D${rNeedTot}`).value = { formula: 'SUM(D15:D19)' };
+  wsBudget.getCell(`E${rNeedTot}`).value = { formula: 'C20-D20' };
+  wsBudget.getCell(`F${rNeedTot}`).value = { formula: `"Actual: " & TEXT(D20/D13, "0.0%") & " (Target: ≤50%)"` };
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rNeedTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
     const cell = wsBudget.getCell(`${c}${rNeedTot}`);
@@ -872,8 +872,8 @@ async function createMasterVault() {
     wsBudget.getCell(`B${r}`).value = item.name;
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
-    wsBudget.getCell(`E${r}`).value = { formula: `=C${r}-D${r}` };
-    wsBudget.getCell(`F${r}`).value = { formula: `=TEXT(D${r}/$D$13, "0.0%")` };
+    wsBudget.getCell(`E${r}`).value = { formula: `C${r}-D${r}` };
+    wsBudget.getCell(`F${r}`).value = { formula: `TEXT(D${r}/$D$13, "0.0%")` };
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
   });
@@ -882,10 +882,10 @@ async function createMasterVault() {
   const rWantTot = 25;
   wsBudget.getRow(rWantTot).height = 20;
   wsBudget.getCell(`B${rWantTot}`).value = 'TOTAL GUILT-FREE WANTS';
-  wsBudget.getCell(`C${rWantTot}`).value = { formula: '=SUM(C22:C24)' };
-  wsBudget.getCell(`D${rWantTot}`).value = { formula: '=SUM(D22:D24)' };
-  wsBudget.getCell(`E${rWantTot}`).value = { formula: '=C25-D25' };
-  wsBudget.getCell(`F${rWantTot}`).value = { formula: `="Actual: " & TEXT(D25/D13, "0.0%") & " (Target: ≤30%)"` };
+  wsBudget.getCell(`C${rWantTot}`).value = { formula: 'SUM(C22:C24)' };
+  wsBudget.getCell(`D${rWantTot}`).value = { formula: 'SUM(D22:D24)' };
+  wsBudget.getCell(`E${rWantTot}`).value = { formula: 'C25-D25' };
+  wsBudget.getCell(`F${rWantTot}`).value = { formula: `"Actual: " & TEXT(D25/D13, "0.0%") & " (Target: ≤30%)"` };
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rWantTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
     const cell = wsBudget.getCell(`${c}${rWantTot}`);
@@ -913,8 +913,8 @@ async function createMasterVault() {
     wsBudget.getCell(`B${r}`).value = item.name;
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
-    wsBudget.getCell(`E${r}`).value = { formula: `=D${r}-C${r}` };
-    wsBudget.getCell(`F${r}`).value = { formula: `=TEXT(D${r}/$D$13, "0.0%")` };
+    wsBudget.getCell(`E${r}`).value = { formula: `D${r}-C${r}` };
+    wsBudget.getCell(`F${r}`).value = { formula: `TEXT(D${r}/$D$13, "0.0%")` };
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
   });
@@ -923,10 +923,10 @@ async function createMasterVault() {
   const rSaveTot = 30;
   wsBudget.getRow(rSaveTot).height = 20;
   wsBudget.getCell(`B${rSaveTot}`).value = 'TOTAL WEALTH SURPLUS';
-  wsBudget.getCell(`C${rSaveTot}`).value = { formula: '=SUM(C27:C29)' };
-  wsBudget.getCell(`D${rSaveTot}`).value = { formula: '=SUM(D27:D29)' };
-  wsBudget.getCell(`E${rSaveTot}`).value = { formula: '=D30-C30' };
-  wsBudget.getCell(`F${rSaveTot}`).value = { formula: `="Savings Rate: " & TEXT(D30/D13, "0.0%") & " (FIRE Speed)"` };
+  wsBudget.getCell(`C${rSaveTot}`).value = { formula: 'SUM(C27:C29)' };
+  wsBudget.getCell(`D${rSaveTot}`).value = { formula: 'SUM(D27:D29)' };
+  wsBudget.getCell(`E${rSaveTot}`).value = { formula: 'D30-C30' };
+  wsBudget.getCell(`F${rSaveTot}`).value = { formula: `"Savings Rate: " & TEXT(D30/D13, "0.0%") & " (FIRE Speed)"` };
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rSaveTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
     const cell = wsBudget.getCell(`${c}${rSaveTot}`);
@@ -938,7 +938,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 4: 🎯 SINKING FUNDS & IRREGULAR EXPENSE SHIELD
   // =========================================================================
-  const wsSinking = workbook.addWorksheet('🎯 Sinking Funds Shield', {
+  const wsSinking = workbook.addWorksheet('Sinking Funds Shield', {
     views: [{ showGridLines: true }]
   });
 
@@ -995,10 +995,10 @@ async function createMasterVault() {
     wsSinking.getCell(`B${r}`).value = sf.name;
     wsSinking.getCell(`C${r}`).value = sf.target;
     wsSinking.getCell(`D${r}`).value = sf.curr;
-    wsSinking.getCell(`E${r}`).value = { formula: `=C${r}-D${r}` };
+    wsSinking.getCell(`E${r}`).value = { formula: `C${r}-D${r}` };
     wsSinking.getCell(`F${r}`).value = sf.date;
     wsSinking.getCell(`G${r}`).value = sf.mo;
-    wsSinking.getCell(`H${r}`).value = { formula: `=D${r}/C${r}` };
+    wsSinking.getCell(`H${r}`).value = { formula: `D${r}/C${r}` };
 
     ['C', 'D', 'E', 'G'].forEach(c => wsSinking.getCell(`${c}${r}`).numFmt = '$#,##0');
     wsSinking.getCell(`H${r}`).numFmt = '0.0%';
@@ -1012,12 +1012,12 @@ async function createMasterVault() {
   const sTotRow = 11;
   wsSinking.getRow(sTotRow).height = 22;
   wsSinking.getCell(`B${sTotRow}`).value = 'TOTAL SINKING FUNDS';
-  wsSinking.getCell(`C${sTotRow}`).value = { formula: '=SUM(C6:C10)' };
-  wsSinking.getCell(`D${sTotRow}`).value = { formula: '=SUM(D6:D10)' };
-  wsSinking.getCell(`E${sTotRow}`).value = { formula: '=SUM(E6:E10)' };
+  wsSinking.getCell(`C${sTotRow}`).value = { formula: 'SUM(C6:C10)' };
+  wsSinking.getCell(`D${sTotRow}`).value = { formula: 'SUM(D6:D10)' };
+  wsSinking.getCell(`E${sTotRow}`).value = { formula: 'SUM(E6:E10)' };
   wsSinking.getCell(`F${sTotRow}`).value = 'Multiple';
-  wsSinking.getCell(`G${sTotRow}`).value = { formula: '=SUM(G6:G10)' };
-  wsSinking.getCell(`H${sTotRow}`).value = { formula: '=D11/C11' };
+  wsSinking.getCell(`G${sTotRow}`).value = { formula: 'SUM(G6:G10)' };
+  wsSinking.getCell(`H${sTotRow}`).value = { formula: 'D11/C11' };
 
   ['C', 'D', 'E', 'G'].forEach(c => wsSinking.getCell(`${c}${sTotRow}`).numFmt = '$#,##0');
   wsSinking.getCell(`H${sTotRow}`).numFmt = '0.0%';
@@ -1031,7 +1031,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 5: 🔥 FIRE FREEDOM & RETIREMENT ENGINE
   // =========================================================================
-  const wsFIRE = workbook.addWorksheet('🔥 FIRE Freedom Engine', {
+  const wsFIRE = workbook.addWorksheet('FIRE Freedom Engine', {
     views: [{ showGridLines: true }]
   });
 
@@ -1057,8 +1057,8 @@ async function createMasterVault() {
     { name: 'Target Annual Retirement Spending', val: 66000, fmt: '$#,##0' },
     { name: 'Safe Withdrawal Rate (Standard Trinity 4%)', val: 0.04, fmt: '0.0%' },
     { name: 'Expected Real Return After Inflation', val: 0.07, fmt: '0.0%' },
-    { name: 'Current Liquid Invested Portfolio', val: "='⚡ 2-Min Quick Check-In'!D18", fmt: '$#,##0' },
-    { name: 'Monthly Investment Inflow (from Budget)', val: "='💸 Smart Budget (50-30-20)'!D27", fmt: '$#,##0' }
+    { name: 'Current Liquid Invested Portfolio', val: "='2-Min Check-In'!D18", fmt: '$#,##0' },
+    { name: 'Monthly Investment Inflow (from Budget)', val: "='Smart Budget (50-30-20)'!D27", fmt: '$#,##0' }
   ];
 
   fireInputs.forEach((inp, idx) => {
@@ -1066,8 +1066,9 @@ async function createMasterVault() {
     wsFIRE.getRow(r).height = 19;
     wsFIRE.getCell(`B${r}`).value = inp.name;
     const v = wsFIRE.getCell(`C${r}`);
-    if (typeof inp.val === 'string' && inp.val.startsWith('=')) {
-      v.value = { formula: inp.val.slice(1) };
+    if (typeof inp.val === 'string' && (inp.val.startsWith('=') || inp.val.includes('!'))) {
+      const cleanF = inp.val.startsWith('=') ? inp.val.slice(1) : inp.val;
+      v.value = { formula: cleanF };
     } else {
       v.value = inp.val;
     }
@@ -1084,10 +1085,10 @@ async function createMasterVault() {
   wsFIRE.getCell('B12').fill = solidFill(colors.emeraldDark);
 
   const fireTiers = [
-    { name: 'Lean FIRE (25x Bare Minimum Expenses)', formula: '=C6*0.65/C7', desc: 'Survival baseline without luxury' },
-    { name: 'Standard FIRE (25x Current Expenses / 4%)', formula: '=C6/C7', desc: 'Replaces 100% of current lifestyle' },
-    { name: 'Fat FIRE (Abundant Lifestyle 35x Expenses)', formula: '=C6*1.4/C7', desc: 'Zero financial restrictions' },
-    { name: 'Coast FIRE Target for Age 32 (No Further Savings)', formula: '=(C6/C7)/(1+C8)^(60-C5)', desc: 'Compounding does all remaining work' }
+    { name: 'Lean FIRE (25x Bare Minimum Expenses)', formula: 'C6*0.65/C7', desc: 'Survival baseline without luxury' },
+    { name: 'Standard FIRE (25x Current Expenses / 4%)', formula: 'C6/C7', desc: 'Replaces 100% of current lifestyle' },
+    { name: 'Fat FIRE (Abundant Lifestyle 35x Expenses)', formula: 'C6*1.4/C7', desc: 'Zero financial restrictions' },
+    { name: 'Coast FIRE Target for Age 32 (No Further Savings)', formula: '(C6/C7)/(1+C8)^(60-C5)', desc: 'Compounding does all remaining work' }
   ];
 
   fireTiers.forEach((tier, idx) => {
@@ -1095,7 +1096,8 @@ async function createMasterVault() {
     wsFIRE.getRow(r).height = 20;
     wsFIRE.getCell(`B${r}`).value = tier.name;
     const cVal = wsFIRE.getCell(`C${r}`);
-    cVal.value = { formula: tier.formula.slice(1) };
+    const cleanFormula = tier.formula.startsWith('=') ? tier.formula.slice(1) : tier.formula;
+    cVal.value = { formula: cleanFormula };
     cVal.numFmt = '$#,##0';
     cVal.font = { bold: true };
 
@@ -1108,7 +1110,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 6: 💳 DEBT ACCELERATOR (AVALANCHE VS SNOWBALL)
   // =========================================================================
-  const wsDebt = workbook.addWorksheet('💳 Debt Avalanche & Snowball', {
+  const wsDebt = workbook.addWorksheet('Debt Avalanche & Snowball', {
     views: [{ showGridLines: true }]
   });
 
@@ -1167,12 +1169,12 @@ async function createMasterVault() {
   wsDebt.getRow(9).height = 20;
   wsDebt.getCell('B9').value = 'TOTAL LIABILITIES';
   wsDebt.getCell('B9').font = { bold: true };
-  wsDebt.getCell('C9').value = { formula: '=SUM(C5:C8)' };
+  wsDebt.getCell('C9').value = { formula: 'SUM(C5:C8)' };
   wsDebt.getCell('C9').numFmt = '$#,##0';
   wsDebt.getCell('C9').font = { bold: true };
-  wsDebt.getCell('D9').value = { formula: '=AVERAGE(D5:D8)' };
+  wsDebt.getCell('D9').value = { formula: 'AVERAGE(D5:D8)' };
   wsDebt.getCell('D9').numFmt = '0.00%';
-  wsDebt.getCell('E9').value = { formula: '=SUM(E5:E8)' };
+  wsDebt.getCell('E9').value = { formula: 'SUM(E5:E8)' };
   wsDebt.getCell('E9').numFmt = '$#,##0';
   wsDebt.getCell('E9').font = { bold: true };
   wsDebt.getCell('F9').value = 'Blended APR';
@@ -1187,7 +1189,7 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 7: 🏛️ FED & 50 US STATES BENCHMARKS (RAW MICRODATA + STATE INDEX)
   // =========================================================================
-  const wsFed = workbook.addWorksheet('🏛️ Fed & State Benchmarks', {
+  const wsFed = workbook.addWorksheet('Fed & State Benchmarks', {
     views: [{ showGridLines: true }]
   });
 
