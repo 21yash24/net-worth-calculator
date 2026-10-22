@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import NetWorthTrackerCard from '../components/NetWorthTrackerCard.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const title = "Liquid Net Worth Calculator | Investable Assets Tool";
 const description = "Calculate your liquid net worth excluding home equity and illiquid assets. Find your investable asset balance for FIRE planning and benchmarks.";
@@ -51,6 +54,12 @@ const faqSchema = {
       <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
         Calculate your liquid net worth — your investable assets excluding home equity and illiquid property. Essential for FIRE planning and accurate wealth benchmarking.
       </p>
+
+      <TrustBadge 
+        source="Federal Reserve SCF Triennial Liquid Asset Microdata" 
+        updatedDate="October 2026" 
+        readTime="3 min read" 
+      />
     </section>
 
     <!-- Snippet Bait -->
@@ -146,6 +155,12 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- High-Ticket Automated Net Worth Tracker Recommendation Card (Empower / Monarch) -->
+    <NetWorthTrackerCard 
+      title="Track Your Investable Assets & Liquid Net Worth Automatically"
+      subtitle="Link your liquid brokerage, 401(k), savings, and checking accounts once. Empower automatically calculates your true liquid net worth without manual entry."
+    />
+
     <!-- Related -->
     <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
       <h3 class="font-bold text-slate-900 dark:text-white mb-4">🔗 Related Calculators</h3>
@@ -196,6 +211,9 @@ const faqSchema = {
         ))}
       </div>
     </section>
+
+    <!-- Author & Editorial E-E-A-T Oversight -->
+    <AuthorBio />
   </main>
 </Layout>
 

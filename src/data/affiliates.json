@@ -1,0 +1,31 @@
+{
+  "empower": {
+    "name": "Empower",
+    "badge": "🏆 Most Popular • 100% Free Forever",
+    "headline": "Automate Your Net Worth & Wealth Tracking in Real Time",
+    "description": "Connect your 401(k), Roth IRA, taxable brokerage, checking, and mortgage into one bank-grade encrypted dashboard. Uncovers hidden investment management fees and forecasts your exact retirement date.",
+    "cta": "Track Net Worth Free on Empower",
+    "url": "https://www.empower.com/wealth-management",
+    "payoutEstimate": "$50 - $100 per linked account",
+    "network": "Impact.com / FlexOffers",
+    "features": [
+      "Auto-syncs 14,000+ banks, brokerages & mortgages",
+      "Free 401(k) & IRA hidden fee analyzer",
+      "Interactive retirement readiness simulator",
+      "Read-only access — 256-bit bank AES encryption"
+    ]
+  },
+  "monarch": {
+    "name": "Monarch Money",
+    "badge": "💎 Best for Couples & Modern UI",
+    "headline": "Next-Generation Net Worth & Cash Flow Dashboard",
+    "description": "Ad-free, elegant wealth tracker built by the former product lead of Mint. Sync unlimited accounts and collaborate with your partner on a unified balance sheet.",
+    "cta": "Start Monarch Free Trial",
+    "url": "https://www.monarchmoney.com/",
+    "features": [
+      "Shared household view with joint permissions",
+      "Custom asset tracking (real estate, crypto, private equity)",
+      "Ad-free privacy-first architecture"
+    ]
+  }
+}
