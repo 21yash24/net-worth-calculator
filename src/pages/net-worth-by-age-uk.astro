@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -381,6 +382,12 @@ const faqSchema = {
 				Office for National Statistics (ONS), <em>Wealth and Assets Survey, Wave 7 (2018-2020)</em>. Crown Copyright. Published under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" class="text-emerald-700 dark:text-emerald-400 underline hover:no-underline" target="_blank" rel="noopener noreferrer">Open Government Licence v3.0</a>. Data covers England, Scotland, and Wales. Figures represent total individual wealth including pension, property, financial, and physical wealth components.
 			</div>
 		</aside>
+
+		<!-- Curated Financial Literacy Books (Amazon Associates) -->
+		<WealthBooks 
+			title="Essential Wealth Literature: UK ISA, Pension & Property Compounding" 
+			subtitle="The foundational personal finance and index investing guides to build long-term financial independence."
+		/>
 	</main>
 </Layout>
 

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -480,6 +481,12 @@ const faqSchema = {
         </ul>
       </div>
     </section>
+
+    <!-- Curated Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="Recommended Reading to Beat the Net Worth Benchmarks" 
+      subtitle="The exact investment philosophy, savings rate habits, and automation systems used by top 10% wealth accumulators."
+    />
 
   </main>
 </Layout>

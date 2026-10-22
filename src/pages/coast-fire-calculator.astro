@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const title = "Coast FIRE Calculator: Find Your Exact Coast FI Number [2026 Free Tool]";
 const description = "Calculate your exact Coast FIRE number by age. Find out how much you need invested today to retire early without saving another penny.";
@@ -304,6 +305,12 @@ const coastFaq = {
         </details>
       ))}
     </section>
+
+    <!-- Curated Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="The Essential Coast FIRE & Financial Independence Library" 
+      subtitle="Bestselling playbooks on index fund compounding, early retirement mathematics, and escaping the 9-to-5 rat race."
+    />
 
   </main>
 </Layout>

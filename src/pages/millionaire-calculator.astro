@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const title = "Millionaire Next Door Calculator: PAW Score & Timeline [2026]";
 const description = "Calculate when you will become a millionaire and find your Prodigious Accumulator of Wealth (PAW) score based on the Millionaire Next Door formula.";
@@ -284,6 +285,12 @@ const milFaq = {
         </details>
       ))}
     </section>
+
+    <!-- Curated Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="How Real Millionaires Build Wealth" 
+      subtitle="Bestselling research uncovering the frugal lifestyle, low consumer debt, and investing habits of self-made millionaires."
+    />
 
   </main>
 </Layout>

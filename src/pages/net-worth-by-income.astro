@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -249,6 +250,12 @@ const faqSchema = {
 				))}
 			</div>
 		</section>
+
+		<!-- Curated Financial Literacy Books (Amazon Associates) -->
+		<WealthBooks 
+			title="Books on Turning High Income Into True Wealth" 
+			subtitle="Learn why high earners often struggle to accumulate assets and how to automate an above-average savings rate."
+		/>
 	</main>
 </Layout>
 

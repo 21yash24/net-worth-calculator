@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const title = "$1 Million Net Worth by Age (2026) | $1M Milestones";
 const description = "At what age do Americans reach $1 million net worth? Federal Reserve SCF data showing millionaire percentage by age group and savings milestones.";
@@ -177,5 +178,11 @@ const millionaireData = [
         ))}
       </div>
     </section>
+
+    <!-- Curated Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="How Real Everyday People Reach $1 Million+" 
+      subtitle="The essential literature on achieving seven-figure financial independence through savings rate and index compounding."
+    />
   </main>
 </Layout>
