@@ -88,7 +88,7 @@ async function createMasterVault() {
   wsGuide.getRow(5).height = 22;
 
   const steps = [
-    { step: 'Step 1: Open Tab 2', title: "Click '2-Min Check-In'", desc: 'On the 1st of every month, open the second tab.' },
+    { step: 'Step 1: Monthly Routine', title: "Select '2-Min Check-In'", desc: 'On the 1st of every month, open the 2-Min Check-In tab.' },
     { step: 'Step 2: Enter 4 Numbers', title: 'Fill the Green Cells Only', desc: 'Type your: (1) Cash, (2) Invested Portfolio, (3) Property Value, (4) Total Debts.' },
     { step: 'Step 3: You Are Done!', title: 'Relax & Enjoy Your Life', desc: 'All formulas, Fed Reserve Percentile rankings, FIRE retirement dates, and Safe-to-Spend buffers calculate automatically!' }
   ];
@@ -136,6 +136,7 @@ async function createMasterVault() {
   wsGuide.getRow(15).height = 22;
 
   const tabDescriptions = [
+    { name: '🏛️ Private Wealth Diagnostic', purpose: 'Instant baseline assessment: Benchmark your official wealth tier (PAW/UAW), audit capital leaks & compute true hourly life energy.' },
     { name: '2-Min Check-In', purpose: 'For 90% of months: Type 4 numbers once a month in 90 seconds. Zero homework.' },
     { name: '📊 Executive Dashboard', purpose: 'Bloomberg-style visual terminal with Stanley & Danko Wealth Class (PAW/UAW) Engine.' },
     { name: '💸 Smart Budget (50/30/20)', purpose: "Answers: 'How much can I spend today guilt-free?' (Needs 50%, Wants 30%, Wealth 20%)." },
@@ -157,79 +158,100 @@ async function createMasterVault() {
   });
 
   // Brand Verification & Online Hub Link
-  wsGuide.mergeCells('B24:D24');
-  const gBox = wsGuide.getCell('B24');
+  wsGuide.mergeCells('B25:D25');
+  const gBox = wsGuide.getCell('B25');
   gBox.value = '🌐 GetNetWorthCalculator.com • 100% Private, Anonymous & Offline • Official 2026 Edition';
   gBox.font = { bold: true, size: 9.5, color: { argb: 'FF065F46' } };
   gBox.fill = solidFill('DCFCE7');
   gBox.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(24).height = 26;
+  wsGuide.getRow(25).height = 26;
 
   // =========================================================================
-  // ⚡ INSTANT DOPAMINE & QUICK WINS ENGINE (THE 60-SECOND TEST-DRIVE)
+  // TAB 2: 🏛️ PRIVATE WEALTH DIAGNOSTIC (INSTANT BASELINE EVALUATION)
   // =========================================================================
-  wsGuide.mergeCells('B26:D26');
-  const dopamineH = wsGuide.getCell('B26');
-  dopamineH.value = '⚡ 60-SECOND INSTANT DOPAMINE TEST-DRIVE (GET IMMEDIATE WINS NOW)';
-  dopamineH.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
-  dopamineH.fill = solidFill(colors.emeraldDark);
-  dopamineH.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(26).height = 26;
+  const wsAudit = workbook.addWorksheet('Private Wealth Diagnostic', {
+    views: [{ showGridLines: true }]
+  });
 
-  wsGuide.mergeCells('B27:D27');
-  const dSub = wsGuide.getCell('B27');
-  dSub.value = 'Type 3 numbers into the green boxes below. Watch your official wealth tier and milestone unlock immediately!';
-  dSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
-  dSub.fill = solidFill(colors.darkBg);
-  dSub.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(27).height = 20;
+  wsAudit.columns = [
+    { width: 4 },   // A
+    { width: 32 },  // B
+    { width: 34 },  // C
+    { width: 38 },  // D
+    { width: 4 }    // E
+  ];
 
-  // 3 Quick Inputs
-  const dInputs = [
+  // Brand Header
+  wsAudit.mergeCells('B2:D2');
+  const aHead = wsAudit.getCell('B2');
+  aHead.value = '🏛️ PRIVATE WEALTH DIAGNOSTIC & CAPITAL AUDIT • GETNETWORTH';
+  aHead.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  aHead.fill = solidFill(colors.emeraldDark);
+  aHead.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsAudit.getRow(2).height = 30;
+
+  wsAudit.mergeCells('B3:D3');
+  const aSub = wsAudit.getCell('B3');
+  aSub.value = 'Official Accumulation Tier Benchmark • Recurring Capital Leakage Audit • True Hourly Life Energy Metric';
+  aSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
+  aSub.fill = solidFill(colors.darkBg);
+  aSub.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsAudit.getRow(3).height = 20;
+
+  // Section 1: 🎯 Wealth Accumulation Tier Diagnostic
+  wsAudit.mergeCells('B5:D5');
+  const diagH = wsAudit.getCell('B5');
+  diagH.value = '🎯 WEALTH ACCUMULATION TIER & BENCHMARK DIAGNOSTIC';
+  diagH.font = { name: 'Arial', size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  diagH.fill = solidFill(colors.cardBg);
+  diagH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsAudit.getRow(5).height = 24;
+
+  const diagInputs = [
     { col: 'B', title: '1. YOUR CURRENT AGE', val: 30, fmt: '0' },
     { col: 'C', title: '2. ANNUAL PRE-TAX INCOME', val: 95000, fmt: '$#,##0' },
     { col: 'D', title: '3. CURRENT ESTIMATED NET WORTH', val: 85000, fmt: '$#,##0' }
   ];
 
-  wsGuide.getRow(29).height = 20;
-  wsGuide.getRow(30).height = 26;
+  wsAudit.getRow(6).height = 19;
+  wsAudit.getRow(7).height = 26;
 
-  dInputs.forEach(inp => {
-    const th = wsGuide.getCell(`${inp.col}29`);
+  diagInputs.forEach(inp => {
+    const th = wsAudit.getCell(`${inp.col}6`);
     th.value = inp.title;
     th.font = { size: 9, bold: true, color: { argb: 'FF94A3B8' } };
-    th.fill = solidFill(colors.cardBg);
+    th.fill = solidFill(colors.darkBg);
     th.border = thinBorder;
     th.alignment = { horizontal: 'center', vertical: 'middle' };
 
-    const c = wsGuide.getCell(`${inp.col}30`);
+    const c = wsAudit.getCell(`${inp.col}7`);
     c.value = inp.val;
     c.font = { size: 14, bold: true, color: { argb: 'FFFFFFFF' } };
-    c.fill = solidFill(colors.emeraldDark);
+    c.fill = solidFill(colors.emeraldDark); // Bright Green Input
     c.numFmt = inp.fmt;
     c.border = thinBorder;
     c.alignment = { horizontal: 'center', vertical: 'middle' };
   });
 
   // 3 Instant Score Cards
-  wsGuide.getRow(32).height = 18;
-  wsGuide.getRow(33).height = 26;
+  wsAudit.getRow(9).height = 18;
+  wsAudit.getRow(10).height = 26;
 
-  const dCards = [
-    { col: 'B', title: '🏆 OFFICIAL WEALTH TIER', formula: 'IF(D30>=2*(B30*C30/10), "PAW (Top 10% Wealth Builder)", IF(D30>=(B30*C30/10), "AAW (Solid Average)", "UAW (Under-Accumulator)"))', fontColor: 'FF10B981' },
-    { col: 'C', title: '🎯 TARGET NET WORTH FOR AGE', formula: '(B30*C30)/10', fmt: '$#,##0', fontColor: 'FFFFFFFF' },
-    { col: 'D', title: '🚀 NEXT MILESTONE CLUB', formula: 'IF(D30<100000, "$100k Club", IF(D30<250000, "$250k Club", IF(D30<500000, "$500k Club", "$1M Two-Comma Club")))', fontColor: 'FFF59E0B' }
+  const diagCards = [
+    { col: 'B', title: '🏆 OFFICIAL ACCUMULATION TIER', formula: 'IF(D7>=2*(B7*C7/10), "PAW (Top 10% Wealth Builder)", IF(D7>=(B7*C7/10), "AAW (Solid Average Accumulator)", "UAW (Under-Accumulator)"))', fontColor: 'FF10B981' },
+    { col: 'C', title: '🎯 BENCHMARK NET WORTH FOR AGE', formula: '(B7*C7)/10', fmt: '$#,##0', fontColor: 'FFFFFFFF' },
+    { col: 'D', title: '🚀 NEXT CAPITAL MILESTONE', formula: 'IF(D7<100000, "$100k Club", IF(D7<250000, "$250k Club", IF(D7<500000, "$500k Club", "$1M Two-Comma Club")))', fontColor: 'FFF59E0B' }
   ];
 
-  dCards.forEach(dc => {
-    const th = wsGuide.getCell(`${dc.col}32`);
+  diagCards.forEach(dc => {
+    const th = wsAudit.getCell(`${dc.col}9`);
     th.value = dc.title;
     th.font = { size: 8.5, bold: true, color: { argb: 'FF94A3B8' } };
     th.fill = solidFill(colors.cardBg);
     th.border = thinBorder;
     th.alignment = { horizontal: 'center', vertical: 'middle' };
 
-    const c = wsGuide.getCell(`${dc.col}33`);
+    const c = wsAudit.getCell(`${dc.col}10`);
     c.value = { formula: dc.formula };
     c.font = { size: 12, bold: true, color: { argb: dc.fontColor } };
     c.fill = solidFill(colors.cardBg);
@@ -238,153 +260,167 @@ async function createMasterVault() {
     c.alignment = { horizontal: 'center', vertical: 'middle' };
   });
 
-  // Section 2: 🧛‍♂️ THE 5-MINUTE VAMPIRE PURGE
-  wsGuide.mergeCells('B36:D36');
-  const vH = wsGuide.getCell('B36');
-  vH.value = '🧛‍♂️ THE 5-MINUTE VAMPIRE PURGE (FIND $1,000+ IN CASH RIGHT NOW)';
+  // Gap row
+  wsAudit.mergeCells('B12:D12');
+  const gapCell = wsAudit.getCell('B12');
+  gapCell.value = { formula: 'MAX(0, IF(D7<100000, 100000-D7, IF(D7<250000, 250000-D7, IF(D7<500000, 500000-D7, 1000000-D7))))' };
+  gapCell.numFmt = '"Remaining Capital to Next Milestone: $"#,##0';
+  gapCell.font = { size: 9.5, bold: true, color: { argb: 'FFCBD5E1' } };
+  gapCell.fill = solidFill(colors.darkBg);
+  gapCell.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsAudit.getRow(12).height = 20;
+
+  // Section 2: 💸 Capital Inefficiency & Cash Flow Leakage Audit
+  wsAudit.mergeCells('B15:D15');
+  const vH = wsAudit.getCell('B15');
+  vH.value = '💸 CAPITAL INEFFICIENCY & CASH FLOW LEAKAGE AUDIT';
   vH.font = { name: 'Arial', size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
-  vH.fill = solidFill(colors.darkBg);
+  vH.fill = solidFill(colors.cardBg);
   vH.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(36).height = 24;
+  wsAudit.getRow(15).height = 24;
 
   const purgeCols = [
-    { col: 'B', title: 'Recurring Monthly Leak / Subscription' },
+    { col: 'B', title: 'Recurring Monthly Outflow / Underutilized Service' },
     { col: 'C', title: 'Monthly Cost ($)' },
-    { col: 'D', title: 'Action Plan & Reality Check' }
+    { col: 'D', title: 'Optimization & Capital Reclamation Action' }
   ];
 
-  wsGuide.getRow(37).height = 19;
+  wsAudit.getRow(16).height = 19;
   purgeCols.forEach(pc => {
-    const c = wsGuide.getCell(`${pc.col}37`);
+    const c = wsAudit.getCell(`${pc.col}16`);
     c.value = pc.title;
     c.font = { size: 8.5, bold: true, color: { argb: 'FFFFFFFF' } };
-    c.fill = solidFill(colors.cardBg);
+    c.fill = solidFill(colors.darkBg);
     c.border = thinBorder;
   });
 
   const purgeItems = [
-    { leak: 'Unused Streaming / Digital Subscriptions', cost: 35, action: 'Cancel unneeded services' },
-    { leak: 'Unused Gym / Health App Memberships', cost: 45, action: 'Downgrade or pause immediately' },
-    { leak: 'DoorDash / Takeout Delivery Markups & Fees', cost: 75, action: 'Limit takeout to 1x weekly' },
-    { leak: 'Overpriced Cellphone / Insurance Plan', cost: 40, action: 'Shop rate or switch carrier' }
+    { leak: 'Unused Streaming & Digital Subscriptions', cost: 35, action: 'Cancel or pause immediately' },
+    { leak: 'Unused Gym & Fitness App Memberships', cost: 45, action: 'Switch to free tier or pause' },
+    { leak: 'Food Delivery App Service Fees & Markups', cost: 75, action: 'Cap delivery orders to 1x weekly' },
+    { leak: 'Overpriced Mobile / Auto Insurance Policy', cost: 40, action: 'Renegotiate premium or re-quote' }
   ];
 
   purgeItems.forEach((pi, idx) => {
-    const r = 38 + idx;
-    wsGuide.getRow(r).height = 19;
-    wsGuide.getCell(`B${r}`).value = pi.leak;
-    wsGuide.getCell(`B${r}`).font = { size: 9 };
-    wsGuide.getCell(`B${r}`).border = thinBorder;
+    const r = 17 + idx;
+    wsAudit.getRow(r).height = 19;
+    wsAudit.getCell(`B${r}`).value = pi.leak;
+    wsAudit.getCell(`B${r}`).font = { size: 9 };
+    wsAudit.getCell(`B${r}`).border = thinBorder;
 
-    wsGuide.getCell(`C${r}`).value = pi.cost;
-    wsGuide.getCell(`C${r}`).numFmt = '$#,##0';
-    wsGuide.getCell(`C${r}`).font = { size: 9, bold: true };
-    wsGuide.getCell(`C${r}`).fill = solidFill('DCFCE7');
-    wsGuide.getCell(`C${r}`).border = thinBorder;
+    wsAudit.getCell(`C${r}`).value = pi.cost;
+    wsAudit.getCell(`C${r}`).numFmt = '$#,##0';
+    wsAudit.getCell(`C${r}`).font = { size: 9, bold: true };
+    wsAudit.getCell(`C${r}`).fill = solidFill('DCFCE7'); // light green editable
+    wsAudit.getCell(`C${r}`).border = thinBorder;
 
-    wsGuide.getCell(`D${r}`).value = pi.action;
-    wsGuide.getCell(`D${r}`).font = { size: 8.5, italic: true, color: { argb: 'FF64748B' } };
-    wsGuide.getCell(`D${r}`).border = thinBorder;
+    wsAudit.getCell(`D${r}`).value = pi.action;
+    wsAudit.getCell(`D${r}`).font = { size: 8.5, italic: true, color: { argb: 'FF64748B' } };
+    wsAudit.getCell(`D${r}`).border = thinBorder;
   });
 
   // Purge Output Row
-  const rPurgeTot = 42;
-  wsGuide.getRow(rPurgeTot).height = 22;
-  wsGuide.getCell(`B${rPurgeTot}`).value = 'TOTAL RECURRENT LEAKAGE DISCOVERED';
-  wsGuide.getCell(`B${rPurgeTot}`).font = { bold: true, size: 9 };
-  wsGuide.getCell(`B${rPurgeTot}`).border = thinBorder;
+  const rPurgeTot = 21;
+  wsAudit.getRow(rPurgeTot).height = 22;
+  wsAudit.getCell(`B${rPurgeTot}`).value = 'TOTAL RECURRING CASH OUTFLOW IDENTIFIED';
+  wsAudit.getCell(`B${rPurgeTot}`).font = { bold: true, size: 9 };
+  wsAudit.getCell(`B${rPurgeTot}`).border = thinBorder;
 
-  wsGuide.getCell(`C${rPurgeTot}`).value = { formula: 'SUM(C38:C41)' };
-  wsGuide.getCell(`C${rPurgeTot}`).numFmt = '$#,##0"/mo"';
-  wsGuide.getCell(`C${rPurgeTot}`).font = { bold: true, size: 10, color: { argb: 'FFF43F5E' } };
-  wsGuide.getCell(`C${rPurgeTot}`).border = thinBorder;
+  wsAudit.getCell(`C${rPurgeTot}`).value = { formula: 'SUM(C17:C20)' };
+  wsAudit.getCell(`C${rPurgeTot}`).numFmt = '$#,##0"/mo"';
+  wsAudit.getCell(`C${rPurgeTot}`).font = { bold: true, size: 10, color: { argb: 'FFF43F5E' } };
+  wsAudit.getCell(`C${rPurgeTot}`).border = thinBorder;
 
-  wsGuide.getCell(`D${rPurgeTot}`).value = 'Found in your budget in 3 minutes';
-  wsGuide.getCell(`D${rPurgeTot}`).font = { size: 8.5, color: { argb: 'FF64748B' } };
-  wsGuide.getCell(`D${rPurgeTot}`).border = thinBorder;
+  wsAudit.getCell(`D${rPurgeTot}`).value = 'Reclaimable immediately into your surplus cash flow';
+  wsAudit.getCell(`D${rPurgeTot}`).font = { size: 8.5, color: { argb: 'FF64748B' } };
+  wsAudit.getCell(`D${rPurgeTot}`).border = thinBorder;
 
-  // The 2 Big Dopamine Reward Cards
-  wsGuide.mergeCells('B44:C44');
-  wsGuide.getCell('B44').value = '🟢 INSTANT ANNUAL CASH UNLOCKED';
-  wsGuide.getCell('B44').font = { size: 8.5, bold: true, color: { argb: 'FF10B981' } };
-  wsGuide.getCell('B44').fill = solidFill(colors.cardBg);
+  // The 2 Big Reward Cards
+  wsAudit.mergeCells('B23:C23');
+  const cashGainH = wsAudit.getCell('B23');
+  cashGainH.value = '🟢 ANNUAL RECLAIMED CASH FLOW';
+  cashGainH.font = { size: 8.5, bold: true, color: { argb: 'FF10B981' } };
+  cashGainH.fill = solidFill(colors.cardBg);
+  cashGainH.alignment = { horizontal: 'center', vertical: 'middle' };
 
-  wsGuide.mergeCells('B45:C45');
-  const cashGain = wsGuide.getCell('B45');
-  cashGain.value = { formula: 'C42*12' };
-  cashGain.numFmt = '"+$"#,##0" / Year Back In Checking"';
+  wsAudit.mergeCells('B24:C24');
+  const cashGain = wsAudit.getCell('B24');
+  cashGain.value = { formula: 'C21*12' };
+  cashGain.numFmt = '"+$"#,##0" / Year Added To Net Worth"';
   cashGain.font = { size: 12, bold: true, color: { argb: 'FF10B981' } };
   cashGain.fill = solidFill(colors.cardBg);
-  cashGain.alignment = { vertical: 'middle' };
+  cashGain.alignment = { horizontal: 'center', vertical: 'middle' };
 
-  wsGuide.getCell('D44').value = '📈 10-YEAR COMPOUNDED WEALTH (8%)';
-  wsGuide.getCell('D44').font = { size: 8.5, bold: true, color: { argb: 'FF38BDF8' } };
-  wsGuide.getCell('D44').fill = solidFill(colors.cardBg);
+  const invGainH = wsAudit.getCell('D23');
+  invGainH.value = '📈 10-YEAR COMPOUNDED WEALTH (8%)';
+  invGainH.font = { size: 8.5, bold: true, color: { argb: 'FF38BDF8' } };
+  invGainH.fill = solidFill(colors.cardBg);
+  invGainH.alignment = { horizontal: 'center', vertical: 'middle' };
 
-  const invGain = wsGuide.getCell('D45');
-  invGain.value = { formula: 'C42*182.946' };
-  invGain.numFmt = '"+$"#,##0" Created For Retirement"';
-  invGain.font = { size: 12, bold: true, color: { argb: 'FF38BDF8' } };
+  const invGain = wsAudit.getCell('D24');
+  invGain.value = { formula: 'C21*182.946' };
+  invGain.numFmt = '"+$"#,##0" (10-Yr Compounded Value)"';
+  invGain.font = { size: 11, bold: true, color: { argb: 'FF38BDF8' } };
   invGain.fill = solidFill(colors.cardBg);
-  invGain.alignment = { vertical: 'middle' };
+  invGain.alignment = { horizontal: 'center', vertical: 'middle' };
 
-  wsGuide.getRow(44).height = 18;
-  wsGuide.getRow(45).height = 26;
+  wsAudit.getRow(23).height = 18;
+  wsAudit.getRow(24).height = 26;
 
-  // Section 3: ⏳ THE LIFE ENERGY CALCULATOR
-  wsGuide.mergeCells('B47:D47');
-  const leH = wsGuide.getCell('B47');
-  leH.value = '⏳ THE LIFE ENERGY CALCULATOR (IS THAT PURCHASE WORTH YOUR FINITE HOURS?)';
+  // Section 3: ⏳ Life Energy & True Hourly Value Conversion
+  wsAudit.mergeCells('B27:D27');
+  const leH = wsAudit.getCell('B27');
+  leH.value = '⏳ LIFE ENERGY & TRUE HOURLY VALUE CONVERSION';
   leH.font = { name: 'Arial', size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
-  leH.fill = solidFill(colors.darkBg);
+  leH.fill = solidFill(colors.cardBg);
   leH.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(47).height = 24;
+  wsAudit.getRow(27).height = 24;
 
   const leCols = [
-    { col: 'B', title: 'Your Real Hourly Wage (C30 / 2,080 hrs)' },
-    { col: 'C', title: 'Impulse Purchase Price ($)' },
-    { col: 'D', title: 'Actual Hours of Your Life It Costs' }
+    { col: 'B', title: 'Your Real Hourly Yield (Pre-Tax / 2,080 hrs)' },
+    { col: 'C', title: 'Discretionary Purchase Price ($)' },
+    { col: 'D', title: 'True Hours of Finite Life Required' }
   ];
 
-  wsGuide.getRow(48).height = 19;
+  wsAudit.getRow(28).height = 19;
   leCols.forEach(lc => {
-    const c = wsGuide.getCell(`${lc.col}48`);
+    const c = wsAudit.getCell(`${lc.col}28`);
     c.value = lc.title;
     c.font = { size: 8.5, bold: true, color: { argb: 'FFFFFFFF' } };
-    c.fill = solidFill(colors.cardBg);
+    c.fill = solidFill(colors.darkBg);
     c.border = thinBorder;
   });
 
-  wsGuide.getRow(49).height = 24;
-  const wageCell = wsGuide.getCell('B49');
-  wageCell.value = { formula: 'C30/2080' };
+  wsAudit.getRow(29).height = 24;
+  const wageCell = wsAudit.getCell('B29');
+  wageCell.value = { formula: 'C7/2080' };
   wageCell.numFmt = '$#,##0.00"/hr"';
   wageCell.font = { size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
   wageCell.fill = solidFill(colors.cardBg);
   wageCell.border = thinBorder;
 
-  const itemCell = wsGuide.getCell('C49');
+  const itemCell = wsAudit.getCell('C29');
   itemCell.value = 1200;
   itemCell.numFmt = '$#,##0';
   itemCell.font = { size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
-  itemCell.fill = solidFill(colors.emeraldDark);
+  itemCell.fill = solidFill(colors.emeraldDark); // editable green
   itemCell.border = thinBorder;
 
-  const hoursCell = wsGuide.getCell('D49');
-  hoursCell.value = { formula: 'C49/B49' };
-  hoursCell.numFmt = '0.0" Hours at Work"';
+  const hoursCell = wsAudit.getCell('D29');
+  hoursCell.value = { formula: 'C29/B29' };
+  hoursCell.numFmt = '0.0" Hours of Work"';
   hoursCell.font = { size: 12, bold: true, color: { argb: 'FFF59E0B' } };
   hoursCell.fill = solidFill(colors.cardBg);
   hoursCell.border = thinBorder;
 
   // Grand Launchpad CTA
-  wsGuide.mergeCells('B51:D51');
-  const launchBox = wsGuide.getCell('B51');
-  launchBox.value = '🚀 READY FOR YOUR 2-MINUTE MONTHLY ROUTINE? CLICK THE "2-Min Check-In" TAB BELOW! 👇';
+  wsAudit.mergeCells('B32:D32');
+  const launchBox = wsAudit.getCell('B32');
+  launchBox.value = '🚀 READY FOR YOUR ONGOING ROUTINE? SELECT THE "2-Min Check-In" TAB BELOW 👇';
   launchBox.font = { bold: true, size: 10, color: { argb: 'FFFFFFFF' } };
   launchBox.fill = solidFill(colors.emeraldDark);
   launchBox.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(51).height = 30;
+  wsAudit.getRow(32).height = 30;
 
   // =========================================================================
   // TAB 1: ⚡ 2-MINUTE MONTHLY QUICK-CHECK (SOLVES SPREADSHEET FATIGUE)
