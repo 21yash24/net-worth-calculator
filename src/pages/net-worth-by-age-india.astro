@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -272,6 +273,9 @@ const faqSchema = {
 				))}
 			</div>
 		</section>
+
+		<!-- Curated Wealth Literacy Books (Amazon.in Associates) -->
+		<WealthBooks region="IN" />
 	</main>
 </Layout>
 
