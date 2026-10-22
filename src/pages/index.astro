@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import fedData from '../data/fedData.json';
 import careers from '../data/careerData.json';
 import milestones from '../data/milestoneData.json';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -330,6 +331,9 @@ const faqSchema = {
 						</button>
 					</div>
 				</div>
+
+				<!-- Curated Financial Literacy Books (Amazon Associates) -->
+				<WealthBooks />
 			</div>
 		</div>
 
