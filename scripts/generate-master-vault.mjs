@@ -11,19 +11,19 @@ const outputPath = path.join(outputDir, 'NetWorth_FIRE_Master_Vault_2026.xlsx');
 
 async function createMasterVault() {
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = 'Yash Jha — GetNetWorthCalculator.com';
+  workbook.creator = 'Yash Jha — Founder, GetNetWorthCalculator.com';
   workbook.lastModifiedBy = 'GetNetWorth Analytics Team';
   workbook.created = new Date();
   workbook.modified = new Date();
 
-  // --- STYLING PALETTE ---
+  // --- STYLING PALETTE (Matches GetNetWorthCalculator.com Brand System) ---
   const colors = {
     darkBg: '0F172A',       // Slate 900
     cardBg: '1E293B',       // Slate 800
     subtleBg: '334155',     // Slate 700
-    emerald: '10B981',      // Emerald Accent
-    emeraldDark: '065F46',
-    amber: 'F59E0B',        // Amber Gold
+    emerald: '10B981',      // Emerald Accent (Website Primary)
+    emeraldDark: '047857',  // Deep Emerald
+    amber: 'F59E0B',        // Benchmark Gold
     rose: 'F43F5E',         // Rose / Liabilities
     blue: '3B82F6',         // Blue Accent
     purple: '8B5CF6',       // Purple / Budget Wants
@@ -49,7 +49,7 @@ async function createMasterVault() {
   };
 
   // =========================================================================
-  // TAB 0: 🟢 START HERE (60-SECOND HUMAN GUIDE — IMPOSSIBLE TO GET LOST)
+  // TAB 0: 🟢 START HERE (60-SECOND HUMAN GUIDE — OFFICIAL GETNETWORTH TOUCH)
   // =========================================================================
   const wsGuide = workbook.addWorksheet('🟢 START HERE (60-Sec Guide)', {
     views: [{ showGridLines: true }]
@@ -58,24 +58,25 @@ async function createMasterVault() {
   wsGuide.columns = [
     { width: 4 },   // A
     { width: 28 },  // B
-    { width: 32 },  // C
-    { width: 28 },  // D
+    { width: 34 },  // C
+    { width: 30 },  // D
     { width: 4 }    // E
   ];
 
+  // Brand Top Header
   wsGuide.mergeCells('B2:D2');
   const gH = wsGuide.getCell('B2');
-  gH.value = '👋 WELCOME TO YOUR PRIVATE WEALTH & BUDGET OPERATING SYSTEM';
-  gH.font = { name: 'Arial', size: 13, bold: true, color: { argb: 'FFFFFFFF' } };
-  gH.fill = solidFill(colors.darkBg);
+  gH.value = '🏛️ GETNETWORTHCALCULATOR.COM • OFFICIAL WEALTH & BUDGET OPERATING SYSTEM';
+  gH.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  gH.fill = solidFill(colors.emeraldDark);
   gH.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(2).height = 32;
+  wsGuide.getRow(2).height = 30;
 
   wsGuide.mergeCells('B3:D3');
   const gSub = wsGuide.getCell('B3');
-  gSub.value = 'Designed for normal humans, not CPAs. Zero homework, zero broken formulas, 100% private & offline.';
-  gSub.font = { name: 'Arial', size: 9.5, italic: true, color: { argb: 'FFCBD5E1' } };
-  gSub.fill = solidFill(colors.cardBg);
+  gSub.value = 'Researched & Modeled by Yash Jha | Benchmarked Against US Federal Reserve SCF Microdata (2026)';
+  gSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
+  gSub.fill = solidFill(colors.darkBg);
   gSub.alignment = { horizontal: 'center', vertical: 'middle' };
   wsGuide.getRow(3).height = 20;
 
@@ -83,7 +84,7 @@ async function createMasterVault() {
   wsGuide.mergeCells('B5:D5');
   wsGuide.getCell('B5').value = '🚀 THE 3-STEP MONTHLY ROUTINE (TAKES 2 MINUTES ON THE 1ST OF EACH MONTH)';
   wsGuide.getCell('B5').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
-  wsGuide.getCell('B5').fill = solidFill(colors.emeraldDark);
+  wsGuide.getCell('B5').fill = solidFill(colors.cardBg);
   wsGuide.getRow(5).height = 22;
 
   const steps = [
@@ -155,12 +156,12 @@ async function createMasterVault() {
     ['B', 'C', 'D'].forEach(c => wsGuide.getCell(`${c}${r}`).border = thinBorder);
   });
 
-  // Google Sheets Instructions Box
+  // Brand Verification & Online Hub Link
   wsGuide.mergeCells('B24:D24');
   const gBox = wsGuide.getCell('B24');
-  gBox.value = '💡 Using Google Sheets? Just drag and drop this file into Google Drive and click "Open with Google Sheets". It converts in 2 seconds with 100% of formulas intact.';
-  gBox.font = { italic: true, size: 9, color: { argb: 'FF065F46' } };
-  gBox.fill = solidFill('DCFCE7'); // Soft green
+  gBox.value = '🌐 GetNetWorthCalculator.com • 100% Private, Anonymous & Offline • Curated by Yash Jha';
+  gBox.font = { bold: true, size: 9.5, color: { argb: 'FF065F46' } };
+  gBox.fill = solidFill('DCFCE7');
   gBox.alignment = { horizontal: 'center', vertical: 'middle' };
   wsGuide.getRow(24).height = 26;
 
@@ -186,7 +187,7 @@ async function createMasterVault() {
 
   wsQuick.mergeCells('B2:I2');
   const qh = wsQuick.getCell('B2');
-  qh.value = '⚡ 2-MINUTE MONTHLY QUICK CHECK-IN (NO HOMEWORK, NO OVERWHELM)';
+  qh.value = '⚡ 2-MINUTE MONTHLY QUICK CHECK-IN • GETNETWORTHCALCULATOR.COM';
   qh.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   qh.fill = solidFill(colors.emeraldDark);
   qh.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -313,8 +314,8 @@ async function createMasterVault() {
 
   ws1.mergeCells('B2:F2');
   const hCell = ws1.getCell('B2');
-  hCell.value = '🏛️ NET WORTH & FINANCIAL INDEPENDENCE MASTER VAULT (2026 EDITION)';
-  hCell.font = { name: 'Arial', size: 13, bold: true, color: { argb: 'FFFFFFFF' } };
+  hCell.value = '🏛️ EXECUTIVE WEALTH COMMAND CENTER • GETNETWORTHCALCULATOR.COM';
+  hCell.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   hCell.fill = solidFill(colors.darkBg);
   hCell.alignment = { horizontal: 'center', vertical: 'middle' };
   ws1.getRow(2).height = 30;
@@ -476,18 +477,12 @@ async function createMasterVault() {
   });
 
   wsBudget.columns = [
-    { width: 4 },   // A
-    { width: 28 },  // B: Category
-    { width: 18 },  // C: Budgeted
-    { width: 18 },  // D: Actual
-    { width: 16 },  // E: Difference
-    { width: 22 },  // F: Target % / Status
-    { width: 4 }    // G
+    { width: 4 }, { width: 28 }, { width: 18 }, { width: 18 }, { width: 16 }, { width: 22 }, { width: 4 }
   ];
 
   wsBudget.mergeCells('B2:F2');
   const bHeader = wsBudget.getCell('B2');
-  bHeader.value = '💸 SMART MONTHLY CASH FLOW & 50/30/20 BUDGET ENGINE';
+  bHeader.value = '💸 SMART MONTHLY CASH FLOW & 50/30/20 BUDGET • GETNETWORTHCALCULATOR.COM';
   bHeader.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   bHeader.fill = solidFill(colors.darkBg);
   bHeader.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -544,7 +539,7 @@ async function createMasterVault() {
     c.border = thinBorder;
   });
 
-  // Section 1: Inflow
+  // Inflow Items
   wsBudget.mergeCells('B9:F9');
   wsBudget.getCell('B9').value = '📥 MONTHLY NET INCOME (TAKE-HOME PAY)';
   wsBudget.getCell('B9').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
@@ -586,7 +581,7 @@ async function createMasterVault() {
     cell.border = thinBorder;
   });
 
-  // Section 2: Needs (50%)
+  // Needs
   wsBudget.mergeCells('B14:F14');
   wsBudget.getCell('B14').value = '🏠 ESSENTIAL NEEDS (TARGET: ≤ 50% OF INCOME)';
   wsBudget.getCell('B14').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
@@ -629,7 +624,7 @@ async function createMasterVault() {
     cell.border = thinBorder;
   });
 
-  // Section 3: Wants (30%)
+  // Wants
   wsBudget.mergeCells('B21:F21');
   wsBudget.getCell('B21').value = '🎉 GUILT-FREE WANTS (TARGET: ≤ 30% OF INCOME)';
   wsBudget.getCell('B21').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
@@ -670,7 +665,7 @@ async function createMasterVault() {
     cell.border = thinBorder;
   });
 
-  // Section 4: Wealth & Savings Surplus (20%+)
+  // Wealth Surplus
   wsBudget.mergeCells('B26:F26');
   wsBudget.getCell('B26').value = '🚀 WEALTH SURPLUS & SAVINGS (TARGET: ≥ 20% OF INCOME)';
   wsBudget.getCell('B26').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
@@ -719,19 +714,12 @@ async function createMasterVault() {
   });
 
   wsSinking.columns = [
-    { width: 4 },   // A
-    { width: 26 },  // B: Fund Goal
-    { width: 16 },  // C: Target Amount
-    { width: 16 },  // D: Current Saved
-    { width: 16 },  // E: Still Needed
-    { width: 16 },  // F: Target Date
-    { width: 18 },  // G: Monthly Deposit
-    { width: 14 }   // H: Progress %
+    { width: 4 }, { width: 26 }, { width: 16 }, { width: 16 }, { width: 16 }, { width: 16 }, { width: 18 }, { width: 14 }
   ];
 
   wsSinking.mergeCells('B2:H2');
   const sH = wsSinking.getCell('B2');
-  sH.value = '🎯 SINKING FUNDS & IRREGULAR EXPENSE DEFENSE SHIELD';
+  sH.value = '🎯 SINKING FUNDS & IRREGULAR EXPENSE DEFENSE SHIELD • GETNETWORTHCALCULATOR.COM';
   sH.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
   sH.fill = solidFill('047857');
   sH.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -824,8 +812,8 @@ async function createMasterVault() {
 
   wsFIRE.mergeCells('B2:E2');
   const fireHead = wsFIRE.getCell('B2');
-  fireHead.value = '🔥 FINANCIAL INDEPENDENCE & EARLY RETIREMENT CALCULATOR (TRINITY STUDY)';
-  fireHead.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  fireHead.value = '🔥 FINANCIAL INDEPENDENCE & EARLY RETIREMENT CALCULATOR • GETNETWORTHCALCULATOR.COM';
+  fireHead.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
   fireHead.fill = solidFill(colors.darkBg);
   fireHead.alignment = { horizontal: 'center', vertical: 'middle' };
   wsFIRE.getRow(2).height = 28;
@@ -901,7 +889,7 @@ async function createMasterVault() {
 
   wsDebt.mergeCells('B2:F2');
   const dH = wsDebt.getCell('B2');
-  dH.value = '💳 DEBT PAYOFF ACCELERATOR: MATHEMATICAL AVALANCHE VS BEHAVIORAL SNOWBALL';
+  dH.value = '💳 DEBT PAYOFF ACCELERATOR: AVALANCHE VS SNOWBALL • GETNETWORTHCALCULATOR.COM';
   dH.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
   dH.fill = solidFill(colors.darkBg);
   dH.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -980,7 +968,7 @@ async function createMasterVault() {
 
   wsFed.mergeCells('B2:H2');
   const fedH = wsFed.getCell('B2');
-  fedH.value = '🏛️ OFFICIAL US FEDERAL RESERVE SURVEY OF CONSUMER FINANCES (SCF) BENCHMARK DATA';
+  fedH.value = '🏛️ OFFICIAL US FEDERAL RESERVE SCF BENCHMARK DATA • GETNETWORTHCALCULATOR.COM';
   fedH.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
   fedH.fill = solidFill(colors.darkBg);
   fedH.alignment = { horizontal: 'center', vertical: 'middle' };

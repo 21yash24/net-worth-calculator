@@ -102,6 +102,132 @@ const productSchema = {
       </div>
     </div>
 
+    <!-- Live Interactive Vault Simulator (The Signature Website Touch) -->
+    <section class="rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/30 p-6 sm:p-9 shadow-2xl space-y-6 relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 space-y-6">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              <span>⚡ Live Website Simulation</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Test Drive The Vault Live Right Here</h2>
+            <p class="text-xs sm:text-sm text-slate-300">
+              Type your baseline numbers into the 2-minute inputs below. Watch how the Master Vault automatically calculates your Net Worth, Federal Reserve Percentile, and Daily Safe-to-Spend buffer.
+            </p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-bold px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 shrink-0 self-start sm:self-auto">
+            🔒 100% Client-Side • Nothing Leaves Your Phone
+          </span>
+        </div>
+
+        <!-- Simulator Grid: Left Inputs / Right Real-Time Output -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- Left: 4 Quick Inputs -->
+          <div class="lg:col-span-6 space-y-3.5 bg-slate-950/80 p-5 rounded-2xl border border-slate-800">
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">1. Fill Your 4 Monthly Numbers (Green Cells)</span>
+            
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-[11px] font-bold text-slate-400 block mb-1">Your Age Group</label>
+                <select id="sim-age" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                  <option value="under35" selected>Under 35</option>
+                  <option value="35to44">35 - 44</option>
+                  <option value="45to54">45 - 54</option>
+                  <option value="55to64">55 - 64</option>
+                  <option value="65to74">65 - 74</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="text-[11px] font-bold text-slate-400 block mb-1">💵 Cash &amp; Savings</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2 text-xs text-slate-400">$</span>
+                  <input type="number" id="sim-cash" value="25000" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[11px] font-bold text-slate-400 block mb-1">📈 Invested Portfolio</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2 text-xs text-slate-400">$</span>
+                  <input type="number" id="sim-invest" value="185000" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[11px] font-bold text-slate-400 block mb-1">🏠 Property / Assets</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2 text-xs text-slate-400">$</span>
+                  <input type="number" id="sim-prop" value="350000" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[11px] font-bold text-slate-400 block mb-1">💳 Total Debts</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2 text-xs text-slate-400">$</span>
+                  <input type="number" id="sim-debt" value="245000" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[11px] font-bold text-slate-400 block mb-1">📥 Monthly Take-Home</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2 text-xs text-slate-400">$</span>
+                  <input type="number" id="sim-income" value="6500" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Real-Time Calculated Dashboard Output -->
+          <div class="lg:col-span-6 space-y-3">
+            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">2. Real-Time Master Vault Calculation Engine</span>
+            
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">NET WORTH RESULT</span>
+                <span id="sim-out-nw" class="text-2xl font-black text-white">$315,000</span>
+                <span class="text-[10px] text-emerald-400 block font-bold">▲ (Assets - Liabilities)</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">FED SCF BENCHMARK</span>
+                <span id="sim-out-fed" class="text-2xl font-black text-amber-400">Top 12%</span>
+                <span class="text-[10px] text-slate-400 block">US Central Bank Microdata</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-purple-950/40 border border-purple-500/30 space-y-0.5">
+                <span class="text-[10px] text-purple-300 uppercase font-bold block">DAILY SAFE-TO-SPEND</span>
+                <span id="sim-out-spend" class="text-2xl font-black text-purple-300">$65 / day</span>
+                <span class="text-[10px] text-slate-300 block">30% Guilt-Free Budget Buffer</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 space-y-0.5">
+                <span class="text-[10px] text-emerald-300 uppercase font-bold block">COAST FIRE STATUS</span>
+                <span id="sim-out-fire" class="text-lg font-black text-emerald-300">✅ ACHIEVED</span>
+                <span class="text-[10px] text-slate-300 block">Compounds to target by 60</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a 
+                href="/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx" 
+                download="NetWorth_FIRE_Master_Vault_2026.xlsx"
+                class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-sm transition-all shadow-lg active:scale-95"
+              >
+                <span>Download Master Vault (.xlsx / Sheets) — $3 Early Access</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Visual Interactive Tab Showcase (SEE EXACTLY WHAT YOU ARE GETTING) -->
     <section class="space-y-6">
       <div class="text-center space-y-2 max-w-2xl mx-auto">
@@ -419,9 +545,10 @@ const productSchema = {
 
   </main>
 
-  <!-- Client-side Interactive Tab Switcher Script -->
+  <!-- Client-side Interactive Tab Switcher & Simulator Script -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. Tab Switcher
       const tabButtons = document.querySelectorAll('#preview-tab-buttons .tab-btn');
       const tabPanels = document.querySelectorAll('.tab-panel');
 
@@ -429,7 +556,6 @@ const productSchema = {
         btn.addEventListener('click', () => {
           const target = btn.getAttribute('data-tab');
 
-          // Update active button state
           tabButtons.forEach(b => {
             b.classList.remove('bg-emerald-600', 'text-white', 'shadow-md');
             b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
@@ -437,7 +563,6 @@ const productSchema = {
           btn.classList.add('bg-emerald-600', 'text-white', 'shadow-md');
           btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
 
-          // Show targeted mock tab
           tabPanels.forEach(panel => {
             if (panel.id === `mock-${target}`) {
               panel.classList.remove('hidden');
@@ -447,6 +572,78 @@ const productSchema = {
           });
         });
       });
+
+      // 2. Live Vault Simulator Engine
+      const simAge = document.getElementById('sim-age');
+      const simCash = document.getElementById('sim-cash');
+      const simInvest = document.getElementById('sim-invest');
+      const simProp = document.getElementById('sim-prop');
+      const simDebt = document.getElementById('sim-debt');
+      const simIncome = document.getElementById('sim-income');
+
+      const outNW = document.getElementById('sim-out-nw');
+      const outFed = document.getElementById('sim-out-fed');
+      const outSpend = document.getElementById('sim-out-spend');
+      const outFire = document.getElementById('sim-out-fire');
+
+      const fedBenchmarks = {
+        under35: { p99: 2800000, p90: 380000, p75: 145000, p50: 39000, coast: 185000 },
+        '35to44': { p99: 5500000, p90: 980000, p75: 420000, p50: 135600, coast: 320000 },
+        '45to54': { p99: 10200000, p90: 1950000, p75: 780000, p50: 247200, coast: 580000 },
+        '55to64': { p99: 14500000, p90: 2800000, p75: 1150000, p50: 364500, coast: 950000 },
+        '65to74': { p99: 16800000, p90: 3200000, p75: 1350000, p50: 409900, coast: 1200000 }
+      };
+
+      function updateSimulator() {
+        const ageCohort = simAge ? simAge.value : 'under35';
+        const cash = parseFloat(simCash ? simCash.value : 0) || 0;
+        const invest = parseFloat(simInvest ? simInvest.value : 0) || 0;
+        const prop = parseFloat(simProp ? simProp.value : 0) || 0;
+        const debt = parseFloat(simDebt ? simDebt.value : 0) || 0;
+        const income = parseFloat(simIncome ? simIncome.value : 0) || 0;
+
+        const nw = (cash + invest + prop) - debt;
+        if (outNW) {
+          outNW.textContent = '$' + Math.round(nw).toLocaleString('en-US');
+          outNW.className = nw >= 0 ? 'text-2xl font-black text-white' : 'text-2xl font-black text-rose-400';
+        }
+
+        // Fed Percentile calculation
+        const bm = fedBenchmarks[ageCohort] || fedBenchmarks.under35;
+        let rank = 'Top 50%';
+        if (nw >= bm.p99) rank = 'Top 1% 👑';
+        else if (nw >= bm.p90) rank = 'Top 10% ⭐';
+        else if (nw >= bm.p75) rank = 'Top 25%';
+        else if (nw >= bm.p50) rank = 'Top 50%';
+        else rank = 'Building (<50%)';
+
+        if (outFed) outFed.textContent = rank;
+
+        // Daily Safe-to-Spend (30% Wants / 30 days)
+        const dailySafe = Math.max(0, Math.round((income * 0.30) / 30));
+        if (outSpend) outSpend.textContent = `$${dailySafe} / day`;
+
+        // Coast FIRE status
+        if (outFire) {
+          if (invest >= bm.coast) {
+            outFire.textContent = '✅ ACHIEVED';
+            outFire.className = 'text-lg font-black text-emerald-300';
+          } else {
+            const gap = bm.coast - invest;
+            outFire.textContent = `Gap: $${Math.round(gap).toLocaleString('en-US')}`;
+            outFire.className = 'text-lg font-black text-amber-300';
+          }
+        }
+      }
+
+      [simAge, simCash, simInvest, simProp, simDebt, simIncome].forEach(input => {
+        if (input) {
+          input.addEventListener('input', updateSimulator);
+          input.addEventListener('change', updateSimulator);
+        }
+      });
+
+      updateSimulator();
     });
   </script>
 </Layout>
