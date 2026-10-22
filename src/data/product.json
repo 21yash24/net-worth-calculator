@@ -1,40 +1,39 @@
 {
-  "name": "The Ultimate Net Worth & FIRE Master Vault (2026 Edition)",
-  "tagline": "The all-in-one private wealth dashboard, Federal Reserve percentile benchmark, and retirement freedom calculator for Google Sheets & Excel.",
-  "price": "$4.99",
-  "originalPrice": "$29.00",
-  "discount": "83% OFF Launch Special",
+  "name": "The Ultimate Net Worth & Smart Budget Vault (2026 Edition)",
+  "tagline": "The all-in-one private wealth dashboard, 50/30/20 cash flow engine, and Federal Reserve percentile benchmark for Google Sheets & Excel.",
+  "price": "$6",
+  "earlyBirdPrice": "$3",
+  "earlyBirdLimit": "First 50 Users",
   "checkoutUrl": "https://gumroad.com/",
   "format": "Google Sheets (1-Click Copy) + Microsoft Excel (.xlsx)",
-  "guarantee": "30-Day 100% Money-Back Guarantee — Zero Questions Asked",
   "features": [
     {
-      "title": "Executive KPI Dashboard",
-      "desc": "Automated cards for Total Net Worth, Liquid Net Worth, Month-over-Month change, and trailing 12-month in-cell SPARKLINE trajectory charts."
+      "title": "⚡ 2-Minute Monthly Quick-Check",
+      "desc": "No tedious receipt typing or accounting homework. Enter just 4 numbers on the 1st of each month (Cash, Invested, Property, Debt) and let formulas do all the heavy lifting."
     },
     {
-      "title": "Federal Reserve SCF Percentile Engine",
-      "desc": "Select your age group and instantly see your exact percentile ranking against official US central bank data right inside your spreadsheet."
+      "title": "💸 Smart 50/30/20 Cash Flow & Guilt-Free Buffer",
+      "desc": "Answers the single most important question: 'How much can I safely spend right now without hurting my future?' Calculates your real-time daily spending allowance."
     },
     {
-      "title": "FIRE Freedom & Early Retirement Countdown",
-      "desc": "Calculates your Lean FIRE, Standard FIRE (4% Rule), Fat FIRE, and Coast FIRE numbers with an automated retirement date countdown."
+      "title": "🎯 Sinking Funds Shield",
+      "desc": "Solves the #1 reason budgets fail. Automatically plans for annual car repairs, insurance renewals, holiday gifts, and emergency reserves so unexpected bills never shock your savings."
     },
     {
-      "title": "12-Month Historical Wealth Ledger",
-      "desc": "Structured asset & liability tracking for cash, 401(k), Roth IRA, brokerage, real estate equity, mortgages, and debt."
+      "title": "📊 Executive Bloomberg-Style Wealth Dashboard",
+      "desc": "Institutional dark-mode terminal layout featuring Total Net Worth, Liquid Invested Ratio, Month-over-Month deltas, and automated Federal Reserve SCF percentile rankings."
     },
     {
-      "title": "Cash Drag & Asset Allocation Optimizer",
-      "desc": "Automatically alerts you if excessive cash is losing purchasing power to inflation and balances your stock vs. bond vs. cash ratio."
+      "title": "🔥 FIRE Freedom & Retirement Engine",
+      "desc": "Calculates your Lean FIRE, Standard FIRE (Trinity Study 4% Rule), Fat FIRE, and Coast FIRE numbers with an automated retirement calendar countdown."
     },
     {
-      "title": "Debt Avalanche & Snowball Calculator",
-      "desc": "Ranks up to 8 debts by interest rate or balance with custom payoff milestone projections."
+      "title": "💳 Mathematical Debt Avalanche vs. Snowball",
+      "desc": "Compares interest-minimizing Avalanche vs. psychological momentum Snowball payoff schedules to get debt-free faster."
     },
     {
-      "title": "100% Offline & Private",
-      "desc": "Never link bank passwords or share credentials with third-party apps. Runs 100% locally on your personal device."
+      "title": "🔒 100% Offline & Private",
+      "desc": "Never link sensitive bank passwords or share financial data with third-party aggregators. Runs completely on your personal device."
     }
   ]
 }
