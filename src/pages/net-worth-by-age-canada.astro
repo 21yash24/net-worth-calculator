@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const title = "Net Worth by Age in Canada (2026): StatCan Wealth Percentiles [C$]";
 const description = "What is the average Canadian net worth by age? Explore official Statistics Canada (StatCan) median, top 10%, and top 1% wealth benchmarks in CAD.";
@@ -260,6 +261,12 @@ const faqSchema = {
       <p>Statistics Canada, Survey of Financial Security (SFS), 2019. Reproduced and distributed on an "as is" basis with the permission of Statistics Canada. The percentile estimates in this calculator are derived from the published SFS microdata percentile tables. All figures are in Canadian dollars (CAD). Data reflects pre-pandemic household wealth distribution.</p>
       <p>For US data, see our <a href="/" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 underline">Federal Reserve Net Worth Calculator</a>. For UK data, see our <a href="/net-worth-by-age-uk" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 underline">UK ONS Net Worth Calculator</a>.</p>
     </div>
+
+    <!-- Curated Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="Proven Wealth Bestsellers: TFSA, RRSP & Index Compounding" 
+      subtitle="The essential personal finance books to build generational wealth and accelerate financial independence in Canada."
+    />
 
   </main>
 </Layout>

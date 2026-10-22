@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const title = "Net Worth Percentile by Age (2026): Are You in the Top 1%, 5%, or 10%? [US Data]";
 const description = "Find your exact net worth percentile by age. Compare against US Federal Reserve SCF data: Top 10% ($1.03M+), Top 5% ($1.9M+), and Top 1% ($5.8M+).";
@@ -263,6 +264,12 @@ function fmt(n: number): string {
         Calculate My Net Worth Percentile →
       </a>
     </div>
+
+    <!-- Essential Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="Bestselling Guides to Reach the Top 10% Percentile" 
+      subtitle="Proven methodologies on index compounding, high-savings-rate lifestyle, and automated asset accumulation."
+    />
 
     <!-- FAQ -->
     <section class="space-y-3">

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WealthBooks from '../components/WealthBooks.astro';
 
 const title = "Net Worth by Age in New Zealand (2026): Stats NZ Wealth Benchmarks [NZ$]";
 const description = "What is the average net worth by age in New Zealand? Explore official Stats NZ Household Economic Survey benchmarks, medians, and top 10% in NZD.";
@@ -256,6 +257,12 @@ const faqSchema = {
         </details>
       ))}
     </section>
+
+    <!-- Curated Wealth Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title="Global Wealth Bestsellers: Building Long-Term Freedom" 
+      subtitle="Timeless personal finance and index investing guides for building passive assets and KiwiSaver growth."
+    />
 
   </main>
 </Layout>

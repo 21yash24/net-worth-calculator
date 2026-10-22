@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import states from '../../data/statesData.json';
+import WealthBooks from '../../components/WealthBooks.astro';
 
 export async function getStaticPaths() {
   return states.map((s) => ({
@@ -210,7 +211,13 @@ const faqSchema = {
       </div>
     </section>
 
-    <div class="text-center pt-4">
+    <!-- Curated Financial Literacy Books (Amazon Associates) -->
+    <WealthBooks 
+      title={`Accelerate Your Wealth in ${stateData.name}`}
+      subtitle={`Top recommended books on real estate equity, index fund compounding, and financial independence for ${stateData.name} households.`}
+    />
+
+    <div class="text-center pt-8">
       <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm hover:bg-emerald-600 transition-all shadow-md">
         <span>Launch Interactive Percentile Calculator →</span>
       </a>
