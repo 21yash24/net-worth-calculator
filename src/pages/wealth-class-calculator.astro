@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const title = "Am I Rich? (2026 Wealth Class Calculator) – Middle Class, Upper Middle or Rich?";
 const description = "Are you middle class, upper middle class, or rich? Check your exact US wealth class percentile benchmarked against official Federal Reserve SCF net worth data.";
@@ -84,6 +86,13 @@ const classFaq = {
         Find out if you are Middle Class, Upper Middle Class, High Net Worth (HNW), or Ultra High Net Worth (UHNW) in America based on US Federal Reserve Survey of Consumer Finances data.
       </p>
     </header>
+
+    <!-- E-E-A-T Verified Trust Header Badge -->
+    <TrustBadge 
+      source="Federal Reserve SCF & Private Banking Standards" 
+      updatedDate="October 2026" 
+      readTime="4 min read" 
+    />
 
     <!-- Google AI Overview Callout Box -->
     <div class="p-6 rounded-3xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 space-y-3">
@@ -244,6 +253,9 @@ const classFaq = {
         </details>
       ))}
     </section>
+
+    <!-- Author & Editorial E-E-A-T Oversight -->
+    <AuthorBio className="mt-12" />
 
   </main>
 </Layout>

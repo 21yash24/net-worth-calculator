@@ -4,6 +4,8 @@ import fedData from '../data/fedData.json';
 import careers from '../data/careerData.json';
 import milestones from '../data/milestoneData.json';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -88,6 +90,14 @@ const faqSchema = {
 				Discover your exact wealth percentile in America, download your private Wealth Scorecard, and benchmark your progress toward financial freedom.
 			</p>
 		</header>
+
+		<!-- E-E-A-T Data Verification Header -->
+		<div class="max-w-3xl mx-auto -mt-4 mb-6">
+			<TrustBadge 
+				source="Federal Reserve SCF Triennial Microdata (2022/2025 Release)" 
+				updatedDate="October 2026" 
+			/>
+		</div>
 
 		<!-- Quick Reference Snippet Box -->
 		<div class="bg-emerald-950/10 dark:bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-5 md:p-6 mb-8 text-left space-y-2">
@@ -686,6 +696,11 @@ const faqSchema = {
 				</details>
 			</div>
 		</section>
+
+		<!-- Author & Editorial E-E-A-T Oversight -->
+		<div class="mt-14 max-w-3xl mx-auto">
+			<AuthorBio />
+		</div>
 	</main>
 </Layout>
 

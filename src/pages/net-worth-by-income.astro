@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -68,6 +70,15 @@ const faqSchema = {
 				Calculate whether you are an Average, Under, or Prodigious Accumulator of Wealth based on your salary and age.
 			</p>
 		</header>
+
+		<!-- E-E-A-T Data Verification Header -->
+		<div class="max-w-3xl mx-auto -mt-4 mb-6">
+			<TrustBadge 
+				source="Dr. Thomas J. Stanley Expected Wealth Model & US Federal Reserve SCF Benchmarks" 
+				updatedDate="October 2026" 
+				readTime="3 min read" 
+			/>
+		</div>
 
 		<!-- Calculator Card -->
 		<div class="p-6 md:p-10 rounded-3xl border border-slate-250 dark:border-slate-800/80 shadow-xl backdrop-blur-xl bg-white/95 dark:bg-slate-900/40 space-y-8">
@@ -256,6 +267,11 @@ const faqSchema = {
 			title="Books on Turning High Income Into True Wealth" 
 			subtitle="Learn why high earners often struggle to accumulate assets and how to automate an above-average savings rate."
 		/>
+
+		<!-- Author & Editorial E-E-A-T Oversight -->
+		<div class="mt-14 max-w-3xl mx-auto">
+			<AuthorBio />
+		</div>
 	</main>
 </Layout>
 

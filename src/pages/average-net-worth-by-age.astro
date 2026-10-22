@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -64,7 +66,13 @@ const faqSchema = {
   </section>
 
   <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-12 space-y-16">
+  <main class="max-w-4xl mx-auto px-4 py-8 space-y-16">
+
+    <TrustBadge 
+      source="Federal Reserve SCF Triennial Microdata (2022/2025 Release)" 
+      updatedDate="October 2026" 
+      readTime="6 min read" 
+    />
 
     <!-- Intro: Mean vs Median -->
     <section>
@@ -487,6 +495,9 @@ const faqSchema = {
       title="Recommended Reading to Beat the Net Worth Benchmarks" 
       subtitle="The exact investment philosophy, savings rate habits, and automation systems used by top 10% wealth accumulators."
     />
+
+    <!-- Author & Editorial E-E-A-T Oversight -->
+    <AuthorBio />
 
   </main>
 </Layout>

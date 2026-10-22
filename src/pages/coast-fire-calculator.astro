@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const title = "Coast FIRE Calculator: Find Your Exact Coast FI Number [2026 Free Tool]";
 const description = "Calculate your exact Coast FIRE number by age. Find out how much you need invested today to retire early without saving another penny.";
@@ -92,6 +94,12 @@ const coastFaq = {
         Find out if your current net worth and retirement investments are already enough to compound into full financial freedom—without saving another dollar.
       </p>
     </header>
+
+    <TrustBadge 
+      source="Trinity Study 4% Safe Withdrawal Rule & US Federal Reserve Benchmarks" 
+      updatedDate="October 2026" 
+      readTime="4 min read" 
+    />
 
     <!-- Google AI Overview Callout Box -->
     <div class="p-6 rounded-3xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-3">
@@ -311,6 +319,9 @@ const coastFaq = {
       title="The Essential Coast FIRE & Financial Independence Library" 
       subtitle="Bestselling playbooks on index fund compounding, early retirement mathematics, and escaping the 9-to-5 rat race."
     />
+
+    <!-- Author & Editorial E-E-A-T Oversight -->
+    <AuthorBio />
 
   </main>
 </Layout>

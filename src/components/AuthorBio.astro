@@ -1,0 +1,61 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<aside class={`p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/50 shadow-lg backdrop-blur-sm ${className}`} aria-label="Author and Editorial Oversight">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+    <!-- Author Avatar Monogram -->
+    <div class="relative shrink-0">
+      <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900 flex items-center justify-center text-white font-extrabold text-2xl sm:text-3xl shadow-md border-2 border-emerald-400/40">
+        YJ
+      </div>
+      <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900 flex items-center justify-center text-white text-[11px]" title="Verified Financial Analyst">
+        ✓
+      </div>
+    </div>
+
+    <!-- Bio Content -->
+    <div class="space-y-2 flex-1">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
+              <a href="/author/yash-jha" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                Yash Jha
+              </a>
+            </h3>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
+              Founder &amp; Lead Quantitative Analyst
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">
+            Specialist in Household Wealth Percentiles, Macroeconomic Microdata &amp; FIRE Mathematics
+          </p>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+        Yash leads quantitative modeling and econometric data integration at GetNetWorthCalculator.com. He verifies all calculator formulas against triennial public microdata from the <strong>US Federal Reserve Board (Survey of Consumer Finances)</strong>, <strong>UK Office for National Statistics</strong>, <strong>Statistics Canada</strong>, and the <strong>Reserve Bank of India</strong>. Our mission is to eliminate unverified financial hearsay with mathematically sound, 100% private benchmarking.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3 pt-2 text-xs">
+        <a href="/author/yash-jha" class="font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+          <span>Read Full Author Profile</span>
+          <span>→</span>
+        </a>
+        <span class="text-slate-300 dark:text-slate-700">•</span>
+        <a href="/about" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+          Data Methodology &amp; Sources
+        </a>
+        <span class="text-slate-300 dark:text-slate-700">•</span>
+        <a href="/about#editorial" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+          Editorial &amp; Fact-Check Integrity
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>

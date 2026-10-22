@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const title = "Prodigious Accumulator of Wealth (PAW) Calculator: Formula & Test (2026)";
 const description = "Calculate your Prodigious Accumulator of Wealth (PAW) score using the official Millionaire Next Door formula: Expected Net Worth = (Age × Income) / 10.";
@@ -76,6 +78,12 @@ const pawFaq = {
         Test your wealth building efficiency using the famous formula from <em>The Millionaire Next Door</em>: discover whether you are a <strong>PAW</strong>, <strong>AAW</strong>, or <strong>UAW</strong> based on your age and income.
       </p>
     </header>
+
+    <TrustBadge 
+      source="Dr. Thomas J. Stanley 'The Millionaire Next Door' Formula & Federal Reserve Benchmarks" 
+      updatedDate="October 2026" 
+      readTime="3 min read" 
+    />
 
     <!-- Formula Callout Card -->
     <div class="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-slate-900/10 border border-emerald-500/30 shadow-lg space-y-3">
@@ -186,6 +194,9 @@ const pawFaq = {
       title="The Books That Defined the PAW Philosophy" 
       subtitle="Discover the exact research, savings rate benchmarks, and frugal habits from Thomas J. Stanley and other wealth researchers."
     />
+
+    <!-- Author & Editorial E-E-A-T Oversight -->
+    <AuthorBio />
 
   </main>
 </Layout>

@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const title = "$1 Million Net Worth by Age (2026) | $1M Milestones";
 const description = "At what age do Americans reach $1 million net worth? Federal Reserve SCF data showing millionaire percentage by age group and savings milestones.";
@@ -60,6 +62,12 @@ const millionaireData = [
       <p class="text-lg text-slate-700 dark:text-slate-400 leading-relaxed max-w-3xl">
         At what age do Americans actually reach $1 million in total net worth? Here's the data on millionaire prevalence by age group and how long it takes to save your first million.
       </p>
+
+      <TrustBadge 
+        source="Federal Reserve SCF Triennial Microdata & Credit Suisse Global Wealth Benchmarks" 
+        updatedDate="October 2026" 
+        readTime="4 min read" 
+      />
     </section>
 
     <!-- Snippet Bait -->
@@ -184,5 +192,8 @@ const millionaireData = [
       title="How Real Everyday People Reach $1 Million+" 
       subtitle="The essential literature on achieving seven-figure financial independence through savings rate and index compounding."
     />
+
+    <!-- Author & Editorial E-E-A-T Oversight -->
+    <AuthorBio />
   </main>
 </Layout>
