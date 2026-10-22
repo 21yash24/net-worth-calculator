@@ -140,6 +140,7 @@ async function createMasterVault() {
     { name: '2-Min Check-In', purpose: 'For 90% of months: Type 4 numbers once a month in 90 seconds. Zero homework.' },
     { name: '📊 Executive Dashboard', purpose: 'Bloomberg-style visual terminal with Stanley & Danko Wealth Class (PAW/UAW) Engine.' },
     { name: '💸 Smart Budget (50/30/20)', purpose: "Answers: 'How much can I spend today guilt-free?' (Needs 50%, Wants 30%, Wealth 20%)." },
+    { name: '💳 Statement & Expense Ledger', purpose: '100% private bank statement drop-zone. Ingests PDF/CSV converted at getnetworthcalculator.com/tools/statement-converter with instant 50/30/20 actuals & subscription leak detector.' },
     { name: 'Sinking Funds Shield', purpose: 'Prevents budget shock from car repairs, holiday travel, and annual insurance renewals.' },
     { name: 'FIRE Freedom Engine', purpose: 'Trinity 4% rule calculator showing your Coast FIRE milestone and exact retirement date.' },
     { name: '💳 Debt Accelerator', purpose: 'Side-by-side Avalanche (interest saver) vs Snowball (momentum builder) payoff rank.' },
@@ -158,13 +159,13 @@ async function createMasterVault() {
   });
 
   // Brand Verification & Online Hub Link
-  wsGuide.mergeCells('B25:D25');
-  const gBox = wsGuide.getCell('B25');
+  wsGuide.mergeCells('B26:D26');
+  const gBox = wsGuide.getCell('B26');
   gBox.value = '🌐 GetNetWorthCalculator.com • 100% Private, Anonymous & Offline • Official 2026 Edition';
   gBox.font = { bold: true, size: 9.5, color: { argb: 'FF065F46' } };
   gBox.fill = solidFill('DCFCE7');
   gBox.alignment = { horizontal: 'center', vertical: 'middle' };
-  wsGuide.getRow(25).height = 26;
+  wsGuide.getRow(26).height = 26;
 
   // =========================================================================
   // TAB 2: 🏛️ PRIVATE WEALTH DIAGNOSTIC (INSTANT BASELINE EVALUATION)
@@ -1199,6 +1200,363 @@ async function createMasterVault() {
     cell.fill = solidFill(colors.emeraldDark);
     cell.border = thinBorder;
   });
+
+  // =========================================================================
+  // TAB 4B: 💳 BANK STATEMENT & EXPENSE INTELLIGENCE LEDGER (DIRECT DROP-ZONE)
+  // =========================================================================
+  const wsLedger = workbook.addWorksheet('Statement & Expense Ledger', {
+    views: [{ showGridLines: true }]
+  });
+
+  wsLedger.columns = [
+    { width: 3 },   // A: Margin
+    { width: 14 },  // B: Date
+    { width: 34 },  // C: Clean Merchant
+    { width: 16 },  // D: Amount ($)
+    { width: 22 },  // E: Category
+    { width: 18 },  // F: Budget Bucket
+    { width: 4 },   // G: Spacer
+    { width: 30 },  // H: Metric Label / Category
+    { width: 16 },  // I: Summary Amount ($)
+    { width: 12 },  // J: % of Total
+    { width: 18 },  // K: Benchmark Target
+    { width: 3 }    // L: Margin
+  ];
+
+  // Header Banner
+  wsLedger.mergeCells('B2:K2');
+  const ledH = wsLedger.getCell('B2');
+  ledH.value = '💳 BANK STATEMENT & EXPENSE INTELLIGENCE LEDGER • 100% PRIVATE DROP-ZONE';
+  ledH.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  ledH.fill = solidFill(colors.emeraldDark);
+  ledH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsLedger.getRow(2).height = 28;
+
+  wsLedger.mergeCells('B3:K3');
+  const ledSub = wsLedger.getCell('B3');
+  ledSub.value = 'Step 1: Drop bank PDF at getnetworthcalculator.com/tools/statement-converter  ➔  Step 2: Click "Copy For Vault"  ➔  Step 3: Paste in Cell B12';
+  ledSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
+  ledSub.fill = solidFill(colors.cardBg);
+  ledSub.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsLedger.getRow(3).height = 20;
+
+  // Instructions Card (B5:F9)
+  wsLedger.mergeCells('B5:F5');
+  wsLedger.getCell('B5').value = '🚀 HOW TO INGEST YOUR BANK STATEMENT IN 10 SECONDS:';
+  wsLedger.getCell('B5').font = { size: 9.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('B5').fill = solidFill('065F46');
+  wsLedger.getRow(5).height = 20;
+
+  const ingestSteps = [
+    '1. Open https://getnetworthcalculator.com/tools/statement-converter in your browser (100% client-side privacy).',
+    '2. Drop your bank PDF statement (Chase, Amex, BoA, Wells Fargo, Apple Card, Citi, Capital One, etc.) or CSV.',
+    '3. Click the green "📋 1-Click Copy For Vault" button (copies tab-delimited pre-categorized ledger data).',
+    '4. Select cell B12 below and press Cmd+V (Mac) or Ctrl+V (Windows). All 50/30/20 actuals & totals update live!'
+  ];
+
+  ingestSteps.forEach((stepText, idx) => {
+    const r = 6 + idx;
+    wsLedger.mergeCells(`B${r}:F${r}`);
+    const cell = wsLedger.getCell(`B${r}`);
+    cell.value = stepText;
+    cell.font = { size: 8.5, color: { argb: 'FF0F172A' } };
+    cell.fill = solidFill('F8FAFC');
+    cell.border = thinBorder;
+    wsLedger.getRow(r).height = 18;
+  });
+
+  // KPI Dashboard Cards (H5:K9)
+  wsLedger.mergeCells('H5:K5');
+  wsLedger.getCell('H5').value = '📊 STATEMENT CASH FLOW HEALTH AUDIT (LIVE FORMULAS)';
+  wsLedger.getCell('H5').font = { size: 9.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('H5').fill = solidFill(colors.darkBg);
+  wsLedger.getRow(5).height = 20;
+
+  const kpiRows = [
+    { label: 'Total Inflows / Deposits (Income)', formula: 'SUMIF(E12:E250, "*INFLOW*", D12:D250)', fmt: '$#,##0.00', color: '10B981' },
+    { label: 'Total Outflows (Monthly Spending)', formula: 'SUMIF(E12:E250, "<>*INFLOW*", D12:D250)', fmt: '$#,##0.00', color: 'F43F5E' },
+    { label: 'Net Monthly Cash Surplus / (Deficit)', formula: 'I6-I7', fmt: '$#,##0.00', color: 'FFFFFF' },
+    { label: 'Calculated Savings Rate %', formula: 'IF(I6>0, I8/I6, 0)', fmt: '0.0%', color: 'F59E0B' }
+  ];
+
+  kpiRows.forEach((k, idx) => {
+    const r = 6 + idx;
+    wsLedger.getCell(`H${r}`).value = k.label;
+    wsLedger.getCell(`H${r}`).font = { size: 8.5, bold: true };
+    wsLedger.getCell(`H${r}`).fill = solidFill('F1F5F9');
+    wsLedger.getCell(`H${r}`).border = thinBorder;
+
+    wsLedger.getCell(`I${r}`).value = { formula: k.formula };
+    wsLedger.getCell(`I${r}`).numFmt = k.fmt;
+    wsLedger.getCell(`I${r}`).font = { bold: true, color: { argb: 'FF' + k.color } };
+    wsLedger.getCell(`I${r}`).fill = solidFill(colors.cardBg);
+    wsLedger.getCell(`I${r}`).alignment = { horizontal: 'right', vertical: 'middle' };
+    wsLedger.getCell(`I${r}`).border = thinBorder;
+
+    wsLedger.mergeCells(`J${r}:K${r}`);
+    const sideNote = wsLedger.getCell(`J${r}`);
+    sideNote.value = (idx === 0 ? 'Salary & Transfers' : idx === 1 ? 'All debits' : idx === 2 ? 'Net retained' : 'Capital accumulation');
+    sideNote.font = { italic: true, size: 8, color: { argb: 'FF94A3B8' } };
+    sideNote.fill = solidFill(colors.cardBg);
+    sideNote.alignment = { horizontal: 'center', vertical: 'middle' };
+    sideNote.border = thinBorder;
+    wsLedger.getRow(r).height = 19;
+  });
+
+  // Ledger Table Headers (Row 11)
+  const ledgerHeaders = [
+    { col: 'B', text: 'TRANSACTION DATE' },
+    { col: 'C', text: 'CLEAN MERCHANT / DESCRIPTION' },
+    { col: 'D', text: 'AMOUNT ($)' },
+    { col: 'E', text: 'CATEGORY' },
+    { col: 'F', text: '50/30/20 BUCKET' }
+  ];
+
+  ledgerHeaders.forEach(h => {
+    const cell = wsLedger.getCell(`${h.col}11`);
+    cell.value = h.text;
+    cell.font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+    cell.fill = solidFill(colors.cardBg);
+    cell.alignment = { horizontal: (h.col === 'D' ? 'right' : 'left'), vertical: 'middle' };
+    cell.border = thinBorder;
+  });
+  wsLedger.getRow(11).height = 24;
+
+  // Analytical Side Panel Headers (H11:K11)
+  wsLedger.getCell('H11').value = '50/30/20 ACTUALS VS BUDGET';
+  wsLedger.getCell('H11').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('H11').fill = solidFill(colors.emeraldDark);
+  wsLedger.getCell('H11').border = thinBorder;
+
+  wsLedger.getCell('I11').value = 'ACTUAL ($)';
+  wsLedger.getCell('I11').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('I11').fill = solidFill(colors.emeraldDark);
+  wsLedger.getCell('I11').alignment = { horizontal: 'right', vertical: 'middle' };
+  wsLedger.getCell('I11').border = thinBorder;
+
+  wsLedger.getCell('J11').value = '% SPEND';
+  wsLedger.getCell('J11').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('J11').fill = solidFill(colors.emeraldDark);
+  wsLedger.getCell('J11').alignment = { horizontal: 'right', vertical: 'middle' };
+  wsLedger.getCell('J11').border = thinBorder;
+
+  wsLedger.getCell('K11').value = 'RULE TARGET';
+  wsLedger.getCell('K11').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('K11').fill = solidFill(colors.emeraldDark);
+  wsLedger.getCell('K11').alignment = { horizontal: 'center', vertical: 'middle' };
+  wsLedger.getCell('K11').border = thinBorder;
+
+  // 50/30/20 Analysis Rows (Rows 12-14)
+  const budgetActualRows = [
+    { row: 12, label: '50% Needs (Rent, Utilities, Food, Gas)', formulaVal: 'SUMIFS(D$12:D$250, F$12:F$250, "*Needs*")', target: 'Max 50.0%' },
+    { row: 13, label: '30% Wants (Dining, Shopping, Subs)', formulaVal: 'SUMIFS(D$12:D$250, F$12:F$250, "*Wants*")', target: 'Max 30.0%' },
+    { row: 14, label: '20% Wealth (Savings & Investments)', formulaVal: 'SUMIFS(D$12:D$250, F$12:F$250, "*Wealth*")', target: 'Min 20.0%' }
+  ];
+
+  budgetActualRows.forEach(bar => {
+    wsLedger.getCell(`H${bar.row}`).value = bar.label;
+    wsLedger.getCell(`H${bar.row}`).font = { size: 8.5, bold: true };
+    wsLedger.getCell(`H${bar.row}`).border = thinBorder;
+
+    wsLedger.getCell(`I${bar.row}`).value = { formula: bar.formulaVal };
+    wsLedger.getCell(`I${bar.row}`).numFmt = '$#,##0.00';
+    wsLedger.getCell(`I${bar.row}`).font = { bold: true };
+    wsLedger.getCell(`I${bar.row}`).border = thinBorder;
+
+    wsLedger.getCell(`J${bar.row}`).value = { formula: `IF(I$15>0, I${bar.row}/I$15, 0)` };
+    wsLedger.getCell(`J${bar.row}`).numFmt = '0.0%';
+    wsLedger.getCell(`J${bar.row}`).border = thinBorder;
+
+    wsLedger.getCell(`K${bar.row}`).value = bar.target;
+    wsLedger.getCell(`K${bar.row}`).font = { italic: true, size: 8.5, color: { argb: 'FF64748B' } };
+    wsLedger.getCell(`K${bar.row}`).alignment = { horizontal: 'center' };
+    wsLedger.getCell(`K${bar.row}`).border = thinBorder;
+    wsLedger.getRow(bar.row).height = 19;
+  });
+
+  // Total Outflow Row 15
+  wsLedger.getCell('H15').value = 'Total Discretionary + Essential Outflow';
+  wsLedger.getCell('H15').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('H15').fill = solidFill(colors.cardBg);
+  wsLedger.getCell('H15').border = thinBorder;
+
+  wsLedger.getCell('I15').value = { formula: 'SUM(I12:I14)' };
+  wsLedger.getCell('I15').numFmt = '$#,##0.00';
+  wsLedger.getCell('I15').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('I15').fill = solidFill(colors.cardBg);
+  wsLedger.getCell('I15').border = thinBorder;
+
+  wsLedger.getCell('J15').value = { formula: 'SUM(J12:J14)' };
+  wsLedger.getCell('J15').numFmt = '0.0%';
+  wsLedger.getCell('J15').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('J15').fill = solidFill(colors.cardBg);
+  wsLedger.getCell('J15').border = thinBorder;
+
+  wsLedger.getCell('K15').value = '100.0%';
+  wsLedger.getCell('K15').font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  wsLedger.getCell('K15').fill = solidFill(colors.cardBg);
+  wsLedger.getCell('K15').alignment = { horizontal: 'center' };
+  wsLedger.getCell('K15').border = thinBorder;
+  wsLedger.getRow(15).height = 20;
+
+  // Category Subtotals Section Header (Row 17)
+  wsLedger.mergeCells('H17:K17');
+  const catH = wsLedger.getCell('H17');
+  catH.value = '🔍 SPENDING CATEGORY BREAKDOWN (AUTOMATED SUB-TOTALS)';
+  catH.font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  catH.fill = solidFill(colors.darkBg);
+  catH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsLedger.getRow(17).height = 20;
+
+  const catSubtotals = [
+    { row: 18, name: 'Housing & Utilities', key: '*HOUSING*' },
+    { row: 19, name: 'Groceries & Supermarkets', key: '*GROCERIES*' },
+    { row: 20, name: 'Dining, Cafes & Delivery', key: '*DINING*' },
+    { row: 21, name: 'Transportation & Fuel', key: '*TRANSPORT*' },
+    { row: 22, name: 'Recurring Subscriptions (Vampire)', key: '*SUBSCRIPTION*' },
+    { row: 23, name: 'Shopping & Retail', key: '*SHOPPING*' },
+    { row: 24, name: 'Healthcare & Medical', key: '*HEALTHCARE*' },
+    { row: 25, name: 'Miscellaneous Discretionary', key: '*MISC*' }
+  ];
+
+  catSubtotals.forEach((cs, idx) => {
+    wsLedger.getCell(`H${cs.row}`).value = cs.name;
+    wsLedger.getCell(`H${cs.row}`).font = { size: 8.5 };
+    wsLedger.getCell(`H${cs.row}`).border = thinBorder;
+
+    wsLedger.getCell(`I${cs.row}`).value = { formula: `SUMIF(E$12:E$250, "${cs.key}", D$12:D$250)` };
+    wsLedger.getCell(`I${cs.row}`).numFmt = '$#,##0.00';
+    wsLedger.getCell(`I${cs.row}`).font = { bold: true };
+    wsLedger.getCell(`I${cs.row}`).border = thinBorder;
+
+    wsLedger.getCell(`J${cs.row}`).value = { formula: `IF(I$15>0, I${cs.row}/I$15, 0)` };
+    wsLedger.getCell(`J${cs.row}`).numFmt = '0.0%';
+    wsLedger.getCell(`J${cs.row}`).border = thinBorder;
+
+    wsLedger.getCell(`K${cs.row}`).value = (cs.key.includes('SUBSCRIPTION') ? '⚠️ Audit Below' : 'Tracked');
+    wsLedger.getCell(`K${cs.row}`).font = { size: 8, italic: true, color: { argb: (cs.key.includes('SUBSCRIPTION') ? 'FFF43F5E' : 'FF64748B') } };
+    wsLedger.getCell(`K${cs.row}`).alignment = { horizontal: 'center' };
+    wsLedger.getCell(`K${cs.row}`).border = thinBorder;
+
+    if (idx % 2 === 1) {
+      ['H', 'I', 'J', 'K'].forEach(c => wsLedger.getCell(`${c}${cs.row}`).fill = solidFill('F8FAFC'));
+    }
+    wsLedger.getRow(cs.row).height = 18;
+  });
+
+  // Vampire Subscription Leak Detector Alert Box (Rows 27-31)
+  wsLedger.mergeCells('H27:K27');
+  const vampH = wsLedger.getCell('H27');
+  vampH.value = '🧛 VAMPIRE SUBSCRIPTION & RECURRING LEAK DETECTOR';
+  vampH.font = { bold: true, size: 9, color: { argb: 'FFFFFFFF' } };
+  vampH.fill = solidFill('991B1B');
+  vampH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsLedger.getRow(27).height = 20;
+
+  const vampRows = [
+    { row: 28, label: 'Monthly Subscriptions Drain', formula: 'I22', fmt: '$#,##0.00', note: 'Cap < 5% Spend' },
+    { row: 29, label: 'Annual Cash Drain (12 Months)', formula: 'I28*12', fmt: '$#,##0.00', note: 'Max $1,500/yr' },
+    { row: 30, label: '10-Year Compounded Loss (at 8% S&P 500)', formula: 'I28*182.946', fmt: '$#,##0', note: 'Wealth Lost' },
+    { row: 31, label: 'Action Strategy to Reclaim Wealth', formula: '"Cancel unused subscriptions"', fmt: '@', note: 'Save + Compound' }
+  ];
+
+  vampRows.forEach(vr => {
+    wsLedger.getCell(`H${vr.row}`).value = vr.label;
+    wsLedger.getCell(`H${vr.row}`).font = { size: 8.5, bold: true };
+    wsLedger.getCell(`H${vr.row}`).border = thinBorder;
+
+    const vCell = wsLedger.getCell(`I${vr.row}`);
+    if (vr.fmt === '@') {
+      vCell.value = 'Cancel unused';
+    } else {
+      vCell.value = { formula: vr.formula };
+      vCell.numFmt = vr.fmt;
+    }
+    vCell.font = { bold: true, color: { argb: 'FFF43F5E' }, size: 8.5 };
+    vCell.alignment = { horizontal: 'right', vertical: 'middle' };
+    vCell.fill = solidFill('FFF1F2');
+    vCell.border = thinBorder;
+
+    wsLedger.getCell(`J${vr.row}`).value = (vr.row === 28 ? { formula: `IF(I$15>0, I28/I$15, 0)` } : '');
+    if (vr.row === 28) wsLedger.getCell(`J${vr.row}`).numFmt = '0.0%';
+    wsLedger.getCell(`J${vr.row}`).font = { size: 8.5 };
+    wsLedger.getCell(`J${vr.row}`).border = thinBorder;
+
+    wsLedger.getCell(`K${vr.row}`).value = vr.note;
+    wsLedger.getCell(`K${vr.row}`).font = { size: 8, italic: true, color: { argb: 'FFF43F5E' } };
+    wsLedger.getCell(`K${vr.row}`).alignment = { horizontal: 'center' };
+    wsLedger.getCell(`K${vr.row}`).border = thinBorder;
+    wsLedger.getRow(vr.row).height = 19;
+  });
+
+  // Sample Demo Bank Ledger Profile
+  const sampleTransactions = [
+    { date: '2026-10-01', merchant: 'Tech Corp Payroll (Direct Deposit)', amount: 3450.00, cat: 'INFLOW / DEPOSITS', bucket: 'Inflow' },
+    { date: '2026-10-02', merchant: 'Avalon Apartments Online Rent', amount: 1650.00, cat: 'HOUSING & UTILITIES', bucket: '50% Needs' },
+    { date: '2026-10-03', merchant: 'Trader Joe\'s Supermarket', amount: 84.15, cat: 'GROCERIES', bucket: '50% Needs' },
+    { date: '2026-10-04', merchant: 'Chevron Fuel Station', amount: 48.50, cat: 'TRANSPORTATION', bucket: '50% Needs' },
+    { date: '2026-10-05', merchant: 'Starbucks Coffee Downtown', amount: 6.25, cat: 'DINING', bucket: '30% Wants' },
+    { date: '2026-10-06', merchant: 'Netflix Digital Subscription', amount: 15.99, cat: 'SUBSCRIPTIONS', bucket: '30% Wants' },
+    { date: '2026-10-07', merchant: 'Amazon Marketplace Online', amount: 42.10, cat: 'SHOPPING & RETAIL', bucket: '30% Wants' },
+    { date: '2026-10-08', merchant: 'Uber Ride City Transit', amount: 22.40, cat: 'TRANSPORTATION', bucket: '50% Needs' },
+    { date: '2026-10-09', merchant: 'Chipotle Mexican Grill', amount: 14.80, cat: 'DINING', bucket: '30% Wants' },
+    { date: '2026-10-10', merchant: 'Whole Foods Market SOMA', amount: 96.30, cat: 'GROCERIES', bucket: '50% Needs' },
+    { date: '2026-10-11', merchant: 'PG&E Electric & Gas Utility', amount: 78.40, cat: 'HOUSING & UTILITIES', bucket: '50% Needs' },
+    { date: '2026-10-12', merchant: 'Spotify USA Premium Monthly', amount: 11.99, cat: 'SUBSCRIPTIONS', bucket: '30% Wants' },
+    { date: '2026-10-13', merchant: 'Equinox Fitness Club Membership', amount: 185.00, cat: 'SUBSCRIPTIONS', bucket: '30% Wants' },
+    { date: '2026-10-14', merchant: 'CVS Pharmacy Prescription', amount: 24.15, cat: 'HEALTHCARE', bucket: '50% Needs' },
+    { date: '2026-10-15', merchant: 'Tech Corp Payroll (Direct Deposit)', amount: 3450.00, cat: 'INFLOW / DEPOSITS', bucket: 'Inflow' },
+    { date: '2026-10-16', merchant: 'DoorDash Sweetgreen Delivery', amount: 32.50, cat: 'DINING', bucket: '30% Wants' },
+    { date: '2026-10-17', merchant: 'Shell Gas & Car Care', amount: 52.00, cat: 'TRANSPORTATION', bucket: '50% Needs' },
+    { date: '2026-10-18', merchant: 'Target Store Discretionary', amount: 68.90, cat: 'SHOPPING & RETAIL', bucket: '30% Wants' },
+    { date: '2026-10-19', merchant: 'ChatGPT Plus OpenAI', amount: 20.00, cat: 'SUBSCRIPTIONS', bucket: '30% Wants' },
+    { date: '2026-10-20', merchant: 'Apple iCloud Storage Plan', amount: 9.99, cat: 'SUBSCRIPTIONS', bucket: '30% Wants' },
+    { date: '2026-10-21', merchant: 'Best Buy Electronics', amount: 149.99, cat: 'SHOPPING & RETAIL', bucket: '30% Wants' },
+    { date: '2026-10-22', merchant: 'Trader Joe\'s Supermarket', amount: 92.40, cat: 'GROCERIES', bucket: '50% Needs' },
+    { date: '2026-10-23', merchant: 'Verizon Wireless Mobile Bill', amount: 85.00, cat: 'HOUSING & UTILITIES', bucket: '50% Needs' },
+    { date: '2026-10-24', merchant: 'Blue Bottle Coffee Roasters', amount: 7.50, cat: 'DINING', bucket: '30% Wants' }
+  ];
+
+  // Populate Sample Transactions in Rows 12 to 35
+  sampleTransactions.forEach((tx, idx) => {
+    const r = 12 + idx;
+    wsLedger.getCell(`B${r}`).value = tx.date;
+    wsLedger.getCell(`B${r}`).font = { size: 8.5 };
+    wsLedger.getCell(`B${r}`).border = thinBorder;
+
+    wsLedger.getCell(`C${r}`).value = tx.merchant;
+    wsLedger.getCell(`C${r}`).font = { size: 8.5, bold: true };
+    wsLedger.getCell(`C${r}`).border = thinBorder;
+
+    wsLedger.getCell(`D${r}`).value = tx.amount;
+    wsLedger.getCell(`D${r}`).numFmt = '$#,##0.00';
+    wsLedger.getCell(`D${r}`).font = { size: 8.5, bold: true, color: { argb: (tx.bucket === 'Inflow' ? 'FF10B981' : 'FF0F172A') } };
+    wsLedger.getCell(`D${r}`).alignment = { horizontal: 'right' };
+    wsLedger.getCell(`D${r}`).border = thinBorder;
+
+    wsLedger.getCell(`E${r}`).value = tx.cat;
+    wsLedger.getCell(`E${r}`).font = { size: 8.5 };
+    wsLedger.getCell(`E${r}`).border = thinBorder;
+
+    wsLedger.getCell(`F${r}`).value = tx.bucket;
+    wsLedger.getCell(`F${r}`).font = { size: 8.5 };
+    wsLedger.getCell(`F${r}`).border = thinBorder;
+
+    if (idx % 2 === 1) {
+      ['B', 'C', 'D', 'E', 'F'].forEach(col => wsLedger.getCell(`${col}${r}`).fill = solidFill('F8FAFC'));
+    }
+    wsLedger.getRow(r).height = 18;
+  });
+
+  // Pre-format Remaining Empty Rows (Rows 36 to 250)
+  for (let r = 36; r <= 250; r++) {
+    wsLedger.getCell(`B${r}`).border = thinBorder;
+    wsLedger.getCell(`C${r}`).border = thinBorder;
+    wsLedger.getCell(`D${r}`).numFmt = '$#,##0.00';
+    wsLedger.getCell(`D${r}`).border = thinBorder;
+    wsLedger.getCell(`E${r}`).border = thinBorder;
+    wsLedger.getCell(`F${r}`).border = thinBorder;
+  }
 
   // =========================================================================
   // TAB 4: 🎯 SINKING FUNDS & IRREGULAR EXPENSE SHIELD
