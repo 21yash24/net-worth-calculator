@@ -1,0 +1,144 @@
+---
+import product from '../data/product.json';
+
+interface Props {
+  className?: string;
+  headline?: string;
+}
+
+const {
+  className = "",
+  headline = "Take Your Net Worth Beyond a 1-Time Calculation"
+} = Astro.props;
+---
+
+<div class={`rounded-3xl border-2 border-emerald-500/40 dark:border-emerald-500/30 bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 dark:from-slate-900/95 dark:via-slate-950 dark:to-emerald-950/30 p-6 sm:p-9 shadow-2xl relative overflow-hidden ${className}`}>
+  <!-- Glowing Ambient Accents -->
+  <div class="absolute -top-20 -right-20 w-72 h-72 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative z-10 space-y-6">
+    <!-- Header Badge Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-black uppercase tracking-wider">
+        <span>⭐ Special Community Launch</span>
+        <span>•</span>
+        <span class="text-amber-600 dark:text-amber-400 font-extrabold">{product.discount}</span>
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+        <span>🔒 100% Private</span>
+        <span>•</span>
+        <span>Works on Google Sheets &amp; Excel</span>
+      </div>
+    </div>
+
+    <!-- Main Title & Hook -->
+    <div class="space-y-2">
+      <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+        {headline}
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
+        Most people check their net worth once, close the tab, and forget. The <strong>Ultimate Net Worth &amp; FIRE Master Vault (2026 Edition)</strong> gives you an institutional-grade, automated wealth dashboard with live Federal Reserve percentile formulas and early retirement countdowns.
+      </p>
+    </div>
+
+    <!-- Interactive Mock Dashboard Preview & Feature Breakdown -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      <!-- Left: Mock Spreadsheet UI Preview -->
+      <div class="lg:col-span-7 rounded-2xl bg-slate-950 p-4 sm:p-5 border border-slate-800 text-white font-mono text-xs shadow-inner space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800/80">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span class="text-[11px] text-slate-400 font-sans font-semibold ml-2">NetWorth_Vault_2026.xlsx (Overview)</span>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-sans font-bold">100% Automated</span>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-center pt-1">
+          <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-[10px] text-slate-400 block">TOTAL NET WORTH</span>
+            <span class="text-sm sm:text-base font-extrabold text-white font-sans">$342,850</span>
+            <span class="text-[10px] text-emerald-400 block font-sans">▲ +4.2% MoM</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-[10px] text-slate-400 block">LIQUID INVESTED</span>
+            <span class="text-sm sm:text-base font-extrabold text-emerald-400 font-sans">$198,200</span>
+            <span class="text-[10px] text-slate-400 block font-sans">57.8% of assets</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 col-span-2 sm:col-span-1">
+            <span class="text-[10px] text-slate-400 block">FED SCF RANK</span>
+            <span class="text-sm sm:text-base font-extrabold text-amber-400 font-sans">Top 12%</span>
+            <span class="text-[10px] text-slate-400 block font-sans">Age Cohort 30-34</span>
+          </div>
+        </div>
+
+        <!-- Trajectory Sparkline Bar -->
+        <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between text-[11px] font-sans">
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-400 font-bold">🔥 Coast FIRE Milestone:</span>
+            <span class="text-slate-300">ACHIEVED at age 32</span>
+          </div>
+          <span class="text-amber-400 font-bold">Full FIRE: Nov 2038 →</span>
+        </div>
+
+        <!-- Tabs indicator -->
+        <div class="flex items-center gap-1.5 pt-1 text-[10px] text-slate-500 overflow-x-auto">
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-bold">1. Dashboard</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900">2. Monthly Log</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900">3. FIRE Engine</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900">4. Cash Drag</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900">5. Debt Snowball</span>
+        </div>
+      </div>
+
+      <!-- Right: Price & Instant Checkout CTA -->
+      <div class="lg:col-span-5 p-6 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-lg text-center space-y-4">
+        <div>
+          <div class="flex items-baseline justify-center gap-2">
+            <span class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">{product.price}</span>
+            <span class="text-lg text-slate-400 line-through font-semibold">{product.originalPrice}</span>
+          </div>
+          <p class="text-xs text-emerald-600 dark:text-emerald-400 font-bold mt-1">One-time payment • Lifetime free updates</p>
+        </div>
+
+        <ul class="text-xs text-left text-slate-700 dark:text-slate-300 space-y-2 pt-1 font-medium">
+          <li class="flex items-center gap-2">
+            <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span>Instant 1-Click Copy to your personal Google Drive</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span>Also includes Microsoft Excel (.xlsx) file</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span>Pre-loaded with official Federal Reserve percentile curves</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span>Zero third-party bank linking or tracking scripts</span>
+          </li>
+        </ul>
+
+        <div class="pt-2 space-y-2">
+          <a 
+            href="/tracker-template" 
+            class="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:scale-[0.98] text-white font-extrabold text-sm sm:text-base transition-all shadow-xl shadow-emerald-900/30"
+          >
+            <span>Get Master Vault — Only $4.99</span>
+            <span>→</span>
+          </a>
+          
+          <div class="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400">
+            <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <span>30-Day 100% Money-Back Guarantee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

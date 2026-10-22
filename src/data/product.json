@@ -1,0 +1,40 @@
+{
+  "name": "The Ultimate Net Worth & FIRE Master Vault (2026 Edition)",
+  "tagline": "The all-in-one private wealth dashboard, Federal Reserve percentile benchmark, and retirement freedom calculator for Google Sheets & Excel.",
+  "price": "$4.99",
+  "originalPrice": "$29.00",
+  "discount": "83% OFF Launch Special",
+  "checkoutUrl": "https://gumroad.com/",
+  "format": "Google Sheets (1-Click Copy) + Microsoft Excel (.xlsx)",
+  "guarantee": "30-Day 100% Money-Back Guarantee — Zero Questions Asked",
+  "features": [
+    {
+      "title": "Executive KPI Dashboard",
+      "desc": "Automated cards for Total Net Worth, Liquid Net Worth, Month-over-Month change, and trailing 12-month in-cell SPARKLINE trajectory charts."
+    },
+    {
+      "title": "Federal Reserve SCF Percentile Engine",
+      "desc": "Select your age group and instantly see your exact percentile ranking against official US central bank data right inside your spreadsheet."
+    },
+    {
+      "title": "FIRE Freedom & Early Retirement Countdown",
+      "desc": "Calculates your Lean FIRE, Standard FIRE (4% Rule), Fat FIRE, and Coast FIRE numbers with an automated retirement date countdown."
+    },
+    {
+      "title": "12-Month Historical Wealth Ledger",
+      "desc": "Structured asset & liability tracking for cash, 401(k), Roth IRA, brokerage, real estate equity, mortgages, and debt."
+    },
+    {
+      "title": "Cash Drag & Asset Allocation Optimizer",
+      "desc": "Automatically alerts you if excessive cash is losing purchasing power to inflation and balances your stock vs. bond vs. cash ratio."
+    },
+    {
+      "title": "Debt Avalanche & Snowball Calculator",
+      "desc": "Ranks up to 8 debts by interest rate or balance with custom payoff milestone projections."
+    },
+    {
+      "title": "100% Offline & Private",
+      "desc": "Never link bank passwords or share credentials with third-party apps. Runs 100% locally on your personal device."
+    }
+  ]
+}

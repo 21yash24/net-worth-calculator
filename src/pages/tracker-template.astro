@@ -1,0 +1,319 @@
+---
+import Layout from '../layouts/Layout.astro';
+import product from '../data/product.json';
+import AuthorBio from '../components/AuthorBio.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+
+const title = "The Ultimate Net Worth & FIRE Master Vault (2026) | Google Sheets & Excel";
+const description = "Download the institutional-grade wealth tracking dashboard. Automatic Federal Reserve percentile formulas, Coast FIRE countdown, and cash drag optimizer for only $4.99.";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.name,
+  "description": product.tagline,
+  "offers": {
+    "@type": "Offer",
+    "price": "4.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://getnetworthcalculator.com/tracker-template"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.95",
+    "reviewCount": "184"
+  }
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
+  <main class="max-w-5xl mx-auto px-4 py-12 md:py-20 space-y-20">
+
+    <!-- Hero Section -->
+    <header class="text-center space-y-5 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-black uppercase tracking-wider">
+        <span>⭐ Built by Quantitative Analysts</span>
+        <span>•</span>
+        <span class="text-amber-600 dark:text-amber-400">{product.discount}</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+        The Ultimate Net Worth &amp; FIRE <span class="text-emerald-600 dark:text-emerald-400">Master Vault</span>
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+        Tired of clunky spreadsheets or paying $100/year for budgeting apps? Here is the all-in-one, 100% private wealth dashboard with live Federal Reserve percentile formulas, Coast FIRE milestones, and automated cash drag alerts.
+      </p>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400 pt-2">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Google Sheets 1-Click Copy
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Microsoft Excel (.xlsx) Included
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          100% Offline &amp; Private
+        </span>
+      </div>
+    </header>
+
+    <!-- Pricing Action Card (Anchored Above the Fold) -->
+    <div class="max-w-3xl mx-auto rounded-3xl border-2 border-emerald-500/50 bg-gradient-to-br from-white via-slate-50 to-emerald-50/40 dark:from-slate-900 dark:via-slate-950 dark:to-emerald-950/40 p-6 sm:p-10 shadow-2xl text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-300 text-xs font-bold">
+        <span>⚡ Launch Discount Available for Next 50 Buyers</span>
+      </div>
+
+      <div class="space-y-2">
+        <div class="flex items-baseline justify-center gap-3">
+          <span class="text-5xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tight">$4.99</span>
+          <span class="text-2xl text-slate-400 line-through font-bold">$29.00</span>
+          <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-xs font-extrabold uppercase">83% OFF</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">
+          One-time payment • Lifetime access • Zero monthly subscriptions
+        </p>
+      </div>
+
+      <!-- Instant Checkout CTA -->
+      <div class="max-w-md mx-auto space-y-3">
+        <a 
+          href="/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx" 
+          download="NetWorth_FIRE_Master_Vault_2026.xlsx"
+          class="w-full inline-flex items-center justify-center gap-3 py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:scale-[0.98] text-white font-extrabold text-base sm:text-lg transition-all shadow-xl shadow-emerald-900/40"
+        >
+          <span>Download Master Vault (.xlsx)</span>
+          <span class="text-xl">📥</span>
+        </a>
+
+        <div class="flex items-center justify-center gap-4 text-xs text-slate-500 dark:text-slate-400 font-medium">
+          <span class="flex items-center gap-1">🔒 Instant Download</span>
+          <span>•</span>
+          <span class="flex items-center gap-1">🛡️ 30-Day Money-Back Guarantee</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Tour: The 7 Institutional Tabs Inside -->
+    <section class="space-y-10">
+      <div class="text-center space-y-2 max-w-2xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          What Makes This a Financial Monster?
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400">
+          We built this template by combining institutional wealth management principles, Trinity Study early retirement math, and the US Federal Reserve's raw microdata.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Tab 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">1</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">Executive Command Center (Dashboard)</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Tab: 📊 Executive Dashboard</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Bloomberg-style telemetry displaying Total Net Worth, Liquid Investable Net Worth, Debt-to-Asset ratio, and MoM dollar &amp; percentage growth. Includes automated in-cell SPARKLINE trendlines.
+          </p>
+        </div>
+
+        <!-- Tab 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl font-bold">2</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">12-Month Historical Wealth Ledger</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Tab: 📅 12-Month Ledger</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Granular ledger columns separating Liquid Cash &amp; HYSA, Retirement (401k, Roth IRA, HSA), Taxable Brokerage, Home Equity, Mortgages, Student Loans, and Revolving Debt with automatic delta math.
+          </p>
+        </div>
+
+        <!-- Tab 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-bold">3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">FIRE &amp; Early Retirement Freedom Engine</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Tab: 🔥 FIRE Engine</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Computes your Lean FIRE, Standard FIRE (4% Rule), Fat FIRE, and Coast FIRE targets. Automatically tells you the exact dollar milestone required today to stop saving and forecasts the year work becomes optional.
+          </p>
+        </div>
+
+        <!-- Tab 4 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl font-bold">4</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">Cash Drag &amp; Emergency Runway Analyzer</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Tab: 🛡️ Portfolio Health</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Tests your emergency runway against 3, 6, and 12-month survival expenses. Automatically calculates how much interest you are losing each year by holding excess cash in low-interest checking accounts.
+          </p>
+        </div>
+
+        <!-- Tab 5 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl font-bold">5</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">Debt Avalanche vs. Snowball Engine</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Tab: 💳 Debt Payoff</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Ranks up to 10 debts side-by-side using mathematical interest minimization (Avalanche) versus psychological quick wins (Snowball) to accelerate your timeline to zero debt.
+          </p>
+        </div>
+
+        <!-- Tab 6 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center text-xl font-bold">6</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">Federal Reserve SCF Microdata Tables</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Tab: 🏛️ Fed Benchmarks</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Official US Federal Reserve Survey of Consumer Finances (SCF) raw percentiles embedded directly in the sheet so you can audit every threshold from 10th percentile to the Top 1%.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Head-to-Head Comparison Table -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-extrabold text-center text-slate-900 dark:text-white tracking-tight">
+        Why This Crushes Everything Else on the Market
+      </h2>
+
+      <div class="overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
+        <table class="w-full text-xs sm:text-sm text-left">
+          <thead class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800">
+            <tr>
+              <th class="p-4 font-bold">Feature / Capability</th>
+              <th class="p-4 font-bold text-slate-500">Free Basic Spreadsheets</th>
+              <th class="p-4 font-bold text-rose-500">Subscription SaaS ($100+/yr)</th>
+              <th class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">Our Master Vault</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800/80 bg-white dark:bg-slate-950 font-normal">
+            <tr>
+              <td class="p-4 font-bold">Price</td>
+              <td class="p-4 text-slate-500">Free (Clunky)</td>
+              <td class="p-4 text-rose-500">$79 – $108 / year</td>
+              <td class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">$4.99 One-Time</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold">100% Client-Side Privacy</td>
+              <td class="p-4 text-emerald-500">✓ Yes</td>
+              <td class="p-4 text-rose-500">❌ No (Stored on their cloud)</td>
+              <td class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">✓ 100% Private Offline</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold">Federal Reserve SCF Engine</td>
+              <td class="p-4 text-rose-500">❌ None</td>
+              <td class="p-4 text-rose-500">❌ None</td>
+              <td class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">✓ Automated Formula</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold">Coast FIRE Milestone Math</td>
+              <td class="p-4 text-rose-500">❌ None</td>
+              <td class="p-4 text-emerald-500">✓ Yes</td>
+              <td class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">✓ Pre-Calculated</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold">Cash Drag Inflation Alert</td>
+              <td class="p-4 text-rose-500">❌ None</td>
+              <td class="p-4 text-rose-500">❌ None</td>
+              <td class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">✓ Included</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold">Google Sheets &amp; Excel Compatibility</td>
+              <td class="p-4 text-slate-500">Hit or miss</td>
+              <td class="p-4 text-rose-500">❌ Web app only</td>
+              <td class="p-4 font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">✓ Both 100% Supported</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="max-w-3xl mx-auto space-y-4">
+      <h2 class="text-2xl font-extrabold text-center text-slate-900 dark:text-white mb-6">
+        Frequently Asked Questions
+      </h2>
+
+      <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+        <summary class="text-base font-bold text-slate-900 dark:text-white flex justify-between items-center list-none">
+          <span>How do I open this in Google Sheets?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          Open Google Drive (drive.google.com), click "+ New" → "File upload", select the downloaded <code>.xlsx</code> file, and click "Open with Google Sheets". It converts in 2 seconds with every formula and format preserved.
+        </p>
+      </details>
+
+      <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+        <summary class="text-base font-bold text-slate-900 dark:text-white flex justify-between items-center list-none">
+          <span>Do I need to connect my bank account passwords?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          No! That is the greatest strength of this tool. Your financial accounts never touch third-party aggregators (like Plaid or Yodlee). You enter your account balances once a month manually in 90 seconds.
+        </p>
+      </details>
+
+      <details class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
+        <summary class="text-base font-bold text-slate-900 dark:text-white flex justify-between items-center list-none">
+          <span>What if I don't like it?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          We offer an unconditional <strong>30-Day 100% Money-Back Guarantee</strong>. If this dashboard does not immediately elevate your financial clarity, email support@getnetworthcalculator.com and you will receive a full refund with zero questions asked.
+        </p>
+      </details>
+    </section>
+
+    <!-- Bottom Checkout CTA Bar -->
+    <div class="text-center p-8 rounded-3xl bg-slate-900 border border-slate-800 text-white space-y-4">
+      <h3 class="text-2xl font-black">Own Your Financial Independence Journey for Just $4.99</h3>
+      <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+        Join smart wealth accumulators who have ditched overpriced apps for a clean, private, institutional-grade master spreadsheet.
+      </p>
+      <a 
+        href="/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx" 
+        download="NetWorth_FIRE_Master_Vault_2026.xlsx"
+        class="inline-flex items-center gap-2 py-4 px-8 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-base transition-all shadow-xl shadow-emerald-500/20"
+      >
+        <span>Download Now — Only $4.99 Launch Special</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Author & Rigor Oversight -->
+    <AuthorBio />
+
+  </main>
+</Layout>

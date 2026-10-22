@@ -7,6 +7,7 @@ import WealthBooks from '../components/WealthBooks.astro';
 import TrustBadge from '../components/TrustBadge.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 import NetWorthTrackerCard from '../components/NetWorthTrackerCard.astro';
+import ProductCard from '../components/ProductCard.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -345,6 +346,9 @@ const faqSchema = {
 						</button>
 					</div>
 				</div>
+
+				<!-- $4.99 Master Wealth & FIRE Vault Spreadsheet Showcase -->
+				<ProductCard className="mt-8" />
 
 				<!-- Curated Financial Literacy Books (Amazon Associates) -->
 				<WealthBooks />
