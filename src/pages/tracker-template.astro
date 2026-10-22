@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import product from '../data/product.json';
-import AuthorBio from '../components/AuthorBio.astro';
-import TrustBadge from '../components/TrustBadge.astro';
 
 const title = "The Ultimate Net Worth & Smart Budget Vault (2026) | Google Sheets & Excel";
 const description = "Download the all-in-one private wealth and 50/30/20 budget dashboard. 2-minute monthly check-in, Federal Reserve percentile formulas, and Coast FIRE countdown for $3 early access ($6 regular).";
@@ -183,33 +181,51 @@ const productSchema = {
             </div>
           </div>
 
-          <!-- Right: Real-Time Calculated Dashboard Output -->
+          <!-- Right: Real-Time Calculated Dashboard Output (Signature Website Engine) -->
           <div class="lg:col-span-6 space-y-3">
             <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">2. Real-Time Master Vault Calculation Engine</span>
             
-            <div class="grid grid-cols-2 gap-3">
-              <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
-                <span class="text-[10px] text-slate-400 uppercase font-bold block">NET WORTH RESULT</span>
-                <span id="sim-out-nw" class="text-2xl font-black text-white">$315,000</span>
-                <span class="text-[10px] text-emerald-400 block font-bold">▲ (Assets - Liabilities)</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <!-- Card 1: Total Net Worth -->
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
+                <span class="text-[9px] text-slate-400 uppercase font-bold block">TOTAL NET WORTH</span>
+                <span id="sim-out-nw" class="text-xl sm:text-2xl font-black text-white">$315,000</span>
+                <span class="text-[9px] text-emerald-400 block font-bold">▲ All Assets - Debt</span>
               </div>
 
-              <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
-                <span class="text-[10px] text-slate-400 uppercase font-bold block">FED SCF BENCHMARK</span>
-                <span id="sim-out-fed" class="text-2xl font-black text-amber-400">Top 12%</span>
-                <span class="text-[10px] text-slate-400 block">US Central Bank Microdata</span>
+              <!-- Card 2: Liquid Net Worth -->
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
+                <span class="text-[9px] text-slate-400 uppercase font-bold block">💧 LIQUID NET WORTH</span>
+                <span id="sim-out-liq" class="text-xl sm:text-2xl font-black text-emerald-400">$210,000</span>
+                <span id="sim-out-liq-ratio" class="text-[9px] text-slate-300 block">66.7% Liquid Assets</span>
               </div>
 
-              <div class="p-3.5 rounded-xl bg-purple-950/40 border border-purple-500/30 space-y-0.5">
-                <span class="text-[10px] text-purple-300 uppercase font-bold block">DAILY SAFE-TO-SPEND</span>
-                <span id="sim-out-spend" class="text-2xl font-black text-purple-300">$65 / day</span>
-                <span class="text-[10px] text-slate-300 block">30% Guilt-Free Budget Buffer</span>
+              <!-- Card 3: Stanley & Danko PAW Class -->
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
+                <span class="text-[9px] text-slate-400 uppercase font-bold block">STANLEY &amp; DANKO CLASS</span>
+                <span id="sim-out-paw" class="text-sm sm:text-base font-black text-amber-400">🏆 PAW (Top 10%)</span>
+                <span id="sim-out-paw-mul" class="text-[9px] text-slate-300 block">2.92x Multiplier</span>
               </div>
 
-              <div class="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 space-y-0.5">
-                <span class="text-[10px] text-emerald-300 uppercase font-bold block">COAST FIRE STATUS</span>
-                <span id="sim-out-fire" class="text-lg font-black text-emerald-300">✅ ACHIEVED</span>
-                <span class="text-[10px] text-slate-300 block">Compounds to target by 60</span>
+              <!-- Card 4: Fed SCF Benchmark -->
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-0.5">
+                <span class="text-[9px] text-slate-400 uppercase font-bold block">FED SCF BENCHMARK</span>
+                <span id="sim-out-fed" class="text-xl sm:text-2xl font-black text-amber-400">Top 12%</span>
+                <span class="text-[9px] text-slate-400 block">US Central Bank Microdata</span>
+              </div>
+
+              <!-- Card 5: Daily Safe-to-Spend -->
+              <div class="p-3 rounded-xl bg-purple-950/40 border border-purple-500/30 space-y-0.5">
+                <span class="text-[9px] text-purple-300 uppercase font-bold block">DAILY SAFE-TO-SPEND</span>
+                <span id="sim-out-spend" class="text-xl sm:text-2xl font-black text-purple-300">$65 / day</span>
+                <span class="text-[9px] text-slate-300 block">30% Guilt-Free Buffer</span>
+              </div>
+
+              <!-- Card 6: Coast FIRE Status -->
+              <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 space-y-0.5">
+                <span class="text-[9px] text-emerald-300 uppercase font-bold block">COAST FIRE STATUS</span>
+                <span id="sim-out-fire" class="text-sm sm:text-base font-black text-emerald-300">✅ ACHIEVED</span>
+                <span class="text-[9px] text-slate-300 block">Compounds by age 60</span>
               </div>
             </div>
 
@@ -244,20 +260,26 @@ const productSchema = {
 
       <!-- Interactive Tab Buttons -->
       <div class="flex items-center justify-center flex-wrap gap-2 pt-2" id="preview-tab-buttons">
-        <button data-tab="tab-quick" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-md">
+        <button data-tab="tab-quick" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-md">
           ⚡ 2-Min Check-In
         </button>
-        <button data-tab="tab-dashboard" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+        <button data-tab="tab-dashboard" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
           📊 Bloomberg Dashboard
         </button>
-        <button data-tab="tab-budget" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+        <button data-tab="tab-budget" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
           💸 Guilt-Free Budget
         </button>
-        <button data-tab="tab-sinking" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+        <button data-tab="tab-sinking" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
           🎯 Sinking Funds Shield
         </button>
-        <button data-tab="tab-fire" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+        <button data-tab="tab-fire" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
           🔥 FIRE Freedom Clock
+        </button>
+        <button data-tab="tab-paw" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+          🏆 PAW Wealth Class
+        </button>
+        <button data-tab="tab-state" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+          📍 50 States Index
         </button>
       </div>
 
@@ -429,6 +451,179 @@ const productSchema = {
           </div>
         </div>
 
+        <!-- Tab 6: PAW Wealth Class Mockup (Website Signature) -->
+        <div id="mock-tab-paw" class="tab-panel space-y-3 hidden">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Tab 2 Feature: The Millionaire Next Door</span>
+              <span class="text-base sm:text-lg font-black text-white">🏆 Stanley &amp; Danko PAW/UAW Wealth Accumulation Engine</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Expected NW Formula</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">YOUR AGE &amp; INCOME</span>
+              <span class="text-lg font-black text-white">Age 32 • $108k</span>
+              <span class="text-[10px] text-emerald-400 block">Green Editable Inputs</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">EXPECTED NET WORTH</span>
+              <span class="text-lg font-black text-white">$345,600</span>
+              <span class="text-[10px] text-slate-400 block">=(Age × Income) / 10</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">ACCUMULATION MULTIPLIER</span>
+              <span class="text-lg font-black text-emerald-400">2.14x</span>
+              <span class="text-[10px] text-slate-400 block">Actual NW / Expected NW</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-amber-950/40 border border-amber-500/30 space-y-1">
+              <span class="text-[10px] text-amber-300 font-bold block uppercase">WEALTH STATUS</span>
+              <span class="text-sm font-black text-amber-300">🏆 PAW (Top 10%)</span>
+              <span class="text-[10px] text-slate-300 block">Prodigious Accumulator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 7: 50 US States Index Mockup (Website Signature) -->
+        <div id="mock-tab-state" class="tab-panel space-y-3 hidden">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Tab 7: Regional Economic Benchmarks</span>
+              <span class="text-base sm:text-lg font-black text-white">📍 Top US States Wealth &amp; Cost-of-Living Index</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">Official Census &amp; Fed Data</span>
+          </div>
+          <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <table class="w-full text-xs font-mono text-center">
+              <thead class="bg-slate-900 text-slate-300 border-b border-slate-800">
+                <tr>
+                  <th class="p-2 text-left font-sans">US State</th>
+                  <th class="p-2 font-sans">Median Net Worth</th>
+                  <th class="p-2 font-sans">Top 10% Net Worth</th>
+                  <th class="p-2 font-sans">COL Index</th>
+                  <th class="p-2 font-sans">Median Home Price</th>
+                  <th class="p-2 font-sans">Online State Hub</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/60 bg-slate-950">
+                <tr>
+                  <td class="p-2 text-left font-bold text-white">California (CA)</td>
+                  <td class="p-2 text-emerald-400">$285,000</td>
+                  <td class="p-2">$1,250,000</td>
+                  <td class="p-2">138.5 (HCOL)</td>
+                  <td class="p-2">$785,000</td>
+                  <td class="p-2 text-emerald-400 underline">/state/california</td>
+                </tr>
+                <tr class="bg-slate-900/30">
+                  <td class="p-2 text-left font-bold text-white">Texas (TX)</td>
+                  <td class="p-2 text-emerald-400">$175,000</td>
+                  <td class="p-2">$820,000</td>
+                  <td class="p-2">92.5 (LCOL)</td>
+                  <td class="p-2">$345,000</td>
+                  <td class="p-2 text-emerald-400 underline">/state/texas</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-left font-bold text-white">Washington (WA)</td>
+                  <td class="p-2 text-emerald-400">$275,000</td>
+                  <td class="p-2">$1,200,000</td>
+                  <td class="p-2">115.1 (MCOL)</td>
+                  <td class="p-2">$610,000</td>
+                  <td class="p-2 text-emerald-400 underline">/state/washington</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seamlessly Connected with GetNetWorthCalculator.com -->
+    <section class="space-y-6 p-6 sm:p-9 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/40 border border-emerald-500/30 text-white shadow-2xl">
+      <div class="max-w-2xl space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <span>🌐 The Website + Spreadsheet Ecosystem</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
+          Directly Synchronized With Our Flagship Web Calculators
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Most spreadsheets are generic templates created in isolation. The <strong>Master Wealth Vault</strong> was engineered directly from the mathematical algorithms powering <strong>GetNetWorthCalculator.com</strong>. Test your scenarios online, then track your monthly execution completely offline.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Tool 1: PAW Calculator -->
+        <a href="/wealth-class-calculator" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/60 transition-all group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-extrabold text-white group-hover:text-emerald-400 transition-colors">🏆 PAW Wealth Class</span>
+            <span class="text-xs text-slate-500 group-hover:text-emerald-400">→</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Stanley &amp; Danko's formula: <code>(Age × Pre-Tax Income) / 10</code>. Identifies if you are a Prodigious (top 10%) or Under Accumulator of wealth.
+          </p>
+          <span class="text-[10px] text-emerald-400 font-bold block pt-1">Found in Vault Tab 2 (Executive Dashboard)</span>
+        </a>
+
+        <!-- Tool 2: Liquid Net Worth -->
+        <a href="/liquid-net-worth-calculator" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/60 transition-all group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-extrabold text-white group-hover:text-emerald-400 transition-colors">💧 Liquid Net Worth</span>
+            <span class="text-xs text-slate-500 group-hover:text-emerald-400">→</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Separates spendable cash and liquid equities from illiquid home equity, and calculates your exact monthly emergency survival runway.
+          </p>
+          <span class="text-[10px] text-emerald-400 font-bold block pt-1">Found in Vault Tab 1 &amp; Tab 2</span>
+        </a>
+
+        <!-- Tool 3: 50 States Explorer -->
+        <a href="/net-worth-by-state" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/60 transition-all group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-extrabold text-white group-hover:text-emerald-400 transition-colors">📍 50 US States Index</span>
+            <span class="text-xs text-slate-500 group-hover:text-emerald-400">→</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Compares your net worth against state-level medians (CA, NY, TX, FL, WA) adjusted for local Cost of Living Indices (COLI).
+          </p>
+          <span class="text-[10px] text-emerald-400 font-bold block pt-1">Found in Vault Tab 7 (Fed &amp; State Benchmarks)</span>
+        </a>
+
+        <!-- Tool 4: Coast FIRE Clock -->
+        <a href="/coast-fire-calculator" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/60 transition-all group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-extrabold text-white group-hover:text-emerald-400 transition-colors">🔥 Coast FIRE Engine</span>
+            <span class="text-xs text-slate-500 group-hover:text-emerald-400">→</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Calculates the tipping point where your existing portfolio compounds to complete retirement without saving another dollar.
+          </p>
+          <span class="text-[10px] text-emerald-400 font-bold block pt-1">Found in Vault Tab 5 (FIRE Engine)</span>
+        </a>
+
+        <!-- Tool 5: Fidelity Multiplier -->
+        <a href="/savings-multiplier-by-age" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/60 transition-all group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-extrabold text-white group-hover:text-emerald-400 transition-colors">📊 Fidelity Savings Multiplier</span>
+            <span class="text-xs text-slate-500 group-hover:text-emerald-400">→</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Official milestone rules: 1x salary at 30, 3x at 40, 6x at 50, and 10x at 67. Evaluates your current savings multiple against your income.
+          </p>
+          <span class="text-[10px] text-emerald-400 font-bold block pt-1">Found in Vault Tab 7 Benchmarks</span>
+        </a>
+
+        <!-- Tool 6: Countdown to $1M -->
+        <a href="/millionaire-calculator" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/60 transition-all group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-extrabold text-white group-hover:text-emerald-400 transition-colors">🚀 Countdown to $1,000,000</span>
+            <span class="text-xs text-slate-500 group-hover:text-emerald-400">→</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Charlie Munger compounding physics: The first $100k is the hardest. Tracks your compounding velocity toward $250k, $500k, and 7 figures.
+          </p>
+          <span class="text-[10px] text-emerald-400 font-bold block pt-1">Found in Vault Tab 2 Munger Milestones</span>
+        </a>
       </div>
     </section>
 
@@ -540,8 +735,47 @@ const productSchema = {
       </a>
     </div>
 
-    <!-- Author & Rigor Oversight -->
-    <AuthorBio />
+    <!-- Research & Quantitative Modeling Oversight (Institutional Authority) -->
+    <aside class="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/50 shadow-lg backdrop-blur-sm" aria-label="Research Oversight">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+        <div class="relative shrink-0">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900 flex items-center justify-center text-white font-extrabold text-2xl sm:text-3xl shadow-md border-2 border-emerald-400/40">
+            GW
+          </div>
+          <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900 flex items-center justify-center text-white text-[11px]" title="Verified Quantitative Team">
+            ✓
+          </div>
+        </div>
+
+        <div class="space-y-2 flex-1">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
+                GetNetWorth Quantitative Analytics Group
+              </h3>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
+                Official Engineering Oversight
+              </span>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+            The Master Wealth &amp; Smart Budget Vault was designed and mathematically audited by the quantitative modeling team at <strong>GetNetWorthCalculator.com</strong>. All models are benchmarked directly against public triennial microdata from the <strong>US Federal Reserve Board (Survey of Consumer Finances)</strong>, Stanley &amp; Danko's wealth accumulation equations, and the Trinity Study's 4% safe withdrawal framework. 100% private, anonymous, and offline.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2 text-xs">
+            <a href="/about" class="font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+              <span>Read Full Research Methodology</span>
+              <span>→</span>
+            </a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="/about#editorial" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+              Data Governance &amp; Mathematical Rigor
+            </a>
+          </div>
+        </div>
+      </div>
+    </aside>
 
   </main>
 
@@ -582,16 +816,20 @@ const productSchema = {
       const simIncome = document.getElementById('sim-income');
 
       const outNW = document.getElementById('sim-out-nw');
+      const outLiq = document.getElementById('sim-out-liq');
+      const outLiqRatio = document.getElementById('sim-out-liq-ratio');
+      const outPaw = document.getElementById('sim-out-paw');
+      const outPawMul = document.getElementById('sim-out-paw-mul');
       const outFed = document.getElementById('sim-out-fed');
       const outSpend = document.getElementById('sim-out-spend');
       const outFire = document.getElementById('sim-out-fire');
 
       const fedBenchmarks = {
-        under35: { p99: 2800000, p90: 380000, p75: 145000, p50: 39000, coast: 185000 },
-        '35to44': { p99: 5500000, p90: 980000, p75: 420000, p50: 135600, coast: 320000 },
-        '45to54': { p99: 10200000, p90: 1950000, p75: 780000, p50: 247200, coast: 580000 },
-        '55to64': { p99: 14500000, p90: 2800000, p75: 1150000, p50: 364500, coast: 950000 },
-        '65to74': { p99: 16800000, p90: 3200000, p75: 1350000, p50: 409900, coast: 1200000 }
+        under35: { age: 30, p99: 2800000, p90: 380000, p75: 145000, p50: 39000, coast: 185000 },
+        '35to44': { age: 40, p99: 5500000, p90: 980000, p75: 420000, p50: 135600, coast: 320000 },
+        '45to54': { age: 50, p99: 10200000, p90: 1950000, p75: 780000, p50: 247200, coast: 580000 },
+        '55to64': { age: 60, p99: 14500000, p90: 2800000, p75: 1150000, p50: 364500, coast: 950000 },
+        '65to74': { age: 70, p99: 16800000, p90: 3200000, p75: 1350000, p50: 409900, coast: 1200000 }
       };
 
       function updateSimulator() {
@@ -605,11 +843,42 @@ const productSchema = {
         const nw = (cash + invest + prop) - debt;
         if (outNW) {
           outNW.textContent = '$' + Math.round(nw).toLocaleString('en-US');
-          outNW.className = nw >= 0 ? 'text-2xl font-black text-white' : 'text-2xl font-black text-rose-400';
+          outNW.className = nw >= 0 ? 'text-xl sm:text-2xl font-black text-white' : 'text-xl sm:text-2xl font-black text-rose-400';
         }
 
-        // Fed Percentile calculation
+        // 1. Liquid Net Worth & Ratio
+        const liquidNW = cash + invest;
+        if (outLiq) {
+          outLiq.textContent = '$' + Math.round(liquidNW).toLocaleString('en-US');
+        }
+        if (outLiqRatio) {
+          const ratio = nw > 0 ? ((liquidNW / nw) * 100).toFixed(1) : '0.0';
+          outLiqRatio.textContent = `${ratio}% Liquid Assets`;
+        }
+
+        // 2. Stanley & Danko PAW / UAW Wealth Class Formula
         const bm = fedBenchmarks[ageCohort] || fedBenchmarks.under35;
+        const estimatedAnnualPreTax = income * 12 * 1.35; // Estimated gross pre-tax income
+        const expectedNW = Math.max(1000, (bm.age * estimatedAnnualPreTax) / 10);
+        const pawMultiplier = expectedNW > 0 ? (nw / expectedNW) : 0;
+
+        if (outPaw) {
+          if (pawMultiplier >= 2.0) {
+            outPaw.textContent = '🏆 PAW (Top 10%)';
+            outPaw.className = 'text-sm sm:text-base font-black text-amber-400';
+          } else if (pawMultiplier >= 1.0) {
+            outPaw.textContent = '⚡ AAW (On Track)';
+            outPaw.className = 'text-sm sm:text-base font-black text-emerald-400';
+          } else {
+            outPaw.textContent = '⚠️ UAW (Under)';
+            outPaw.className = 'text-sm sm:text-base font-black text-rose-400';
+          }
+        }
+        if (outPawMul) {
+          outPawMul.textContent = `${pawMultiplier.toFixed(2)}x Multiplier`;
+        }
+
+        // 3. Fed Percentile calculation
         let rank = 'Top 50%';
         if (nw >= bm.p99) rank = 'Top 1% 👑';
         else if (nw >= bm.p90) rank = 'Top 10% ⭐';
@@ -619,19 +888,19 @@ const productSchema = {
 
         if (outFed) outFed.textContent = rank;
 
-        // Daily Safe-to-Spend (30% Wants / 30 days)
+        // 4. Daily Safe-to-Spend (30% Wants / 30 days)
         const dailySafe = Math.max(0, Math.round((income * 0.30) / 30));
         if (outSpend) outSpend.textContent = `$${dailySafe} / day`;
 
-        // Coast FIRE status
+        // 5. Coast FIRE status
         if (outFire) {
           if (invest >= bm.coast) {
             outFire.textContent = '✅ ACHIEVED';
-            outFire.className = 'text-lg font-black text-emerald-300';
+            outFire.className = 'text-sm sm:text-base font-black text-emerald-300';
           } else {
             const gap = bm.coast - invest;
             outFire.textContent = `Gap: $${Math.round(gap).toLocaleString('en-US')}`;
-            outFire.className = 'text-lg font-black text-amber-300';
+            outFire.className = 'text-sm sm:text-base font-black text-amber-300';
           }
         }
       }

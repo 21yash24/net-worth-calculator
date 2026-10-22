@@ -11,7 +11,7 @@ const outputPath = path.join(outputDir, 'NetWorth_FIRE_Master_Vault_2026.xlsx');
 
 async function createMasterVault() {
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = 'Yash Jha — Founder, GetNetWorthCalculator.com';
+  workbook.creator = 'GetNetWorth Analytics Team';
   workbook.lastModifiedBy = 'GetNetWorth Analytics Team';
   workbook.created = new Date();
   workbook.modified = new Date();
@@ -74,7 +74,7 @@ async function createMasterVault() {
 
   wsGuide.mergeCells('B3:D3');
   const gSub = wsGuide.getCell('B3');
-  gSub.value = 'Researched & Modeled by Yash Jha | Benchmarked Against US Federal Reserve SCF Microdata (2026)';
+  gSub.value = 'Modeled by GetNetWorth Analytics | Benchmarked Against US Federal Reserve SCF Microdata (2026)';
   gSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
   gSub.fill = solidFill(colors.darkBg);
   gSub.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -137,12 +137,12 @@ async function createMasterVault() {
 
   const tabDescriptions = [
     { name: '⚡ 2-Min Quick Check-In', purpose: 'For 90% of months: Type 4 numbers once a month in 90 seconds. Zero homework.' },
-    { name: '📊 Executive Dashboard', purpose: 'Bloomberg-style visual terminal showing Net Worth, Fed rank, and quarterly progress.' },
+    { name: '📊 Executive Dashboard', purpose: 'Bloomberg-style visual terminal with Stanley & Danko Wealth Class (PAW/UAW) Engine.' },
     { name: '💸 Smart Budget (50/30/20)', purpose: "Answers: 'How much can I spend today guilt-free?' (Needs 50%, Wants 30%, Wealth 20%)." },
     { name: '🎯 Sinking Funds Shield', purpose: 'Prevents budget shock from car repairs, holiday travel, and annual insurance renewals.' },
     { name: '🔥 FIRE Freedom Engine', purpose: 'Trinity 4% rule calculator showing your Coast FIRE milestone and exact retirement date.' },
     { name: '💳 Debt Accelerator', purpose: 'Side-by-side Avalanche (interest saver) vs Snowball (momentum builder) payoff rank.' },
-    { name: '🏛️ Fed Benchmarks (SCF)', purpose: 'Official US Federal Reserve Survey of Consumer Finances raw microdata tables.' }
+    { name: '🏛️ Fed & State Benchmarks', purpose: 'Official US Federal Reserve SCF microdata + 50 US States Median Wealth Index.' }
   ];
 
   tabDescriptions.forEach((td, idx) => {
@@ -159,7 +159,7 @@ async function createMasterVault() {
   // Brand Verification & Online Hub Link
   wsGuide.mergeCells('B24:D24');
   const gBox = wsGuide.getCell('B24');
-  gBox.value = '🌐 GetNetWorthCalculator.com • 100% Private, Anonymous & Offline • Curated by Yash Jha';
+  gBox.value = '🌐 GetNetWorthCalculator.com • 100% Private, Anonymous & Offline • Official 2026 Edition';
   gBox.font = { bold: true, size: 9.5, color: { argb: 'FF065F46' } };
   gBox.fill = solidFill('DCFCE7');
   gBox.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -182,10 +182,12 @@ async function createMasterVault() {
     { width: 20 },  // G: Net Worth
     { width: 16 },  // H: MoM $ Delta
     { width: 16 },  // I: MoM % Delta
-    { width: 4 }    // J
+    { width: 20 },  // J: Liquid Net Worth
+    { width: 16 },  // K: Liquid Ratio
+    { width: 4 }    // L
   ];
 
-  wsQuick.mergeCells('B2:I2');
+  wsQuick.mergeCells('B2:K2');
   const qh = wsQuick.getCell('B2');
   qh.value = '⚡ 2-MINUTE MONTHLY QUICK CHECK-IN • GETNETWORTHCALCULATOR.COM';
   qh.font = { name: 'Arial', size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
@@ -193,9 +195,9 @@ async function createMasterVault() {
   qh.alignment = { horizontal: 'center', vertical: 'middle' };
   wsQuick.getRow(2).height = 28;
 
-  wsQuick.mergeCells('B3:I3');
+  wsQuick.mergeCells('B3:K3');
   const qSub = wsQuick.getCell('B3');
-  qSub.value = 'Rule of Thumb: On the 1st of each month, type just 4 numbers (green headers). Everything else calculates automatically.';
+  qSub.value = 'Rule of Thumb: On the 1st of each month, type just 4 numbers (green headers). Net Worth, Liquid Ratio & Deltas compute automatically.';
   qSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
   qSub.fill = solidFill(colors.cardBg);
   qSub.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -207,16 +209,18 @@ async function createMasterVault() {
     { col: 'D', title: '📈 Invested Portfolio' },
     { col: 'E', title: '🏠 Property & Assets' },
     { col: 'F', title: '💳 Total Debts' },
-    { col: 'G', title: '🏛️ NET WORTH' },
+    { col: 'G', title: '🏛️ TOTAL NET WORTH' },
     { col: 'H', title: 'MoM Gain ($)' },
-    { col: 'I', title: 'MoM Growth (%)' }
+    { col: 'I', title: 'MoM Growth (%)' },
+    { col: 'J', title: '💧 LIQUID NET WORTH' },
+    { col: 'K', title: 'Liquid Ratio (%)' }
   ];
 
   wsQuick.getRow(5).height = 24;
   quickHeaders.forEach(h => {
     const cell = wsQuick.getCell(`${h.col}5`);
     cell.value = h.title;
-    cell.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+    cell.font = { name: 'Arial', size: 9.5, bold: true, color: { argb: 'FFFFFFFF' } };
     cell.fill = ['C', 'D', 'E', 'F'].includes(h.col) ? solidFill('047857') : solidFill(colors.darkBg);
     cell.alignment = { horizontal: 'center', vertical: 'middle' };
     cell.border = thinBorder;
@@ -265,9 +269,20 @@ async function createMasterVault() {
     deltaCell.numFmt = '+$#,##0;-$#,##0;$0';
     pctCell.numFmt = '+0.0%;-0.0%;0.0%';
 
-    ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'].forEach(col => {
+    // Liquid Net Worth (Cash + Invested)
+    const liqCell = wsQuick.getCell(`J${rowNum}`);
+    liqCell.value = { formula: `=C${rowNum}+D${rowNum}` };
+    liqCell.numFmt = '$#,##0';
+    liqCell.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FF10B981' } };
+
+    // Liquid Ratio (% of Total Net Worth)
+    const liqRatioCell = wsQuick.getCell(`K${rowNum}`);
+    liqRatioCell.value = { formula: `=(C${rowNum}+D${rowNum})/G${rowNum}` };
+    liqRatioCell.numFmt = '0.0%';
+
+    ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'].forEach(col => {
       wsQuick.getCell(`${col}${rowNum}`).border = thinBorder;
-      if (i % 2 === 1 && !['G'].includes(col)) {
+      if (i % 2 === 1 && !['G', 'J'].includes(col)) {
         wsQuick.getCell(`${col}${rowNum}`).fill = solidFill('F8FAFC');
       }
     });
@@ -285,10 +300,12 @@ async function createMasterVault() {
   wsQuick.getCell(`G${qSumRow}`).value = { formula: '=G17' };
   wsQuick.getCell(`H${qSumRow}`).value = { formula: '=G17-G6' };
   wsQuick.getCell(`I${qSumRow}`).value = { formula: '=(G17-G6)/G6' };
+  wsQuick.getCell(`J${qSumRow}`).value = { formula: '=C17+D17' };
+  wsQuick.getCell(`K${qSumRow}`).value = { formula: '=(C17+D17)/G17' };
 
-  ['C', 'D', 'E', 'F', 'G', 'H'].forEach(c => wsQuick.getCell(`${c}${qSumRow}`).numFmt = '$#,##0');
-  wsQuick.getCell(`I${qSumRow}`).numFmt = '+0.0%;-0.0%;0.0%';
-  ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'].forEach(col => {
+  ['C', 'D', 'E', 'F', 'G', 'H', 'J'].forEach(c => wsQuick.getCell(`${c}${qSumRow}`).numFmt = '$#,##0');
+  ['I', 'K'].forEach(c => wsQuick.getCell(`${c}${qSumRow}`).numFmt = '+0.0%;-0.0%;0.0%');
+  ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'].forEach(col => {
     const c = wsQuick.getCell(`${col}${qSumRow}`);
     c.font = { bold: true, color: { argb: 'FFFFFFFF' } };
     c.fill = solidFill(colors.darkBg);
@@ -470,6 +487,218 @@ async function createMasterVault() {
   });
 
   // =========================================================================
+  // ADDED: STANLEY & DANKO WEALTH CLASS (PAW/UAW) ENGINE (WEBSITE SIGNATURE)
+  // =========================================================================
+  ws1.mergeCells('B22:F22');
+  const pawHead = ws1.getCell('B22');
+  pawHead.value = '🏆 STANLEY & DANKO WEALTH ACCUMULATION CLASS (PAW / AAW / UAW ENGINE)';
+  pawHead.font = { size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  pawHead.fill = solidFill(colors.emeraldDark);
+  ws1.getRow(22).height = 24;
+
+  const pawHeaders = [
+    { label: 'Your Age (Green Input)', col: 'B' },
+    { label: 'Pre-Tax Income (Green Input)', col: 'C' },
+    { label: 'Expected NW (Age×Income/10)', col: 'D' },
+    { label: 'Accumulation Multiplier', col: 'E' },
+    { label: 'Wealth Class Status', col: 'F' }
+  ];
+
+  ws1.getRow(23).height = 18;
+  pawHeaders.forEach(ph => {
+    const c = ws1.getCell(`${ph.col}23`);
+    c.value = ph.label;
+    c.font = { size: 8, bold: true, color: { argb: 'FF94A3B8' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  ws1.getRow(24).height = 24;
+  // Green user inputs for Age & Income
+  const ageCell = ws1.getCell('B24');
+  ageCell.value = 32;
+  ageCell.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  ageCell.fill = solidFill('047857');
+  ageCell.alignment = { horizontal: 'center', vertical: 'middle' };
+  ageCell.border = thinBorder;
+
+  const incCell = ws1.getCell('C24');
+  incCell.value = 108000;
+  incCell.numFmt = '$#,##0';
+  incCell.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  incCell.fill = solidFill('047857');
+  incCell.alignment = { horizontal: 'center', vertical: 'middle' };
+  incCell.border = thinBorder;
+
+  // Expected Net Worth: =(B24*C24)/10
+  const expCell = ws1.getCell('D24');
+  expCell.value = { formula: '=(B24*C24)/10' };
+  expCell.numFmt = '$#,##0';
+  expCell.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  expCell.fill = solidFill(colors.cardBg);
+  expCell.alignment = { horizontal: 'center', vertical: 'middle' };
+  expCell.border = thinBorder;
+
+  // Wealth Multiplier: =QuickCheckIn!G18/D24
+  const mulCell = ws1.getCell('E24');
+  mulCell.value = { formula: "='⚡ 2-Min Quick Check-In'!G18/D24" };
+  mulCell.numFmt = '0.00"x"';
+  mulCell.font = { size: 12, bold: true, color: { argb: 'FF10B981' } };
+  mulCell.fill = solidFill(colors.cardBg);
+  mulCell.alignment = { horizontal: 'center', vertical: 'middle' };
+  mulCell.border = thinBorder;
+
+  // Wealth Class Status Formula
+  const statCell = ws1.getCell('F24');
+  statCell.value = { formula: '=IF(\'⚡ 2-Min Quick Check-In\'!G18>=2*D24, "🏆 PAW (Top 10% Accumulator)", IF(\'⚡ 2-Min Quick Check-In\'!G18>=D24, "⚡ AAW (Solid Average)", "⚠️ UAW (Under Accumulator)"))' };
+  statCell.font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+  statCell.fill = solidFill(colors.cardBg);
+  statCell.alignment = { horizontal: 'center', vertical: 'middle' };
+  statCell.border = thinBorder;
+
+  // =========================================================================
+  // CHARLIE MUNGER COMPOUNDING MILESTONES ENGINE ($100K to $1M)
+  // =========================================================================
+  ws1.mergeCells('B26:F26');
+  const mungerH = ws1.getCell('B26');
+  mungerH.value = '🎯 WEALTH ACCELERATION MILESTONES (CHARLIE MUNGER COMPOUNDING CURVE)';
+  mungerH.font = { size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  mungerH.fill = solidFill(colors.darkBg);
+  ws1.getRow(26).height = 24;
+
+  const mungerHeaders = [
+    { label: 'Milestone Tier', col: 'B' },
+    { label: 'Target ($)', col: 'C' },
+    { label: 'Progress (%)', col: 'D' },
+    { label: 'Remaining Gap ($)', col: 'E' },
+    { label: 'Compounding Dynamics & Insights', col: 'F' }
+  ];
+
+  ws1.getRow(27).height = 18;
+  mungerHeaders.forEach(mh => {
+    const c = ws1.getCell(`${mh.col}27`);
+    c.value = mh.label;
+    c.font = { size: 8, bold: true, color: { argb: 'FF94A3B8' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  const milestonesList = [
+    { tier: '$100,000 (Base Foundation)', target: 100000, desc: 'The hardest milestone — 100% savings driven (Charlie Munger rule)' },
+    { tier: '$250,000 (Tipping Point)', target: 250000, desc: 'Compounding returns begin matching your monthly cash savings' },
+    { tier: '$500,000 (Half-Million)', target: 500000, desc: 'Investment gains frequently exceed annual take-home salary' },
+    { tier: '$1,000,000 (Two-Comma Club)', target: 1000000, desc: 'Top 7% of US households — Full Financial Sovereignty' }
+  ];
+
+  milestonesList.forEach((ml, idx) => {
+    const r = 28 + idx;
+    ws1.getRow(r).height = 19;
+
+    ws1.getCell(`B${r}`).value = ml.tier;
+    ws1.getCell(`B${r}`).font = { size: 9, bold: true };
+    ws1.getCell(`B${r}`).border = thinBorder;
+
+    ws1.getCell(`C${r}`).value = ml.target;
+    ws1.getCell(`C${r}`).numFmt = '$#,##0';
+    ws1.getCell(`C${r}`).font = { size: 9, bold: true };
+    ws1.getCell(`C${r}`).border = thinBorder;
+
+    // Progress: =MIN(1, QuickCheckIn!G18 / target)
+    const progCell = ws1.getCell(`D${r}`);
+    progCell.value = { formula: `=MIN(1, '⚡ 2-Min Quick Check-In'!G18/C${r})` };
+    progCell.numFmt = '0.0%';
+    progCell.font = { size: 9, bold: true, color: { argb: 'FF10B981' } };
+    progCell.border = thinBorder;
+
+    // Remaining Gap: =MAX(0, target - QuickCheckIn!G18)
+    const gapCell = ws1.getCell(`E${r}`);
+    gapCell.value = { formula: `=MAX(0, C${r}-'⚡ 2-Min Quick Check-In'!G18)` };
+    gapCell.numFmt = '$#,##0';
+    gapCell.font = { size: 9, bold: true };
+    gapCell.border = thinBorder;
+
+    ws1.getCell(`F${r}`).value = ml.desc;
+    ws1.getCell(`F${r}`).font = { size: 8.5, color: { argb: 'FF475569' } };
+    ws1.getCell(`F${r}`).border = thinBorder;
+
+    if (idx % 2 === 1) {
+      ['B', 'C', 'D', 'E', 'F'].forEach(col => ws1.getCell(`${col}${r}`).fill = solidFill('F8FAFC'));
+    }
+  });
+
+  // =========================================================================
+  // LIQUID NET WORTH & EMERGENCY RUNWAY ENGINE
+  // =========================================================================
+  ws1.mergeCells('B33:F33');
+  const liqH = ws1.getCell('B33');
+  liqH.value = '💧 LIQUID NET WORTH & EMERGENCY RUNWAY SHIELD • GETNETWORTHCALCULATOR.COM';
+  liqH.font = { size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  liqH.fill = solidFill(colors.emeraldDark);
+  ws1.getRow(33).height = 24;
+
+  const liqHeaders = [
+    { label: 'Liquid Assets (Cash+Invested)', col: 'B' },
+    { label: 'Monthly Baseline Needs', col: 'C' },
+    { label: 'Emergency Runway (Months)', col: 'D' },
+    { label: 'Liquid to Total NW Ratio', col: 'E' },
+    { label: 'Safe Liquidity Benchmark', col: 'F' }
+  ];
+
+  ws1.getRow(34).height = 18;
+  liqHeaders.forEach(lh => {
+    const c = ws1.getCell(`${lh.col}34`);
+    c.value = lh.label;
+    c.font = { size: 8, bold: true, color: { argb: 'FF94A3B8' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  ws1.getRow(35).height = 24;
+  const lAsset = ws1.getCell('B35');
+  lAsset.value = { formula: "='⚡ 2-Min Quick Check-In'!C18+'⚡ 2-Min Quick Check-In'!D18" };
+  lAsset.numFmt = '$#,##0';
+  lAsset.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  lAsset.fill = solidFill(colors.cardBg);
+  lAsset.border = thinBorder;
+
+  const lNeeds = ws1.getCell('C35');
+  lNeeds.value = { formula: "='💸 Smart Budget (50-30-20)'!C20" };
+  lNeeds.numFmt = '$#,##0';
+  lNeeds.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  lNeeds.fill = solidFill(colors.cardBg);
+  lNeeds.border = thinBorder;
+
+  const lRunway = ws1.getCell('D35');
+  lRunway.value = { formula: '=B35/C35' };
+  lRunway.numFmt = '0.0" Months"';
+  lRunway.font = { size: 12, bold: true, color: { argb: 'FF10B981' } };
+  lRunway.fill = solidFill(colors.cardBg);
+  lRunway.border = thinBorder;
+
+  const lRatio = ws1.getCell('E35');
+  lRatio.value = { formula: "=B35/'⚡ 2-Min Quick Check-In'!G18" };
+  lRatio.numFmt = '0.0%';
+  lRatio.font = { size: 12, bold: true, color: { argb: 'FFFFFFFF' } };
+  lRatio.fill = solidFill(colors.cardBg);
+  lRatio.border = thinBorder;
+
+  const lRec = ws1.getCell('F35');
+  lRec.value = '3-6 Mo for W2 • 12+ Mo for 1099/FIRE';
+  lRec.font = { size: 9, bold: true, color: { argb: 'FFF59E0B' } };
+  lRec.fill = solidFill(colors.cardBg);
+  lRec.alignment = { horizontal: 'center', vertical: 'middle' };
+  lRec.border = thinBorder;
+
+  // Website Live Hub Links in Dashboard Footer
+  ws1.mergeCells('B37:F37');
+  const webHub = ws1.getCell('B37');
+  webHub.value = '🌐 LIVE TOOLS ON GETNETWORTHCALCULATOR.COM: /wealth-class-calculator • /liquid-net-worth-calculator • /state • /coast-fire';
+  webHub.font = { size: 9, italic: true, bold: true, color: { argb: 'FF10B981' } };
+  webHub.fill = solidFill(colors.darkBg);
+  webHub.alignment = { horizontal: 'center', vertical: 'middle' };
+  ws1.getRow(37).height = 22;
+
+  // =========================================================================
   // TAB 3: 💸 SMART MONTHLY BUDGET (50/30/20 & GUILT-FREE SPENDING BUFFER)
   // =========================================================================
   const wsBudget = workbook.addWorksheet('💸 Smart Budget (50-30-20)', {
@@ -496,7 +725,7 @@ async function createMasterVault() {
   bSub.alignment = { horizontal: 'center', vertical: 'middle' };
   wsBudget.getRow(3).height = 18;
 
-  // Key Answer Card: "SAFE TO SPEND GUILT-FREE THIS MONTH"
+  // Safe Spend Card
   wsBudget.mergeCells('B5:D5');
   wsBudget.getCell('B5').value = '🟢 REMAINING GUILT-FREE SPENDING BUFFER';
   wsBudget.getCell('B5').font = { size: 9, bold: true, color: { argb: 'FF10B981' } };
@@ -956,9 +1185,9 @@ async function createMasterVault() {
   });
 
   // =========================================================================
-  // TAB 7: 🏛️ FED RESERVE SCF BENCHMARKS (RAW MICRODATA)
+  // TAB 7: 🏛️ FED & 50 US STATES BENCHMARKS (RAW MICRODATA + STATE INDEX)
   // =========================================================================
-  const wsFed = workbook.addWorksheet('🏛️ Fed Benchmarks (SCF)', {
+  const wsFed = workbook.addWorksheet('🏛️ Fed & State Benchmarks', {
     views: [{ showGridLines: true }]
   });
 
@@ -1019,6 +1248,133 @@ async function createMasterVault() {
       if (idx % 2 === 1) wsFed.getCell(`${col}${r}`).fill = solidFill('F8FAFC');
     });
   });
+
+  // =========================================================================
+  // ADDED: 50 US STATES MEDIAN WEALTH & COL INDEX (WEBSITE SIGNATURE)
+  // =========================================================================
+  wsFed.mergeCells('B13:H13');
+  const stateH = wsFed.getCell('B13');
+  stateH.value = '📍 TOP 10 US STATES WEALTH & COST-OF-LIVING INDEX • GETNETWORTHCALCULATOR.COM/STATE';
+  stateH.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+  stateH.fill = solidFill(colors.emeraldDark);
+  wsFed.getRow(13).height = 24;
+
+  const stateCols = [
+    { col: 'B', title: 'US State' },
+    { col: 'C', title: 'Median NW' },
+    { col: 'D', title: 'Top 10% NW' },
+    { col: 'E', title: 'COL Index' },
+    { col: 'F', title: 'Median Home' },
+    { col: 'G', title: 'Wealth Tier' },
+    { col: 'H', title: 'Website State Hub' }
+  ];
+
+  wsFed.getRow(14).height = 20;
+  stateCols.forEach(sc => {
+    const c = wsFed.getCell(`${sc.col}14`);
+    c.value = sc.title;
+    c.font = { size: 9, bold: true, color: { argb: 'FFFFFFFF' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  const topStates = [
+    { name: 'California (CA)', med: 285000, top10: 1250000, col: '138.5 (HCOL)', home: 785000, tier: 'Top Tier', hub: 'california' },
+    { name: 'New York (NY)', med: 245000, top10: 1180000, col: '134.2 (HCOL)', home: 650000, tier: 'Top Tier', hub: 'new-york' },
+    { name: 'Washington (WA)', med: 275000, top10: 1200000, col: '115.1 (MCOL+)', home: 610000, tier: 'Top Tier', hub: 'washington' },
+    { name: 'Texas (TX)', med: 175000, top10: 820000, col: '92.5 (LCOL)', home: 345000, tier: 'High Value', hub: 'texas' },
+    { name: 'Florida (FL)', med: 195000, top10: 890000, col: '102.8 (Avg)', home: 395000, tier: 'Growing', hub: 'florida' },
+    { name: 'Massachusetts (MA)', med: 295000, top10: 1320000, col: '148.0 (HCOL)', home: 640000, tier: 'Top Tier', hub: 'massachusetts' },
+    { name: 'Illinois (IL)', med: 185000, top10: 860000, col: '91.8 (LCOL)', home: 275000, tier: 'High Value', hub: 'illinois' },
+    { name: 'Colorado (CO)', med: 260000, top10: 1100000, col: '105.4 (Avg)', home: 550000, tier: 'High Growth', hub: 'colorado' }
+  ];
+
+  topStates.forEach((st, idx) => {
+    const r = 15 + idx;
+    wsFed.getRow(r).height = 19;
+    wsFed.getCell(`B${r}`).value = st.name;
+    wsFed.getCell(`C${r}`).value = st.med;
+    wsFed.getCell(`D${r}`).value = st.top10;
+    wsFed.getCell(`E${r}`).value = st.col;
+    wsFed.getCell(`F${r}`).value = st.home;
+    wsFed.getCell(`G${r}`).value = st.tier;
+    wsFed.getCell(`H${r}`).value = `getnetworthcalculator.com/state/${st.hub}`;
+
+    ['C', 'D', 'F'].forEach(c => wsFed.getCell(`${c}${r}`).numFmt = '$#,##0');
+    ['B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(col => {
+      wsFed.getCell(`${col}${r}`).border = thinBorder;
+      if (idx % 2 === 1) wsFed.getCell(`${col}${r}`).fill = solidFill('F8FAFC');
+    });
+  });
+
+  // =========================================================================
+  // ADDED: FIDELITY RETIREMENT SAVINGS BENCHMARKS BY AGE (WEBSITE SIGNATURE)
+  // =========================================================================
+  wsFed.mergeCells('B25:H25');
+  const fidH = wsFed.getCell('B25');
+  fidH.value = '📊 FIDELITY RETIREMENT SAVINGS BENCHMARKS BY AGE • GETNETWORTHCALCULATOR.COM';
+  fidH.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+  fidH.fill = solidFill(colors.darkBg);
+  wsFed.getRow(25).height = 24;
+
+  const fidCols = [
+    { col: 'B', title: 'Age Milestone' },
+    { col: 'C', title: 'Salary Multiplier' },
+    { col: 'D', title: 'Target ($100k Sal)' },
+    { col: 'E', title: 'Target ($150k Sal)' },
+    { col: 'F', title: 'Fidelity Rule of Thumb' },
+    { col: 'G', title: 'Online Calculator Tool' },
+    { col: 'H', title: 'Website Hub' }
+  ];
+
+  wsFed.getRow(26).height = 20;
+  fidCols.forEach(fc => {
+    const c = wsFed.getCell(`${fc.col}26`);
+    c.value = fc.title;
+    c.font = { size: 9, bold: true, color: { argb: 'FFFFFFFF' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  const fidData = [
+    { age: 'Age 30', mul: 1.0, t100: 100000, t150: 150000, rule: 'Have 1x annual salary saved in invested portfolio' },
+    { age: 'Age 35', mul: 2.0, t100: 200000, t150: 300000, rule: 'Have 2x annual salary saved (tipping point)' },
+    { age: 'Age 40', mul: 3.0, t100: 300000, t150: 450000, rule: 'Have 3x annual salary saved' },
+    { age: 'Age 45', mul: 4.0, t100: 400000, t150: 600000, rule: 'Have 4x annual salary saved' },
+    { age: 'Age 50', mul: 6.0, t100: 600000, t150: 900000, rule: 'Have 6x annual salary saved' },
+    { age: 'Age 55', mul: 7.0, t100: 700000, t150: 1050000, rule: 'Have 7x annual salary saved' },
+    { age: 'Age 60', mul: 8.0, t100: 800000, t150: 1200000, rule: 'Have 8x annual salary saved' },
+    { age: 'Age 67', mul: 10.0, t100: 1000000, t150: 1500000, rule: 'Full retirement baseline target (10x income)' }
+  ];
+
+  fidData.forEach((fd, idx) => {
+    const r = 27 + idx;
+    wsFed.getRow(r).height = 19;
+    wsFed.getCell(`B${r}`).value = fd.age;
+    wsFed.getCell(`C${r}`).value = fd.mul;
+    wsFed.getCell(`C${r}`).numFmt = '0.0"x"';
+    wsFed.getCell(`D${r}`).value = fd.t100;
+    wsFed.getCell(`D${r}`).numFmt = '$#,##0';
+    wsFed.getCell(`E${r}`).value = fd.t150;
+    wsFed.getCell(`E${r}`).numFmt = '$#,##0';
+    wsFed.getCell(`F${r}`).value = fd.rule;
+    wsFed.getCell(`G${r}`).value = 'savings-multiplier-by-age';
+    wsFed.getCell(`H${r}`).value = 'getnetworthcalculator.com';
+
+    ['B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(col => {
+      wsFed.getCell(`${col}${r}`).border = thinBorder;
+      if (idx % 2 === 1) wsFed.getCell(`${col}${r}`).fill = solidFill('F8FAFC');
+    });
+  });
+
+  // Website Live Hub Links in Tab 7 Footer
+  wsFed.mergeCells('B36:H36');
+  const fedFooter = wsFed.getCell('B36');
+  fedFooter.value = '🌐 Explore live interactive tools: getnetworthcalculator.com/savings-multiplier-by-age • /wealth-class-calculator • /state';
+  fedFooter.font = { size: 9, italic: true, bold: true, color: { argb: 'FF10B981' } };
+  fedFooter.fill = solidFill(colors.darkBg);
+  fedFooter.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsFed.getRow(36).height = 22;
 
   // Write file
   await workbook.xlsx.writeFile(outputPath);
