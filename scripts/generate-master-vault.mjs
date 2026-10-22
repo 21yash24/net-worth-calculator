@@ -49,6 +49,122 @@ async function createMasterVault() {
   };
 
   // =========================================================================
+  // TAB 0: 🟢 START HERE (60-SECOND HUMAN GUIDE — IMPOSSIBLE TO GET LOST)
+  // =========================================================================
+  const wsGuide = workbook.addWorksheet('🟢 START HERE (60-Sec Guide)', {
+    views: [{ showGridLines: true }]
+  });
+
+  wsGuide.columns = [
+    { width: 4 },   // A
+    { width: 28 },  // B
+    { width: 32 },  // C
+    { width: 28 },  // D
+    { width: 4 }    // E
+  ];
+
+  wsGuide.mergeCells('B2:D2');
+  const gH = wsGuide.getCell('B2');
+  gH.value = '👋 WELCOME TO YOUR PRIVATE WEALTH & BUDGET OPERATING SYSTEM';
+  gH.font = { name: 'Arial', size: 13, bold: true, color: { argb: 'FFFFFFFF' } };
+  gH.fill = solidFill(colors.darkBg);
+  gH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(2).height = 32;
+
+  wsGuide.mergeCells('B3:D3');
+  const gSub = wsGuide.getCell('B3');
+  gSub.value = 'Designed for normal humans, not CPAs. Zero homework, zero broken formulas, 100% private & offline.';
+  gSub.font = { name: 'Arial', size: 9.5, italic: true, color: { argb: 'FFCBD5E1' } };
+  gSub.fill = solidFill(colors.cardBg);
+  gSub.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(3).height = 20;
+
+  // 3-Step Simple Rule
+  wsGuide.mergeCells('B5:D5');
+  wsGuide.getCell('B5').value = '🚀 THE 3-STEP MONTHLY ROUTINE (TAKES 2 MINUTES ON THE 1ST OF EACH MONTH)';
+  wsGuide.getCell('B5').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+  wsGuide.getCell('B5').fill = solidFill(colors.emeraldDark);
+  wsGuide.getRow(5).height = 22;
+
+  const steps = [
+    { step: 'Step 1: Open Tab 2', title: "Click '⚡ 2-Min Quick Check-In'", desc: 'On the 1st of every month, open the second tab.' },
+    { step: 'Step 2: Enter 4 Numbers', title: 'Fill the Green Cells Only', desc: 'Type your: (1) Cash, (2) Invested Portfolio, (3) Property Value, (4) Total Debts.' },
+    { step: 'Step 3: You Are Done!', title: 'Relax & Enjoy Your Life', desc: 'All formulas, Fed Reserve Percentile rankings, FIRE retirement dates, and Safe-to-Spend buffers calculate automatically!' }
+  ];
+
+  steps.forEach((st, idx) => {
+    const r = 6 + idx;
+    wsGuide.getRow(r).height = 22;
+    wsGuide.getCell(`B${r}`).value = st.step;
+    wsGuide.getCell(`B${r}`).font = { bold: true, color: { argb: 'FF065F46' } };
+    wsGuide.getCell(`C${r}`).value = st.title;
+    wsGuide.getCell(`C${r}`).font = { bold: true };
+    wsGuide.getCell(`D${r}`).value = st.desc;
+    ['B', 'C', 'D'].forEach(c => wsGuide.getCell(`${c}${r}`).border = thinBorder);
+  });
+
+  // Color-Coding Guide
+  wsGuide.mergeCells('B10:D10');
+  wsGuide.getCell('B10').value = '🎨 VISUAL COLOR CODES (HOW TO NEVER BREAK A FORMULA)';
+  wsGuide.getCell('B10').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+  wsGuide.getCell('B10').fill = solidFill(colors.cardBg);
+  wsGuide.getRow(10).height = 22;
+
+  const colorCodes = [
+    { color: '🟩 GREEN CELLS', meaning: 'Your Input Area', note: 'Safe to edit and type your monthly numbers here.' },
+    { color: '⬛ DARK / SLATE CELLS', meaning: 'Automated Math Engine', note: 'Formulas do all the work here. Never edit or delete these.' },
+    { color: '🟨 GOLD / AMBER CELLS', meaning: 'Key Benchmarks & Goals', note: 'Shows your Federal Reserve percentile, Coast FIRE, and Safe-to-Spend limit.' }
+  ];
+
+  colorCodes.forEach((cc, idx) => {
+    const r = 11 + idx;
+    wsGuide.getRow(r).height = 22;
+    wsGuide.getCell(`B${r}`).value = cc.color;
+    wsGuide.getCell(`B${r}`).font = { bold: true };
+    wsGuide.getCell(`C${r}`).value = cc.meaning;
+    wsGuide.getCell(`C${r}`).font = { bold: true };
+    wsGuide.getCell(`D${r}`).value = cc.note;
+    ['B', 'C', 'D'].forEach(c => wsGuide.getCell(`${c}${r}`).border = thinBorder);
+  });
+
+  // Key Tab Directory
+  wsGuide.mergeCells('B15:D15');
+  wsGuide.getCell('B15').value = '📖 WHAT EACH TAB DOES (CHOOSE YOUR PURPOSE)';
+  wsGuide.getCell('B15').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
+  wsGuide.getCell('B15').fill = solidFill(colors.darkBg);
+  wsGuide.getRow(15).height = 22;
+
+  const tabDescriptions = [
+    { name: '⚡ 2-Min Quick Check-In', purpose: 'For 90% of months: Type 4 numbers once a month in 90 seconds. Zero homework.' },
+    { name: '📊 Executive Dashboard', purpose: 'Bloomberg-style visual terminal showing Net Worth, Fed rank, and quarterly progress.' },
+    { name: '💸 Smart Budget (50/30/20)', purpose: "Answers: 'How much can I spend today guilt-free?' (Needs 50%, Wants 30%, Wealth 20%)." },
+    { name: '🎯 Sinking Funds Shield', purpose: 'Prevents budget shock from car repairs, holiday travel, and annual insurance renewals.' },
+    { name: '🔥 FIRE Freedom Engine', purpose: 'Trinity 4% rule calculator showing your Coast FIRE milestone and exact retirement date.' },
+    { name: '💳 Debt Accelerator', purpose: 'Side-by-side Avalanche (interest saver) vs Snowball (momentum builder) payoff rank.' },
+    { name: '🏛️ Fed Benchmarks (SCF)', purpose: 'Official US Federal Reserve Survey of Consumer Finances raw microdata tables.' }
+  ];
+
+  tabDescriptions.forEach((td, idx) => {
+    const r = 16 + idx;
+    wsGuide.getRow(r).height = 20;
+    wsGuide.getCell(`B${r}`).value = td.name;
+    wsGuide.getCell(`B${r}`).font = { bold: true, size: 9 };
+    wsGuide.mergeCells(`C${r}:D${r}`);
+    wsGuide.getCell(`C${r}`).value = td.purpose;
+    wsGuide.getCell(`C${r}`).font = { size: 9 };
+    ['B', 'C', 'D'].forEach(c => wsGuide.getCell(`${c}${r}`).border = thinBorder);
+  });
+
+  // Google Sheets Instructions Box
+  wsGuide.mergeCells('B24:D24');
+  const gBox = wsGuide.getCell('B24');
+  gBox.value = '💡 Using Google Sheets? Just drag and drop this file into Google Drive and click "Open with Google Sheets". It converts in 2 seconds with 100% of formulas intact.';
+  gBox.font = { italic: true, size: 9, color: { argb: 'FF065F46' } };
+  gBox.fill = solidFill('DCFCE7'); // Soft green
+  gBox.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(24).height = 26;
+
+  // =========================================================================
   // TAB 1: ⚡ 2-MINUTE MONTHLY QUICK-CHECK (SOLVES SPREADSHEET FATIGUE)
   // =========================================================================
   const wsQuick = workbook.addWorksheet('⚡ 2-Min Quick Check-In', {
@@ -131,13 +247,11 @@ async function createMasterVault() {
     wsQuick.getCell(`F${rowNum}`).value = sampleDebt[i];
     wsQuick.getCell(`F${rowNum}`).numFmt = '$#,##0';
 
-    // Formula for Net Worth
     const nwCell = wsQuick.getCell(`G${rowNum}`);
     nwCell.value = { formula: `=(C${rowNum}+D${rowNum}+E${rowNum})-F${rowNum}` };
     nwCell.numFmt = '$#,##0';
     nwCell.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FF065F46' } };
 
-    // Delta formulas
     const deltaCell = wsQuick.getCell(`H${rowNum}`);
     const pctCell = wsQuick.getCell(`I${rowNum}`);
     if (i === 0) {
@@ -357,10 +471,6 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 3: 💸 SMART MONTHLY BUDGET (50/30/20 & GUILT-FREE SPENDING BUFFER)
   // =========================================================================
-  // This directly addresses what real people ask for:
-  // - Answers "How much can I spend right now without feeling guilty?"
-  // - No micro-receipt tracking homework.
-  // - Clean 50/30/20 cash flow breakdown.
   const wsBudget = workbook.addWorksheet('💸 Smart Budget (50-30-20)', {
     views: [{ showGridLines: true }]
   });
@@ -480,7 +590,7 @@ async function createMasterVault() {
   wsBudget.mergeCells('B14:F14');
   wsBudget.getCell('B14').value = '🏠 ESSENTIAL NEEDS (TARGET: ≤ 50% OF INCOME)';
   wsBudget.getCell('B14').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
-  wsBudget.getCell('B14').fill = solidFill('1E3A8A'); // Blue
+  wsBudget.getCell('B14').fill = solidFill('1E3A8A');
   wsBudget.getRow(14).height = 20;
 
   const needsItems = [
@@ -523,7 +633,7 @@ async function createMasterVault() {
   wsBudget.mergeCells('B21:F21');
   wsBudget.getCell('B21').value = '🎉 GUILT-FREE WANTS (TARGET: ≤ 30% OF INCOME)';
   wsBudget.getCell('B21').font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
-  wsBudget.getCell('B21').fill = solidFill('6B21A8'); // Purple
+  wsBudget.getCell('B21').fill = solidFill('6B21A8');
   wsBudget.getRow(21).height = 20;
 
   const wantsItems = [
@@ -604,7 +714,6 @@ async function createMasterVault() {
   // =========================================================================
   // TAB 4: 🎯 SINKING FUNDS & IRREGULAR EXPENSE SHIELD
   // =========================================================================
-  // Solves the #1 reason budgets fail: Christmas, car repairs, annual insurance.
   const wsSinking = workbook.addWorksheet('🎯 Sinking Funds Shield', {
     views: [{ showGridLines: true }]
   });

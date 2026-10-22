@@ -102,196 +102,248 @@ const productSchema = {
       </div>
     </div>
 
-    <!-- What Makes This Different: The 3 Core Pillars -->
+    <!-- Visual Interactive Tab Showcase (SEE EXACTLY WHAT YOU ARE GETTING) -->
     <section class="space-y-6">
       <div class="text-center space-y-2 max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <span>👀 Interactive Preview</span>
+        </div>
         <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          Built For Real Humans, Not Full-Time CPAs
+          Look Inside The Spreadsheet
         </h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-          We analyzed hundreds of Reddit complaints and Etsy reviews. The consensus was clear: traditional budgeting templates fail because they demand too much time. Here is how we fixed it.
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          Click through the interactive tabs below to see how clean, visual, and simple each screen is designed.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-black">
-            ⚡
+      <!-- Interactive Tab Buttons -->
+      <div class="flex items-center justify-center flex-wrap gap-2 pt-2" id="preview-tab-buttons">
+        <button data-tab="tab-quick" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-md">
+          ⚡ 2-Min Check-In
+        </button>
+        <button data-tab="tab-dashboard" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+          📊 Bloomberg Dashboard
+        </button>
+        <button data-tab="tab-budget" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+          💸 Guilt-Free Budget
+        </button>
+        <button data-tab="tab-sinking" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+          🎯 Sinking Funds Shield
+        </button>
+        <button data-tab="tab-fire" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
+          🔥 FIRE Freedom Clock
+        </button>
+      </div>
+
+      <!-- Interactive Mock Displays -->
+      <div class="rounded-3xl bg-slate-950 border border-slate-800 p-5 sm:p-7 shadow-2xl text-white font-sans space-y-4">
+        
+        <!-- Tab 1: Quick Check-in Mockup -->
+        <div id="mock-tab-quick" class="tab-panel space-y-3">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Tab 1: Anti-Fatigue Routine</span>
+              <span class="text-base sm:text-lg font-black text-white">⚡ 2-Minute Monthly Quick Check-In</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">Takes 90s on the 1st</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. The 2-Minute Rule</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            Stop typing every coffee and receipt. On the 1st of each month, you enter just <strong>4 numbers</strong> (Cash, Invested, Property, Debts). In under 120 seconds, your entire net worth and monthly progress update automatically.
+          <p class="text-xs text-slate-400">
+            Green cells are the <strong>only cells you ever touch</strong>. Everything else (Net Worth, MoM Dollar Change, Percentage Growth) is automated.
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <table class="w-full text-xs font-mono text-center">
+              <thead class="bg-slate-900 text-slate-300 border-b border-slate-800">
+                <tr>
+                  <th class="p-2.5 text-left font-sans">Month</th>
+                  <th class="p-2.5 bg-emerald-900/40 text-emerald-300 font-sans">💵 Cash (Input)</th>
+                  <th class="p-2.5 bg-emerald-900/40 text-emerald-300 font-sans">📈 Invested (Input)</th>
+                  <th class="p-2.5 bg-emerald-900/40 text-emerald-300 font-sans">🏠 Property (Input)</th>
+                  <th class="p-2.5 bg-emerald-900/40 text-emerald-300 font-sans">💳 Debts (Input)</th>
+                  <th class="p-2.5 font-bold font-sans">🏛️ NET WORTH</th>
+                  <th class="p-2.5 font-sans">Monthly Gain</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/60 bg-slate-950">
+                <tr>
+                  <td class="p-2.5 text-left font-bold text-slate-300">Jan 2026</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$25,000</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$185,000</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$350,000</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$245,000</td>
+                  <td class="p-2.5 font-extrabold text-white">$315,000</td>
+                  <td class="p-2.5 text-slate-400">Baseline</td>
+                </tr>
+                <tr class="bg-slate-900/40">
+                  <td class="p-2.5 text-left font-bold text-slate-300">Feb 2026</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$26,200</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$189,500</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$350,000</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$243,800</td>
+                  <td class="p-2.5 font-extrabold text-emerald-400">$321,900</td>
+                  <td class="p-2.5 text-emerald-400 font-bold">▲ +$6,900 (+2.2%)</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 text-left font-bold text-slate-300">Mar 2026</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$25,800</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$194,200</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$350,000</td>
+                  <td class="p-2.5 bg-emerald-950/30 text-emerald-400">$242,600</td>
+                  <td class="p-2.5 font-extrabold text-emerald-400">$327,400</td>
+                  <td class="p-2.5 text-emerald-400 font-bold">▲ +$5,500 (+1.7%)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Dashboard Mockup -->
+        <div id="mock-tab-dashboard" class="tab-panel space-y-3 hidden">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Tab 2: Command Center</span>
+              <span class="text-base sm:text-lg font-black text-white">📊 Executive Wealth Dashboard</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Bloomberg Dark Theme</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">TOTAL NET WORTH</span>
+              <span class="text-2xl font-black text-white">$342,850</span>
+              <span class="text-xs text-emerald-400 block font-bold">▲ +$27,850 Annual Growth</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">LIQUID INVESTED RATIO</span>
+              <span class="text-2xl font-black text-emerald-400">$275,000</span>
+              <span class="text-xs text-slate-400 block">47.9% of Total Assets</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">FED SCF BENCHMARK</span>
+              <span class="text-2xl font-black text-amber-400">Top 12%</span>
+              <span class="text-xs text-slate-400 block">Age Cohort 30 - 34</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Budget Mockup -->
+        <div id="mock-tab-budget" class="tab-panel space-y-3 hidden">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Tab 3: Cash Flow Engine</span>
+              <span class="text-base sm:text-lg font-black text-white">💸 Smart 50/30/20 Budget &amp; Guilt-Free Spending</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-bold">No Receipt Logging</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-500/30 space-y-1">
+              <span class="text-[10px] text-purple-300 font-bold block uppercase">REMAINING GUILT-FREE BUFFER</span>
+              <span class="text-3xl font-black text-purple-300">$1,440</span>
+              <span class="text-xs text-slate-300 block">Safe to spend on dining, travel &amp; fun with zero guilt</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">DAILY SAFE-TO-SPEND LIMIT</span>
+              <span class="text-3xl font-black text-emerald-400">$48 / day</span>
+              <span class="text-xs text-slate-400 block">Updated live for the remaining 30 days in the month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Sinking Funds Mockup -->
+        <div id="mock-tab-sinking" class="tab-panel space-y-3 hidden">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Tab 4: Irregular Expense Defense</span>
+              <span class="text-base sm:text-lg font-black text-white">🎯 Sinking Funds Shield</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Budget Shock Proof</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-xs font-bold text-white block">🚗 Car Maintenance Pool</span>
+              <span class="text-lg font-black text-emerald-400">$1,400 / $2,000</span>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 mt-1.5"><div class="bg-emerald-500 h-1.5 rounded-full w-[70%]"></div></div>
+              <span class="text-[10px] text-slate-400 block mt-1">Deposit: $150 / month</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-xs font-bold text-white block">🏖️ Annual Family Vacation</span>
+              <span class="text-lg font-black text-emerald-400">$2,800 / $4,500</span>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 mt-1.5"><div class="bg-emerald-500 h-1.5 rounded-full w-[62%]"></div></div>
+              <span class="text-[10px] text-slate-400 block mt-1">Deposit: $250 / month</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-xs font-bold text-white block">🎁 Holiday Season Gifts</span>
+              <span class="text-lg font-black text-emerald-400">$750 / $1,500</span>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 mt-1.5"><div class="bg-emerald-500 h-1.5 rounded-full w-[50%]"></div></div>
+              <span class="text-[10px] text-slate-400 block mt-1">Deposit: $125 / month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: FIRE Mockup -->
+        <div id="mock-tab-fire" class="tab-panel space-y-3 hidden">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Tab 5: Early Retirement Math</span>
+              <span class="text-base sm:text-lg font-black text-white">🔥 Trinity Study FIRE Freedom Engine</span>
+            </div>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">4% Safe Withdrawal Rule</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 space-y-1">
+              <span class="text-[10px] text-emerald-300 font-bold block uppercase">COAST FIRE MILESTONE</span>
+              <span class="text-2xl font-black text-emerald-300">✅ ACHIEVED at Age 32</span>
+              <p class="text-xs text-slate-300 leading-relaxed pt-1">
+                Even if you never save another penny, your current investments will compound to your full retirement number by age 60!
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">ESTIMATED FREEDOM DATE</span>
+              <span class="text-2xl font-black text-amber-400">October 2038</span>
+              <span class="text-xs text-slate-400 block">12.8 Years Left to 100% Financial Freedom</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Real Life Story: How Normal People Actually Use This -->
+    <section class="p-8 sm:p-10 rounded-3xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-6">
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block">Case Study • Real Life Clarity</span>
+        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+          How Sarah (Age 31) Eliminated Money Anxiety in 2 Minutes a Month
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+          <span class="font-extrabold text-rose-500 uppercase text-xs">❌ Before The Master Vault:</span>
+          <p>
+            "I used to track every receipt in an Etsy template with 18 tabs. It took 45 minutes every weekend, my husband hated it, and when the car alternator died in March, it blew up our entire budget. I felt guilty buying a $6 coffee."
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl font-black">
-            💸
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Guilt-Free Spending Buffer</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            Answers the only question that matters: <em>"How much can I spend today without derailing my goals?"</em> The 50/30/20 engine automatically computes your daily and monthly safe spending allowance.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-black">
-            🎯
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Sinking Funds Shield</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            Unexpected car repairs, medical copays, and holiday gifts blow up standard budgets. Dedicated sinking funds pools calculate monthly contributions so irregular expenses never shock your savings.
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+          <span class="font-extrabold text-emerald-500 uppercase text-xs">✅ With The Master Vault:</span>
+          <p>
+            "On the 1st of every month, I open the 2-Minute Quick Check on my laptop and enter 4 numbers. It shows me our net worth is in the top 18%, we have $1,400 in our car sinking fund, and our safe-to-spend buffer is $48/day. Zero guilt, zero stress."
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Product Tour: The 7 Institutional Tabs Inside -->
-    <section class="space-y-10">
-      <div class="text-center space-y-2 max-w-2xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          What's Inside The Master Vault
-        </h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-          Everything you need for complete wealth clarity, organized cleanly across 7 focused tabs with zero formula-breaking risks.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Tab 1 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-black text-sm">01</span>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">⚡ 2-Minute Monthly Quick Check-In</h3>
-          </div>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            The anti-fatigue tab. 4 inputs per month. Automatically computes your month-over-month dollar gains, percentage portfolio growth, and annual savings trajectory.
-          </p>
-        </div>
-
-        <!-- Tab 2 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-black text-sm">02</span>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">📊 Executive Wealth Dashboard</h3>
-          </div>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Institutional Bloomberg terminal dark aesthetics. Live cards for Total Net Worth, Liquid Portfolio Ratio, quarterly milestone progressions, and retirement readiness.
-          </p>
-        </div>
-
-        <!-- Tab 3 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-black text-sm">03</span>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">💸 Smart 50/30/20 Cash Flow Engine</h3>
-          </div>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Calculates your exact income allocation across Essential Needs (50%), Guilt-Free Wants (30%), and Wealth Surplus (20%+). Includes live daily spending allowance.
-          </p>
-        </div>
-
-        <!-- Tab 4 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-black text-sm">04</span>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">🎯 Sinking Funds &amp; Expense Shield</h3>
-          </div>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Set target dates and savings goals for emergency runways, car maintenance, vacations, and annual insurance renewals. Automatically computes exact monthly contributions.
-          </p>
-        </div>
-
-        <!-- Tab 5 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-black text-sm">05</span>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">🔥 FIRE Freedom &amp; Retirement Engine</h3>
-          </div>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Trinity Study 4% rule calculator. Instantly computes Lean FIRE, Standard FIRE, Fat FIRE, and Coast FIRE targets with a dynamic freedom countdown in months and years.
-          </p>
-        </div>
-
-        <!-- Tab 6 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center font-black text-sm">06</span>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">💳 Debt Avalanche &amp; Snowball</h3>
-          </div>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Side-by-side priority ranking for credit cards, personal loans, auto debt, and mortgages. Compares mathematical interest savings against psychological momentum.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Comparison Table: Master Vault vs Overpriced Competitors -->
-    <section class="space-y-6">
-      <div class="text-center space-y-2 max-w-2xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          How Does It Compare?
-        </h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-          Why pay $80 to $100 per year for complicated apps when you can own your data privately forever?
-        </p>
-      </div>
-
-      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-        <table class="w-full text-xs text-left">
-          <thead class="bg-slate-100 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-800">
-            <tr>
-              <th class="p-4 font-bold">Feature</th>
-              <th class="p-4 font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10">Master Vault</th>
-              <th class="p-4 font-bold">Tiller Money</th>
-              <th class="p-4 font-bold">Typical Etsy Templates</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">Pricing Model</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-black bg-emerald-500/10">$3 Early Access ($6 regular)</td>
-              <td class="p-4 text-slate-500">$79 / year recurring</td>
-              <td class="p-4 text-slate-500">$15 – $35 one-time</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">Time Required</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10">⚡ 2 min / month</td>
-              <td class="p-4 text-slate-500">Auto-sync (frequent reconnects)</td>
-              <td class="p-4 text-slate-500">20-40 min (manual receipt log)</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">Privacy &amp; Credentials</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10">100% Offline (No bank logins)</td>
-              <td class="p-4 text-slate-500">Requires bank login sync</td>
-              <td class="p-4 text-slate-500">Offline</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">Guilt-Free Spending Buffer</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10">Yes (Live daily/monthly)</td>
-              <td class="p-4 text-slate-500">Complex custom setup</td>
-              <td class="p-4 text-slate-500">Rarely included</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">Sinking Funds Shield</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10">Integrated</td>
-              <td class="p-4 text-slate-500">Add-on required</td>
-              <td class="p-4 text-slate-500">Separate sheet</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">Fed Reserve SCF Benchmarks</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10">Official Raw Microdata</td>
-              <td class="p-4 text-slate-500">None</td>
-              <td class="p-4 text-slate-500">None</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-slate-900 dark:text-white">FIRE Retirement Engine</td>
-              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10">Lean, Standard, Fat, Coast</td>
-              <td class="p-4 text-slate-500">Not included</td>
-              <td class="p-4 text-slate-500">Basic / Missing</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- Why This Is Only $3 (Zero Scam Guarantee) -->
+    <section class="max-w-2xl mx-auto text-center space-y-4">
+      <h3 class="text-2xl font-black text-slate-900 dark:text-white">Why Are We Offering This for Just $3?</h3>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        Overpriced budgeting apps charge $80 to $100 every single year for features you don't even use. We built this tool to be the definitive personal finance operating system for our community. We are releasing the first 50 copies at <strong>$3 Early Access</strong> (regular $6) to collect initial feedback and build verified community advocates.
+      </p>
+      <div class="flex items-center justify-center gap-6 text-xs font-bold text-slate-700 dark:text-slate-300 pt-2">
+        <span>✓ Zero Recurring Subscriptions</span>
+        <span>•</span>
+        <span>✓ No Upsells</span>
+        <span>•</span>
+        <span>✓ 100% Private &amp; Offline</span>
       </div>
     </section>
 
@@ -366,4 +418,35 @@ const productSchema = {
     <AuthorBio />
 
   </main>
+
+  <!-- Client-side Interactive Tab Switcher Script -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabButtons = document.querySelectorAll('#preview-tab-buttons .tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-tab');
+
+          // Update active button state
+          tabButtons.forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white', 'shadow-md');
+            b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white', 'shadow-md');
+          btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+          // Show targeted mock tab
+          tabPanels.forEach(panel => {
+            if (panel.id === `mock-${target}`) {
+              panel.classList.remove('hidden');
+            } else {
+              panel.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </Layout>
