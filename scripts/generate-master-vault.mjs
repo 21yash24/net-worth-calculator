@@ -166,6 +166,227 @@ async function createMasterVault() {
   wsGuide.getRow(24).height = 26;
 
   // =========================================================================
+  // ⚡ INSTANT DOPAMINE & QUICK WINS ENGINE (THE 60-SECOND TEST-DRIVE)
+  // =========================================================================
+  wsGuide.mergeCells('B26:D26');
+  const dopamineH = wsGuide.getCell('B26');
+  dopamineH.value = '⚡ 60-SECOND INSTANT DOPAMINE TEST-DRIVE (GET IMMEDIATE WINS NOW)';
+  dopamineH.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
+  dopamineH.fill = solidFill(colors.emeraldDark);
+  dopamineH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(26).height = 26;
+
+  wsGuide.mergeCells('B27:D27');
+  const dSub = wsGuide.getCell('B27');
+  dSub.value = 'Type 3 numbers into the green boxes below. Watch your official wealth tier and milestone unlock immediately!';
+  dSub.font = { name: 'Arial', size: 9, italic: true, color: { argb: 'FFCBD5E1' } };
+  dSub.fill = solidFill(colors.darkBg);
+  dSub.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(27).height = 20;
+
+  // 3 Quick Inputs
+  const dInputs = [
+    { col: 'B', title: '1. YOUR CURRENT AGE', val: 30, fmt: '0' },
+    { col: 'C', title: '2. ANNUAL PRE-TAX INCOME', val: 95000, fmt: '$#,##0' },
+    { col: 'D', title: '3. CURRENT ESTIMATED NET WORTH', val: 85000, fmt: '$#,##0' }
+  ];
+
+  wsGuide.getRow(29).height = 20;
+  wsGuide.getRow(30).height = 26;
+
+  dInputs.forEach(inp => {
+    const th = wsGuide.getCell(`${inp.col}29`);
+    th.value = inp.title;
+    th.font = { size: 9, bold: true, color: { argb: 'FF94A3B8' } };
+    th.fill = solidFill(colors.cardBg);
+    th.border = thinBorder;
+    th.alignment = { horizontal: 'center', vertical: 'middle' };
+
+    const c = wsGuide.getCell(`${inp.col}30`);
+    c.value = inp.val;
+    c.font = { size: 14, bold: true, color: { argb: 'FFFFFFFF' } };
+    c.fill = solidFill(colors.emeraldDark);
+    c.numFmt = inp.fmt;
+    c.border = thinBorder;
+    c.alignment = { horizontal: 'center', vertical: 'middle' };
+  });
+
+  // 3 Instant Score Cards
+  wsGuide.getRow(32).height = 18;
+  wsGuide.getRow(33).height = 26;
+
+  const dCards = [
+    { col: 'B', title: '🏆 OFFICIAL WEALTH TIER', formula: 'IF(D30>=2*(B30*C30/10), "PAW (Top 10% Wealth Builder)", IF(D30>=(B30*C30/10), "AAW (Solid Average)", "UAW (Under-Accumulator)"))', fontColor: 'FF10B981' },
+    { col: 'C', title: '🎯 TARGET NET WORTH FOR AGE', formula: '(B30*C30)/10', fmt: '$#,##0', fontColor: 'FFFFFFFF' },
+    { col: 'D', title: '🚀 NEXT MILESTONE CLUB', formula: 'IF(D30<100000, "$100k Club", IF(D30<250000, "$250k Club", IF(D30<500000, "$500k Club", "$1M Two-Comma Club")))', fontColor: 'FFF59E0B' }
+  ];
+
+  dCards.forEach(dc => {
+    const th = wsGuide.getCell(`${dc.col}32`);
+    th.value = dc.title;
+    th.font = { size: 8.5, bold: true, color: { argb: 'FF94A3B8' } };
+    th.fill = solidFill(colors.cardBg);
+    th.border = thinBorder;
+    th.alignment = { horizontal: 'center', vertical: 'middle' };
+
+    const c = wsGuide.getCell(`${dc.col}33`);
+    c.value = { formula: dc.formula };
+    c.font = { size: 12, bold: true, color: { argb: dc.fontColor } };
+    c.fill = solidFill(colors.cardBg);
+    if (dc.fmt) c.numFmt = dc.fmt;
+    c.border = thinBorder;
+    c.alignment = { horizontal: 'center', vertical: 'middle' };
+  });
+
+  // Section 2: 🧛‍♂️ THE 5-MINUTE VAMPIRE PURGE
+  wsGuide.mergeCells('B36:D36');
+  const vH = wsGuide.getCell('B36');
+  vH.value = '🧛‍♂️ THE 5-MINUTE VAMPIRE PURGE (FIND $1,000+ IN CASH RIGHT NOW)';
+  vH.font = { name: 'Arial', size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  vH.fill = solidFill(colors.darkBg);
+  vH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(36).height = 24;
+
+  const purgeCols = [
+    { col: 'B', title: 'Recurring Monthly Leak / Subscription' },
+    { col: 'C', title: 'Monthly Cost ($)' },
+    { col: 'D', title: 'Action Plan & Reality Check' }
+  ];
+
+  wsGuide.getRow(37).height = 19;
+  purgeCols.forEach(pc => {
+    const c = wsGuide.getCell(`${pc.col}37`);
+    c.value = pc.title;
+    c.font = { size: 8.5, bold: true, color: { argb: 'FFFFFFFF' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  const purgeItems = [
+    { leak: 'Unused Streaming / Digital Subscriptions', cost: 35, action: 'Cancel unneeded services' },
+    { leak: 'Unused Gym / Health App Memberships', cost: 45, action: 'Downgrade or pause immediately' },
+    { leak: 'DoorDash / Takeout Delivery Markups & Fees', cost: 75, action: 'Limit takeout to 1x weekly' },
+    { leak: 'Overpriced Cellphone / Insurance Plan', cost: 40, action: 'Shop rate or switch carrier' }
+  ];
+
+  purgeItems.forEach((pi, idx) => {
+    const r = 38 + idx;
+    wsGuide.getRow(r).height = 19;
+    wsGuide.getCell(`B${r}`).value = pi.leak;
+    wsGuide.getCell(`B${r}`).font = { size: 9 };
+    wsGuide.getCell(`B${r}`).border = thinBorder;
+
+    wsGuide.getCell(`C${r}`).value = pi.cost;
+    wsGuide.getCell(`C${r}`).numFmt = '$#,##0';
+    wsGuide.getCell(`C${r}`).font = { size: 9, bold: true };
+    wsGuide.getCell(`C${r}`).fill = solidFill('DCFCE7');
+    wsGuide.getCell(`C${r}`).border = thinBorder;
+
+    wsGuide.getCell(`D${r}`).value = pi.action;
+    wsGuide.getCell(`D${r}`).font = { size: 8.5, italic: true, color: { argb: 'FF64748B' } };
+    wsGuide.getCell(`D${r}`).border = thinBorder;
+  });
+
+  // Purge Output Row
+  const rPurgeTot = 42;
+  wsGuide.getRow(rPurgeTot).height = 22;
+  wsGuide.getCell(`B${rPurgeTot}`).value = 'TOTAL RECURRENT LEAKAGE DISCOVERED';
+  wsGuide.getCell(`B${rPurgeTot}`).font = { bold: true, size: 9 };
+  wsGuide.getCell(`B${rPurgeTot}`).border = thinBorder;
+
+  wsGuide.getCell(`C${rPurgeTot}`).value = { formula: 'SUM(C38:C41)' };
+  wsGuide.getCell(`C${rPurgeTot}`).numFmt = '$#,##0"/mo"';
+  wsGuide.getCell(`C${rPurgeTot}`).font = { bold: true, size: 10, color: { argb: 'FFF43F5E' } };
+  wsGuide.getCell(`C${rPurgeTot}`).border = thinBorder;
+
+  wsGuide.getCell(`D${rPurgeTot}`).value = 'Found in your budget in 3 minutes';
+  wsGuide.getCell(`D${rPurgeTot}`).font = { size: 8.5, color: { argb: 'FF64748B' } };
+  wsGuide.getCell(`D${rPurgeTot}`).border = thinBorder;
+
+  // The 2 Big Dopamine Reward Cards
+  wsGuide.mergeCells('B44:C44');
+  wsGuide.getCell('B44').value = '🟢 INSTANT ANNUAL CASH UNLOCKED';
+  wsGuide.getCell('B44').font = { size: 8.5, bold: true, color: { argb: 'FF10B981' } };
+  wsGuide.getCell('B44').fill = solidFill(colors.cardBg);
+
+  wsGuide.mergeCells('B45:C45');
+  const cashGain = wsGuide.getCell('B45');
+  cashGain.value = { formula: 'C42*12' };
+  cashGain.numFmt = '"+$"#,##0" / Year Back In Checking"';
+  cashGain.font = { size: 12, bold: true, color: { argb: 'FF10B981' } };
+  cashGain.fill = solidFill(colors.cardBg);
+  cashGain.alignment = { vertical: 'middle' };
+
+  wsGuide.getCell('D44').value = '📈 10-YEAR COMPOUNDED WEALTH (8%)';
+  wsGuide.getCell('D44').font = { size: 8.5, bold: true, color: { argb: 'FF38BDF8' } };
+  wsGuide.getCell('D44').fill = solidFill(colors.cardBg);
+
+  const invGain = wsGuide.getCell('D45');
+  invGain.value = { formula: 'C42*182.946' };
+  invGain.numFmt = '"+$"#,##0" Created For Retirement"';
+  invGain.font = { size: 12, bold: true, color: { argb: 'FF38BDF8' } };
+  invGain.fill = solidFill(colors.cardBg);
+  invGain.alignment = { vertical: 'middle' };
+
+  wsGuide.getRow(44).height = 18;
+  wsGuide.getRow(45).height = 26;
+
+  // Section 3: ⏳ THE LIFE ENERGY CALCULATOR
+  wsGuide.mergeCells('B47:D47');
+  const leH = wsGuide.getCell('B47');
+  leH.value = '⏳ THE LIFE ENERGY CALCULATOR (IS THAT PURCHASE WORTH YOUR FINITE HOURS?)';
+  leH.font = { name: 'Arial', size: 10.5, bold: true, color: { argb: 'FFFFFFFF' } };
+  leH.fill = solidFill(colors.darkBg);
+  leH.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(47).height = 24;
+
+  const leCols = [
+    { col: 'B', title: 'Your Real Hourly Wage (C30 / 2,080 hrs)' },
+    { col: 'C', title: 'Impulse Purchase Price ($)' },
+    { col: 'D', title: 'Actual Hours of Your Life It Costs' }
+  ];
+
+  wsGuide.getRow(48).height = 19;
+  leCols.forEach(lc => {
+    const c = wsGuide.getCell(`${lc.col}48`);
+    c.value = lc.title;
+    c.font = { size: 8.5, bold: true, color: { argb: 'FFFFFFFF' } };
+    c.fill = solidFill(colors.cardBg);
+    c.border = thinBorder;
+  });
+
+  wsGuide.getRow(49).height = 24;
+  const wageCell = wsGuide.getCell('B49');
+  wageCell.value = { formula: 'C30/2080' };
+  wageCell.numFmt = '$#,##0.00"/hr"';
+  wageCell.font = { size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
+  wageCell.fill = solidFill(colors.cardBg);
+  wageCell.border = thinBorder;
+
+  const itemCell = wsGuide.getCell('C49');
+  itemCell.value = 1200;
+  itemCell.numFmt = '$#,##0';
+  itemCell.font = { size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
+  itemCell.fill = solidFill(colors.emeraldDark);
+  itemCell.border = thinBorder;
+
+  const hoursCell = wsGuide.getCell('D49');
+  hoursCell.value = { formula: 'C49/B49' };
+  hoursCell.numFmt = '0.0" Hours at Work"';
+  hoursCell.font = { size: 12, bold: true, color: { argb: 'FFF59E0B' } };
+  hoursCell.fill = solidFill(colors.cardBg);
+  hoursCell.border = thinBorder;
+
+  // Grand Launchpad CTA
+  wsGuide.mergeCells('B51:D51');
+  const launchBox = wsGuide.getCell('B51');
+  launchBox.value = '🚀 READY FOR YOUR 2-MINUTE MONTHLY ROUTINE? CLICK THE "2-Min Check-In" TAB BELOW! 👇';
+  launchBox.font = { bold: true, size: 10, color: { argb: 'FFFFFFFF' } };
+  launchBox.fill = solidFill(colors.emeraldDark);
+  launchBox.alignment = { horizontal: 'center', vertical: 'middle' };
+  wsGuide.getRow(51).height = 30;
+
+  // =========================================================================
   // TAB 1: ⚡ 2-MINUTE MONTHLY QUICK-CHECK (SOLVES SPREADSHEET FATIGUE)
   // =========================================================================
   const wsQuick = workbook.addWorksheet('2-Min Check-In', {
@@ -366,7 +587,8 @@ async function createMasterVault() {
 
   ws1.mergeCells('B7:C7');
   const nwSub = ws1.getCell('B7');
-  nwSub.value = { formula: `"▲ Annual Growth: " & TEXT('2-Min Check-In'!I18, "+0.0%") & " (+$" & TEXT('2-Min Check-In'!H18, "#,##0") & ")"` };
+  nwSub.value = { formula: "'2-Min Check-In'!H18" };
+  nwSub.numFmt = '"+$"#,##0;"-$"#,##0;"$0"';
   nwSub.font = { size: 9, bold: true, color: { argb: 'FF10B981' } };
   nwSub.fill = solidFill(colors.cardBg);
 
@@ -386,7 +608,8 @@ async function createMasterVault() {
 
   ws1.mergeCells('D7:E7');
   const liqSub = ws1.getCell('D7');
-  liqSub.value = { formula: `"Liquid Ratio: " & TEXT(('2-Min Check-In'!C18+'2-Min Check-In'!D18)/('2-Min Check-In'!G18+'2-Min Check-In'!F18), "0.0%") & " of total assets"` };
+  liqSub.value = { formula: "('2-Min Check-In'!C18+'2-Min Check-In'!D18)/('2-Min Check-In'!G18+'2-Min Check-In'!F18)" };
+  liqSub.numFmt = '0.0%';
   liqSub.font = { size: 9, color: { argb: 'FFCBD5E1' } };
   liqSub.fill = solidFill(colors.cardBg);
 
@@ -550,7 +773,7 @@ async function createMasterVault() {
 
   // Wealth Class Status Formula
   const statCell = ws1.getCell('F24');
-  statCell.value = { formula: 'IF(\'⚡ 2-Min Quick Check-In\'!G18>=2*D24, "🏆 PAW (Top 10% Accumulator)", IF(\'⚡ 2-Min Quick Check-In\'!G18>=D24, "⚡ AAW (Solid Average)", "⚠️ UAW (Under Accumulator)"))' };
+  statCell.value = { formula: 'IF(\'2-Min Check-In\'!G18>=2*D24, "PAW (Top 10% Accumulator)", IF(\'2-Min Check-In\'!G18>=D24, "AAW (Solid Average)", "UAW (Under Accumulator)"))' };
   statCell.font = { size: 10, bold: true, color: { argb: 'FFFFFFFF' } };
   statCell.fill = solidFill(colors.cardBg);
   statCell.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -832,7 +1055,8 @@ async function createMasterVault() {
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
     wsBudget.getCell(`E${r}`).value = { formula: `C${r}-D${r}` };
-    wsBudget.getCell(`F${r}`).value = { formula: `TEXT(D${r}/$D$13, "0.0%")` };
+    wsBudget.getCell(`F${r}`).value = { formula: `D${r}/$D$13` };
+    wsBudget.getCell(`F${r}`).numFmt = '0.0%';
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
   });
@@ -844,7 +1068,8 @@ async function createMasterVault() {
   wsBudget.getCell(`C${rNeedTot}`).value = { formula: 'SUM(C15:C19)' };
   wsBudget.getCell(`D${rNeedTot}`).value = { formula: 'SUM(D15:D19)' };
   wsBudget.getCell(`E${rNeedTot}`).value = { formula: 'C20-D20' };
-  wsBudget.getCell(`F${rNeedTot}`).value = { formula: `"Actual: " & TEXT(D20/D13, "0.0%") & " (Target: ≤50%)"` };
+  wsBudget.getCell(`F${rNeedTot}`).value = { formula: 'D20/D13' };
+  wsBudget.getCell(`F${rNeedTot}`).numFmt = '0.0%';
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rNeedTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
     const cell = wsBudget.getCell(`${c}${rNeedTot}`);
@@ -873,7 +1098,8 @@ async function createMasterVault() {
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
     wsBudget.getCell(`E${r}`).value = { formula: `C${r}-D${r}` };
-    wsBudget.getCell(`F${r}`).value = { formula: `TEXT(D${r}/$D$13, "0.0%")` };
+    wsBudget.getCell(`F${r}`).value = { formula: `D${r}/$D$13` };
+    wsBudget.getCell(`F${r}`).numFmt = '0.0%';
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
   });
@@ -885,7 +1111,8 @@ async function createMasterVault() {
   wsBudget.getCell(`C${rWantTot}`).value = { formula: 'SUM(C22:C24)' };
   wsBudget.getCell(`D${rWantTot}`).value = { formula: 'SUM(D22:D24)' };
   wsBudget.getCell(`E${rWantTot}`).value = { formula: 'C25-D25' };
-  wsBudget.getCell(`F${rWantTot}`).value = { formula: `"Actual: " & TEXT(D25/D13, "0.0%") & " (Target: ≤30%)"` };
+  wsBudget.getCell(`F${rWantTot}`).value = { formula: 'D25/D13' };
+  wsBudget.getCell(`F${rWantTot}`).numFmt = '0.0%';
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rWantTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
     const cell = wsBudget.getCell(`${c}${rWantTot}`);
@@ -914,7 +1141,8 @@ async function createMasterVault() {
     wsBudget.getCell(`C${r}`).value = item.plan;
     wsBudget.getCell(`D${r}`).value = item.act;
     wsBudget.getCell(`E${r}`).value = { formula: `D${r}-C${r}` };
-    wsBudget.getCell(`F${r}`).value = { formula: `TEXT(D${r}/$D$13, "0.0%")` };
+    wsBudget.getCell(`F${r}`).value = { formula: `D${r}/$D$13` };
+    wsBudget.getCell(`F${r}`).numFmt = '0.0%';
     ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${r}`).numFmt = '$#,##0');
     ['B', 'C', 'D', 'E', 'F'].forEach(c => wsBudget.getCell(`${c}${r}`).border = thinBorder);
   });
@@ -926,7 +1154,8 @@ async function createMasterVault() {
   wsBudget.getCell(`C${rSaveTot}`).value = { formula: 'SUM(C27:C29)' };
   wsBudget.getCell(`D${rSaveTot}`).value = { formula: 'SUM(D27:D29)' };
   wsBudget.getCell(`E${rSaveTot}`).value = { formula: 'D30-C30' };
-  wsBudget.getCell(`F${rSaveTot}`).value = { formula: `"Savings Rate: " & TEXT(D30/D13, "0.0%") & " (FIRE Speed)"` };
+  wsBudget.getCell(`F${rSaveTot}`).value = { formula: 'D30/D13' };
+  wsBudget.getCell(`F${rSaveTot}`).numFmt = '0.0%';
   ['C', 'D', 'E'].forEach(c => wsBudget.getCell(`${c}${rSaveTot}`).numFmt = '$#,##0');
   ['B', 'C', 'D', 'E', 'F'].forEach(c => {
     const cell = wsBudget.getCell(`${c}${rSaveTot}`);
