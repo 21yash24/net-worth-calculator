@@ -23,6 +23,11 @@ const productSchema = {
     "reviewCount": "184"
   }
 };
+
+const buyUrl = (product.checkoutUrl && product.checkoutUrl.trim() !== "https://gumroad.com/" && product.checkoutUrl.startsWith("http"))
+  ? product.checkoutUrl 
+  : "/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx";
+const isLiveCheckout = buyUrl !== "/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx";
 ---
 
 <Layout title={title} description={description}>
@@ -84,12 +89,14 @@ const productSchema = {
       <!-- Instant Checkout CTA -->
       <div class="max-w-md mx-auto space-y-3">
         <a 
-          href="/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx" 
-          download="NetWorth_FIRE_Master_Vault_2026.xlsx"
+          href={buyUrl} 
+          download={!isLiveCheckout ? "NetWorth_FIRE_Master_Vault_2026.xlsx" : undefined}
+          target={isLiveCheckout ? "_blank" : undefined}
+          rel={isLiveCheckout ? "noopener noreferrer" : undefined}
           class="w-full inline-flex items-center justify-center gap-3 py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:scale-[0.98] text-white font-extrabold text-base sm:text-lg transition-all shadow-xl shadow-emerald-900/40"
         >
-          <span>Download Master Vault (.xlsx)</span>
-          <span class="text-xl">📥</span>
+          <span>Get Master Vault — {product.earlyBirdPrice} Early Access</span>
+          <span class="text-xl">💳</span>
         </a>
 
         <div class="flex items-center justify-center gap-4 text-xs text-slate-500 dark:text-slate-400 font-medium">
@@ -231,11 +238,13 @@ const productSchema = {
 
             <div class="pt-2">
               <a 
-                href="/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx" 
-                download="NetWorth_FIRE_Master_Vault_2026.xlsx"
+                href={buyUrl} 
+                download={!isLiveCheckout ? "NetWorth_FIRE_Master_Vault_2026.xlsx" : undefined}
+                target={isLiveCheckout ? "_blank" : undefined}
+                rel={isLiveCheckout ? "noopener noreferrer" : undefined}
                 class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-sm transition-all shadow-lg active:scale-95"
               >
-                <span>Download Master Vault (.xlsx / Sheets) — $3 Early Access</span>
+                <span>Get Master Vault (.xlsx / Sheets) — {product.earlyBirdPrice} Early Access</span>
                 <span>→</span>
               </a>
             </div>
@@ -726,11 +735,13 @@ const productSchema = {
         Join smart wealth accumulators who have ditched overpriced apps for a clean, private, institutional-grade master spreadsheet.
       </p>
       <a 
-        href="/downloads/NetWorth_FIRE_Master_Vault_2026.xlsx" 
-        download="NetWorth_FIRE_Master_Vault_2026.xlsx"
+        href={buyUrl} 
+        download={!isLiveCheckout ? "NetWorth_FIRE_Master_Vault_2026.xlsx" : undefined}
+        target={isLiveCheckout ? "_blank" : undefined}
+        rel={isLiveCheckout ? "noopener noreferrer" : undefined}
         class="inline-flex items-center gap-2 py-4 px-8 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-base transition-all shadow-xl shadow-emerald-500/20"
       >
-        <span>Download Now — {product.earlyBirdPrice} Early Access</span>
+        <span>Get Master Vault Now — {product.earlyBirdPrice} Early Access</span>
         <span>→</span>
       </a>
     </div>

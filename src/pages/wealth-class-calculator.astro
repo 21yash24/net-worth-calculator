@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
 import TrustBadge from '../components/TrustBadge.astro';
 import AuthorBio from '../components/AuthorBio.astro';
-import NetWorthTrackerCard from '../components/NetWorthTrackerCard.astro';
 
 const title = "Am I Rich? (2026 Wealth Class Calculator) – Middle Class, Upper Middle or Rich?";
 const description = "Are you middle class, upper middle class, or rich? Check your exact US wealth class percentile benchmarked against official Federal Reserve SCF net worth data.";
@@ -157,10 +156,26 @@ const classFaq = {
               <span class="text-[11px] text-slate-500 dark:text-slate-400">4% rule early retirement target →</span>
             </a>
           </div>
+        <!-- Master Wealth Vault Callout (Replaces third-party tracker) -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-left shadow-lg">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-black px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase tracking-wider">🏆 PAW Formula Included</span>
+              <span class="text-xs text-amber-400 font-bold">⭐ $3 Early Access</span>
+            </div>
+            <h4 class="text-base font-extrabold text-white">Track Your Stanley &amp; Danko Wealth Class in the Master Vault</h4>
+            <p class="text-xs text-slate-300 max-w-md leading-relaxed">
+              The official spreadsheet includes the dynamic PAW/UAW engine, Charlie Munger compounding milestones, and Federal Reserve benchmarks in 2 minutes a month.
+            </p>
+          </div>
+          <a 
+            href="/tracker-template" 
+            class="shrink-0 inline-flex items-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 text-white font-extrabold text-xs transition-all shadow-md active:scale-95"
+          >
+            <span>Get Master Vault ($3)</span>
+            <span>→</span>
+          </a>
         </div>
-
-        <!-- High-Ticket Automated Net Worth Tracker Recommendation Card (Empower / Monarch) -->
-        <NetWorthTrackerCard />
       </div>
     </div>
 

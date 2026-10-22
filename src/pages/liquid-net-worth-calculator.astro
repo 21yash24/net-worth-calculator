@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NetWorthTrackerCard from '../components/NetWorthTrackerCard.astro';
 import TrustBadge from '../components/TrustBadge.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 
@@ -155,11 +154,26 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- High-Ticket Automated Net Worth Tracker Recommendation Card (Empower / Monarch) -->
-    <NetWorthTrackerCard 
-      title="Track Your Investable Assets & Liquid Net Worth Automatically"
-      subtitle="Link your liquid brokerage, 401(k), savings, and checking accounts once. Empower automatically calculates your true liquid net worth without manual entry."
-    />
+    <!-- Master Wealth & Liquid Net Worth Vault Callout -->
+    <div class="p-6 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-5 text-left shadow-xl">
+      <div class="space-y-1.5">
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase tracking-wider">💧 100% Private &amp; Offline</span>
+          <span class="text-xs text-amber-400 font-bold">⭐ $3 Early Access</span>
+        </div>
+        <h4 class="text-lg font-black text-white">Track Your Liquid Net Worth &amp; Emergency Runway in the Master Vault</h4>
+        <p class="text-xs text-slate-300 max-w-lg leading-relaxed">
+          Never share bank logins or sensitive passwords with third-party apps. The Master Vault separates liquid cash and investments from illiquid real estate, and calculates your exact monthly survival runway in 2 minutes a month.
+        </p>
+      </div>
+      <a 
+        href="/tracker-template" 
+        class="shrink-0 inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs transition-all shadow-md active:scale-95"
+      >
+        <span>Get Master Vault ($3)</span>
+        <span>→</span>
+      </a>
+    </div>
 
     <!-- Related -->
     <section class="bg-slate-50 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
