@@ -490,9 +490,27 @@ const breadcrumbSchema = {
 		<!-- Footer -->
 		<footer class="w-full border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-[#04070d] mt-24 py-12 text-sm text-slate-700 dark:text-slate-400 transition-colors duration-300">
 			<div class="max-w-6xl mx-auto px-6 space-y-8">
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
-					<div class="space-y-2 col-span-2 sm:col-span-3 lg:col-span-1">
-						<div class="text-slate-900 dark:text-white font-extrabold text-lg">GetNetWorthCalculator.com</div>
+				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 sm:gap-8">
+					<div class="space-y-3 col-span-2 sm:col-span-3 lg:col-span-2 pr-4">
+						<a href="/" class="flex items-center gap-3 group" aria-label="NetWorth. Homepage">
+							<div class="w-8 h-8 relative flex items-center justify-center transition-transform group-hover:scale-105 shrink-0">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-full h-full" fill="none" aria-hidden="true">
+									<path d="M16 3L27 9.35V22.65L16 29L5 22.65V9.35L16 3Z" class="fill-slate-100 dark:fill-[#0b1324] stroke-slate-300 dark:stroke-[#1e293b]" stroke-width="1.5"/>
+									<path d="M16 7L23 11.03V19.03L16 23.06L9 19.03V11.03L16 7Z" fill="url(#brand-grad-footer)" stroke="#10b981" stroke-width="1"/>
+									<path d="M16 11V19M12 15H20" class="stroke-slate-100 dark:stroke-[#060a12]" stroke-width="2.2" stroke-linecap="round"/>
+									<defs>
+										<linearGradient id="brand-grad-footer" x1="9" y1="7" x2="23" y2="23" gradientUnits="userSpaceOnUse">
+											<stop stop-color="#10b981"/>
+											<stop offset="1" stop-color="#047857"/>
+										</linearGradient>
+									</defs>
+								</svg>
+							</div>
+							<div class="flex flex-col">
+								<span class="text-slate-900 dark:text-white font-extrabold tracking-tight text-xl leading-none">NetWorth<span class="text-emerald-500">.</span></span>
+								<span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider leading-none mt-1">GetNetWorthCalculator.com</span>
+							</div>
+						</a>
 						<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
 							Privacy-first global wealth benchmarking platform. Powered by official US Fed SCF, UK ONS, RBI India, ABS Australia, and StatsCan datasets.
 						</p>
@@ -526,7 +544,7 @@ const breadcrumbSchema = {
 					<div>
 						<h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Wealth Tiers</h3>
 						<ul class="space-y-2 text-xs">
-							<li><a href="/tracker-template" class="text-emerald-700 dark:text-emerald-400 font-extrabold hover:underline transition-colors">📊 Master Wealth Vault ($4.99)</a></li>
+							<li><a href="/tracker-template" class="text-emerald-700 dark:text-emerald-400 font-extrabold hover:underline transition-colors">📊 Master Wealth Vault ({product.earlyBirdPrice})</a></li>
 							<li><a href="/top-1-percent-net-worth-by-age" class="text-amber-800 dark:text-amber-300 font-bold hover:underline transition-colors">🏆 Top 1% Net Worth by Age</a></li>
 							<li><a href="/top-10-percent-net-worth-by-age" class="hover:text-slate-900 dark:hover:text-white transition-colors">Top 10% Net Worth by Age</a></li>
 							<li><a href="/1-million-net-worth-by-age" class="hover:text-slate-900 dark:hover:text-white transition-colors">$1 Million Net Worth by Age</a></li>
@@ -560,7 +578,7 @@ const breadcrumbSchema = {
 				</div>
 
 				<div class="border-t border-slate-200 dark:border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-					<p>© {new Date().getFullYear()} Get Net Worth Calculator. All rights reserved.</p>
+					<p>© {new Date().getFullYear()} NetWorth. (GetNetWorthCalculator.com). All rights reserved.</p>
 					<p>🔒 100% Client-Side Calculations. No data stored.</p>
 				</div>
 				<div class="text-[11px] text-slate-400 dark:text-slate-500 text-center pt-4">
