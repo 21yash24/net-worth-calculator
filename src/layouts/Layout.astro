@@ -7,11 +7,13 @@ import product from '../data/product.json';
 interface Props {
 	title?: string;
 	description?: string;
+	canonical?: string;
 }
 
 const { 
 	title = "Net Worth Calculator by Age (2026): Exact Percentile Benchmark [US Fed Data]", 
-	description = "Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) data. 100% free, private & anonymous."
+	description = "Calculate your exact net worth percentile by age benchmarked against official US Federal Reserve Survey of Consumer Finances (SCF) data. 100% free, private & anonymous.",
+	canonical
 } = Astro.props;
 
 const rawPath = Astro.url.pathname;
@@ -19,11 +21,12 @@ let cleanPath = rawPath.replace(/\.html$/, '').replace(/\/+$/, '') || '';
 if (cleanPath === '/index' || cleanPath === 'index') {
   cleanPath = '';
 }
-const canonicalURL = cleanPath === '' 
+const canonicalURL = canonical || (cleanPath === '' 
   ? 'https://getnetworthcalculator.com/' 
-  : `https://getnetworthcalculator.com${cleanPath}`;
+  : `https://getnetworthcalculator.com${cleanPath}`);
 
 const activeLang = languages.find(l => cleanPath === `/${l.code}` || cleanPath.startsWith(`/${l.code}/`))?.code || '';
+const isHomeOrLangHome = cleanPath === '' || languages.some(l => cleanPath === `/${l.code}`);
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -65,12 +68,16 @@ const breadcrumbSchema = {
 		<!-- Canonical URL — clean URL matching sitemap and static routing -->
 		<link rel="canonical" href={canonicalURL} />
 
-		<!-- Multilingual Hreflang SEO Tags -->
-		<link rel="alternate" hreflang="x-default" href="https://getnetworthcalculator.com/" />
-		<link rel="alternate" hreflang="en" href="https://getnetworthcalculator.com/" />
-		{languages.map(l => (
-			<link rel="alternate" hreflang={l.code} href={`https://getnetworthcalculator.com/${l.code}`} />
-		))}
+		<!-- Multilingual Hreflang SEO Tags (Only valid on root & language homepage cluster) -->
+		{isHomeOrLangHome && (
+			<>
+				<link rel="alternate" hreflang="x-default" href="https://getnetworthcalculator.com/" />
+				<link rel="alternate" hreflang="en" href="https://getnetworthcalculator.com/" />
+				{languages.map(l => (
+					<link rel="alternate" hreflang={l.code} href={`https://getnetworthcalculator.com/${l.code}`} />
+				))}
+			</>
+		)}
 
 		<!-- WebSite Schema -->
 		<script type="application/ld+json" set:html={JSON.stringify({
