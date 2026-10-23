@@ -34,3 +34,24 @@
     --color-rose-600: #fda4af;
   }
 }
+
+/* Hardware-Accelerated Smooth Financial Ticker Animation */
+@keyframes tickerSlide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerSlide 35s linear infinite;
+  will-change: transform;
+}
+
+.ticker-container:hover .ticker-track {
+  animation-play-state: paused;
+}

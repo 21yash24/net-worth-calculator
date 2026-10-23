@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import languages from '../data/languages.json';
+import ProductCard from '../components/ProductCard.astro';
+import product from '../data/product.json';
 
 interface Props {
 	title?: string;
@@ -187,8 +189,141 @@ const breadcrumbSchema = {
 				document.documentElement.classList.add('dark');
 			}
 		</script>
+
+		<!-- Gumroad 1-Click Purchase Overlay (Zero-Friction Modal Checkout) -->
+		<script is:inline src="https://gumroad.com/js/gumroad.js"></script>
 	</head>
 	<body class="bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-emerald-400">
+		<!-- Top Financial Ticker Announcement Bar ($3 Launch Special) -->
+		<aside id="top-announcement-ticker" class="w-full bg-[#020617] border-b border-emerald-500/30 text-white text-xs relative z-[60] shadow-md selection:bg-emerald-500 selection:text-black">
+			<div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-3 sm:gap-6">
+				<!-- Left Badge: Blinking Live Deal -->
+				<div class="flex items-center gap-2 shrink-0">
+					<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-black text-[10px] sm:text-xs tracking-wider uppercase">
+						<span class="relative flex h-2 w-2">
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+						</span>
+						<span>{product.earlyBirdPrice} LAUNCH DEAL</span>
+					</span>
+				</div>
+
+				<!-- Center Marquee Ticker Track (Continuous 60FPS Hardware-Accelerated) -->
+				<div class="ticker-container overflow-hidden flex-1 relative py-0.5" title="Hover to pause ticker">
+					<div class="ticker-track text-slate-300 font-medium text-xs flex items-center gap-8">
+						<!-- Item 1 -->
+						<span class="inline-flex items-center gap-2">
+							<strong class="text-white font-extrabold">📊 Master Wealth &amp; 50/30/20 Budget Vault (2026):</strong>
+							<span class="text-amber-300 font-bold">Only {product.earlyBirdPrice} (Regular {product.price} • 50% OFF)</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Item 2 -->
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">⚡ 2-Minute Monthly Habit:</span>
+							<span>Enter 4 numbers on the 1st of each month — zero receipt typing</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Item 3 -->
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">💸 Guilt-Free Spending Buffer:</span>
+							<span>Live daily allowance so you know your safe spend limit</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Item 4 -->
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">🎯 Sinking Funds Shield:</span>
+							<span>Car repairs, insurance &amp; holidays never shock your budget</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Item 5 -->
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">🏛️ US Federal Reserve SCF Percentiles Built-In</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Item 6 -->
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">🔒 100% Offline &amp; Private:</span>
+							<span>Google Sheets + Excel (.xlsx) — zero bank logins</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Item 7 -->
+						<span class="inline-flex items-center gap-2">
+							<span class="text-amber-400 font-bold">⭐ 4.96/5 Rating</span>
+							<span>from 180+ verified wealth builders</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<!-- Duplicate loop for seamless infinite scroll -->
+						<span class="inline-flex items-center gap-2">
+							<strong class="text-white font-extrabold">📊 Master Wealth &amp; 50/30/20 Budget Vault (2026):</strong>
+							<span class="text-amber-300 font-bold">Only {product.earlyBirdPrice} (Regular {product.price} • 50% OFF)</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">⚡ 2-Minute Monthly Habit:</span>
+							<span>Enter 4 numbers on the 1st of each month — zero receipt typing</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">💸 Guilt-Free Spending Buffer:</span>
+							<span>Live daily allowance so you know your safe spend limit</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">🎯 Sinking Funds Shield:</span>
+							<span>Car repairs, insurance &amp; holidays never shock your budget</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">🏛️ US Federal Reserve SCF Percentiles Built-In</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<span class="inline-flex items-center gap-2">
+							<span class="text-white font-bold">🔒 100% Offline &amp; Private:</span>
+							<span>Google Sheets + Excel (.xlsx) — zero bank logins</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+
+						<span class="inline-flex items-center gap-2">
+							<span class="text-amber-400 font-bold">⭐ 4.96/5 Rating</span>
+							<span>from 180+ verified wealth builders</span>
+						</span>
+						<span class="text-emerald-500 font-black">•</span>
+					</div>
+				</div>
+
+				<!-- Right Action Buttons (High CTR) -->
+				<div class="flex items-center gap-2 sm:gap-3 shrink-0">
+					<a 
+						href="/tracker-template" 
+						class="hidden md:inline-flex items-center gap-1 text-[11px] font-bold text-slate-300 hover:text-white transition-colors"
+					>
+						<span>Tour Features</span>
+					</a>
+					<a 
+						href="https://yashjha22.gumroad.com/l/vxdzfq" 
+						target="_blank"
+						rel="noopener noreferrer"
+						class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 active:scale-95 text-slate-950 font-black text-xs transition-all shadow-sm flex items-center gap-1 group"
+					>
+						<span>Get Vault ({product.earlyBirdPrice})</span>
+						<span class="group-hover:translate-x-0.5 transition-transform">➔</span>
+					</a>
+				</div>
+			</div>
+		</aside>
+
 		<!-- Dynamic Ambient Glow -->
 		<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none" aria-hidden="true">
 			<div class="absolute -top-[30%] left-[25%] w-[50%] h-[50%] rounded-full bg-emerald-500/5 dark:bg-emerald-950/20 blur-[160px]"></div>
@@ -283,9 +418,9 @@ const breadcrumbSchema = {
 
 						<a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
 
-						<a href="/tracker-template" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs transition-all shadow-md shadow-emerald-900/30 flex items-center gap-1">
+						<a href="/tracker-template" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs transition-all shadow-md shadow-emerald-900/30 flex items-center gap-1.5 group">
 							<span>📊 Master Vault</span>
-							<span class="px-1.5 py-0.2 rounded bg-white/20 text-[10px] font-black">$4.99</span>
+							<span class="px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 text-[10px] font-black group-hover:scale-105 transition-transform">{product.earlyBirdPrice}</span>
 						</a>
 					</nav>
 
@@ -311,7 +446,10 @@ const breadcrumbSchema = {
 			<!-- Mobile Navigation Drawer -->
 			<div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-6 py-4 space-y-2 text-sm font-semibold">
 				<a href="/" class="block py-2 text-slate-800 dark:text-slate-200">Home Calculator</a>
-				<a href="/tracker-template" class="block py-2 text-emerald-600 dark:text-emerald-400 font-extrabold">📊 Master Wealth Vault ($4.99 Special)</a>
+				<a href="/tracker-template" class="block py-2 text-emerald-600 dark:text-emerald-400 font-extrabold flex items-center justify-between">
+					<span>📊 Master Wealth Vault (2026)</span>
+					<span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-xs font-black">{product.earlyBirdPrice} Special</span>
+				</a>
 				<div class="py-2 border-y border-slate-100 dark:border-slate-800 my-2">
 					<div class="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">Languages</div>
 					<div class="grid grid-cols-2 gap-1 text-xs">
@@ -340,6 +478,13 @@ const breadcrumbSchema = {
 		<!-- Main Content Slot -->
 		<div class="flex-grow">
 			<slot />
+
+			<!-- Global Post-Content Master Vault Launchpad (All Pages Except Dedicated Tracker Template Page) -->
+			{!cleanPath.includes('tracker-template') && (
+				<section class="max-w-6xl mx-auto px-4 sm:px-6 mt-16 sm:mt-24 mb-4" aria-label="Master Wealth Vault Launch Offer">
+					<ProductCard headline="Automate Your Net Worth & 50/30/20 Budget: The $3 Master Vault" />
+				</section>
+			)}
 		</div>
 
 		<!-- Footer -->
