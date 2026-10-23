@@ -5,7 +5,7 @@ Created by GetNetWorth Analytics | getnetworthcalculator.com
 
 Thank you for securing your copy of the Master Wealth Vault!
 
-Inside this package, you will find two files:
+Inside this package, you will find two workbooks:
   1. NetWorth_FIRE_Master_Vault_SAMPLE.xlsx
      --> A fully populated example profile (32yo couple, $108k income, $342k net worth).
      --> Use this to explore how all formulas, charts, and benchmarks react.
@@ -44,8 +44,10 @@ All formulas, charts, conditional formatting, and 50/30/20 budgets are
 1. Visit: https://getnetworthcalculator.com/tools/statement-converter
 2. Drop your bank PDF statement (Chase, Amex, BoA, Wells Fargo, Citi, etc.).
 3. Click "📋 1-Click Copy For Vault".
-4. Open the "Statement & Expense Ledger" tab in your workbook, click cell B11, 
+4. Open the "Statement & Expense Ledger" tab in your workbook, click cell B14, 
    and press Cmd+V (Mac) or Ctrl+V (Windows).
+5. All live cards (Total Inflows, Spending Outflows, Net Cash Flow, Needs, Wants)
+   update automatically!
 
 ------------------------------------------------------------------------
 ⚖️ EDUCATIONAL DISCLAIMER:
