@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Your Master Wealth Vault | Google Sheets & Excel</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --emerald: #10b981;
+      --emerald-dark: #047857;
+      --emerald-glow: rgba(16, 185, 129, 0.2);
+      --amber: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 680px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 80px -20px var(--emerald-glow);
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      color: var(--emerald);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .access-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #022c22;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5);
+      background: linear-gradient(135deg, #34d399, #10b981);
+    }
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      background: #1f2937;
+      color: #e5e7eb;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 14px;
+      border: 1px solid #374151;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: #374151;
+      color: #fff;
+    }
+    .instructions {
+      text-align: left;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .instructions h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .instructions ol {
+      padding-left: 20px;
+      font-size: 13px;
+      color: #d1d5db;
+    }
+    .instructions li {
+      margin-bottom: 8px;
+    }
+    .instructions strong {
+      color: #fff;
+    }
+    .footer-note {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .footer-note a {
+      color: var(--emerald);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="badge">
+      <span>✨ Official Access Portal</span>
+      <span>•</span>
+      <span>2026 Edition</span>
+    </div>
+
+    <h1>Your Master Wealth Vault is Ready</h1>
+    <p class="subtitle">Choose your preferred format below to start tracking your net worth and 50/30/20 budget.</p>
+
+    <div class="access-grid">
+      <!-- Google Sheets 1-Click Copy -->
+      <a href="https://docs.google.com/spreadsheets/create" id="gsheets-link" target="_blank" rel="noopener noreferrer" class="btn-main">
+        <span>📊 Open in Google Sheets (1-Click Copy)</span>
+        <span>➔</span>
+      </a>
+
+      <!-- Sample Profile Demo -->
+      <a href="./NetWorth_FIRE_Master_Vault_SAMPLE.xlsx" download class="btn-secondary">
+        <span>👀 Download Pre-Filled Example Profile (.xlsx)</span>
+      </a>
+
+      <!-- Blank Excel Template -->
+      <a href="./NetWorth_FIRE_Master_Vault_BLANK.xlsx" download class="btn-secondary">
+        <span>📥 Download Clean Blank Excel Template (.xlsx)</span>
+      </a>
+    </div>
+
+    <div class="instructions">
+      <h3>🚀 How to Use in Google Sheets (3-Click Setup)</h3>
+      <ol>
+        <li>Click the green <strong>Open in Google Sheets</strong> button above.</li>
+        <li>Google will ask: <strong>"Would you like to make a copy of Master Wealth Vault?"</strong></li>
+        <li>Click the blue <strong>"Make a copy"</strong> button. A fresh, private copy will be added directly into your Google Drive!</li>
+        <li>Enter your <strong>Age and Income</strong> on the <strong>START HERE</strong> tab, and you're ready to go!</li>
+      </ol>
+    </div>
+
+    <div class="footer-note">
+      Need assistance or have feedback? Visit <a href="https://getnetworthcalculator.com/contact" target="_blank">GetNetWorthCalculator.com/contact</a>.
+      <br>100% Private &amp; Client-Side • No Bank Credentials Stored.
+    </div>
+  </div>
+
+</body>
+</html>

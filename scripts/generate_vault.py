@@ -1654,10 +1654,13 @@ before making major financial decisions.
     print(f"✅ Generated Documentation: {guide_path}")
 
     # 5. ZIP BUNDLE FOR GUMROAD / BUYERS
+    access_html_path = os.path.join(OUTPUT_DIR, "ACCESS_YOUR_GOOGLE_SHEETS.html")
     zip_path = os.path.join(OUTPUT_DIR, "Master_Wealth_Vault_2026_Bundle.zip")
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         zipf.write(sample_path, arcname="NetWorth_FIRE_Master_Vault_SAMPLE.xlsx")
         zipf.write(blank_path, arcname="NetWorth_FIRE_Master_Vault_BLANK.xlsx")
+        if os.path.exists(access_html_path):
+            zipf.write(access_html_path, arcname="ACCESS_YOUR_GOOGLE_SHEETS.html")
         zipf.write(guide_path, arcname="README_HOW_TO_USE.txt")
     print(f"📦 Created Buyer ZIP Bundle: {zip_path}")
 
