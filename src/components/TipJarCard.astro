@@ -12,14 +12,17 @@ const {
 } = Astro.props;
 ---
 
-<div class={`rounded-3xl border-2 border-amber-500/35 dark:border-amber-400/30 bg-gradient-to-br from-amber-500/5 via-white to-emerald-500/10 dark:from-amber-950/25 dark:via-slate-900/95 dark:to-emerald-950/25 p-6 sm:p-8 shadow-2xl relative overflow-hidden ${className}`}>
-  <!-- Warm Ambient Glow -->
-  <div class="absolute -top-16 -right-16 w-64 h-64 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+<div class={`rounded-3xl border-2 border-amber-500/40 dark:border-amber-400/35 bg-gradient-to-br from-amber-500/5 via-white to-emerald-500/10 dark:from-[#0a0f1d] dark:via-[#070b14] dark:to-emerald-950/30 p-6 sm:p-9 shadow-2xl relative overflow-hidden ${className}`} id="gamified-tip-terminal">
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute -top-20 -right-20 w-72 h-72 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative z-10 space-y-5 text-left">
+  <!-- Confetti Canvas Overlay (Triggered on slider change and tip click) -->
+  <canvas id="tip-confetti-canvas" class="absolute inset-0 pointer-events-none z-30 w-full h-full"></canvas>
+
+  <div class="relative z-10 space-y-6 text-left">
     
-    <!-- Founder Header (Deeply Personal & Human) -->
+    <!-- Top Founder Header Row -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/80 dark:border-slate-800/80">
       <div class="flex items-center gap-3.5">
         <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900 flex items-center justify-center text-white font-extrabold text-xl shadow-md border-2 border-emerald-400/40 shrink-0">
@@ -40,106 +43,185 @@ const {
         </div>
       </div>
 
+      <!-- Live Community Fuel Pill -->
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-black uppercase tracking-wider self-start sm:self-auto">
-        <span class="animate-pulse">☕</span>
-        <span>Community Supported • 0 Ads</span>
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+        </span>
+        <span>☕ Community Tip Terminal</span>
       </div>
     </div>
 
-    <!-- The Heartfelt Story -->
-    <div class="space-y-3">
+    <!-- The Personal Story Copy -->
+    <div class="space-y-2">
       <h4 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
         {headline}
       </h4>
       <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-        "I built this whole project by myself because I was sick of opening finance websites that demanded my phone number, forced me to link my real bank accounts, or pushed predatory 29% APR credit cards on me.
+        "I built this whole project by myself because I was sick of opening finance sites that demanded my phone number, forced me to link real bank accounts, or pushed predatory 29% APR credit cards on me.
       </p>
       <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-        I spent hundreds of late nights crunching official <strong>Federal Reserve SCF microdata</strong> and writing code for <strong>650+ calculators</strong> so that anyone, anywhere, can get instant financial clarity in 2 seconds — <strong>100% free, private, and with zero ads</strong>.
-      </p>
-      <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-        The reality is that keeping these fast edge servers running and formulas updated costs real money out of my own pocket every month. I refuse to sell your data to banks or ruin your screen with spammy ads.
+        I spent hundreds of late nights crunching Federal Reserve SCF data for <strong>650+ calculators</strong> so that anyone can check where they stand <strong>100% free, private, and with zero ads</strong>. 
+        Keeping these fast servers running costs real money out of my own pocket every month.
       </p>
     </div>
 
-    <!-- The Free Gift Callout (Emotional Value Reciprocity) -->
-    <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border-2 border-emerald-500/30 space-y-2">
-      <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-black text-sm uppercase tracking-wider">
-        <span>🎁</span>
-        <span>My Free Gift To Whoever Tips (Even $1):</span>
+    <!-- The Free Gift Guarantee Box -->
+    <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border-2 border-emerald-500/35 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+      <div class="space-y-0.5">
+        <div class="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300 font-black text-xs sm:text-sm uppercase tracking-wider">
+          <span>🎁</span>
+          <span>My Free Gift To Whoever Tips (Even $1):</span>
+        </div>
+        <p class="text-xs text-slate-700 dark:text-slate-300">
+          Get the complete <strong>Master Wealth &amp; 50/30/20 Budget Vault</strong> (Google Sheets + Excel, regular $8 value) sent instantly to your email!
+        </p>
       </div>
-      <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-        I built an extensive offline tool called the <strong>Master Wealth &amp; 50/30/20 Budget Vault</strong> (Excel + Google Sheets templates, automated Fed Reserve math, debt snowball, and FIRE countdown) that normally sells for {product.price}. 
-        <strong>If you can tip even a single dollar ($1 or whatever you feel like) to help keep this site alive, I want to give you the entire Master Vault completely free as my personal thank you.</strong>
-      </p>
+      <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-black text-[11px] uppercase tracking-wider shrink-0 shadow-sm">
+        Instant Download
+      </span>
     </div>
 
-    <!-- Interactive Tipping Chips -->
-    <div class="pt-2">
-      <div class="text-[11px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-wider mb-2.5">
-        Choose whatever feels right to you (Every tip unlocks the Vault):
+    <!-- Interactive Gamified American Tipping Terminal -->
+    <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80 space-y-5 shadow-inner">
+      
+      <!-- Preset Quick-Tip Chips (Toast / Square POS Style) -->
+      <div>
+        <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-400 mb-2.5">
+          <span class="uppercase tracking-wider">Select a Tip Amount:</span>
+          <span class="text-emerald-700 dark:text-emerald-400 font-extrabold flex items-center gap-1">
+            <span>⭐ Most People Tip $4</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="tip-chips-container">
+          <!-- Preset 1: $1 -->
+          <button 
+            type="button" 
+            data-amount="1"
+            class="tip-chip p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+          >
+            <span class="text-sm font-black">$1 Tip</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🪙 Every Bit Helps</span>
+          </button>
+
+          <!-- Preset 2: $4 (Default / Popular) -->
+          <button 
+            type="button" 
+            data-amount="4"
+            class="tip-chip active-chip p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-300 font-black transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer shadow-md ring-2 ring-emerald-500/30 active:scale-95 relative"
+          >
+            <span class="absolute -top-2.5 px-2 py-0.2 rounded-full bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
+            <span class="text-sm font-black text-emerald-800 dark:text-emerald-300">$4 Tip</span>
+            <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">☕ Coffee + Lunch</span>
+          </button>
+
+          <!-- Preset 3: $8 -->
+          <button 
+            type="button" 
+            data-amount="8"
+            class="tip-chip p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+          >
+            <span class="text-sm font-black">$8 Tip</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🚀 Server Hero</span>
+          </button>
+
+          <!-- Preset 4: $15 -->
+          <button 
+            type="button" 
+            data-amount="15"
+            class="tip-chip p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+          >
+            <span class="text-sm font-black">$15 Tip</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">👑 Wealth Patron</span>
+          </button>
+        </div>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <!-- Chip 1: $1 A Dollar -->
-        <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq?price=1" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-3.5 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 hover:bg-amber-500/5 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.03] active:scale-95"
-        >
-          <span class="text-xl">🪙</span>
-          <span class="text-base font-black text-slate-900 dark:text-white">$1 Tip</span>
-          <span class="text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 font-bold">Every bit counts</span>
-          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
-        </a>
+      <!-- Gamified Slider Range Input -->
+      <div class="space-y-3 pt-2">
+        <div class="flex items-center justify-between">
+          <label for="interactive-tip-slider" class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <span>🎮 Slide to Gameify Your Tip:</span>
+          </label>
+          <div class="flex items-center gap-1.5">
+            <span id="slider-tier-badge" class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400/20 text-amber-500 border border-amber-400/30">
+              ☕ Coffee Fuel
+            </span>
+            <span id="dynamic-tip-display" class="text-2xl font-black text-slate-900 dark:text-white font-mono bg-white dark:bg-slate-900 px-3 py-1 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm">
+              $4.00
+            </span>
+          </div>
+        </div>
 
-        <!-- Chip 2: $3 Coffee (Most Popular) -->
-        <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq?price=3" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-3.5 rounded-2xl bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-emerald-500/10 border-2 border-amber-500/50 text-center group flex flex-col items-center justify-center gap-1 shadow-md hover:scale-[1.04] active:scale-95 relative"
-        >
-          <span class="absolute -top-2.5 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
-          <span class="text-xl">☕</span>
-          <span class="text-base font-black text-slate-900 dark:text-white">$3 Tip</span>
-          <span class="text-[10px] text-amber-700 dark:text-amber-400 font-extrabold">Buy Me a Coffee</span>
-          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
-        </a>
+        <div class="relative py-1">
+          <input 
+            type="range" 
+            id="interactive-tip-slider" 
+            min="1" 
+            max="50" 
+            step="1" 
+            value="4" 
+            class="w-full h-3 bg-slate-200 dark:bg-slate-900 rounded-lg appearance-none cursor-pointer accent-emerald-500 border border-slate-300 dark:border-slate-800 focus:outline-none"
+            aria-label="Gamified Tip Amount Slider"
+          />
+          <div class="flex justify-between text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1 pt-1">
+            <span>$1 (Every Bit)</span>
+            <span>$10 (Server Hero)</span>
+            <span>$25 (Patron)</span>
+            <span>$50+ (Legend)</span>
+          </div>
+        </div>
 
-        <!-- Chip 3: $5 Lunch -->
-        <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq?price=5" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-3.5 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.03] active:scale-95"
-        >
-          <span class="text-xl">🍕</span>
-          <span class="text-base font-black text-slate-900 dark:text-white">$5 Tip</span>
-          <span class="text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 font-bold">Buy Me Lunch</span>
-          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
-        </a>
-
-        <!-- Chip 4: Custom Pay What You Can -->
-        <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-slate-100 to-amber-500/10 dark:from-emerald-950/40 dark:via-slate-950 dark:to-amber-950/40 border border-emerald-500/40 hover:border-emerald-400 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.03] active:scale-95"
-        >
-          <span class="text-xl">💖</span>
-          <span class="text-base font-black text-slate-900 dark:text-white">Custom $__</span>
-          <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-extrabold">Pay What You Can</span>
-          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
-        </a>
+        <!-- Dynamic Gamified Reaction Message -->
+        <div id="slider-reaction-box" class="p-3 rounded-xl bg-amber-500/10 dark:bg-amber-950/20 border border-amber-500/30 text-xs text-amber-900 dark:text-amber-300 flex items-center gap-2.5 transition-all">
+          <span id="reaction-emoji" class="text-2xl animate-bounce">☕</span>
+          <div class="space-y-0.5">
+            <div id="reaction-title" class="font-bold">You're Buying Yash a Warm Coffee!</div>
+            <div id="reaction-sub" class="text-[11px] text-slate-600 dark:text-slate-400">
+              Directly fuels late-night coding &amp; keeping this tool 100% ad-free.
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Action Button (Big Call To Action with Confetti Trigger) -->
+      <div class="space-y-3 pt-1">
+        <a 
+          id="main-gamified-tip-btn"
+          href="https://yashjha22.gumroad.com/l/vxdzfq?price=4" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 text-slate-950 font-black text-base sm:text-lg transition-all shadow-xl shadow-emerald-950/30 flex items-center justify-center gap-3 active:scale-98 group cursor-pointer"
+        >
+          <span class="text-xl group-hover:scale-125 transition-transform">✨</span>
+          <span id="tip-btn-text">Tip $4.00 &amp; Unlock Free Master Vault</span>
+          <span class="group-hover:translate-x-1 transition-transform">➔</span>
+        </a>
+
+        <!-- Accepted Payment Methods Trust Banner (All US / Global Methods) -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-slate-500 dark:text-slate-400 text-[11px] pt-1 border-t border-slate-200 dark:border-slate-800/80">
+          <span class="font-semibold flex items-center gap-1.5">
+            <span>🔒 Bank-Grade 256-Bit SSL Checkout:</span>
+          </span>
+          <div class="flex items-center gap-2 flex-wrap justify-center font-bold text-[10px] text-slate-700 dark:text-slate-300">
+            <span class="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs"> Apple Pay</span>
+            <span class="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">GPay</span>
+            <span class="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">PayPal</span>
+            <span class="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">Visa</span>
+            <span class="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">Mastercard</span>
+            <span class="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">AMEX</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Reassurance for people who have $0 to spare -->
-    <div class="pt-3 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-400">
+    <!-- The Reverse-Psychology Out (Eliminates Sales Friction) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400 pt-1">
       <p class="text-center sm:text-left leading-relaxed">
-        💛 <em>Can't afford to tip right now? Don't sweat it at all. All 650+ calculators will always stay 100% free and private for you. But if you have a dollar to spare, it helps keep this site alive for everyone.</em>
+        💛 <em>Genuinely broke or can't afford to tip? That is 100% fine. Our 650+ calculators will always stay completely free for you. But if this tool helped your financial peace of mind today, chipping in keeps the lights on for everyone.</em>
       </p>
       <a href="/support" class="font-bold text-emerald-700 dark:text-emerald-400 hover:underline shrink-0 flex items-center gap-1">
         <span>Read My Story</span>
@@ -149,3 +231,183 @@ const {
 
   </div>
 </div>
+
+<!-- Interactive Gamified Terminal Logic & Confetti Audio FX Script -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('interactive-tip-slider');
+    const display = document.getElementById('dynamic-tip-display');
+    const tipBtn = document.getElementById('main-gamified-tip-btn');
+    const btnText = document.getElementById('tip-btn-text');
+    const chips = document.querySelectorAll('.tip-chip');
+    const tierBadge = document.getElementById('slider-tier-badge');
+    const emoji = document.getElementById('reaction-emoji');
+    const title = document.getElementById('reaction-title');
+    const sub = document.getElementById('reaction-sub');
+    const canvas = document.getElementById('tip-confetti-canvas');
+
+    if (!slider || !display || !tipBtn) return;
+
+    // Gamification Tiers Map
+    const tiers = [
+      { max: 2, badge: '🪙 Micro Fuel', emoji: '🪙', title: "Every Dollar Counts!", sub: "Helps pay for server edge queries and keeps ads away." },
+      { max: 4, badge: '☕ Coffee Fuel', emoji: '☕', title: "You're Buying Yash a Warm Coffee!", sub: "Directly fuels late-night coding & maintaining this tool 100% ad-free." },
+      { max: 7, badge: '🍕 Lunch Fuel', emoji: '🍕', title: "Lunch is on You Today!", sub: "Covers a day's worth of server compute for 2,000 visitors." },
+      { max: 14, badge: '🚀 Server Hero', emoji: '🚀', title: "You Are a Server Champion!", sub: "Covers our Cloudflare bandwidth & Fed Reserve SCF pipelines." },
+      { max: 24, badge: '👑 Wealth Patron', emoji: '👑', title: "VIP Community Patron!", sub: "You are the reason financial education stays free for everyone." },
+      { max: 999, badge: '💎 Legendary Benefactor', emoji: '💎', title: "Absolute Legend!", sub: "Sponsoring entire months of server infrastructure. You are amazing." }
+    ];
+
+    // Synthesized Web Audio Celebration Chime (Zero External Asset Dependency)
+    function playCelebrationSound() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+
+        // Note 1: E5 (659Hz)
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(659.25, now);
+        gain1.gain.setValueAtTime(0.12, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.4);
+
+        // Note 2: B5 (987Hz) delayed chord harmony
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(987.77, now + 0.08);
+        gain2.gain.setValueAtTime(0.18, now + 0.08);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now + 0.08);
+        osc2.stop(now + 0.6);
+      } catch(e) {}
+    }
+
+    // Hardware-Accelerated 60FPS Confetti Cannon Particle Canvas
+    function launchConfetti() {
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+
+      const colors = ['#10b981', '#f59e0b', '#3b82f6', '#ec4899', '#8b5cf6', '#14b8a6'];
+      const particles = [];
+      const particleCount = 45;
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: canvas.width / 2 + (Math.random() * 80 - 40),
+          y: canvas.height * 0.7,
+          vx: (Math.random() - 0.5) * 8,
+          vy: -(Math.random() * 7 + 4),
+          size: Math.random() * 5 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 10,
+          alpha: 1
+        });
+      }
+
+      let animationFrame;
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = 0;
+
+        for (let p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.22; // gravity
+          p.rotation += p.vRot;
+          p.alpha -= 0.016;
+
+          if (p.alpha > 0) {
+            alive++;
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+            ctx.restore();
+          }
+        }
+
+        if (alive > 0) {
+          animationFrame = requestAnimationFrame(render);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          cancelAnimationFrame(animationFrame);
+        }
+      }
+      render();
+    }
+
+    // Update Slider State & Dynamic Gamification
+    function updateTip(val, triggerEffects = false) {
+      val = parseInt(val, 10) || 1;
+      slider.value = val;
+      display.textContent = `$${val}.00`;
+      btnText.textContent = `Tip $${val}.00 & Unlock Free Master Vault`;
+      tipBtn.href = `https://yashjha22.gumroad.com/l/vxdzfq?price=${val}`;
+
+      // Match Gamification Tier
+      const matchedTier = tiers.find(t => val <= t.max) || tiers[tiers.length - 1];
+      tierBadge.textContent = matchedTier.badge;
+      emoji.textContent = matchedTier.emoji;
+      title.textContent = matchedTier.title;
+      sub.textContent = matchedTier.sub;
+
+      // Update Active Chip Styling
+      chips.forEach(c => {
+        const amt = parseInt(c.dataset.amount, 10);
+        if (amt === val) {
+          c.classList.add('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
+          c.classList.remove('border-slate-200', 'dark:border-slate-800');
+        } else {
+          c.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
+          c.classList.add('border-slate-200', 'dark:border-slate-800');
+        }
+      });
+
+      if (triggerEffects) {
+        playCelebrationSound();
+        launchConfetti();
+      }
+    }
+
+    // Slider Drag Event
+    slider.addEventListener('input', (e) => {
+      updateTip(e.target.value, false);
+    });
+
+    // Slider Release Celebratory Trigger
+    slider.addEventListener('change', () => {
+      playCelebrationSound();
+      launchConfetti();
+    });
+
+    // Chip Click Events
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const amt = chip.dataset.amount;
+        updateTip(amt, true);
+      });
+    });
+
+    // Tip Button Click Celebratory FX
+    tipBtn.addEventListener('click', () => {
+      playCelebrationSound();
+      launchConfetti();
+    });
+  });
+</script>
