@@ -202,18 +202,18 @@ const breadcrumbSchema = {
 		<script is:inline src="https://gumroad.com/js/gumroad.js"></script>
 	</head>
 	<body class="bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-emerald-400">
-		<!-- Top Financial Ticker Announcement Bar ($3 Launch Special) -->
-		<aside id="top-announcement-ticker" class="w-full bg-[#020617] border-b border-emerald-500/30 text-white text-xs relative z-[60] shadow-md selection:bg-emerald-500 selection:text-black">
+		<!-- Top Financial Ticker Announcement Bar (Community Tip Jar & Free Vault Gift) -->
+		<aside id="top-announcement-ticker" class="w-full bg-[#020617] border-b border-amber-500/30 text-white text-xs relative z-[60] shadow-md selection:bg-amber-500 selection:text-black">
 			<div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-3 sm:gap-6">
-				<!-- Left Badge: Blinking Live Deal -->
+				<!-- Left Badge: Blinking Community Badge -->
 				<div class="flex items-center gap-2 shrink-0">
-					<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-black text-[10px] sm:text-xs tracking-wider uppercase">
+					<a href="/support" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:text-white font-black text-[10px] sm:text-xs tracking-wider uppercase transition-colors">
 						<span class="relative flex h-2 w-2">
-							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-							<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
 						</span>
-						<span>{product.earlyBirdPrice} LAUNCH DEAL</span>
-					</span>
+						<span>☕ 100% AD-FREE &amp; PRIVATE</span>
+					</a>
 				</div>
 
 				<!-- Center Marquee Ticker Track (Continuous 60FPS Hardware-Accelerated) -->
@@ -221,124 +221,85 @@ const breadcrumbSchema = {
 					<div class="ticker-track text-slate-300 font-medium text-xs flex items-center gap-8">
 						<!-- Item 1 -->
 						<span class="inline-flex items-center gap-2">
-							<strong class="text-white font-extrabold">📊 Master Wealth &amp; 50/30/20 Budget Vault (2026):</strong>
-							<span class="text-amber-300 font-bold">Only {product.earlyBirdPrice} (Regular {product.price} • 50% OFF)</span>
+							<strong class="text-white font-extrabold">☕ 100% Free Community Mission:</strong>
+							<span class="text-amber-300 font-bold">650+ calculators run $0 ad-free • Supported purely by community tips</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<!-- Item 2 -->
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">⚡ 2-Minute Monthly Habit:</span>
-							<span>Enter 4 numbers on the 1st of each month — zero receipt typing</span>
+							<strong class="text-emerald-400 font-bold">🎁 Free Thank-You Gift:</strong>
+							<span>Tip whatever you want ($1+) &amp; unlock the complete $8 Master Wealth Vault 2026 free</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<!-- Item 3 -->
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">💸 Guilt-Free Spending Buffer:</span>
-							<span>Live daily allowance so you know your safe spend limit</span>
+							<span class="text-white font-bold">🛡️ Zero Bank Logins:</span>
+							<span>Your financial calculations stay 100% private in your browser</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<!-- Item 4 -->
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">🎯 Sinking Funds Shield:</span>
-							<span>Car repairs, insurance &amp; holidays never shock your budget</span>
+							<span class="text-white font-bold">⭐ Most People Tip $4:</span>
+							<span>Chipping in a coffee fuels server compute for 2,000+ daily visitors</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<!-- Item 5 -->
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">🏛️ US Federal Reserve SCF Percentiles Built-In</span>
+							<span class="text-white font-bold">🔒 100% Safe One-Time Checkout:</span>
+							<span>Zero recurring fees • Instant 30-day money-back guarantee</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
-
-						<!-- Item 6 -->
-						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">🔒 100% Offline &amp; Private:</span>
-							<span>Google Sheets + Excel (.xlsx) — zero bank logins</span>
-						</span>
-						<span class="text-emerald-500 font-black">•</span>
-
-						<!-- Item 7 -->
-						<span class="inline-flex items-center gap-2">
-							<span class="text-amber-400 font-bold">⭐ 4.96/5 Rating</span>
-							<span>from 180+ verified wealth builders</span>
-						</span>
-						<span class="text-emerald-500 font-black">•</span>
-
-						<!-- Item 8: Support Callout -->
-						<span class="inline-flex items-center gap-2">
-							<span class="text-amber-300 font-bold">💖 Support Our Free Mission:</span>
-							<span>Your {product.earlyBirdPrice} Vault keeps our 650+ calculators 100% free &amp; private</span>
-						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<!-- Duplicate loop for seamless infinite scroll -->
 						<span class="inline-flex items-center gap-2">
-							<strong class="text-white font-extrabold">📊 Master Wealth &amp; 50/30/20 Budget Vault (2026):</strong>
-							<span class="text-amber-300 font-bold">Only {product.earlyBirdPrice} (Regular {product.price} • 50% OFF)</span>
+							<strong class="text-white font-extrabold">☕ 100% Free Community Mission:</strong>
+							<span class="text-amber-300 font-bold">650+ calculators run $0 ad-free • Supported purely by community tips</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">⚡ 2-Minute Monthly Habit:</span>
-							<span>Enter 4 numbers on the 1st of each month — zero receipt typing</span>
+							<strong class="text-emerald-400 font-bold">🎁 Free Thank-You Gift:</strong>
+							<span>Tip whatever you want ($1+) &amp; unlock the complete $8 Master Wealth Vault 2026 free</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">💸 Guilt-Free Spending Buffer:</span>
-							<span>Live daily allowance so you know your safe spend limit</span>
+							<span class="text-white font-bold">🛡️ Zero Bank Logins:</span>
+							<span>Your financial calculations stay 100% private in your browser</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">🎯 Sinking Funds Shield:</span>
-							<span>Car repairs, insurance &amp; holidays never shock your budget</span>
+							<span class="text-white font-bold">⭐ Most People Tip $4:</span>
+							<span>Chipping in a coffee fuels server compute for 2,000+ daily visitors</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 
 						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">🏛️ US Federal Reserve SCF Percentiles Built-In</span>
+							<span class="text-white font-bold">🔒 100% Safe One-Time Checkout:</span>
+							<span>Zero recurring fees • Instant 30-day money-back guarantee</span>
 						</span>
-						<span class="text-emerald-500 font-black">•</span>
-
-						<span class="inline-flex items-center gap-2">
-							<span class="text-white font-bold">🔒 100% Offline &amp; Private:</span>
-							<span>Google Sheets + Excel (.xlsx) — zero bank logins</span>
-						</span>
-						<span class="text-emerald-500 font-black">•</span>
-
-						<span class="inline-flex items-center gap-2">
-							<span class="text-amber-400 font-bold">⭐ 4.96/5 Rating</span>
-							<span>from 180+ verified wealth builders</span>
-						</span>
-						<span class="text-emerald-500 font-black">•</span>
-
-						<span class="inline-flex items-center gap-2">
-							<span class="text-amber-300 font-bold">💖 Support Our Free Mission:</span>
-							<span>Your {product.earlyBirdPrice} Vault keeps our 650+ calculators 100% free &amp; private</span>
-						</span>
-						<span class="text-emerald-500 font-black">•</span>
+						<span class="text-amber-500 font-black">•</span>
 					</div>
 				</div>
 
 				<!-- Right Action Buttons (High CTR) -->
-				<div class="flex items-center gap-2 sm:gap-3 shrink-0">
+				<div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
 					<a 
-						href="/tracker-template" 
-						class="hidden md:inline-flex items-center gap-1 text-[11px] font-bold text-slate-300 hover:text-white transition-colors"
+						href="/support" 
+						class="hidden md:inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 hover:text-white transition-colors"
 					>
-						<span>Tour Features</span>
+						<span>Yash's Story</span>
 					</a>
 					<a 
-						href="https://yashjha22.gumroad.com/l/vxdzfq" 
-						target="_blank"
-						rel="noopener noreferrer"
-						class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 active:scale-95 text-slate-950 font-black text-xs transition-all shadow-sm flex items-center gap-1 group"
+						href="/support" 
+						class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 active:scale-95 text-slate-950 font-black text-xs transition-all shadow-sm flex items-center gap-1 group cursor-pointer"
 					>
-						<span>Get Vault ({product.earlyBirdPrice})</span>
+						<span>☕ Tip Jar ($1+)</span>
 						<span class="group-hover:translate-x-0.5 transition-transform">➔</span>
 					</a>
 				</div>

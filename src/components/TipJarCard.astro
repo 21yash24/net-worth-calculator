@@ -95,33 +95,33 @@ const {
           </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="tip-chips-container">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="tip-chips-container">
           <!-- Preset 1: $1 -->
           <button 
             type="button" 
             data-amount="1"
-            class="tip-chip p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
           >
             <span class="text-sm font-black">$1 Tip</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🪙 Every Bit Helps</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🪙 Every Bit</span>
           </button>
 
           <!-- Preset 2: $4 (Default / Popular) -->
           <button 
             type="button" 
             data-amount="4"
-            class="tip-chip active-chip p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-300 font-black transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer shadow-md ring-2 ring-emerald-500/30 active:scale-95 relative"
+            class="tip-chip active-chip p-2.5 sm:p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-300 font-black transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer shadow-md ring-2 ring-emerald-500/30 active:scale-95 relative"
           >
             <span class="absolute -top-2.5 px-2 py-0.2 rounded-full bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
             <span class="text-sm font-black text-emerald-800 dark:text-emerald-300">$4 Tip</span>
-            <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">☕ Coffee + Lunch</span>
+            <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">☕ Coffee Fuel</span>
           </button>
 
           <!-- Preset 3: $8 -->
           <button 
             type="button" 
             data-amount="8"
-            class="tip-chip p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
           >
             <span class="text-sm font-black">$8 Tip</span>
             <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🚀 Server Hero</span>
@@ -131,10 +131,20 @@ const {
           <button 
             type="button" 
             data-amount="15"
-            class="tip-chip p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
           >
             <span class="text-sm font-black">$15 Tip</span>
             <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">👑 Wealth Patron</span>
+          </button>
+
+          <!-- Preset 5: Custom $ -->
+          <button 
+            type="button" 
+            data-amount="custom"
+            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 hover:border-emerald-500 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95 col-span-2 sm:col-span-1"
+          >
+            <span class="text-sm font-black text-emerald-600 dark:text-emerald-400">Custom $</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">✏️ Any Amount</span>
           </button>
         </div>
       </div>
@@ -174,6 +184,28 @@ const {
           </div>
         </div>
 
+        <!-- Custom Numeric Input (Type Any Custom Dollar Amount) -->
+        <div class="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <label for="custom-tip-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 cursor-pointer">
+            <span class="text-sm">✏️</span>
+            <span>Or type any custom amount:</span>
+          </label>
+          <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-950 px-3 py-1 rounded-lg border border-slate-300 dark:border-slate-700 font-mono text-sm font-black focus-within:ring-2 focus-within:ring-emerald-500">
+            <span class="text-emerald-500 font-bold">$</span>
+            <input 
+              type="number" 
+              id="custom-tip-input" 
+              min="1" 
+              max="1000" 
+              step="1" 
+              value="4" 
+              class="w-16 bg-transparent text-slate-900 dark:text-white font-mono font-bold focus:outline-none text-right"
+              aria-label="Custom Tip Amount in USD"
+            />
+            <span class="text-xs text-slate-400 font-sans font-normal">USD</span>
+          </div>
+        </div>
+
         <!-- Dynamic Gamified Reaction Message -->
         <div id="slider-reaction-box" class="p-3 rounded-xl bg-amber-500/10 dark:bg-amber-950/20 border border-amber-500/30 text-xs text-amber-900 dark:text-amber-300 flex items-center gap-2.5 transition-all">
           <span id="reaction-emoji" class="text-2xl animate-bounce">☕</span>
@@ -199,6 +231,15 @@ const {
           <span id="tip-btn-text">Tip $4.00 &amp; Unlock Free Master Vault</span>
           <span class="group-hover:translate-x-1 transition-transform">➔</span>
         </a>
+
+        <!-- Dynamic Gumroad Checkout Price Instruction -->
+        <div id="gumroad-price-instruction" class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-900 dark:text-amber-300 flex items-center justify-between gap-2">
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm shrink-0">💡</span>
+            <span><strong>Checkout Note:</strong> Enter <span id="gumroad-suggested-amount" class="font-mono font-black text-emerald-700 dark:text-emerald-400 text-xs">$4</span> into Gumroad's <em>"Name a fair price"</em> box on the next screen.</span>
+          </div>
+          <span class="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 shrink-0">100% Safe</span>
+        </div>
 
         <!-- Accepted Payment Methods Trust Banner (All US / Global Methods) -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-slate-500 dark:text-slate-400 text-[11px] pt-1 border-t border-slate-200 dark:border-slate-800/80">
@@ -271,6 +312,8 @@ const {
     const title = document.getElementById('reaction-title');
     const sub = document.getElementById('reaction-sub');
     const canvas = document.getElementById('tip-confetti-canvas');
+    const customInput = document.getElementById('custom-tip-input');
+    const gumroadAmountText = document.getElementById('gumroad-suggested-amount');
 
     if (!slider || !display || !tipBtn) return;
 
@@ -281,7 +324,7 @@ const {
       { max: 7, badge: '🍕 Lunch Fuel', emoji: '🍕', title: "Lunch is on You Today!", sub: "Covers a day's worth of server compute for 2,000 visitors." },
       { max: 14, badge: '🚀 Server Hero', emoji: '🚀', title: "You Are a Server Champion!", sub: "Covers our Cloudflare bandwidth & Fed Reserve SCF pipelines." },
       { max: 24, badge: '👑 Wealth Patron', emoji: '👑', title: "VIP Community Patron!", sub: "You are the reason financial education stays free for everyone." },
-      { max: 999, badge: '💎 Legendary Benefactor', emoji: '💎', title: "Absolute Legend!", sub: "Sponsoring entire months of server infrastructure. You are amazing." }
+      { max: 9999, badge: '💎 Legendary Benefactor', emoji: '💎', title: "Absolute Legend!", sub: "Sponsoring entire months of server infrastructure. You are amazing." }
     ];
 
     // Synthesized Web Audio Celebration Chime (Zero External Asset Dependency)
@@ -380,11 +423,19 @@ const {
 
     // Update Slider State & Dynamic Gamification
     function updateTip(val, triggerEffects = false) {
-      val = parseInt(val, 10) || 1;
-      slider.value = val;
+      val = parseInt(val, 10);
+      if (isNaN(val) || val < 1) val = 1;
+
+      slider.value = Math.min(val, 50);
+      if (customInput && document.activeElement !== customInput) {
+        customInput.value = val;
+      }
       display.textContent = `$${val}.00`;
       btnText.textContent = `Tip $${val}.00 & Unlock Free Master Vault`;
-      tipBtn.href = `https://yashjha22.gumroad.com/l/vxdzfq?price=${val}`;
+      tipBtn.href = `https://yashjha22.gumroad.com/l/vxdzfq`;
+      if (gumroadAmountText) {
+        gumroadAmountText.textContent = `$${val}`;
+      }
 
       // Match Gamification Tier
       const matchedTier = tiers.find(t => val <= t.max) || tiers[tiers.length - 1];
@@ -395,13 +446,24 @@ const {
 
       // Update Active Chip Styling
       chips.forEach(c => {
-        const amt = parseInt(c.dataset.amount, 10);
-        if (amt === val) {
-          c.classList.add('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
-          c.classList.remove('border-slate-200', 'dark:border-slate-800');
+        const amt = c.dataset.amount;
+        if (amt === 'custom') {
+          if (![1, 4, 8, 15].includes(val)) {
+            c.classList.add('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
+            c.classList.remove('border-slate-300', 'dark:border-slate-700');
+          } else {
+            c.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
+            c.classList.add('border-slate-300', 'dark:border-slate-700');
+          }
         } else {
-          c.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
-          c.classList.add('border-slate-200', 'dark:border-slate-800');
+          const numAmt = parseInt(amt, 10);
+          if (numAmt === val) {
+            c.classList.add('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
+            c.classList.remove('border-slate-200', 'dark:border-slate-800');
+          } else {
+            c.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
+            c.classList.add('border-slate-200', 'dark:border-slate-800');
+          }
         }
       });
 
@@ -422,11 +484,34 @@ const {
       launchConfetti();
     });
 
+    // Custom Numeric Input Events
+    if (customInput) {
+      customInput.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10);
+        if (!isNaN(val) && val >= 1) {
+          updateTip(val, false);
+        }
+      });
+      customInput.addEventListener('change', (e) => {
+        const val = parseInt(e.target.value, 10);
+        if (!isNaN(val) && val >= 1) {
+          updateTip(val, true);
+        }
+      });
+    }
+
     // Chip Click Events
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
         const amt = chip.dataset.amount;
-        updateTip(amt, true);
+        if (amt === 'custom') {
+          if (customInput) {
+            customInput.focus();
+            customInput.select();
+          }
+        } else {
+          updateTip(amt, true);
+        }
       });
     });
 
