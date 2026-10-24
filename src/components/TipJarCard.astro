@@ -8,109 +8,144 @@ interface Props {
 
 const {
   className = "",
-  headline = "We Make $0 From Ads or Selling Your Financial Data."
+  headline = "Built by one person. 100% free, private & ad-free."
 } = Astro.props;
 ---
 
-<div class={`rounded-3xl border-2 border-amber-500/30 dark:border-amber-400/25 bg-gradient-to-br from-amber-500/5 via-slate-50 to-emerald-500/10 dark:from-amber-950/20 dark:via-slate-900/90 dark:to-emerald-950/20 p-6 sm:p-8 shadow-xl relative overflow-hidden ${className}`}>
+<div class={`rounded-3xl border-2 border-amber-500/35 dark:border-amber-400/30 bg-gradient-to-br from-amber-500/5 via-white to-emerald-500/10 dark:from-amber-950/25 dark:via-slate-900/95 dark:to-emerald-950/25 p-6 sm:p-8 shadow-2xl relative overflow-hidden ${className}`}>
   <!-- Warm Ambient Glow -->
-  <div class="absolute -top-16 -right-16 w-56 h-56 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -top-16 -right-16 w-64 h-64 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative z-10 space-y-5 text-left">
-    <!-- Top Badge Row -->
-    <div class="flex flex-wrap items-center justify-between gap-3">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-black uppercase tracking-wider">
-        <span class="animate-pulse">☕</span>
-        <span>Independent Community Tip Jar</span>
+    
+    <!-- Founder Header (Deeply Personal & Human) -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/80 dark:border-slate-800/80">
+      <div class="flex items-center gap-3.5">
+        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900 flex items-center justify-center text-white font-extrabold text-xl shadow-md border-2 border-emerald-400/40 shrink-0">
+          YJ
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">
+              A Personal Note from Yash Jha
+            </h3>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-500/30">
+              Solo Creator &amp; Modeler
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            Founder of GetNetWorthCalculator.com
+          </p>
+        </div>
       </div>
 
-      <div class="inline-flex items-center gap-2 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-        <span>100% Private • 0 Ads • 0 Tracking</span>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-black uppercase tracking-wider self-start sm:self-auto">
+        <span class="animate-pulse">☕</span>
+        <span>Community Supported • 0 Ads</span>
       </div>
     </div>
 
-    <!-- Main Message -->
-    <div class="space-y-2">
-      <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2 flex-wrap">
-        <span>{headline}</span>
-      </h3>
+    <!-- The Heartfelt Story -->
+    <div class="space-y-3">
+      <h4 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+        {headline}
+      </h4>
       <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-        Most financial websites bombard you with predatory loan popups, sell your banking logins to advertisers, or lock calculations behind monthly subscriptions. 
-        <strong>GetNetWorthCalculator runs 100% free, private, and client-side in your browser.</strong> Server hosting, domains, and Federal Reserve SCF dataset indexing are funded entirely out of our own pocket.
+        "I built this whole project by myself because I was sick of opening finance websites that demanded my phone number, forced me to link my real bank accounts, or pushed predatory 29% APR credit cards on me.
       </p>
-      <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">
-        ✨ If this tool gave you financial clarity today, leave a small tip to keep our servers alive. <strong>As our thank-you gift, every tip unlocks our complete offline Excel &amp; Google Sheets Master Vault!</strong>
+      <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+        I spent hundreds of late nights crunching official <strong>Federal Reserve SCF microdata</strong> and writing code for <strong>650+ calculators</strong> so that anyone, anywhere, can get instant financial clarity in 2 seconds — <strong>100% free, private, and with zero ads</strong>.
+      </p>
+      <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+        The reality is that keeping these fast edge servers running and formulas updated costs real money out of my own pocket every month. I refuse to sell your data to banks or ruin your screen with spammy ads.
+      </p>
+    </div>
+
+    <!-- The Free Gift Callout (Emotional Value Reciprocity) -->
+    <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border-2 border-emerald-500/30 space-y-2">
+      <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-black text-sm uppercase tracking-wider">
+        <span>🎁</span>
+        <span>My Free Gift To Whoever Tips (Even $1):</span>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+        I built an extensive offline tool called the <strong>Master Wealth &amp; 50/30/20 Budget Vault</strong> (Excel + Google Sheets templates, automated Fed Reserve math, debt snowball, and FIRE countdown) that normally sells for {product.price}. 
+        <strong>If you can tip even a single dollar ($1 or whatever you feel like) to help keep this site alive, I want to give you the entire Master Vault completely free as my personal thank you.</strong>
       </p>
     </div>
 
     <!-- Interactive Tipping Chips -->
     <div class="pt-2">
-      <div class="text-[11px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider mb-2.5">
-        Select a Tip Amount (or Pay What You Want):
+      <div class="text-[11px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-wider mb-2.5">
+        Choose whatever feels right to you (Every tip unlocks the Vault):
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <!-- Chip 1: $2 Coffee -->
+        <!-- Chip 1: $1 A Dollar -->
         <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq?price=2" 
+          href="https://yashjha22.gumroad.com/l/vxdzfq?price=1" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-3 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 hover:bg-amber-500/5 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.02] active:scale-95"
+          class="p-3.5 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 hover:bg-amber-500/5 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.03] active:scale-95"
         >
-          <span class="text-lg">☕</span>
-          <span class="text-sm font-black text-slate-900 dark:text-white">$2 Tip</span>
-          <span class="text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 font-bold">Buy a Coffee</span>
+          <span class="text-xl">🪙</span>
+          <span class="text-base font-black text-slate-900 dark:text-white">$1 Tip</span>
+          <span class="text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 font-bold">Every bit counts</span>
+          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
         </a>
 
-        <!-- Chip 2: $4 Vault + Coffee (Popular) -->
+        <!-- Chip 2: $3 Coffee (Most Popular) -->
         <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq?price=4" 
+          href="https://yashjha22.gumroad.com/l/vxdzfq?price=3" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-3 rounded-2xl bg-gradient-to-b from-emerald-500/10 to-teal-500/10 border-2 border-emerald-500/50 text-center group flex flex-col items-center justify-center gap-1 shadow-md hover:scale-[1.03] active:scale-95 relative"
+          class="p-3.5 rounded-2xl bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-emerald-500/10 border-2 border-amber-500/50 text-center group flex flex-col items-center justify-center gap-1 shadow-md hover:scale-[1.04] active:scale-95 relative"
         >
-          <span class="absolute -top-2.5 px-2 py-0.5 rounded-full bg-emerald-600 text-slate-950 text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
-          <span class="text-lg">📊</span>
-          <span class="text-sm font-black text-slate-900 dark:text-white">$4 Tip</span>
-          <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-extrabold">Vault + Coffee</span>
+          <span class="absolute -top-2.5 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
+          <span class="text-xl">☕</span>
+          <span class="text-base font-black text-slate-900 dark:text-white">$3 Tip</span>
+          <span class="text-[10px] text-amber-700 dark:text-amber-400 font-extrabold">Buy Me a Coffee</span>
+          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
         </a>
 
-        <!-- Chip 3: $8 Super Supporter -->
+        <!-- Chip 3: $5 Lunch -->
         <a 
-          href="https://yashjha22.gumroad.com/l/vxdzfq?price=8" 
+          href="https://yashjha22.gumroad.com/l/vxdzfq?price=5" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-3 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.02] active:scale-95"
+          class="p-3.5 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.03] active:scale-95"
         >
-          <span class="text-lg">🚀</span>
-          <span class="text-sm font-black text-slate-900 dark:text-white">$8 Tip</span>
-          <span class="text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 font-bold">Server Hero</span>
+          <span class="text-xl">🍕</span>
+          <span class="text-base font-black text-slate-900 dark:text-white">$5 Tip</span>
+          <span class="text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 font-bold">Buy Me Lunch</span>
+          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
         </a>
 
-        <!-- Chip 4: Custom / Pay What You Want -->
+        <!-- Chip 4: Custom Pay What You Can -->
         <a 
           href="https://yashjha22.gumroad.com/l/vxdzfq" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="p-3 rounded-2xl bg-gradient-to-br from-amber-500/10 via-slate-100 to-emerald-500/10 dark:from-amber-950/40 dark:via-slate-950 dark:to-emerald-950/40 border border-amber-500/40 hover:border-amber-400 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.02] active:scale-95"
+          class="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-slate-100 to-amber-500/10 dark:from-emerald-950/40 dark:via-slate-950 dark:to-amber-950/40 border border-emerald-500/40 hover:border-emerald-400 transition-all text-center group flex flex-col items-center justify-center gap-1 shadow-sm hover:scale-[1.03] active:scale-95"
         >
-          <span class="text-lg">💖</span>
-          <span class="text-sm font-black text-slate-900 dark:text-white">Custom $__</span>
-          <span class="text-[10px] text-amber-700 dark:text-amber-400 font-extrabold">Pay What You Want</span>
+          <span class="text-xl">💖</span>
+          <span class="text-base font-black text-slate-900 dark:text-white">Custom $__</span>
+          <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-extrabold">Pay What You Can</span>
+          <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold">+ Free Vault</span>
         </a>
       </div>
     </div>
 
-    <!-- Transparency Footer Note -->
-    <div class="pt-2 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
-      <div class="flex items-center gap-1.5 text-center sm:text-left">
-        <span>🔒 Secure 1-click checkout via Gumroad (Apple Pay, Google Pay &amp; Cards). Instant file delivery.</span>
-      </div>
-      <a href="/support" class="font-bold text-emerald-700 dark:text-emerald-400 hover:underline shrink-0">
-        Read Our Mission &amp; Server Costs →
+    <!-- Reassurance for people who have $0 to spare -->
+    <div class="pt-3 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-400">
+      <p class="text-center sm:text-left leading-relaxed">
+        💛 <em>Can't afford to tip right now? Don't sweat it at all. All 650+ calculators will always stay 100% free and private for you. But if you have a dollar to spare, it helps keep this site alive for everyone.</em>
+      </p>
+      <a href="/support" class="font-bold text-emerald-700 dark:text-emerald-400 hover:underline shrink-0 flex items-center gap-1">
+        <span>Read My Story</span>
+        <span>→</span>
       </a>
     </div>
+
   </div>
 </div>

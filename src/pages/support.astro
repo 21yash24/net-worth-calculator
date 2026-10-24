@@ -4,8 +4,8 @@ import TipJarCard from '../components/TipJarCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 import product from '../data/product.json';
 
-const title = "Community Tip Jar: Support 100% Free, Private Financial Education";
-const description = "We make $0 from ads or selling your financial data. Support our 650+ independent calculators with a small tip and get our Master Wealth & Budget Vault as our thank-you gift.";
+const title = "A Letter from the Founder: Why GetNetWorthCalculator is 100% Free & Ad-Free";
+const description = "A personal letter from Yash Jha on why this project was built without ads or data selling, and how you can support our independent server infrastructure with a small tip.";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -20,7 +20,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Support & Community Tip Jar",
+      "name": "Founder Letter & Community Tip Jar",
       "item": "https://getnetworthcalculator.com/support"
     }
   ]
@@ -32,152 +32,122 @@ const breadcrumbSchema = {
 
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12 text-slate-800 dark:text-slate-200">
     
-    <!-- Hero Header -->
+    <!-- Hero Letter Header -->
     <header class="text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-black uppercase tracking-wider">
-        <span>☕</span>
-        <span>Independent Community Tip Jar</span>
+        <span>💌</span>
+        <span>An Open Letter from the Creator</span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-        Why We Run <span class="text-emerald-700 dark:text-emerald-400">100% Free &amp; Ad-Free</span>
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+        Why I Built 650+ Free Calculators — And Refused to Sell Out to Banks
       </h1>
 
       <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        We built GetNetWorthCalculator with one radical rule: <strong>Your personal finances belong to you, not advertisers or predatory lenders.</strong>
+        By <strong>Yash Jha</strong> • Solo Developer &amp; Quantitative Analyst, GetNetWorthCalculator.com
       </p>
     </header>
 
-    <!-- Main Interactive Tip Jar Card -->
+    <!-- The Personal Story (Heartfelt & Deeply Human) -->
+    <article class="p-6 sm:p-10 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-6 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed shadow-sm">
+      <div class="flex items-center gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900 flex items-center justify-center text-white font-extrabold text-xl shadow-md border-2 border-emerald-400/40 shrink-0">
+          YJ
+        </div>
+        <div>
+          <h2 class="text-lg font-black text-slate-900 dark:text-white">Hi, I'm Yash.</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Founder &amp; Solo Builder of GetNetWorthCalculator.com</p>
+        </div>
+      </div>
+
+      <p>
+        A while ago, I sat at my desk trying to answer what should have been a simple, honest question: 
+        <em>"Where does my net worth actually stand compared to people my age?"</em>
+      </p>
+
+      <p>
+        What I found genuinely disgusted me. 
+        Virtually every top result on Google was owned by massive financial lead-generation conglomerates. Before they would show me a single chart, they demanded my phone number, my email, and forced me to connect my real bank accounts through third-party data brokers. Within 48 hours, my inbox was flooded with spam pushing 26.99% APR personal loans and high-fee credit cards.
+      </p>
+
+      <p>
+        <strong>Your net worth should be personal, private, and empowering — not a hunting ground for predatory lenders.</strong>
+      </p>
+
+      <p>
+        So I decided to build the antidote. Over months of late nights and weekends, I wrote the code, scraped and cleaned thousands of microdata rows from the <strong>US Federal Reserve Board’s Survey of Consumer Finances (SCF)</strong>, and created <strong>650+ state, age, and milestone calculators</strong>.
+      </p>
+
+      <div class="p-5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/30 border-l-4 border-emerald-500 space-y-2 my-4">
+        <h3 class="font-extrabold text-slate-900 dark:text-white text-base">My 3 Golden Rules For This Website:</h3>
+        <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+          <li>🔒 <strong>100% Client-Side Privacy:</strong> Zero bank logins. Your financial figures stay in your browser and are never saved to any database.</li>
+          <li>🚫 <strong>Zero Spammy Popups or Banner Ads:</strong> No blinking loan ads or autoplay videos stealing your focus.</li>
+          <li>🆓 <strong>Always 100% Free:</strong> No features locked behind greedy $15/month subscription paywalls.</li>
+        </ul>
+      </div>
+
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white pt-2">Why I'm Asking For Your Help Today</h3>
+      
+      <p>
+        Because I don't run ads or sell your financial data to banks, <strong>I make $0 from running this website</strong>. 
+        Edge server hosting, Cloudflare routing, domain registrations, and continuous Federal Reserve microdata pipeline updates come out of my own personal savings every month.
+      </p>
+
+      <p>
+        I want to keep this site alive, ad-free, and accessible to everyone in the world who is trying to get out of debt, budget smarter, or build long-term generational wealth.
+      </p>
+    </article>
+
+    <!-- Main Interactive Tip Jar Card (Personal Founder Edition) -->
     <section aria-label="Community Tip Selection">
-      <TipJarCard headline="Keep 650+ Financial Calculators 100% Free, Private & Ad-Free" />
+      <TipJarCard headline="If this tool gave you financial clarity today, consider chipping in a dollar." />
     </section>
 
-    <!-- Radical Transparency: Why We Make $0 & How We Compare -->
-    <section class="space-y-6">
-      <div class="text-center space-y-2">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-          The Ugly Truth About "Free" Financial Apps
-        </h2>
+    <!-- The Free Gift: Why Every Tip Gets The Master Vault -->
+    <section class="space-y-4">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-500 font-mono">The Fair Exchange</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">My Free Thank-You Gift To You</h2>
         <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-          Most personal finance websites aren't built to help you — they are built to sell you debt. Here is how we do things differently:
+          I don't expect charity with an empty hand. Whoever tips — whether it's $1, $3, or $10 — gets my complete offline financial system completely free.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Corporate Model -->
-        <div class="p-6 rounded-2xl bg-rose-500/5 dark:bg-rose-950/20 border border-rose-500/30 space-y-3">
-          <div class="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-extrabold text-sm uppercase tracking-wider">
-            <span>❌</span>
-            <span>Corporate Finance Websites</span>
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-            <li class="flex items-start gap-2">
-              <span class="text-rose-500 font-bold shrink-0">•</span>
-              <span><strong>Bank Login Harvesting:</strong> Force you to link real bank accounts via third-party scrapers (Plaid/Yodlee).</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-rose-500 font-bold shrink-0">•</span>
-              <span><strong>Predatory Loan Ads:</strong> Sell your net worth and credit profile to high-APR loan companies and credit cards.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-rose-500 font-bold shrink-0">•</span>
-              <span><strong>Aggressive Subscriptions:</strong> Charge $12–$25/month for basic spreadsheets disguised as web apps.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Our Model -->
-        <div class="p-6 rounded-2xl bg-emerald-500/5 dark:bg-emerald-950/20 border border-emerald-500/30 space-y-3">
-          <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-extrabold text-sm uppercase tracking-wider">
-            <span>✅</span>
-            <span>The GetNetWorthCalculator Standard</span>
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-500 font-bold shrink-0">•</span>
-              <span><strong>100% Client-Side Privacy:</strong> Zero bank logins, zero accounts required. Your math never leaves your device.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-500 font-bold shrink-0">•</span>
-              <span><strong>Official Government Benchmarks:</strong> Directly verified against US Federal Reserve SCF microdata.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-500 font-bold shrink-0">•</span>
-              <span><strong>Community Funded:</strong> Supported strictly by voluntary tips from people who value independent financial tools.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <ProductCard headline="The Master Wealth & 50/30/20 Budget Vault (Free for Whoever Tips)" />
     </section>
 
-    <!-- What Your Tip Directly Funds -->
-    <section class="p-6 sm:p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4">
-      <h3 class="text-xl font-bold text-slate-900 dark:text-white">Where Your Tips Go</h3>
-      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-        Every $2, $4, or custom tip directly pays for:
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-xs">
-        <div class="p-4 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-          <span class="text-lg">⚡</span>
-          <h4 class="font-bold text-slate-900 dark:text-white">Edge Server Hosting</h4>
-          <p class="text-slate-500 dark:text-slate-400">Keeps all 650+ calculators loading at sub-100ms global speeds 24/7/365.</p>
-        </div>
-        <div class="p-4 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-          <span class="text-lg">🏛️</span>
-          <h4 class="font-bold text-slate-900 dark:text-white">Federal Reserve SCF Microdata</h4>
-          <p class="text-slate-500 dark:text-slate-400">Processing, cleaning, and updating state, age, and percentile tables with mathematical accuracy.</p>
-        </div>
-        <div class="p-4 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-          <span class="text-lg">🛡️</span>
-          <h4 class="font-bold text-slate-900 dark:text-white">Ad-Free Independence</h4>
-          <p class="text-slate-500 dark:text-slate-400">Guarantees we never sell our souls to predatory credit card or debt consolidation affiliates.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Supporter Gift Showcase -->
-    <section class="space-y-4">
-      <div class="text-center space-y-1">
-        <span class="text-xs font-bold uppercase tracking-wider text-amber-500">Instant Supporter Gift</span>
-        <h2 class="text-2xl font-black text-slate-900 dark:text-white">Every Tip Unlocks The Master Wealth Vault</h2>
-        <p class="text-xs text-slate-600 dark:text-slate-400">Even if you just tip $2 or $4, you immediately receive the complete offline spreadsheet suite.</p>
-      </div>
-
-      <ProductCard headline="The $4 Master Wealth & Budget Vault (Included Free With Your Support)" />
-    </section>
-
-    <!-- FAQs -->
-    <section class="space-y-4">
-      <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center">Frequently Asked Questions</h3>
+    <!-- Reassurance FAQ -->
+    <section class="space-y-4 max-w-2xl mx-auto">
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white text-center">Questions You Might Have</h3>
       <div class="space-y-3">
-        <details class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white text-sm list-none flex justify-between items-center">
-            <span>Is my payment secure?</span>
+            <span>"What if I genuinely cannot afford to tip right now?"</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            Yes. All tips are securely processed through Gumroad using bank-grade 256-bit SSL encryption. We support Apple Pay, Google Pay, Visa, Mastercard, AMEX, and PayPal. We never see or store your payment details.
+            Please do not feel pressured at all! I built these 650+ calculators so that anyone, regardless of income or financial situation, has access to clean, unbiased wealth benchmarks. The tools on this website will always stay 100% free for you. Focus on building your emergency savings first.
           </p>
         </details>
 
-        <details class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white text-sm list-none flex justify-between items-center">
-            <span>Can I pay what I want?</span>
+            <span>"How do I receive the Master Wealth Vault?"</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            Yes! On Gumroad, you can enter any custom dollar amount you wish. Whether it is $2 for a coffee or $50 to sponsor our server infrastructure, we deeply appreciate your support.
+            Immediately after you tip (via Apple Pay, Google Pay, or Card), Gumroad presents an instant download button right on your screen and emails you a lifetime link with all Excel (.xlsx) and Google Sheets files.
           </p>
         </details>
 
-        <details class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group">
+        <details class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 cursor-pointer group shadow-sm">
           <summary class="font-bold text-slate-900 dark:text-white text-sm list-none flex justify-between items-center">
-            <span>How do I receive the Master Wealth Vault download?</span>
+            <span>"Can I enter a custom amount?"</span>
             <span class="group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            Immediately after contributing, Gumroad displays an instant download button on your screen and emails you a permanent access link with all .xlsx and Google Sheets files.
+            Yes! Click the <strong>Custom $__</strong> button on the tip card, and you can type any dollar amount you want. Whether it's $1 for a coffee or $25 to help sponsor our monthly server bills, every single cent goes directly back into maintaining this free platform.
           </p>
         </details>
       </div>
@@ -185,7 +155,7 @@ const breadcrumbSchema = {
 
     <!-- Return to Calculator -->
     <div class="text-center pt-4">
-      <a href="/" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400 hover:underline">
+      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-bold text-xs hover:bg-slate-800 dark:hover:bg-slate-700 transition-all shadow-md">
         <span>← Back to Net Worth Percentile Calculator</span>
       </a>
     </div>
