@@ -8,7 +8,7 @@ interface Props {
 
 const {
   className = "",
-  headline = "Built by one person. 100% free, private & ad-free."
+  headline = "Built by a solo developer. 100% free, private & ad-free — Supported entirely by your donations."
 } = Astro.props;
 ---
 
@@ -25,20 +25,20 @@ const {
     <!-- Top Founder Header Row -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/80 dark:border-slate-800/80">
       <div class="flex items-center gap-3.5">
-        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-900 flex items-center justify-center text-white font-extrabold text-xl shadow-md border-2 border-emerald-400/40 shrink-0">
-          YJ
+        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 flex items-center justify-center text-white font-extrabold text-2xl shadow-md border-2 border-amber-400/40 shrink-0">
+          💻
         </div>
         <div>
           <div class="flex items-center gap-2 flex-wrap">
             <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">
-              A Personal Note from Yash Jha
+              A Personal Note from the Solo Developer
             </h3>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-500/30">
               Solo Creator &amp; Modeler
             </span>
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
-            Founder of GetNetWorthCalculator.com
+            Independent Creator of GetNetWorthCalculator.com
           </p>
         </div>
       </div>
@@ -50,6 +50,14 @@ const {
           <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
         </span>
         <span>☕ Community Tip Terminal</span>
+      </div>
+    </div>
+
+    <!-- Transparent Need Alert Box -->
+    <div class="px-4 py-3 rounded-2xl bg-amber-500/10 border border-amber-500/35 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-medium flex items-start sm:items-center gap-3 shadow-xs">
+      <span class="text-xl shrink-0">🚨</span>
+      <div class="leading-relaxed">
+        <strong class="font-bold text-amber-950 dark:text-amber-200">Independent Server Fund:</strong> This tool generates <span class="font-bold text-emerald-700 dark:text-emerald-300">$0 from ads or sponsors</span>. I pay for all Cloudflare edge servers, US Fed SCF data pipelines, and hosting out of pocket. Community donations are what keep this site online.
       </div>
     </div>
 
@@ -99,34 +107,34 @@ const {
           <a 
             href="https://buymeacoffee.com/yashjha" 
             target="_blank" 
-            rel="noopener noreferrer"
+            rel="noopener noreferrer" 
             class="coffee-tier-card p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 text-slate-900 dark:text-white hover:border-emerald-400 transition-all text-center flex flex-col items-center justify-center gap-1 shadow-md ring-2 ring-emerald-500/20 active:scale-95 group relative cursor-pointer"
           >
             <span class="absolute -top-2.5 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
             <span class="text-3xl group-hover:scale-110 transition-transform">☕</span>
             <span class="text-xl font-black text-emerald-800 dark:text-emerald-300">$4.00</span>
             <span class="text-xs font-bold text-slate-900 dark:text-white">1 Warm Coffee</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400">Fuels 1 night of coding</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Fuels server compute &amp; updates</span>
           </a>
 
           <!-- Tier 2: $12 -->
           <a 
             href="https://buymeacoffee.com/yashjha" 
             target="_blank" 
-            rel="noopener noreferrer"
+            rel="noopener noreferrer" 
             class="coffee-tier-card p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:border-amber-500 transition-all text-center flex flex-col items-center justify-center gap-1 shadow-sm active:scale-95 group cursor-pointer"
           >
             <span class="text-3xl group-hover:scale-110 transition-transform">🍕</span>
             <span class="text-xl font-black text-amber-800 dark:text-amber-300">$12.00</span>
-            <span class="text-xs font-bold text-slate-900 dark:text-white">3 Coffees / Lunch</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400">Covers 2,000 visitors</span>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">3 Coffees / Server Lunch</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Covers 2,000 daily visitors</span>
           </a>
 
           <!-- Tier 3: Custom -->
           <a 
             href="https://buymeacoffee.com/yashjha" 
             target="_blank" 
-            rel="noopener noreferrer"
+            rel="noopener noreferrer" 
             class="coffee-tier-card p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white hover:border-emerald-500 transition-all text-center flex flex-col items-center justify-center gap-1 shadow-sm active:scale-95 group cursor-pointer"
           >
             <span class="text-3xl group-hover:scale-110 transition-transform">🚀</span>
@@ -147,7 +155,7 @@ const {
           class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-base sm:text-lg transition-all shadow-xl shadow-amber-950/30 flex items-center justify-center gap-3 active:scale-98 group cursor-pointer"
         >
           <span class="text-xl group-hover:scale-125 transition-transform">☕</span>
-          <span id="tip-btn-text">Buy Yash a Coffee on BuyMeACoffee.com</span>
+          <span id="tip-btn-text">Support the Independent Developer on Buy Me a Coffee</span>
           <span class="group-hover:translate-x-1 transition-transform">➔</span>
         </a>
 

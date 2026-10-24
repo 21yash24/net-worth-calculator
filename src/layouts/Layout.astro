@@ -4,6 +4,7 @@ import languages from '../data/languages.json';
 import ProductCard from '../components/ProductCard.astro';
 import product from '../data/product.json';
 import FloatingTipPill from '../components/FloatingTipPill.astro';
+import TipJarCard from '../components/TipJarCard.astro';
 
 interface Props {
 	title?: string;
@@ -293,7 +294,7 @@ const breadcrumbSchema = {
 						href="/support" 
 						class="hidden md:inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 hover:text-white transition-colors"
 					>
-						<span>Yash's Story</span>
+						<span>Developer's Mission</span>
 					</a>
 					<a 
 						href="/support" 
@@ -466,9 +467,42 @@ const breadcrumbSchema = {
 			</div>
 		</header>
 		
+		<!-- High-Visibility Solo Developer Support Alert Banner (Visible on Every Page) -->
+		<aside id="solo-dev-alert-banner" class="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border-b border-amber-500/30 py-2.5 px-4 text-center">
+			<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs">
+				<div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap text-left">
+					<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300 font-extrabold text-[11px] uppercase tracking-wider shrink-0">
+						<span>⚠️</span>
+						<span>100% Free &amp; Ad-Free</span>
+					</span>
+					<span class="text-slate-800 dark:text-slate-200 font-medium">
+						Built by a solo developer paying server costs out of pocket. We rely purely on your tips to stay online.
+					</span>
+				</div>
+				<div class="flex items-center gap-2 shrink-0">
+					<a 
+						href="https://buymeacoffee.com/yashjha" 
+						target="_blank" 
+						rel="noopener noreferrer" 
+						class="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition-transform active:scale-95 shadow-sm flex items-center gap-1.5"
+					>
+						<span>☕ Tip the Solo Dev ($1+)</span>
+						<span>➔</span>
+					</a>
+				</div>
+			</div>
+		</aside>
+
 		<!-- Main Content Slot -->
 		<div class="flex-grow">
 			<slot />
+
+			<!-- Global Community Tip Jar Section (Visible on Every Single Page Except Dedicated Support Page) -->
+			{!cleanPath.includes('support') && (
+				<section class="max-w-4xl mx-auto px-4 sm:px-6 my-12 sm:my-16" id="community-tip-jar-section" aria-label="Support the Independent Developer">
+					<TipJarCard />
+				</section>
+			)}
 
 			<!-- Global Post-Content Master Vault Launchpad (All Pages Except Dedicated Tracker Template Page) -->
 			{!cleanPath.includes('tracker-template') && (
@@ -582,7 +616,7 @@ const breadcrumbSchema = {
 						rel="noopener noreferrer" 
 						class="shrink-0 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs transition-all shadow-sm flex items-center gap-1.5"
 					>
-						<span>☕ Buy Yash a Coffee</span>
+						<span>☕ Support the Developer ($1+)</span>
 						<span>➔</span>
 					</a>
 				</div>

@@ -3,23 +3,43 @@
 
 <aside id="floating-tip-widget" class="fixed bottom-5 right-5 z-40 flex items-center" aria-label="Support Independent Free Calculators">
   <a 
-    href="/support"
-    class="group flex items-center gap-2.5 px-3.5 py-2.5 rounded-full bg-[#0a0f1d]/95 hover:bg-[#020617] text-white border border-amber-500/50 hover:border-amber-400 shadow-2xl shadow-amber-950/40 backdrop-blur-md transition-all hover:scale-105 active:scale-95"
-    title="We make $0 from ads. Tip to fuel our free servers!"
+    id="floating-tip-link"
+    href="#community-tip-jar-section"
+    class="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#0a0f1d]/95 hover:bg-[#020617] text-white border-2 border-amber-500/70 hover:border-amber-400 shadow-2xl shadow-amber-950/60 backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+    title="Solo developer running 650+ calculators with $0 ads. Please consider tipping $1+ to keep servers alive!"
   >
     <!-- Live Glowing Pulse -->
-    <span class="relative flex h-2.5 w-2.5 shrink-0">
+    <span class="relative flex h-3 w-3 shrink-0">
       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-400"></span>
     </span>
 
-    <span class="text-xs font-black text-amber-300 group-hover:text-amber-200 transition-colors flex items-center gap-1">
+    <span class="text-xs sm:text-sm font-black text-amber-300 group-hover:text-amber-200 transition-colors flex items-center gap-1.5">
       <span>☕</span>
-      <span>Tip Jar</span>
+      <span>Support Solo Dev</span>
     </span>
 
-    <span class="hidden sm:inline-block text-[11px] font-medium text-slate-300 border-l border-slate-700/80 pl-2">
-      100% Ad-Free
+    <span class="hidden sm:inline-block text-xs font-bold text-emerald-400 border-l border-slate-700/80 pl-2.5">
+      Keep Servers Free ($1+) ➔
     </span>
   </a>
 </aside>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pill = document.getElementById('floating-tip-link');
+    if (!pill) return;
+    pill.addEventListener('click', (e) => {
+      const jar = document.getElementById('community-tip-jar-section') || document.getElementById('gamified-tip-terminal');
+      if (jar) {
+        e.preventDefault();
+        jar.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        jar.classList.add('ring-4', 'ring-amber-400', 'transition-all');
+        setTimeout(() => {
+          jar.classList.remove('ring-4', 'ring-amber-400');
+        }, 2000);
+      }
+    });
+  });
+</script>
+
