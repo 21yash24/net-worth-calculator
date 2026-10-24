@@ -83,138 +83,57 @@ const {
       </span>
     </div>
 
-    <!-- Interactive Gamified American Tipping Terminal -->
+    <!-- Simple, Honest Coffee Tip Options (Toast / POS Style) -->
     <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80 space-y-5 shadow-inner">
       
-      <!-- Preset Quick-Tip Chips (Toast / Square POS Style) -->
       <div>
-        <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-400 mb-2.5">
-          <span class="uppercase tracking-wider">Select a Tip Amount:</span>
-          <span class="text-emerald-700 dark:text-emerald-400 font-extrabold flex items-center gap-1">
-            <span>⭐ Most People Tip $4</span>
+        <div class="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-400 mb-3">
+          <span class="uppercase tracking-wider">Choose a Supporter Option:</span>
+          <span class="text-amber-600 dark:text-amber-400 font-extrabold flex items-center gap-1">
+            <span>⭐ Most People Tip $4 (1 Coffee)</span>
           </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="tip-chips-container">
-          <!-- Preset 1: $1 -->
-          <button 
-            type="button" 
-            data-amount="1"
-            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <!-- Tier 1: $4 -->
+          <a 
+            href="https://buymeacoffee.com/yashjha" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="coffee-tier-card p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 text-slate-900 dark:text-white hover:border-emerald-400 transition-all text-center flex flex-col items-center justify-center gap-1 shadow-md ring-2 ring-emerald-500/20 active:scale-95 group relative cursor-pointer"
           >
-            <span class="text-sm font-black">$1 Tip</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🪙 Every Bit</span>
-          </button>
+            <span class="absolute -top-2.5 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
+            <span class="text-3xl group-hover:scale-110 transition-transform">☕</span>
+            <span class="text-xl font-black text-emerald-800 dark:text-emerald-300">$4.00</span>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">1 Warm Coffee</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Fuels 1 night of coding</span>
+          </a>
 
-          <!-- Preset 2: $4 (Default / Popular) -->
-          <button 
-            type="button" 
-            data-amount="4"
-            class="tip-chip active-chip p-2.5 sm:p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-300 font-black transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer shadow-md ring-2 ring-emerald-500/30 active:scale-95 relative"
+          <!-- Tier 2: $12 -->
+          <a 
+            href="https://buymeacoffee.com/yashjha" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="coffee-tier-card p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:border-amber-500 transition-all text-center flex flex-col items-center justify-center gap-1 shadow-sm active:scale-95 group cursor-pointer"
           >
-            <span class="absolute -top-2.5 px-2 py-0.2 rounded-full bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider shadow">Most Popular</span>
-            <span class="text-sm font-black text-emerald-800 dark:text-emerald-300">$4 Tip</span>
-            <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">☕ Coffee Fuel</span>
-          </button>
+            <span class="text-3xl group-hover:scale-110 transition-transform">🍕</span>
+            <span class="text-xl font-black text-amber-800 dark:text-amber-300">$12.00</span>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">3 Coffees / Lunch</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Covers 2,000 visitors</span>
+          </a>
 
-          <!-- Preset 3: $8 -->
-          <button 
-            type="button" 
-            data-amount="8"
-            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
+          <!-- Tier 3: Custom -->
+          <a 
+            href="https://buymeacoffee.com/yashjha" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="coffee-tier-card p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white hover:border-emerald-500 transition-all text-center flex flex-col items-center justify-center gap-1 shadow-sm active:scale-95 group cursor-pointer"
           >
-            <span class="text-sm font-black">$8 Tip</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">🚀 Server Hero</span>
-          </button>
-
-          <!-- Preset 4: $15 -->
-          <button 
-            type="button" 
-            data-amount="15"
-            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-amber-500/60 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95"
-          >
-            <span class="text-sm font-black">$15 Tip</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">👑 Wealth Patron</span>
-          </button>
-
-          <!-- Preset 5: Custom $ -->
-          <button 
-            type="button" 
-            data-amount="custom"
-            class="tip-chip p-2.5 sm:p-3 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 hover:border-emerald-500 font-bold transition-all text-center flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95 col-span-2 sm:col-span-1"
-          >
-            <span class="text-sm font-black text-emerald-600 dark:text-emerald-400">Custom $</span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">✏️ Any Amount</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Gamified Slider Range Input -->
-      <div class="space-y-3 pt-2">
-        <div class="flex items-center justify-between">
-          <label for="interactive-tip-slider" class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-            <span>🎮 Slide to Gameify Your Tip:</span>
-          </label>
-          <div class="flex items-center gap-1.5">
-            <span id="slider-tier-badge" class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400/20 text-amber-500 border border-amber-400/30">
-              ☕ Coffee Fuel
-            </span>
-            <span id="dynamic-tip-display" class="text-2xl font-black text-slate-900 dark:text-white font-mono bg-white dark:bg-slate-900 px-3 py-1 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm">
-              $4.00
-            </span>
-          </div>
-        </div>
-
-        <div class="relative py-1">
-          <input 
-            type="range" 
-            id="interactive-tip-slider" 
-            min="1" 
-            max="50" 
-            step="1" 
-            value="4" 
-            class="w-full h-3 bg-slate-200 dark:bg-slate-900 rounded-lg appearance-none cursor-pointer accent-emerald-500 border border-slate-300 dark:border-slate-800 focus:outline-none"
-            aria-label="Gamified Tip Amount Slider"
-          />
-          <div class="flex justify-between text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1 pt-1">
-            <span>$1 (Every Bit)</span>
-            <span>$10 (Server Hero)</span>
-            <span>$25 (Patron)</span>
-            <span>$50+ (Legend)</span>
-          </div>
-        </div>
-
-        <!-- Custom Numeric Input (Type Any Custom Dollar Amount) -->
-        <div class="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <label for="custom-tip-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 cursor-pointer">
-            <span class="text-sm">✏️</span>
-            <span>Or type any custom amount:</span>
-          </label>
-          <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-950 px-3 py-1 rounded-lg border border-slate-300 dark:border-slate-700 font-mono text-sm font-black focus-within:ring-2 focus-within:ring-emerald-500">
-            <span class="text-emerald-500 font-bold">$</span>
-            <input 
-              type="number" 
-              id="custom-tip-input" 
-              min="1" 
-              max="1000" 
-              step="1" 
-              value="4" 
-              class="w-16 bg-transparent text-slate-900 dark:text-white font-mono font-bold focus:outline-none text-right"
-              aria-label="Custom Tip Amount in USD"
-            />
-            <span class="text-xs text-slate-400 font-sans font-normal">USD</span>
-          </div>
-        </div>
-
-        <!-- Dynamic Gamified Reaction Message -->
-        <div id="slider-reaction-box" class="p-3 rounded-xl bg-amber-500/10 dark:bg-amber-950/20 border border-amber-500/30 text-xs text-amber-900 dark:text-amber-300 flex items-center gap-2.5 transition-all">
-          <span id="reaction-emoji" class="text-2xl animate-bounce">☕</span>
-          <div class="space-y-0.5">
-            <div id="reaction-title" class="font-bold">You're Buying Yash a Warm Coffee!</div>
-            <div id="reaction-sub" class="text-[11px] text-slate-600 dark:text-slate-400">
-              Directly fuels late-night coding &amp; keeping this tool 100% ad-free.
-            </div>
-          </div>
+            <span class="text-3xl group-hover:scale-110 transition-transform">🚀</span>
+            <span class="text-xl font-black text-slate-800 dark:text-slate-200">Custom $</span>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">Pay What You Want</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Any amount ($1+)</span>
+          </a>
         </div>
       </div>
 
@@ -228,18 +147,9 @@ const {
           class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-base sm:text-lg transition-all shadow-xl shadow-amber-950/30 flex items-center justify-center gap-3 active:scale-98 group cursor-pointer"
         >
           <span class="text-xl group-hover:scale-125 transition-transform">☕</span>
-          <span id="tip-btn-text">Buy Yash a Coffee ($4.00) &amp; Unlock Free Vault</span>
+          <span id="tip-btn-text">Buy Yash a Coffee on BuyMeACoffee.com</span>
           <span class="group-hover:translate-x-1 transition-transform">➔</span>
         </a>
-
-        <!-- Dynamic Buy Me a Coffee Checkout Guidance -->
-        <div id="gumroad-price-instruction" class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-900 dark:text-amber-300 flex items-center justify-between gap-2">
-          <div class="flex items-center gap-1.5">
-            <span class="text-sm shrink-0">☕</span>
-            <span><strong>Buy Me a Coffee:</strong> Choose or enter <span id="gumroad-suggested-amount" class="font-mono font-black text-amber-800 dark:text-amber-300 text-xs">$4</span> on Yash's verified page to unlock the free Master Vault.</span>
-          </div>
-          <span class="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-800 dark:text-amber-300 shrink-0">Official Creator</span>
-        </div>
 
         <!-- Accepted Payment Methods Trust Banner (All US / Global Methods) -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-slate-500 dark:text-slate-400 text-[11px] pt-1 border-t border-slate-200 dark:border-slate-800/80">
@@ -299,33 +209,11 @@ const {
   </div>
 </div>
 
-<!-- Interactive Gamified Terminal Logic & Confetti Audio FX Script -->
+<!-- Interactive Celebration Audio & Confetti FX Script -->
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('interactive-tip-slider');
-    const display = document.getElementById('dynamic-tip-display');
-    const tipBtn = document.getElementById('main-gamified-tip-btn');
-    const btnText = document.getElementById('tip-btn-text');
-    const chips = document.querySelectorAll('.tip-chip');
-    const tierBadge = document.getElementById('slider-tier-badge');
-    const emoji = document.getElementById('reaction-emoji');
-    const title = document.getElementById('reaction-title');
-    const sub = document.getElementById('reaction-sub');
+    const tipBtns = document.querySelectorAll('.coffee-tier-card, #main-gamified-tip-btn');
     const canvas = document.getElementById('tip-confetti-canvas');
-    const customInput = document.getElementById('custom-tip-input');
-    const gumroadAmountText = document.getElementById('gumroad-suggested-amount');
-
-    if (!slider || !display || !tipBtn) return;
-
-    // Gamification Tiers Map
-    const tiers = [
-      { max: 2, badge: '🪙 Micro Fuel', emoji: '🪙', title: "Every Dollar Counts!", sub: "Helps pay for server edge queries and keeps ads away." },
-      { max: 4, badge: '☕ Coffee Fuel', emoji: '☕', title: "You're Buying Yash a Warm Coffee!", sub: "Directly fuels late-night coding & maintaining this tool 100% ad-free." },
-      { max: 7, badge: '🍕 Lunch Fuel', emoji: '🍕', title: "Lunch is on You Today!", sub: "Covers a day's worth of server compute for 2,000 visitors." },
-      { max: 14, badge: '🚀 Server Hero', emoji: '🚀', title: "You Are a Server Champion!", sub: "Covers our Cloudflare bandwidth & Fed Reserve SCF pipelines." },
-      { max: 24, badge: '👑 Wealth Patron', emoji: '👑', title: "VIP Community Patron!", sub: "You are the reason financial education stays free for everyone." },
-      { max: 9999, badge: '💎 Legendary Benefactor', emoji: '💎', title: "Absolute Legend!", sub: "Sponsoring entire months of server infrastructure. You are amazing." }
-    ];
 
     // Synthesized Web Audio Celebration Chime (Zero External Asset Dependency)
     function playCelebrationSound() {
@@ -421,104 +309,12 @@ const {
       render();
     }
 
-    // Update Slider State & Dynamic Gamification
-    function updateTip(val, triggerEffects = false) {
-      val = parseInt(val, 10);
-      if (isNaN(val) || val < 1) val = 1;
-
-      slider.value = Math.min(val, 50);
-      if (customInput && document.activeElement !== customInput) {
-        customInput.value = val;
-      }
-      display.textContent = `$${val}.00`;
-      btnText.textContent = `Buy Yash a Coffee ($${val}.00) & Unlock Vault`;
-      tipBtn.href = `https://buymeacoffee.com/yashjha`;
-      if (gumroadAmountText) {
-        gumroadAmountText.textContent = `$${val}`;
-      }
-
-      // Match Gamification Tier
-      const matchedTier = tiers.find(t => val <= t.max) || tiers[tiers.length - 1];
-      tierBadge.textContent = matchedTier.badge;
-      emoji.textContent = matchedTier.emoji;
-      title.textContent = matchedTier.title;
-      sub.textContent = matchedTier.sub;
-
-      // Update Active Chip Styling
-      chips.forEach(c => {
-        const amt = c.dataset.amount;
-        if (amt === 'custom') {
-          if (![1, 4, 8, 15].includes(val)) {
-            c.classList.add('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
-            c.classList.remove('border-slate-300', 'dark:border-slate-700');
-          } else {
-            c.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
-            c.classList.add('border-slate-300', 'dark:border-slate-700');
-          }
-        } else {
-          const numAmt = parseInt(amt, 10);
-          if (numAmt === val) {
-            c.classList.add('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
-            c.classList.remove('border-slate-200', 'dark:border-slate-800');
-          } else {
-            c.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'active-chip');
-            c.classList.add('border-slate-200', 'dark:border-slate-800');
-          }
-        }
-      });
-
-      if (triggerEffects) {
+    // Attach sound and confetti to all coffee buttons
+    tipBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
         playCelebrationSound();
         launchConfetti();
-      }
-    }
-
-    // Slider Drag Event
-    slider.addEventListener('input', (e) => {
-      updateTip(e.target.value, false);
-    });
-
-    // Slider Release Celebratory Trigger
-    slider.addEventListener('change', () => {
-      playCelebrationSound();
-      launchConfetti();
-    });
-
-    // Custom Numeric Input Events
-    if (customInput) {
-      customInput.addEventListener('input', (e) => {
-        const val = parseInt(e.target.value, 10);
-        if (!isNaN(val) && val >= 1) {
-          updateTip(val, false);
-        }
       });
-      customInput.addEventListener('change', (e) => {
-        const val = parseInt(e.target.value, 10);
-        if (!isNaN(val) && val >= 1) {
-          updateTip(val, true);
-        }
-      });
-    }
-
-    // Chip Click Events
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const amt = chip.dataset.amount;
-        if (amt === 'custom') {
-          if (customInput) {
-            customInput.focus();
-            customInput.select();
-          }
-        } else {
-          updateTip(amt, true);
-        }
-      });
-    });
-
-    // Tip Button Click Celebratory FX
-    tipBtn.addEventListener('click', () => {
-      playCelebrationSound();
-      launchConfetti();
     });
   });
 </script>
