@@ -3,6 +3,7 @@ import '../styles/global.css';
 import languages from '../data/languages.json';
 import ProductCard from '../components/ProductCard.astro';
 import product from '../data/product.json';
+import FloatingTipPill from '../components/FloatingTipPill.astro';
 
 interface Props {
 	title?: string;
@@ -438,6 +439,11 @@ const breadcrumbSchema = {
 
 						<a href="/contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
 
+						<a href="/support" class="text-xs font-extrabold text-amber-600 dark:text-amber-400 hover:text-amber-500 flex items-center gap-1 transition-colors px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 hover:border-amber-400">
+							<span>☕</span>
+							<span>Tip Jar</span>
+						</a>
+
 						<a href="/tracker-template" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs transition-all shadow-md shadow-emerald-900/30 flex items-center gap-1.5 group">
 							<span>📊 Master Vault</span>
 							<span class="px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 text-[10px] font-black group-hover:scale-105 transition-transform">{product.earlyBirdPrice}</span>
@@ -466,6 +472,10 @@ const breadcrumbSchema = {
 			<!-- Mobile Navigation Drawer -->
 			<div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-6 py-4 space-y-2 text-sm font-semibold">
 				<a href="/" class="block py-2 text-slate-800 dark:text-slate-200">Home Calculator</a>
+				<a href="/support" class="block py-2 text-amber-600 dark:text-amber-400 font-extrabold flex items-center justify-between">
+					<span>☕ Community Tip Jar</span>
+					<span class="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-400 text-[10px] font-black">100% Free • 0 Ads</span>
+				</a>
 				<a href="/tracker-template" class="block py-2 text-emerald-600 dark:text-emerald-400 font-extrabold flex items-center justify-between">
 					<span>📊 Master Wealth Vault (2026)</span>
 					<span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-xs font-black">{product.earlyBirdPrice} Special</span>
@@ -647,6 +657,9 @@ const breadcrumbSchema = {
 				});
 			});
 		</script>
+
+		<!-- Persistent Subtle High-Converting Floating Tip Jar Pill -->
+		<FloatingTipPill />
 	</body>
 </html>
 

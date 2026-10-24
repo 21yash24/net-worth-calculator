@@ -7,6 +7,7 @@ import WealthBooks from '../components/WealthBooks.astro';
 import TrustBadge from '../components/TrustBadge.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 import ProductCard from '../components/ProductCard.astro';
+import TipJarCard from '../components/TipJarCard.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -271,26 +272,8 @@ const faqSchema = {
 					</div>
 				</div>
 
-				<!-- High-Intent Master Vault $3 Early Access Callout -->
-				<div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 border border-emerald-500/30 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-					<div class="space-y-1">
-						<div class="flex items-center gap-2">
-							<span class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase tracking-wider">🔒 Offline &amp; Private</span>
-							<span class="text-xs text-amber-400 font-bold">⭐ $3 Early Access (First 50 Users)</span>
-						</div>
-						<h4 class="text-base font-extrabold text-white">Track This Exact Baseline in 2 Minutes a Month</h4>
-						<p class="text-xs text-slate-300 max-w-md leading-relaxed">
-							Download the Bloomberg-style Google Sheets &amp; Excel Master Vault. Automated Federal Reserve SCF formulas, 50/30/20 guilt-free spending limit, and FIRE countdown clock.
-						</p>
-					</div>
-					<a 
-						href="/tracker-template" 
-						class="shrink-0 inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs transition-all shadow-md active:scale-95"
-					>
-						<span>Get Master Vault ($3)</span>
-						<span>→</span>
-					</a>
-				</div>
+				<!-- Radical Transparency Community Tip Jar & Supporter Engine -->
+				<TipJarCard />
 
 				<!-- Actionable Next Steps: Wealth Acceleration Hub -->
 				<div id="wealth-actions-container" class="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white border border-slate-800 space-y-4 shadow-xl">
