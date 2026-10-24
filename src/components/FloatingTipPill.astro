@@ -30,7 +30,7 @@
     const pill = document.getElementById('floating-tip-link');
     if (!pill) return;
     pill.addEventListener('click', (e) => {
-      const jar = document.getElementById('community-tip-jar-section') || document.getElementById('gamified-tip-terminal');
+      const jar = document.getElementById('main-tool-tip-jar') || document.getElementById('community-tip-jar-section') || document.getElementById('gamified-tip-terminal');
       if (jar) {
         e.preventDefault();
         jar.scrollIntoView({ behavior: 'smooth', block: 'center' });

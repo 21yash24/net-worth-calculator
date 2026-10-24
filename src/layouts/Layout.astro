@@ -497,8 +497,8 @@ const breadcrumbSchema = {
 		<div class="flex-grow">
 			<slot />
 
-			<!-- Global Community Tip Jar Section (Visible on Every Single Page Except Dedicated Support Page) -->
-			{!cleanPath.includes('support') && (
+			<!-- Global Community Tip Jar Section (Visible on Inner Content / State / Milestone Pages) -->
+			{!cleanPath.includes('support') && cleanPath !== '' && !cleanPath.includes('net-worth-by-age-usa') && !cleanPath.includes('net-worth-by-age-india') && (
 				<section class="max-w-4xl mx-auto px-4 sm:px-6 my-12 sm:my-16" id="community-tip-jar-section" aria-label="Support the Independent Developer">
 					<TipJarCard />
 				</section>
