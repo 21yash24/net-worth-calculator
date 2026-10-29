@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import WealthBooks from '../components/WealthBooks.astro';
 import TrustBadge from '../components/TrustBadge.astro';
 import AuthorBio from '../components/AuthorBio.astro';
+import FeaturedToolsHub from '../components/FeaturedToolsHub.astro';
 
 const title = "Net Worth Percentile by Age (2026): Are You in the Top 1%, 5%, or 10%? [US Data]";
 const description = "Find your exact net worth percentile by age. Compare against US Federal Reserve SCF data: Top 10% ($1.03M+), Top 5% ($1.9M+), and Top 1% ($5.8M+).";
@@ -316,6 +317,9 @@ function fmt(n: number): string {
       <p>Federal Reserve Survey of Consumer Finances (SCF), 2022. All percentile thresholds are derived from the published SCF microdata tables for family wealth. Figures represent family-level (household) net worth, not individual net worth. Data is inflation-adjusted to 2022 dollars.</p>
       <p class="mt-1">For UK data see our <a href="/net-worth-by-age-uk" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 underline">UK ONS Net Worth Calculator</a>. For Canada see our <a href="/net-worth-by-age-canada" class="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 underline">Canada SFS Calculator</a>.</p>
     </div>
+
+    <!-- Interlinked Authority Cluster -->
+    <FeaturedToolsHub currentPath="/net-worth-percentile" />
 
     <!-- Author & Editorial E-E-A-T Oversight -->
     <AuthorBio />

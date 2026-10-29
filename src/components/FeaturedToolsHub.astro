@@ -1,0 +1,145 @@
+---
+// src/components/FeaturedToolsHub.astro
+// High-authority internal linking cluster designed to distribute PageRank sitewide to top 10 commercial tools
+
+interface Props {
+  currentPath?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  currentPath = '',
+  title = "Explore Essential Wealth & Net Worth Tools",
+  subtitle = "Interactive financial models benchmarked against the latest US Federal Reserve Survey of Consumer Finances (SCF)."
+} = Astro.props;
+
+const tools = [
+  {
+    href: "/net-worth-percentile",
+    icon: "📊",
+    badge: "Fed SCF Percentiles",
+    badgeColor: "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+    title: "Net Worth Percentile Calculator",
+    desc: "Calculate your exact wealth percentile rank against official Federal Reserve demographic benchmarks from 10th to top 0.1%."
+  },
+  {
+    href: "/average-net-worth-by-age",
+    icon: "📈",
+    badge: "Median vs Average",
+    badgeColor: "text-blue-600 dark:text-blue-400 bg-blue-500/10 border-blue-500/20",
+    title: "Average Net Worth by Age (2026)",
+    desc: "The definitive guide analyzing median ($192,900) vs average ($1,063,700) American net worth across each decade of life."
+  },
+  {
+    href: "/wealth-class-calculator",
+    icon: "💎",
+    badge: "Class Benchmark",
+    badgeColor: "text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20",
+    title: "Am I Rich? Wealth Class Calculator",
+    desc: "Discover whether your financial snapshot qualifies you as Working Class, Middle Class, Upper Middle, or High-Net-Worth."
+  },
+  {
+    href: "/millionaire-calculator",
+    icon: "💰",
+    badge: "$1M Timeline",
+    badgeColor: "text-purple-600 dark:text-purple-400 bg-purple-500/10 border-purple-500/20",
+    title: "Millionaire Next Door Calculator",
+    desc: "Calculate the exact age, savings rate, and compounding trajectory required to accumulate your first $1,000,000."
+  },
+  {
+    href: "/1-million-net-worth-by-age",
+    icon: "🎯",
+    badge: "Top 10% Reality",
+    badgeColor: "text-rose-600 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
+    title: "$1 Million Net Worth by Age",
+    desc: "Explore what percentage of Americans achieve seven-figure wealth by age 30, 40, 50, and 60 based on Fed data."
+  },
+  {
+    href: "/prodigious-accumulator-of-wealth-calculator",
+    icon: "🏆",
+    badge: "Stanley Formula",
+    badgeColor: "text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
+    title: "Prodigious Accumulator (PAW) Score",
+    desc: "Calculate whether you are a Prodigious Accumulator (PAW) or Under-Accumulator (UAW) of wealth based on your income."
+  },
+  {
+    href: "/coast-fire-calculator",
+    icon: "🏝️",
+    badge: "Early Retirement",
+    badgeColor: "text-teal-600 dark:text-teal-400 bg-teal-500/10 border-teal-500/20",
+    title: "Coast FIRE Retirement Calculator",
+    desc: "Determine the exact age and dollar amount where your investments can coast to financial freedom without adding more."
+  },
+  {
+    href: "/fire-net-worth-calculator",
+    icon: "🔥",
+    badge: "4% Safe Withdrawal",
+    badgeColor: "text-orange-600 dark:text-orange-400 bg-orange-500/10 border-orange-500/20",
+    title: "FIRE Net Worth Calculator",
+    desc: "Calculate your exact Financial Independence number, annual living expenses, and target retirement date."
+  },
+  {
+    href: "/liquid-net-worth-calculator",
+    icon: "💧",
+    badge: "Investable Assets",
+    badgeColor: "text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
+    title: "Liquid Net Worth Calculator",
+    desc: "Measure your real spendable capital excluding illiquid home equity, vehicles, and locked physical property."
+  },
+  {
+    href: "/net-worth-by-income",
+    icon: "💵",
+    badge: "Salary Multipliers",
+    badgeColor: "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+    title: "Net Worth by Income Bracket",
+    desc: "See how much net worth households at $50k, $100k, $250k, and $500k annual salary have historically accumulated."
+  }
+];
+
+// Filter out current page if specified
+const visibleTools = tools.filter(t => t.href !== currentPath);
+---
+
+<section class="my-14 max-w-5xl mx-auto px-4" aria-label="Featured Net Worth & Wealth Calculators">
+  <div class="text-center space-y-2 mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+      <span>🔥</span>
+      <span>Top Wealth Calculators</span>
+    </div>
+    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+      {title}
+    </h2>
+    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+      {subtitle}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {visibleTools.map((t) => (
+      <a 
+        href={t.href} 
+        class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/40 hover:border-emerald-500/50 hover:shadow-lg dark:hover:bg-slate-900/70 transition-all flex flex-col justify-between"
+      >
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xl">{t.icon}</span>
+            <span class={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full border ${t.badgeColor}`}>
+              {t.badge}
+            </span>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+            {t.title}
+          </h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            {t.desc}
+          </p>
+        </div>
+        <div class="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform">
+          <span>Launch Tool</span>
+          <span>→</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
